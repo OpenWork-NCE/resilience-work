@@ -102,7 +102,7 @@ export function NavigationDropdown({
         onClick={() => setIsOpen((value) => !value)}
         onFocus={() => setIsOpen(true)}
         className={cn(
-          "inline-flex h-11 items-center gap-2 text-sm font-medium transition-colors",
+          "inline-flex h-11 items-center gap-2 whitespace-nowrap text-sm font-medium transition-colors",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
           "focus-visible:ring-offset-[rgb(var(--background))]",
           isSectionActive ? "text-[rgb(var(--primary))]" : "text-[rgb(var(--foreground))] hover:text-[rgb(var(--primary))]"

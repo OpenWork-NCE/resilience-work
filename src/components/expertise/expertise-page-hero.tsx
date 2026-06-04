@@ -23,8 +23,8 @@ export function ExpertisePageHero({
   return (
     <section className="bg-[rgb(var(--surface-subtle))] py-[var(--section-space-md)]">
       <Container size="page">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,32rem)] lg:items-end lg:gap-12">
-          <div>
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(22rem,32rem)] xl:items-end xl:gap-12">
+          <div className="min-w-0">
             <AnimatedSection>
               <Breadcrumbs
                 items={breadcrumbs}
@@ -37,38 +37,45 @@ export function ExpertisePageHero({
               </p>
             </AnimatedSection>
             <AnimatedSection delay={0.08} className="mt-4">
-              <h1 className="max-w-[12ch] font-display text-[clamp(2.6rem,6vw,4.6rem)] font-medium leading-[0.98] text-balance">
+              <h1 className="max-w-[11ch] font-display text-[clamp(2.25rem,8vw,4.25rem)] font-medium leading-[0.98] text-balance lg:max-w-[12ch]">
                 {page.title[locale]}
               </h1>
             </AnimatedSection>
-            <AnimatedSection delay={0.12} className="mt-5 max-w-[42rem]">
+            <AnimatedSection delay={0.12} className="mt-5 max-w-[38rem] xl:max-w-[42rem]">
               <p className="text-base leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-lg">
                 {page.summary[locale]}
               </p>
             </AnimatedSection>
-            <AnimatedSection delay={0.16} className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href={contactHref}>
-                <Button rightIcon={<ArrowRight className="h-4 w-4" />}>
+            <AnimatedSection delay={0.16} className="mt-8 flex flex-col gap-3 sm:max-w-[28rem] md:max-w-none md:flex-row md:flex-wrap">
+              <Link href={contactHref} className="w-full md:w-auto">
+                <Button
+                  className="w-full md:min-w-[14rem] xl:w-auto"
+                  rightIcon={<ArrowRight className="h-4 w-4" />}
+                >
                   {locale === "fr" ? "Échanger sur vos besoins" : "Discuss your needs"}
                 </Button>
               </Link>
-              <a href="#process">
-                <Button variant="secondary" leftIcon={<MessageCircle className="h-4 w-4" />}>
+              <a href="#process" className="w-full md:w-auto">
+                <Button
+                  variant="secondary"
+                  className="w-full md:min-w-[14rem] xl:w-auto"
+                  leftIcon={<MessageCircle className="h-4 w-4" />}
+                >
                   {locale === "fr" ? "Découvrir notre démarche" : "Explore our approach"}
                 </Button>
               </a>
             </AnimatedSection>
           </div>
 
-          <AnimatedSection delay={0.08}>
+          <AnimatedSection delay={0.08} className="xl:justify-self-end">
             <ImageFrame
               src={page.image.src}
               alt={page.image.alt[locale]}
               width={page.image.width}
               height={page.image.height}
-              aspectRatio="4/3"
+              aspectRatio="3/4"
               objectPosition={page.image.objectPosition}
-              className="rounded-[var(--radius-2xl)] shadow-[var(--shadow-card)]"
+              className="mx-auto w-full max-w-[38rem] rounded-[var(--radius-2xl)] shadow-[var(--shadow-card)] xl:mx-0 xl:max-w-[32rem]"
             />
           </AnimatedSection>
         </div>

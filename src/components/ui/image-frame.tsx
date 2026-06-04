@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { HTMLAttributes } from 'react';
 
-type AspectRatio = '1/1' | '3/2' | '4/3' | '16/9' | '21/9' | 'auto';
+type AspectRatio = '1/1' | '3/2' | '4/3' | '16/9' | '21/9' | 'auto' | '3/4';
 
 interface ImageFrameProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
   src: string;
@@ -23,6 +23,7 @@ const aspectRatioStyles: Record<AspectRatio, string> = {
   '16/9': 'aspect-video',
   '21/9': 'aspect-[21/9]',
   'auto': '',
+  '3/4': 'aspect-[3/4]',
 };
 
 export const ImageFrame = ({

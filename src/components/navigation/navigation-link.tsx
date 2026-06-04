@@ -14,7 +14,7 @@ interface NavigationLinkProps {
 
 const variantStyles: Record<NavigationLinkVariant, string> = {
   desktop:
-    "group relative inline-flex h-11 items-center text-sm font-medium text-[rgb(var(--foreground))] transition-colors hover:text-[rgb(var(--primary))]",
+    "group relative inline-flex h-11 items-center whitespace-nowrap text-sm font-medium text-[rgb(var(--foreground))] transition-colors hover:text-[rgb(var(--primary))]",
   dropdown:
     "group block rounded-[var(--radius-md)] px-4 py-3 transition-colors hover:bg-[rgb(var(--surface-muted))]",
   mobile:

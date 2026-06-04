@@ -17,7 +17,10 @@ export function DesktopNavigation({ items, expertiseItems }: DesktopNavigationPr
   const t = useTranslations("navigation");
 
   return (
-    <nav aria-label={t("mainNavigation")} className="hidden lg:flex lg:items-center lg:gap-8">
+    <nav
+      aria-label={t("mainNavigation")}
+      className="hidden min-w-0 flex-1 lg:ml-4 lg:flex lg:items-center lg:justify-start lg:gap-3 xl:ml-8 xl:gap-7"
+    >
       {items.map((item) =>
         item.children?.length ? (
           <NavigationDropdown

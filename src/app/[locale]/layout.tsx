@@ -31,6 +31,11 @@ const spaceGroteskAccent = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Resilience@Work",
   description: "Building resilience in the workplace.",
+  icons: {
+    icon: "/images/brand/resilience-at-work-favicon.png",
+    shortcut: "/images/brand/resilience-at-work-favicon.png",
+    apple: "/images/brand/resilience-at-work-favicon.png",
+  },
 };
 
 export default async function RootLayout({

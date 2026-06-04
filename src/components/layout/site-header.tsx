@@ -72,28 +72,28 @@ export function SiteHeader() {
         )}
       >
         <Container size="wide">
-          <div className="flex min-h-20 min-w-0 items-center justify-between gap-3">
+          <div className="flex min-h-20 min-w-0 items-center gap-2 xl:gap-3">
             <Link
               href={getLocalizedHref(locale, "home")}
               aria-label={brand.name}
-              className="min-w-0 shrink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2"
+              className="min-w-0 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2"
             >
-              <Logo size="md" className="max-w-[clamp(10rem,52vw,12.5rem)] sm:max-w-[12.5rem]" />
+              <Logo size="md" className="max-w-[clamp(9.5rem,40vw,12.5rem)] xl:max-w-[12.5rem]" />
             </Link>
 
             <DesktopNavigation items={navigationItems} expertiseItems={expertiseItems} />
 
-            <div className="hidden items-center gap-3 lg:flex">
+            <div className="ml-auto hidden shrink-0 items-center gap-2 lg:flex xl:gap-3">
               <LocaleSwitcher />
               <ThemeToggle />
               <Link href={primaryCta.href}>
-                <Button variant={primaryCta.variant} size="sm">
+                <Button variant={primaryCta.variant} size="sm" className="whitespace-nowrap">
                   {primaryCta.label}
                 </Button>
               </Link>
             </div>
 
-            <div className="shrink-0 flex items-center gap-2 lg:hidden">
+            <div className="ml-auto shrink-0 flex items-center gap-2 lg:hidden">
               <ThemeToggle />
               <MobileNavigationTrigger
                 isOpen={isMobileMenuOpen}
