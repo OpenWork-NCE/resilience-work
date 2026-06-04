@@ -81,9 +81,11 @@ export function SiteHeader() {
               <Logo size="md" className="max-w-[clamp(9.5rem,40vw,12.5rem)] xl:max-w-[12.5rem]" />
             </Link>
 
-            <DesktopNavigation items={navigationItems} expertiseItems={expertiseItems} />
+            <div className="hidden lg:block lg:translate-y-[2px]">
+              <DesktopNavigation items={navigationItems} expertiseItems={expertiseItems} />
+            </div>
 
-            <div className="ml-auto hidden shrink-0 items-center gap-2 lg:flex xl:gap-3">
+            <div className="ml-auto hidden shrink-0 items-center gap-2 lg:flex lg:translate-y-[2px] xl:gap-3">
               <LocaleSwitcher />
               <ThemeToggle />
               <Link href={primaryCta.href}>

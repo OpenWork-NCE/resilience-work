@@ -33,9 +33,9 @@ export function HeroSection({ locale }: HeroSectionProps) {
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,29,40,0.9)_0%,rgba(7,29,40,0.78)_38%,rgba(7,29,40,0.3)_68%,rgba(7,29,40,0.08)_100%)] dark:bg-[linear-gradient(90deg,rgba(3,16,22,0.92)_0%,rgba(3,16,22,0.84)_42%,rgba(3,16,22,0.42)_72%,rgba(3,16,22,0.14)_100%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_26%,rgba(221,241,244,0.16),transparent_42%)] dark:bg-[radial-gradient(circle_at_16%_26%,rgba(109,175,192,0.18),transparent_42%)]" />
 
-      <Container size="wide" className="relative z-10 w-full pb-14 pt-32 sm:pb-18 sm:pt-36 lg:pb-24 lg:pt-40">
-        <div className="mx-auto grid w-full max-w-[78rem] items-end gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-8">
-          <div className="max-w-[min(38rem,100%)]">
+      <Container size="wide" className="relative z-10 w-full pb-14 pt-16 sm:pb-18 sm:pt-18 lg:pb-24 lg:pt-20">
+        <div className="mx-auto grid w-full max-w-[80rem] items-end gap-10 xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-8">
+          <div className="max-w-[min(44rem,100%)]">
             <AnimatedSection>
               <p className="mb-5 inline-flex rounded-full border border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.08)] px-4 py-2 font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-white/86 backdrop-blur-sm">
                 {hero.eyebrow[locale]}
@@ -43,7 +43,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
             </AnimatedSection>
 
             <AnimatedSection delay={0.06}>
-              <h1 className="max-w-[13ch] font-display text-[clamp(2.45rem,9vw,4rem)] font-medium leading-[1] text-white text-balance sm:text-[clamp(3.15rem,5.8vw,4.35rem)] sm:leading-[0.98] lg:text-[clamp(3.75rem,5.5vw,5rem)] lg:leading-[0.93]">
+              <h1 className="max-w-[15ch] font-display text-[clamp(2.45rem,9vw,4rem)] font-medium leading-[1] text-white text-balance sm:text-[clamp(3.15rem,5.8vw,4.35rem)] sm:leading-[0.98] lg:text-[clamp(3.75rem,5vw,5rem)] lg:leading-[0.93]">
                 {hero.title[locale]}
               </h1>
             </AnimatedSection>
@@ -83,7 +83,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
 
           <AnimatedSection
             delay={0.28}
-            className="hidden self-end rounded-[var(--radius-xl)] border border-white/12 bg-[rgba(255,255,255,0.08)] p-5 backdrop-blur-md lg:block"
+            className="hidden self-end rounded-[var(--radius-xl)] border border-white/12 bg-[rgba(255,255,255,0.08)] p-5 backdrop-blur-md xl:block"
           >
             <div className="space-y-4">
               {heroHighlights.map((item, index) => (
