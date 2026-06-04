@@ -34,8 +34,8 @@ export function HeroSection({ locale }: HeroSectionProps) {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_26%,rgba(221,241,244,0.16),transparent_42%)] dark:bg-[radial-gradient(circle_at_16%_26%,rgba(109,175,192,0.18),transparent_42%)]" />
 
       <Container size="wide" className="relative z-10 w-full pb-14 pt-16 sm:pb-18 sm:pt-18 lg:pb-24 lg:pt-20">
-        <div className="mx-auto grid w-full max-w-[80rem] items-end gap-10 xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-8">
-          <div className="max-w-[min(44rem,100%)]">
+        <div className="mx-auto grid w-full max-w-[78rem] items-end gap-10 px-5 sm:px-6 xl:px-7 xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-8">
+          <div className="min-w-0 max-w-[min(44rem,100%)]">
             <AnimatedSection>
               <p className="mb-5 inline-flex rounded-full border border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.08)] px-4 py-2 font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-white/86 backdrop-blur-sm">
                 {hero.eyebrow[locale]}
@@ -43,7 +43,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
             </AnimatedSection>
 
             <AnimatedSection delay={0.06}>
-              <h1 className="max-w-[15ch] font-display text-[clamp(2.45rem,9vw,4rem)] font-medium leading-[1] text-white text-balance sm:text-[clamp(3.15rem,5.8vw,4.35rem)] sm:leading-[0.98] lg:text-[clamp(3.75rem,5vw,5rem)] lg:leading-[0.93]">
+              <h1 className="max-w-full text-pretty break-words font-display text-[clamp(2.45rem,9vw,4rem)] font-medium leading-[1] text-white sm:max-w-[15ch] sm:text-[clamp(3.15rem,5.8vw,4.35rem)] sm:leading-[0.98] lg:text-[clamp(3.75rem,5vw,5rem)] lg:leading-[0.93]">
                 {hero.title[locale]}
               </h1>
             </AnimatedSection>
@@ -62,12 +62,12 @@ export function HeroSection({ locale }: HeroSectionProps) {
 
             <AnimatedSection delay={0.24}>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link href={primaryCta.href}>
+                <Link href={primaryCta.href} className="block w-full sm:w-auto">
                   <Button size="lg" className="w-full sm:w-auto" rightIcon={<ArrowRight className="h-4 w-4" />}>
                     {primaryCta.label}
                   </Button>
                 </Link>
-                <Link href={secondaryCta.href}>
+                <Link href={secondaryCta.href} className="block w-full sm:w-auto">
                   <Button
                     variant="secondary"
                     size="lg"
