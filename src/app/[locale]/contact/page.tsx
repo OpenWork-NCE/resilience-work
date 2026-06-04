@@ -1,16 +1,51 @@
-import { useTranslations } from 'next-intl';
-import { Section } from '@/components/shared/section';
-import { SectionHeader } from '@/components/shared/section-header';
+import type { Metadata } from "next";
+import { ContactPageTemplate } from "@/components/contact/contact-page-template";
+import { brand } from "@/content/brand";
+import { contactPage } from "@/content/pages/contact";
+import type { Locale } from "@/types/content";
 
-export default function ContactPage() {
-  const t = useTranslations();
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const currentLocale = locale as Locale;
+  const baseUrl = `https://${brand.domain}`;
+  const localizedPath = `/${currentLocale}/contact`;
 
-  return (
-    <Section>
-      <SectionHeader title={t('nav.contact')} />
-      <p className="text-center text-[rgb(var(--muted-foreground))]">
-        Page à venir
-      </p>
-    </Section>
-  );
+  return {
+    title: contactPage.seo.title[currentLocale],
+    description: contactPage.seo.description[currentLocale],
+    alternates: {
+      canonical: `${baseUrl}${localizedPath}`,
+      languages: {
+        fr: `${baseUrl}/fr/contact`,
+        en: `${baseUrl}/en/contact`,
+      },
+    },
+    openGraph: {
+      title: contactPage.seo.title[currentLocale],
+      description: contactPage.seo.description[currentLocale],
+      locale: currentLocale === "fr" ? "fr_FR" : "en_US",
+      type: "website",
+      siteName: brand.name,
+      images: [{ url: contactPage.seo.ogImage }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: contactPage.seo.title[currentLocale],
+      description: contactPage.seo.description[currentLocale],
+      images: [contactPage.seo.ogImage],
+    },
+  };
+}
+
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return <ContactPageTemplate locale={locale as Locale} />;
 }

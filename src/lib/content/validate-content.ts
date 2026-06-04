@@ -230,10 +230,34 @@ function validateContact() {
   console.log("Validating contact page...");
   
   checkLocalizedText(contactPage.hero.title, "contactPage.hero.title");
-  
-  contactPage.form.fields.forEach((field, idx) => {
-    const path = `contactPage.form.fields[${idx}]`;
-    checkLocalizedText(field.label, `${path}.label`);
+  checkLocalizedText(contactPage.hero.description, "contactPage.hero.description");
+  checkLocalizedText(contactPage.hero.supportingText, "contactPage.hero.supportingText");
+  checkLocalizedText(contactPage.reassurance.title, "contactPage.reassurance.title");
+  checkLocalizedText(contactPage.reassurance.description, "contactPage.reassurance.description");
+  checkLocalizedText(contactPage.form.section.title, "contactPage.form.section.title");
+  checkLocalizedText(contactPage.form.section.description, "contactPage.form.section.description");
+
+  Object.entries(contactPage.form.fields).forEach(([key, field]) => {
+    const path = `contactPage.form.fields.${key}`;
+    if ("label" in field) {
+      checkLocalizedText(field.label as Record<string, unknown>, `${path}.label`);
+    }
+    if ("placeholder" in field) {
+      checkLocalizedText(field.placeholder as Record<string, unknown>, `${path}.placeholder`);
+    }
+    if ("hint" in field) {
+      checkLocalizedText(field.hint as Record<string, unknown>, `${path}.hint`);
+    }
+    if ("options" in field) {
+      field.options.forEach((option, idx) => {
+        checkLocalizedText(option.label, `${path}.options[${idx}].label`);
+      });
+    }
+  });
+
+  contactPage.faq.items.forEach((item, idx) => {
+    checkLocalizedText(item.question, `contactPage.faq.items[${idx}].question`);
+    checkLocalizedText(item.answer, `contactPage.faq.items[${idx}].answer`);
   });
 }
 

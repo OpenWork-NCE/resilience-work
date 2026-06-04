@@ -42,9 +42,9 @@ export function PortfolioHero({ locale }: PortfolioHeroProps) {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.05} className="mt-8">
+            {/* <AnimatedSection delay={0.05} className="mt-8">
               <Logo variant="dark" size="md" />
-            </AnimatedSection>
+            </AnimatedSection> */}
 
             <AnimatedSection delay={0.1} className="mt-8">
               <h1 className="font-display text-[clamp(2.65rem,9vw,5rem)] font-medium leading-[0.95] tracking-[-0.04em] text-balance">

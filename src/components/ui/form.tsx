@@ -174,16 +174,17 @@ FormError.displayName = 'FormError';
 
 interface FormFieldProps {
   label: string;
+  htmlFor?: string;
   required?: boolean;
   hint?: string;
   error?: string;
   children: ReactNode;
 }
 
-export const FormField = ({ label, required, hint, error, children }: FormFieldProps) => {
+export const FormField = ({ label, htmlFor, required, hint, error, children }: FormFieldProps) => {
   return (
     <div className="space-y-2">
-      <FormLabel required={required}>{label}</FormLabel>
+      <FormLabel htmlFor={htmlFor} required={required}>{label}</FormLabel>
       {children}
       {hint && !error && <FormHint>{hint}</FormHint>}
       {error && <FormError>{error}</FormError>}
