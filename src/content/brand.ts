@@ -11,8 +11,8 @@ export const brand = {
   person: {
     name: "Jocelyne Katshinda",
     role: {
-      fr: "Administratrice générale",
-      en: "Managing Director",
+      fr: "Fondatrice et Administratrice générale",
+      en: "Founder and Managing Director",
     } satisfies Record<Locale, string>,
   },
 

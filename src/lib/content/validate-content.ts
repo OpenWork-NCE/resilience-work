@@ -6,11 +6,17 @@ import { routes } from "../../content/routes";
 import { brand } from "../../content/brand";
 import { navigation, globalCtas } from "../../content/navigation";
 import { homePage } from "../../content/pages/home";
-import { expertiseItems } from "../../content/pages/expertise";
+import {
+  expertiseDetailPages,
+  expertiseItems,
+  expertiseLandingPage,
+  trainingPageContent,
+} from "../../content/pages/expertise";
 import { trainingTopics } from "../../content/pages/training";
 import { regions } from "../../content/pages/international";
 import { aboutPage } from "../../content/pages/about";
 import { contactPage } from "../../content/pages/contact";
+import { jocelyneKatshindaPage } from "../../content/pages/jocelyne-katshinda";
 
 const errors: string[] = [];
 const warnings: string[] = [];
@@ -168,6 +174,22 @@ function validateExpertise() {
     if (!item.image.src) {
       errors.push(`${path}.image: Missing image src`);
     }
+
+    if (!item.slug || item.slug.trim() === "") {
+      errors.push(`${path}.slug: Missing slug`);
+    }
+  });
+
+  checkLocalizedText(expertiseLandingPage.hero.title, "expertiseLandingPage.hero.title");
+  checkLocalizedText(trainingPageContent.title, "trainingPageContent.title");
+
+  expertiseDetailPages.forEach((page, idx) => {
+    const path = `expertiseDetailPages[${idx}]`;
+    checkLocalizedText(page.title, `${path}.title`);
+    checkLocalizedText(page.summary, `${path}.summary`);
+    if (!page.slug) {
+      errors.push(`${path}.slug: Missing slug`);
+    }
   });
 }
 
@@ -215,6 +237,18 @@ function validateContact() {
   });
 }
 
+function validateJocelynePortfolio() {
+  console.log("Validating Jocelyne portfolio page...");
+
+  checkLocalizedText(jocelyneKatshindaPage.hero.eyebrow, "jocelyneKatshindaPage.hero.eyebrow");
+  checkLocalizedText(jocelyneKatshindaPage.hero.role, "jocelyneKatshindaPage.hero.role");
+  checkLocalizedText(jocelyneKatshindaPage.hero.intro, "jocelyneKatshindaPage.hero.intro");
+  checkLocalizedText(jocelyneKatshindaPage.hero.goal, "jocelyneKatshindaPage.hero.goal");
+  checkLocalizedText(jocelyneKatshindaPage.introduction.title, "jocelyneKatshindaPage.introduction.title");
+  checkLocalizedText(jocelyneKatshindaPage.mission.title, "jocelyneKatshindaPage.mission.title");
+  checkLocalizedText(jocelyneKatshindaPage.finalContact.title, "jocelyneKatshindaPage.finalContact.title");
+}
+
 function main() {
   console.log("\n🔍 Starting content validation...\n");
 
@@ -228,6 +262,7 @@ function main() {
   validateRegions();
   validateAbout();
   validateContact();
+  validateJocelynePortfolio();
 
   console.log("\n📊 Validation results:\n");
 

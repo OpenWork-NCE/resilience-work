@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { Locale, RouteKey, PageSeo } from "@/types/content";
+import { routes } from "@/content/routes";
 
 export const pageSeo: Record<RouteKey, PageSeo> = {
   home: {
@@ -52,6 +53,19 @@ export const pageSeo: Record<RouteKey, PageSeo> = {
     ogImage: "/images/hero/resilience-at-work-hero.webp",
   },
 
+  jocelyneKatshinda: {
+    title: {
+      fr: "Jocelyne Katshinda | Resilience@Work",
+      en: "Jocelyne Katshinda | Resilience@Work",
+    },
+    description: {
+      fr: "Découvrez la page personnelle de Jocelyne Katshinda, Fondatrice et Administratrice générale de Resilience@Work.",
+      en: "Discover the personal page of Jocelyne Katshinda, Founder and Managing Director of Resilience@Work.",
+    },
+    canonicalRoute: "jocelyneKatshinda",
+    ogImage: "/images/jocelyne/jocelyne-katshinda-portrait.webp",
+  },
+
   expertise: {
     title: {
       fr: "Expertises | Resilience@Work",
@@ -59,7 +73,7 @@ export const pageSeo: Record<RouteKey, PageSeo> = {
     },
     description: {
       fr: "Prévention psychosociale, mobilité internationale, gestion de crise, formations et webinaires professionnels.",
-      en: "Psychosocial prevention, international mobility, crisis management, professional training and webinars.",
+      en: "Explore Resilience@Work expertise in psychosocial prevention, international mobility, crisis management, professional training and webinars.",
     },
     canonicalRoute: "expertise",
     ogImage: "/images/hero/resilience-at-work-hero.webp",
@@ -68,11 +82,11 @@ export const pageSeo: Record<RouteKey, PageSeo> = {
   psychosocialPrevention: {
     title: {
       fr: "Prévention psychosociale | Resilience@Work",
-      en: "Psychosocial prevention | Resilience@Work",
+      en: "Psychosocial prevention and workplace well-being | Resilience@Work",
     },
     description: {
-      fr: "Identifier les facteurs de risque, prévenir l'épuisement et soutenir durablement la santé mentale au travail.",
-      en: "Identify risk factors, prevent exhaustion and sustainably support workplace mental health.",
+      fr: "Resilience@Work accompagne les organisations dans la prévention des risques psychosociaux, du stress et de l’épuisement professionnel.",
+      en: "Resilience@Work supports organisations in preventing psychosocial risks, stress and professional exhaustion.",
     },
     canonicalRoute: "psychosocialPrevention",
     ogImage: "/images/expertise/psychosocial-prevention.webp",
@@ -81,11 +95,11 @@ export const pageSeo: Record<RouteKey, PageSeo> = {
   internationalMobility: {
     title: {
       fr: "Mobilité internationale | Resilience@Work",
-      en: "International mobility | Resilience@Work",
+      en: "International mobility support | Resilience@Work",
     },
     description: {
-      fr: "Accompagner les collaborateurs expatriés dans leur adaptation culturelle, leur équilibre et leur résilience.",
-      en: "Support expatriate employees in their cultural adjustment, well-being and resilience.",
+      fr: "Resilience@Work accompagne les expatriés et les organisations dans les enjeux d’adaptation culturelle, de stress, d’isolement et de transition.",
+      en: "Resilience@Work supports expatriates and organisations navigating cultural adjustment, stress, isolation and transition challenges.",
     },
     canonicalRoute: "internationalMobility",
     ogImage: "/images/expertise/international-mobility.webp",
@@ -94,11 +108,11 @@ export const pageSeo: Record<RouteKey, PageSeo> = {
   crisisManagement: {
     title: {
       fr: "Gestion de crise | Resilience@Work",
-      en: "Crisis management | Resilience@Work",
+      en: "Crisis situation management | Resilience@Work",
     },
     description: {
-      fr: "Soutenir les équipes et les managers confrontés à des événements critiques ou à des situations de tension.",
-      en: "Support teams and managers facing critical events or high-pressure situations.",
+      fr: "Resilience@Work soutient les organisations, les équipes et les managers confrontés à des événements critiques ou à des situations de tension.",
+      en: "Resilience@Work supports organisations, teams and managers facing critical events or high-pressure situations.",
     },
     canonicalRoute: "crisisManagement",
     ogImage: "/images/expertise/crisis-management.webp",
@@ -107,11 +121,11 @@ export const pageSeo: Record<RouteKey, PageSeo> = {
   training: {
     title: {
       fr: "Formations et webinaires | Resilience@Work",
-      en: "Training and webinars | Resilience@Work",
+      en: "Professional training and webinars | Resilience@Work",
     },
     description: {
-      fr: "Découvrez les formations professionnelles proposées par Resilience@Work pour renforcer la prévention, le leadership et la résilience.",
-      en: "Explore Resilience@Work professional training programmes designed to strengthen prevention, leadership and resilience.",
+      fr: "Découvrez les formations et webinaires proposés par Resilience@Work pour prévenir les risques psychosociaux et renforcer la résilience au travail.",
+      en: "Explore Resilience@Work training sessions and webinars designed to prevent psychosocial risks and strengthen workplace resilience.",
     },
     canonicalRoute: "training",
     ogImage: "/images/expertise/training.webp",
@@ -150,16 +164,18 @@ export function getPageMetadata(
   baseUrl?: string
 ): Metadata {
   const seo = pageSeo[route];
+  const routePath = routes[route];
+  const localizedPath = routePath === "/" ? `/${locale}` : `/${locale}${routePath}`;
   
   return {
     title: seo.title[locale],
     description: seo.description[locale],
     keywords: seo.keywords?.[locale]?.join(", "),
     alternates: {
-      canonical: baseUrl ? `${baseUrl}/${locale}${route === "home" ? "" : `/${route}`}` : undefined,
+      canonical: baseUrl ? `${baseUrl}${localizedPath}` : undefined,
       languages: {
-        fr: baseUrl ? `${baseUrl}/fr${route === "home" ? "" : `/${route}`}` : undefined,
-        en: baseUrl ? `${baseUrl}/en${route === "home" ? "" : `/${route}`}` : undefined,
+        fr: baseUrl ? `${baseUrl}${routes[route] === "/" ? "/fr" : `/fr${routes[route]}`}` : undefined,
+        en: baseUrl ? `${baseUrl}${routes[route] === "/" ? "/en" : `/en${routes[route]}`}` : undefined,
       },
     },
     openGraph: {

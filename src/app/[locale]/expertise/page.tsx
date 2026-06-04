@@ -1,57 +1,190 @@
-import { useTranslations } from 'next-intl';
-import { Container } from '@/components/shared/container';
-import { Section } from '@/components/shared/section';
-import { SectionHeader } from '@/components/shared/section-header';
-import { Card } from '@/components/shared/card';
-import { Link } from '@/i18n/routing';
-import { expertiseAreas } from '@/content/expertise';
-import { ShieldCheck, Globe, LifeBuoy, GraduationCap } from 'lucide-react';
+import type { Metadata } from "next";
+import { ExpertiseAudiencesSection } from "@/components/expertise/expertise-audiences-section";
+import { ExpertiseDeliverySection } from "@/components/expertise/expertise-delivery-section";
+import { ExpertiseEditorialIntro } from "@/components/expertise/expertise-editorial-intro";
+import { ExpertiseFinalCta } from "@/components/expertise/expertise-final-cta";
+import { ExpertiseOverviewGrid } from "@/components/expertise/expertise-overview-grid";
+import { ExpertiseProcessSection } from "@/components/expertise/expertise-process-section";
+import { AnimatedSection } from "@/components/motion/animated";
+import { Breadcrumbs } from "@/components/navigation/breadcrumbs";
+import { Section } from "@/components/shared/section";
+import { SectionHeader } from "@/components/shared/section-header";
+import { ImageFrame } from "@/components/ui/image-frame";
+import { audiences } from "@/content/audiences";
+import { assets } from "@/content/assets";
+import { expertiseItems, expertiseLandingPage } from "@/content/pages/expertise";
+import { homePage } from "@/content/pages/home";
+import { regions } from "@/content/pages/international";
+import { getPageMetadata } from "@/lib/seo/metadata";
+import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
+import type { Locale } from "@/types/content";
 
-const iconMap = {
-  'shield-heart': ShieldCheck,
-  'globe': Globe,
-  'life-buoy': LifeBuoy,
-  'graduation-cap': GraduationCap,
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return getPageMetadata(locale as Locale, "expertise");
+}
 
-export default function ExpertisePage() {
-  const t = useTranslations();
+export default async function ExpertiseLandingPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const currentLocale = locale as Locale;
+  const copy = expertiseLandingPage;
 
   return (
-    <Section>
-      <Container>
-        <SectionHeader
-          title={t('nav.expertise')}
-          description="Nos domaines d'intervention"
-        />
-
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
-          {expertiseAreas.map((area) => {
-            const Icon = iconMap[area.icon as keyof typeof iconMap];
-            return (
-              <Link key={area.id} href={`/expertise/${area.slug}`}>
-                <Card hover className="h-full">
-                  <div className="flex items-start gap-4">
-                    {Icon && (
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-[rgb(var(--accent-soft))]">
-                        <Icon className="h-6 w-6 text-[rgb(var(--accent))]" />
-                      </div>
-                    )}
-                    <div>
-                      <h3 className="mb-2 text-xl font-semibold">
-                        {t(area.titleKey)}
-                      </h3>
-                      <p className="text-[rgb(var(--muted-foreground))]">
-                        {t(area.descriptionKey)}
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-              </Link>
-            );
-          })}
+    <>
+      <section className="bg-[rgb(var(--surface-subtle))] py-[var(--section-space-md)]">
+        <div className="mx-auto w-[min(90vw,var(--container-wide))] px-[var(--gutter-mobile)] md:px-[var(--gutter-tablet)] lg:px-[var(--gutter-desktop)]">
+          <AnimatedSection>
+            <Breadcrumbs
+              ariaLabel={currentLocale === "fr" ? "Fil d'Ariane" : "Breadcrumb"}
+              items={[
+                { label: currentLocale === "fr" ? "Accueil" : "Home", href: getLocalizedHref(currentLocale, "home") },
+                { label: currentLocale === "fr" ? "Expertises" : "Expertise" },
+              ]}
+            />
+          </AnimatedSection>
+          <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,31rem)] lg:gap-12">
+            <div>
+              <AnimatedSection delay={0.04}>
+                <p className="font-[family:var(--font-accent)] text-xs font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
+                  {copy.hero.eyebrow[currentLocale]}
+                </p>
+              </AnimatedSection>
+              <AnimatedSection delay={0.08} className="mt-4">
+                <h1 className="max-w-[12ch] font-display text-[clamp(2.6rem,6vw,4.7rem)] font-medium leading-[0.98] text-balance">
+                  {copy.hero.title[currentLocale]}
+                </h1>
+              </AnimatedSection>
+              <AnimatedSection delay={0.12} className="mt-5 max-w-[42rem]">
+                <p className="text-base leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-lg">
+                  {copy.hero.description[currentLocale]}
+                </p>
+                <p className="mt-4 border-l border-[rgb(var(--border-strong))] pl-4 text-sm leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-base">
+                  {copy.hero.supportingText[currentLocale]}
+                </p>
+              </AnimatedSection>
+            </div>
+            <AnimatedSection delay={0.08}>
+              <div className="grid grid-cols-2 gap-3">
+                {expertiseItems.map((item) => (
+                  <ImageFrame
+                    key={item.id}
+                    src={item.image.src}
+                    alt={item.image.alt[currentLocale]}
+                    width={item.image.width}
+                    height={item.image.height}
+                    aspectRatio="1/1"
+                    objectPosition={item.image.objectPosition}
+                    className="rounded-[var(--radius-xl)] shadow-[var(--shadow-soft)]"
+                  />
+                ))}
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
-      </Container>
-    </Section>
+      </section>
+
+      <Section spacing="md">
+        <ExpertiseEditorialIntro
+          locale={currentLocale}
+          eyebrow={currentLocale === "fr" ? "Introduction" : "Introduction"}
+          title={currentLocale === "fr" ? "Quatre domaines pour prévenir, accompagner et renforcer" : "Four areas to prevent, support and strengthen"}
+          paragraphs={[
+            copy.hero.description[currentLocale],
+            copy.hero.supportingText[currentLocale],
+          ]}
+        />
+      </Section>
+
+      <Section spacing="lg">
+        <SectionHeader
+          eyebrow={currentLocale === "fr" ? "Nos expertises" : "Our expertise"}
+          title={currentLocale === "fr" ? "Des accompagnements structurés pour des contextes exigeants" : "Structured support for demanding contexts"}
+          align="left"
+          maxWidth="wide"
+        />
+        <ExpertiseOverviewGrid locale={currentLocale} items={expertiseItems} />
+      </Section>
+
+      <Section spacing="md" tone="muted">
+        <ExpertiseEditorialIntro
+          locale={currentLocale}
+          eyebrow={copy.whyAct.eyebrow[currentLocale]}
+          title={copy.whyAct.title[currentLocale]}
+          paragraphs={copy.whyAct.paragraphs[currentLocale]}
+        />
+      </Section>
+
+      <Section spacing="md">
+        <ExpertiseProcessSection locale={currentLocale} items={homePage.methodology.steps} />
+      </Section>
+
+      <Section spacing="md" tone="muted">
+        <ExpertiseAudiencesSection locale={currentLocale} audienceIds={audiences.map((item) => item.id)} />
+      </Section>
+
+      <Section spacing="md">
+        <ExpertiseDeliverySection
+          locale={currentLocale}
+          delivery={{
+            formats: { fr: ["Présentiel", "Distanciel"], en: ["On-site", "Remote"] },
+            languages: { fr: ["Français", "Anglais", "Italien"], en: ["French", "English", "Italian"] },
+            regions: { fr: ["Afrique", "Europe", "Moyen-Orient"], en: ["Africa", "Europe", "Middle East"] },
+          }}
+        />
+      </Section>
+
+      <Section spacing="md" tone="muted">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,30rem)] lg:items-start">
+          <div>
+            <SectionHeader
+              eyebrow={currentLocale === "fr" ? "Présence internationale" : "International reach"}
+              title={currentLocale === "fr" ? "Une expertise pensée pour des contextes multiculturels" : "Expertise designed for multicultural contexts"}
+              description={currentLocale === "fr" ? "Resilience@Work intervient auprès d’organisations implantées en Afrique, en Europe et au Moyen-Orient." : "Resilience@Work supports organisations across Africa, Europe and the Middle East."}
+              align="left"
+            />
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              {regions.map((region) => (
+                <div key={region.id} className="rounded-[var(--radius-lg)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))] p-4">
+                  <p className="font-[family:var(--font-accent)] text-xs font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
+                    {region.title[currentLocale]}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
+                    {region.summary[currentLocale]}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <ImageFrame
+            src={assets.international.overview.src}
+            alt={assets.international.overview.alt[currentLocale]}
+            width={assets.international.overview.width}
+            height={assets.international.overview.height}
+            aspectRatio="4/3"
+            objectPosition={assets.international.overview.objectPosition}
+            className="rounded-[var(--radius-2xl)] shadow-[var(--shadow-card)]"
+          />
+        </div>
+      </Section>
+
+      <Section spacing="md">
+        <ExpertiseFinalCta
+          locale={currentLocale}
+          title={copy.finalCta.title[currentLocale]}
+          description={copy.finalCta.description[currentLocale]}
+          note={copy.finalCta.note[currentLocale]}
+          primaryCta={copy.finalCta.primaryCta}
+          secondaryCta={copy.finalCta.secondaryCta}
+        />
+      </Section>
+    </>
   );
 }

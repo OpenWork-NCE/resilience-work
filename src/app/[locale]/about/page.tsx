@@ -1,19 +1,13 @@
-import { useTranslations } from 'next-intl';
-import { Container } from '@/components/shared/container';
-import { Section } from '@/components/shared/section';
-import { SectionHeader } from '@/components/shared/section-header';
+import { redirect } from "next/navigation";
+import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
+import type { Locale } from "@/types/content";
 
-export default function AboutPage() {
-  const t = useTranslations();
+export default async function AboutPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
 
-  return (
-    <Section>
-      <Container>
-        <SectionHeader title={t('nav.about')} />
-        <p className="text-center text-[rgb(var(--muted-foreground))]">
-          Page à venir
-        </p>
-      </Container>
-    </Section>
-  );
+  redirect(getLocalizedHref(locale as Locale, "jocelyneKatshinda"));
 }

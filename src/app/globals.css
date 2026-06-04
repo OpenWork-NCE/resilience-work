@@ -59,6 +59,8 @@
   --surface-subtle: 244 249 250;
   --surface-elevated: 255 255 255;
   --surface-inverse: 12 38 51;
+  --inverse-foreground: 248 251 252;
+  --inverse-muted-foreground: 198 214 219;
 
   --border: 215 230 234;
   --border-muted: 230 240 242;
@@ -175,6 +177,8 @@
   --surface-subtle: 10 34 43;
   --surface-elevated: 20 52 62;
   --surface-inverse: 239 248 249;
+  --inverse-foreground: 7 25 32;
+  --inverse-muted-foreground: 88 113 125;
 
   --border: 36 70 80;
   --border-muted: 25 57 67;

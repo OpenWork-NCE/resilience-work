@@ -1,0 +1,108 @@
+import type { LucideIcon } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+interface PortfolioActionLinkProps {
+  href: string;
+  label: string;
+  description?: string;
+  icon: LucideIcon;
+  external?: boolean;
+  download?: string;
+  variant?: "card" | "pill" | "bar";
+  tone?: "default" | "inverse";
+  className?: string;
+}
+
+const variantStyles = {
+  card: {
+    root:
+      "group flex h-full flex-col rounded-[var(--radius-lg)] border border-[rgb(var(--border))] bg-[rgb(var(--surface))] p-5 transition-all duration-[var(--duration-normal)] ease-[var(--ease-standard)] hover:-translate-y-0.5 hover:border-[rgb(var(--border-strong))] hover:shadow-[var(--shadow-card)]",
+    icon: "mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-[rgb(var(--accent-soft))] text-[rgb(var(--accent-foreground))]",
+    title: "text-base font-semibold text-[rgb(var(--foreground))]",
+    description: "mt-2 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]",
+  },
+  pill: {
+    root:
+      "group inline-flex min-h-12 items-center gap-3 rounded-full border border-[rgba(255,255,255,0.14)] bg-[rgba(255,255,255,0.1)] px-4 py-3 text-left text-white transition-colors hover:bg-[rgba(255,255,255,0.16)]",
+    icon: "inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white",
+    title: "text-sm font-semibold text-white",
+    description: "mt-0.5 text-xs text-white/70",
+  },
+  bar: {
+    root:
+      "group inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-full border border-[rgb(var(--border))] bg-[rgb(var(--surface))] px-4 py-3 text-center shadow-[var(--shadow-soft)] transition-colors hover:border-[rgb(var(--border-strong))] hover:bg-[rgb(var(--surface-muted))]",
+    icon: "inline-flex text-[rgb(var(--accent))]",
+    title: "text-sm font-semibold text-[rgb(var(--foreground))]",
+    description: "hidden",
+  },
+} as const;
+
+const toneStyles = {
+  default: {
+    root: "",
+    icon: "",
+    title: "",
+    description: "",
+    externalIcon: "text-[rgb(var(--muted-foreground))]",
+    ringOffset: "focus-visible:ring-offset-[rgb(var(--background))]",
+  },
+  inverse: {
+    root:
+      "border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_12%,transparent)] bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_8%,transparent)] hover:border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_18%,transparent)] hover:bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_12%,transparent)]",
+    icon: "bg-[rgb(var(--inverse-foreground))] text-[rgb(var(--surface-inverse))]",
+    title: "text-[rgb(var(--inverse-foreground))]",
+    description: "text-[rgb(var(--inverse-muted-foreground))]",
+    externalIcon: "text-[rgb(var(--inverse-muted-foreground))]",
+    ringOffset: "focus-visible:ring-offset-[rgb(var(--surface-inverse))]",
+  },
+} as const;
+
+export function PortfolioActionLink({
+  href,
+  label,
+  description,
+  icon: Icon,
+  external = false,
+  download,
+  variant = "card",
+  tone = "default",
+  className,
+}: PortfolioActionLinkProps) {
+  const styles = variantStyles[variant];
+  const toneStyle = toneStyles[tone];
+
+  return (
+    <a
+      href={href}
+      download={download}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer" : undefined}
+      className={cn(
+        styles.root,
+        toneStyle.root,
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
+        toneStyle.ringOffset,
+        className
+      )}
+    >
+      <span className={cn(styles.icon, toneStyle.icon)}>
+        <Icon className="h-5 w-5" aria-hidden="true" />
+      </span>
+      <span className={cn("min-w-0", variant === "bar" ? "contents" : "block")}>
+        <span className={cn("block", styles.title, toneStyle.title)}>{label}</span>
+        {description ? (
+          <span className={cn("block", styles.description, toneStyle.description)}>{description}</span>
+        ) : null}
+      </span>
+      {external && variant !== "bar" ? (
+        <ArrowUpRight
+          className={cn(
+            "mt-1 h-4 w-4 transition-transform duration-[var(--duration-fast)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5",
+            toneStyle.externalIcon
+          )}
+        />
+      ) : null}
+    </a>
+  );
+}

@@ -6,9 +6,17 @@ export type LocalizedStringArray = Record<Locale, readonly string[]>;
 
 export type LocalizedParagraphs = Record<Locale, readonly string[]>;
 
+export interface LocalizedFeature {
+  id: string;
+  icon?: string;
+  title: LocalizedText;
+  description: LocalizedText;
+}
+
 export type RouteKey =
   | "home"
   | "about"
+  | "jocelyneKatshinda"
   | "expertise"
   | "psychosocialPrevention"
   | "internationalMobility"
@@ -30,6 +38,13 @@ export interface ImageAsset {
 }
 
 export interface MethodologyStep {
+  id: string;
+  number: string;
+  title: LocalizedText;
+  description: LocalizedText;
+}
+
+export interface LocalizedProcessStep {
   id: string;
   number: string;
   title: LocalizedText;
@@ -71,6 +86,7 @@ export type ExpertiseId =
 export interface ExpertiseItem {
   id: ExpertiseId;
   icon: string;
+  slug: string;
   route: RouteKey;
   title: LocalizedText;
   shortTitle: LocalizedText;
@@ -86,6 +102,41 @@ export interface TrainingTopic {
   title: LocalizedText;
   summary: LocalizedText;
   audiences: LocalizedStringArray;
+  formats?: LocalizedStringArray;
+  duration?: LocalizedText;
+}
+
+export interface ExpertiseDetailPage {
+  id: ExpertiseId;
+  slug: string;
+  route: RouteKey;
+  icon: string;
+  eyebrow: LocalizedText;
+  title: LocalizedText;
+  summary: LocalizedText;
+  introduction: LocalizedParagraphs;
+  challengesTitle: LocalizedText;
+  challenges: readonly LocalizedFeature[];
+  servicesTitle: LocalizedText;
+  services: readonly LocalizedFeature[];
+  outcomesTitle: LocalizedText;
+  outcomes: readonly LocalizedFeature[];
+  process: readonly LocalizedProcessStep[];
+  audiences: readonly string[];
+  delivery: {
+    formats: LocalizedStringArray;
+    languages: LocalizedStringArray;
+    regions: LocalizedStringArray;
+  };
+  image: ImageAsset;
+  relatedExpertiseIds: readonly ExpertiseId[];
+  finalCta: {
+    title: LocalizedText;
+    description: LocalizedText;
+    primaryCta: Cta;
+    secondaryCta?: Cta;
+  };
+  seo: PageSeo;
 }
 
 export type RegionId = "africa" | "europe" | "middleEast";

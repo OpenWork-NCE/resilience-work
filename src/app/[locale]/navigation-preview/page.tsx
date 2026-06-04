@@ -1,5 +1,4 @@
 import { useLocale, useTranslations } from "next-intl";
-import { Container } from "@/components/shared/container";
 import { Section } from "@/components/shared/section";
 import { SectionHeader } from "@/components/shared/section-header";
 import { Card, CardDescription, CardTitle } from "@/components/shared/card";
@@ -63,80 +62,74 @@ export default function NavigationPreviewPage() {
   return (
     <>
       <Section spacing="md">
-        <Container size="wide">
-          <SectionHeader
-            eyebrow="Shell"
-            title={copy.title}
-            description={copy.description}
-            align="left"
-          />
-          <Breadcrumbs items={breadcrumbs} ariaLabel={copy.breadcrumbsLabel} />
-        </Container>
+        <SectionHeader
+          eyebrow="Shell"
+          title={copy.title}
+          description={copy.description}
+          align="left"
+        />
+        <Breadcrumbs items={breadcrumbs} ariaLabel={copy.breadcrumbsLabel} />
       </Section>
 
       <Section spacing="md" tone="muted">
-        <Container size="wide">
-          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <Card variant="elevated">
-              <CardTitle>{copy.stickyTitle}</CardTitle>
-              <CardDescription className="mt-3">
-                {copy.stickyDescription}
-              </CardDescription>
-              <div className="mt-8 h-[32rem] rounded-[var(--radius-lg)] border border-dashed border-[rgb(var(--border-strong))] bg-[rgb(var(--surface-muted))]" />
-            </Card>
+        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <Card variant="elevated">
+            <CardTitle>{copy.stickyTitle}</CardTitle>
+            <CardDescription className="mt-3">
+              {copy.stickyDescription}
+            </CardDescription>
+            <div className="mt-8 h-[32rem] rounded-[var(--radius-lg)] border border-dashed border-[rgb(var(--border-strong))] bg-[rgb(var(--surface-muted))]" />
+          </Card>
 
-            <Card variant="default">
-              <CardTitle>{copy.examplesTitle}</CardTitle>
-              <div className="mt-5 space-y-3">
-                {copy.examples.map((example) => (
-                  <div
-                    key={example}
-                    className="rounded-[var(--radius-md)] bg-[rgb(var(--surface-muted))] px-4 py-3 text-sm text-[rgb(var(--foreground))]"
-                  >
-                    {example}
-                  </div>
-                ))}
-              </div>
-            </Card>
-          </div>
-        </Container>
+          <Card variant="default">
+            <CardTitle>{copy.examplesTitle}</CardTitle>
+            <div className="mt-5 space-y-3">
+              {copy.examples.map((example) => (
+                <div
+                  key={example}
+                  className="rounded-[var(--radius-md)] bg-[rgb(var(--surface-muted))] px-4 py-3 text-sm text-[rgb(var(--foreground))]"
+                >
+                  {example}
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
       </Section>
 
       <Section spacing="md">
-        <Container size="wide">
-          <div className="grid gap-6 lg:grid-cols-2">
-            <Card variant="default">
-              <CardTitle>{navigationItems.find((item) => item.id === "expertise")?.label}</CardTitle>
-              <div className="mt-5 space-y-3">
-                {expertiseItems.map((item) => (
-                  <div
-                    key={item.id}
-                    className="rounded-[var(--radius-md)] border border-[rgb(var(--border))] px-4 py-3"
-                  >
-                    <p className="font-medium">{item.label}</p>
-                    <p className="mt-1 text-sm text-[rgb(var(--muted-foreground))]">
-                      {item.summary}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </Card>
+        <div className="grid gap-6 lg:grid-cols-2">
+          <Card variant="default">
+            <CardTitle>{navigationItems.find((item) => item.id === "expertise")?.label}</CardTitle>
+            <div className="mt-5 space-y-3">
+              {expertiseItems.map((item) => (
+                <div
+                  key={item.id}
+                  className="rounded-[var(--radius-md)] border border-[rgb(var(--border))] px-4 py-3"
+                >
+                  <p className="font-medium">{item.label}</p>
+                  <p className="mt-1 text-sm text-[rgb(var(--muted-foreground))]">
+                    {item.summary}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Card>
 
-            <Card variant="default">
-              <CardTitle>{t("footer.navigation")}</CardTitle>
-              <div className="mt-5 space-y-3">
-                {navigationItems.map((item) => (
-                  <div
-                    key={item.id}
-                    className="rounded-[var(--radius-md)] border border-[rgb(var(--border))] px-4 py-3 text-sm"
-                  >
-                    {item.label}
-                  </div>
-                ))}
-              </div>
-            </Card>
-          </div>
-        </Container>
+          <Card variant="default">
+            <CardTitle>{t("footer.navigation")}</CardTitle>
+            <div className="mt-5 space-y-3">
+              {navigationItems.map((item) => (
+                <div
+                  key={item.id}
+                  className="rounded-[var(--radius-md)] border border-[rgb(var(--border))] px-4 py-3 text-sm"
+                >
+                  {item.label}
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
       </Section>
     </>
   );

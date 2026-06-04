@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { Container } from './container';
+import { Container, type ContainerSize, DEFAULT_PAGE_CONTAINER_SIZE } from './container';
 import { HTMLAttributes, forwardRef } from 'react';
 
 type SectionSpacing = 'sm' | 'md' | 'lg' | 'xl';
@@ -8,7 +8,7 @@ type SectionTone = 'default' | 'muted' | 'accent' | 'inverse';
 interface SectionProps extends HTMLAttributes<HTMLElement> {
   spacing?: SectionSpacing;
   tone?: SectionTone;
-  containerSize?: 'narrow' | 'content' | 'wide' | 'full';
+  containerSize?: ContainerSize;
   withContainer?: boolean;
 }
 
@@ -27,7 +27,7 @@ const toneStyles: Record<SectionTone, string> = {
 };
 
 export const Section = forwardRef<HTMLElement, SectionProps>(
-  ({ children, spacing = 'lg', tone = 'default', containerSize = 'content', withContainer = true, className, ...props }, ref) => {
+  ({ children, spacing = 'lg', tone = 'default', containerSize = DEFAULT_PAGE_CONTAINER_SIZE, withContainer = true, className, ...props }, ref) => {
     const content = withContainer ? (
       <Container size={containerSize}>{children}</Container>
     ) : (

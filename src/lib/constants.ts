@@ -2,7 +2,7 @@ import type { ContactInfo, ZoneInfo } from '@/types/content';
 
 export const CONTACT_INFO: ContactInfo = {
   name: 'Jocelyne Katshinda',
-  role: 'Fondatrice & Administratrice générale',
+  role: 'Fondatrice et Administratrice générale',
   email: 'admin@resilienceatwork.eu',
   phone: '+32 470 542 390',
   whatsapp: '+32470542390',

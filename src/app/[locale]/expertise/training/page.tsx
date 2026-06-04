@@ -1,19 +1,12 @@
-import { useTranslations } from 'next-intl';
-import { Container } from '@/components/shared/container';
-import { Section } from '@/components/shared/section';
-import { SectionHeader } from '@/components/shared/section-header';
+import { redirect } from "next/navigation";
+import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
+import type { Locale } from "@/types/content";
 
-export default function TrainingPage() {
-  const t = useTranslations();
-
-  return (
-    <Section>
-      <Container>
-        <SectionHeader title={t('expertise.training.title')} />
-        <p className="text-center text-[rgb(var(--muted-foreground))]">
-          Contenu détaillé à venir
-        </p>
-      </Container>
-    </Section>
-  );
+export default async function LegacyTrainingRoute({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  redirect(getLocalizedHref(locale as Locale, "training"));
 }

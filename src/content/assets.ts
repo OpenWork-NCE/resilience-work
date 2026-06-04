@@ -20,8 +20,8 @@ export const assets = {
     portrait: {
       src: "/images/jocelyne/jocelyne-katshinda-portrait.webp",
       alt: {
-        fr: "Portrait professionnel de Jocelyne Katshinda, administratrice générale de Resilience@Work.",
-        en: "Professional portrait of Jocelyne Katshinda, Managing Director of Resilience@Work.",
+        fr: "Portrait professionnel de Jocelyne Katshinda, fondatrice et Administratrice generale de Resilience@Work.",
+        en: "Professional portrait of Jocelyne Katshinda, Founder and Managing Director of Resilience@Work.",
       },
       width: 1254,
       height: 1254,
