@@ -34,10 +34,10 @@ export function ProfileSection({ locale }: ProfileSectionProps) {
 
           <div className="max-w-2xl">
             <Eyebrow>{profile.eyebrow[locale]}</Eyebrow>
-            <h2 className="mt-4 font-display text-4xl font-medium leading-tight text-balance sm:text-5xl">
+            <h2 className="mt-4 font-display text-[clamp(2.2rem,4.8vw,3.3rem)] font-medium leading-[1.02] text-balance">
               {profile.title[locale]}
             </h2>
-            <p className="mt-5 text-lg leading-relaxed text-[rgb(var(--muted-foreground))]">
+            <p className="mt-5 text-base leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-lg">
               {profile.description[locale]}
             </p>
             <div className="mt-8 border-t border-[rgb(var(--border-muted))] pt-6">

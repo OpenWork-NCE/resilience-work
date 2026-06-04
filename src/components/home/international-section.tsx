@@ -30,10 +30,10 @@ export function InternationalSection({ locale }: InternationalSectionProps) {
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,29,40,0.08)_0%,rgba(7,29,40,0.22)_26%,rgba(7,29,40,0.82)_100%)]" />
             <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-8 lg:p-10">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/76">
+              <p className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-white/76">
                 {international.eyebrow[locale]}
               </p>
-              <h2 className="mt-4 max-w-[13ch] font-display text-4xl font-medium leading-tight text-balance sm:text-5xl">
+              <h2 className="mt-4 max-w-[13ch] font-display text-[clamp(2.2rem,4.8vw,3.4rem)] font-medium leading-[1.02] text-balance">
                 {international.title[locale]}
               </h2>
               <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/78 sm:text-lg">

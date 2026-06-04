@@ -24,10 +24,10 @@ export function FinalCtaSection({ locale }: FinalCtaSectionProps) {
             <Eyebrow className="text-[color-mix(in_srgb,rgb(var(--background))_64%,rgb(var(--surface-inverse)))]">
               {finalCta.eyebrow[locale]}
             </Eyebrow>
-            <h2 className="mt-4 font-display text-4xl font-medium leading-tight text-balance sm:text-5xl">
+            <h2 className="mt-4 max-w-[14ch] font-display text-[clamp(2.3rem,5vw,3.8rem)] font-medium leading-[1.02] text-balance">
               {finalCta.title[locale]}
             </h2>
-            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[color-mix(in_srgb,rgb(var(--background))_78%,rgb(var(--surface-inverse)))]">
+            <p className="mt-5 max-w-3xl text-base leading-relaxed text-[color-mix(in_srgb,rgb(var(--background))_78%,rgb(var(--surface-inverse)))] sm:text-lg">
               {finalCta.description[locale]}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">

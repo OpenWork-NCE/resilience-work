@@ -9,15 +9,15 @@ interface ContainerProps {
 }
 
 const sizeMap: Record<ContainerSize, string> = {
-  narrow: 'max-w-[var(--container-narrow)]',
-  content: 'max-w-[var(--container-content)]',
-  wide: 'max-w-[var(--container-wide)]',
+  narrow: 'w-[min(90vw,var(--container-narrow))]',
+  content: 'w-[min(90vw,var(--container-content))]',
+  wide: 'w-[min(90vw,var(--container-wide))]',
   full: 'w-full',
 };
 
 export function Container({ children, className, size = 'content' }: ContainerProps) {
   return (
-    <div className={cn('mx-auto w-full px-[var(--gutter-mobile)] md:px-[var(--gutter-tablet)] lg:px-[var(--gutter-desktop)]', sizeMap[size], className)}>
+    <div className={cn('mx-auto px-[var(--gutter-mobile)] md:px-[var(--gutter-tablet)] lg:px-[var(--gutter-desktop)]', sizeMap[size], className)}>
       {children}
     </div>
   );

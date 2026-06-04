@@ -71,7 +71,7 @@ export function ExpertiseStickyReveal({ locale }: ExpertiseStickyRevealProps) {
   const activeItem = resolvedItems[activeIndex] ?? resolvedItems[0];
 
   return (
-    <div className="hidden gap-10 lg:grid lg:grid-cols-[minmax(0,0.9fr)_minmax(21rem,0.9fr)] lg:gap-14">
+    <div className="hidden gap-10 lg:grid lg:grid-cols-[minmax(0,0.84fr)_minmax(22rem,0.96fr)] lg:gap-14">
       <div className="space-y-8">
         {resolvedItems.map((item, index) => {
           const Icon = iconMap[item.icon as keyof typeof iconMap];
@@ -93,19 +93,27 @@ export function ExpertiseStickyReveal({ locale }: ExpertiseStickyRevealProps) {
                 onClick={() => setActiveIndex(index)}
                 className={cn(
                   "h-full cursor-pointer border transition-all duration-[var(--duration-normal)]",
-                  isActive && "border-[rgb(var(--border-strong))] shadow-[var(--shadow-elevated)]"
+                  isActive
+                    ? "border-[rgb(var(--border-strong))] shadow-[var(--shadow-elevated)]"
+                    : "opacity-78 hover:opacity-100"
                 )}
               >
                 <div className="flex items-start gap-4">
-                  <span className="mt-1 text-sm font-semibold uppercase tracking-[0.12em] text-[rgb(var(--accent))]">
+                  <span className={cn(
+                    "mt-1 font-[family:var(--font-accent)] text-[0.8rem] font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]",
+                    !isActive && "text-[rgb(var(--muted-foreground))]"
+                  )}>
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div className="flex-1 space-y-5">
                     <div className="flex items-center gap-3">
-                      <span className="rounded-full bg-[rgb(var(--accent-soft))] p-2 text-[rgb(var(--accent-foreground))]">
+                      <span className={cn(
+                        "rounded-full p-2 text-[rgb(var(--accent-foreground))]",
+                        isActive ? "bg-[rgb(var(--accent-soft))]" : "bg-[rgb(var(--surface-muted))]"
+                      )}>
                         <Icon className="h-4 w-4" />
                       </span>
-                      <h3 className="text-2xl font-semibold text-[rgb(var(--foreground))]">
+                      <h3 className="text-[1.75rem] font-semibold leading-[1.02] text-[rgb(var(--foreground))]">
                         {item.title[locale]}
                       </h3>
                     </div>
@@ -157,11 +165,11 @@ export function ExpertiseStickyReveal({ locale }: ExpertiseStickyRevealProps) {
                 />
               </motion.div>
             </AnimatePresence>
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[rgba(7,29,40,0.88)] via-[rgba(7,29,40,0.32)] to-transparent p-8 text-white">
-              <p className="text-sm font-semibold uppercase tracking-[0.12em] text-white/72">
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[rgba(7,29,40,0.92)] via-[rgba(7,29,40,0.34)] to-transparent p-8 text-white">
+              <p className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-white/72">
                 {activeItem.shortTitle[locale]}
               </p>
-              <p className="mt-3 max-w-md text-xl font-medium leading-relaxed text-white/92">
+              <p className="mt-3 max-w-md text-[1.3rem] font-medium leading-relaxed text-white/92">
                 {activeItem.description[locale][0]}
               </p>
             </div>

@@ -10,7 +10,7 @@ interface ImpactSectionProps {
 
 export function ImpactSection({ locale }: ImpactSectionProps) {
   return (
-    <section className="bg-[rgb(var(--background))] py-[var(--section-space-lg)]">
+    <section className="bg-[linear-gradient(180deg,rgb(var(--background))_0%,rgb(var(--surface-subtle))_100%)] py-[var(--section-space-lg)]">
       <Container size="wide">
         <SectionHeader
           eyebrow={homePage.impact.eyebrow[locale]}

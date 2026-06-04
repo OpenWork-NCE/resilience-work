@@ -17,6 +17,7 @@ const gridStyles = [
   "lg:col-span-1",
   "lg:col-span-2",
 ] as const;
+const cardVariants = ["inverse", "default", "default", "muted", "elevated"] as const;
 
 export function ImpactBentoGrid({ locale }: ImpactBentoGridProps) {
   return (
@@ -24,24 +25,44 @@ export function ImpactBentoGrid({ locale }: ImpactBentoGridProps) {
       {homePage.impact.items[locale].map((item, index) => {
         const Icon = iconMap[index];
         const isCompactCard = index === 3 || index === 4;
+        const isInverseCard = index === 0;
 
         return (
           <StaggerItem key={item} className={gridStyles[index]}>
             <Card
-              variant={index === 0 || index === 4 ? "elevated" : "default"}
+              variant={cardVariants[index]}
               hover
               className={cn(
                 "flex h-full flex-col p-6",
                 isCompactCard ? "justify-center" : "justify-between"
               )}
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] bg-[rgb(var(--accent-soft))] text-[rgb(var(--accent-foreground))]">
+              <div className={cn(
+                "flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)]",
+                isInverseCard
+                  ? "bg-white/10 text-white"
+                  : "bg-[rgb(var(--accent-soft))] text-[rgb(var(--accent-foreground))]"
+              )}>
                 <Icon className="h-5 w-5" />
               </div>
               <div className={cn("mt-12", isCompactCard && "mt-8")}>
-                <p className="max-w-[20ch] text-xl font-semibold leading-snug text-[rgb(var(--foreground))]">
+                <p className={cn(
+                  "max-w-[20ch] text-xl font-semibold leading-snug",
+                  isInverseCard ? "text-[rgb(var(--background))]" : "text-[rgb(var(--foreground))]"
+                )}>
                   {item}
                 </p>
+                {isCompactCard ? (
+                  <p className="mt-3 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
+                    {index === 3
+                      ? locale === "fr"
+                        ? "Soutien à la coordination humaine dans les périodes exigeantes."
+                        : "Support for human coordination during demanding periods."
+                      : locale === "fr"
+                        ? "Des repères concrets pour inscrire l’accompagnement dans la durée."
+                        : "Practical reference points that help support last over time."}
+                  </p>
+                ) : null}
               </div>
             </Card>
           </StaggerItem>

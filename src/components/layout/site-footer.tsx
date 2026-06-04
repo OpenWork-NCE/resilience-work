@@ -29,8 +29,14 @@ export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-[color-mix(in_srgb,rgb(var(--background))_12%,transparent)] bg-[rgb(var(--surface-inverse))] text-[rgb(var(--background))]">
       <Container size="wide">
-        <div className="grid gap-10 py-14 lg:grid-cols-[1.2fr_0.9fr_0.9fr_1fr]">
-          <div className="space-y-5">
+        <div className="border-b border-[color-mix(in_srgb,rgb(var(--background))_10%,transparent)] py-6">
+          <p className="font-[family:var(--font-accent)] text-[0.78rem] font-semibold uppercase tracking-[0.18em] text-[color-mix(in_srgb,rgb(var(--background))_58%,rgb(var(--surface-inverse)))]">
+            Resilience@Work
+          </p>
+        </div>
+
+        <div className="grid gap-10 py-14 lg:grid-cols-[1.25fr_0.85fr_0.85fr_1fr]">
+          <div className="space-y-6">
             <Logo variant="dark" size="md" />
             <p className="max-w-md text-sm leading-relaxed text-[color-mix(in_srgb,rgb(var(--background))_72%,rgb(var(--surface-inverse)))]">
               {brand.summary[locale]}
@@ -38,7 +44,7 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,rgb(var(--background))_56%,rgb(var(--surface-inverse)))]">
+            <h2 className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,rgb(var(--background))_56%,rgb(var(--surface-inverse)))]">
               {t("navigation")}
             </h2>
             <nav aria-label={navT("footerNavigation")} className="mt-5 flex flex-col gap-3">
@@ -55,7 +61,7 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,rgb(var(--background))_56%,rgb(var(--surface-inverse)))]">
+            <h2 className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,rgb(var(--background))_56%,rgb(var(--surface-inverse)))]">
               {t("expertise")}
             </h2>
             <div className="mt-5 flex flex-col gap-3">
@@ -72,7 +78,7 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,rgb(var(--background))_56%,rgb(var(--surface-inverse)))]">
+            <h2 className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,rgb(var(--background))_56%,rgb(var(--surface-inverse)))]">
               {t("contact")}
             </h2>
             <div className="mt-5 space-y-3 text-sm text-[color-mix(in_srgb,rgb(var(--background))_72%,rgb(var(--surface-inverse)))]">
