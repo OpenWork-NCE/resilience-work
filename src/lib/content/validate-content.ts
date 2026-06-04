@@ -126,12 +126,31 @@ function validateHomePage() {
   checkLocalizedText(homePage.hero.description, "homePage.hero.description");
   
   checkLocalizedText(homePage.intro.title, "homePage.intro.title");
+  checkLocalizedText(homePage.expertise.eyebrow, "homePage.expertise.eyebrow");
+  checkLocalizedText(homePage.expertise.title, "homePage.expertise.title");
+  checkLocalizedText(homePage.expertise.description, "homePage.expertise.description");
   
   homePage.highlights.forEach((item, idx) => {
     const path = `homePage.highlights[${idx}]`;
     checkLocalizedText(item.value, `${path}.value`);
     checkLocalizedText(item.label, `${path}.label`);
   });
+
+  checkLocalizedText(homePage.impact.title, "homePage.impact.title");
+  checkLocalizedText(homePage.methodology.eyebrow, "homePage.methodology.eyebrow");
+  checkLocalizedText(homePage.methodology.title, "homePage.methodology.title");
+
+  homePage.methodology.steps.forEach((step, idx) => {
+    const path = `homePage.methodology.steps[${idx}]`;
+    checkLocalizedText(step.title, `${path}.title`);
+    checkLocalizedText(step.description, `${path}.description`);
+  });
+
+  checkLocalizedText(homePage.international.title, "homePage.international.title");
+  checkLocalizedText(homePage.profile.title, "homePage.profile.title");
+  checkLocalizedText(homePage.profile.description, "homePage.profile.description");
+  checkLocalizedText(homePage.finalCta.title, "homePage.finalCta.title");
+  checkLocalizedText(homePage.finalCta.description, "homePage.finalCta.description");
 }
 
 function validateExpertise() {

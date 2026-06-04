@@ -50,11 +50,11 @@ export const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(
         {...props}
       >
         {eyebrow && <Eyebrow className="mb-4">{eyebrow}</Eyebrow>}
-        <h2 className="font-display text-4xl sm:text-5xl lg:text-[var(--text-5xl)] font-medium text-balance leading-tight mb-4">
+        <h2 className="mb-4 font-display text-[clamp(2.35rem,5vw,3.7rem)] font-medium leading-[1.02] text-balance">
           {title}
         </h2>
         {description && (
-          <p className="text-lg leading-relaxed text-[rgb(var(--muted-foreground))] text-balance reading-width">
+          <p className="reading-width text-base leading-relaxed text-[rgb(var(--muted-foreground))] text-balance sm:text-lg">
             {description}
           </p>
         )}

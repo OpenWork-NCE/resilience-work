@@ -19,8 +19,8 @@ export const contactPage = {
   contactDetails: {
     name: "Jocelyne Katshinda",
     role: {
-      fr: "Fondatrice & Administratrice générale",
-      en: "Founder & Managing Director",
+      fr: "Administratrice générale",
+      en: "Managing Director",
     } satisfies Record<Locale, string>,
     phone: "+32 470 542 390",
     email: "admin@resilienceatwork.eu",

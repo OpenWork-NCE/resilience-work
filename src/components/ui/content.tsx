@@ -11,7 +11,7 @@ export const Eyebrow = forwardRef<HTMLParagraphElement, EyebrowProps>(
       <Component
         ref={ref}
         className={cn(
-          'text-xs font-bold uppercase tracking-[0.14em] text-[rgb(var(--accent))]',
+          'font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]',
           className
         )}
         {...props}
@@ -38,7 +38,7 @@ export const Quote = forwardRef<HTMLQuoteElement, QuoteProps>(
         )}
         {...props}
       >
-        <p className="text-lg md:text-xl font-display italic text-[rgb(var(--foreground))] leading-relaxed">
+        <p className="text-lg md:text-xl font-display text-[rgb(var(--foreground))] leading-relaxed">
           {children}
         </p>
         {(author || role) && (
@@ -72,7 +72,7 @@ export const KeyValue = forwardRef<HTMLDivElement, KeyValueProps>(
         )}
         {...props}
       >
-        <dt className="text-sm text-[rgb(var(--muted-foreground))]">{label}</dt>
+        <dt className="font-[family:var(--font-accent)] text-sm text-[rgb(var(--muted-foreground))]">{label}</dt>
         <dd className="text-lg font-semibold text-[rgb(var(--foreground))]">{value}</dd>
       </div>
     );

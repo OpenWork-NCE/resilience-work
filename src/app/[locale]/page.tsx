@@ -1,31 +1,44 @@
-import { useTranslations } from 'next-intl';
-import { Container } from '@/components/shared/container';
-import { Button } from '@/components/shared/button';
-import { Link } from '@/i18n/routing';
+import type { Metadata } from "next";
+import { HeroSection } from "@/components/home/hero-section";
+import { HighlightsStrip } from "@/components/home/highlights-strip";
+import { IntroductionSection } from "@/components/home/introduction-section";
+import { ExpertiseSection } from "@/components/home/expertise-section";
+import { ImpactSection } from "@/components/home/impact-section";
+import { MethodologySection } from "@/components/home/methodology-section";
+import { InternationalSection } from "@/components/home/international-section";
+import { ProfileSection } from "@/components/home/profile-section";
+import { FinalCtaSection } from "@/components/home/final-cta-section";
+import { getPageMetadata } from "@/lib/seo/metadata";
+import type { Locale } from "@/types/content";
 
-export default function HomePage() {
-  const t = useTranslations();
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return getPageMetadata(locale as Locale, "home");
+}
+
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const currentLocale = locale as Locale;
 
   return (
-    <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden bg-gradient-to-b from-[rgb(var(--surface-muted))] to-[rgb(var(--background))]">
-      <Container className="relative z-10">
-        <div className="mx-auto max-w-4xl py-20 text-center">
-          <div className="mb-6">
-            <span className="inline-block rounded-full bg-[rgb(var(--accent-soft))] px-4 py-2 text-sm font-semibold text-[rgb(var(--accent))]">
-              Resilience@Work
-            </span>
-          </div>
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-            {t('home.welcome')}
-          </h1>
-          <p className="mb-8 text-lg text-[rgb(var(--muted-foreground))] text-balance sm:text-xl">
-            {t('home.subtitle')}
-          </p>
-          <Link href="/expertise">
-            <Button size="lg">{t('home.cta')}</Button>
-          </Link>
-        </div>
-      </Container>
-    </section>
+    <>
+      <HeroSection locale={currentLocale} />
+      <HighlightsStrip locale={currentLocale} />
+      <IntroductionSection locale={currentLocale} />
+      <ExpertiseSection locale={currentLocale} />
+      <ImpactSection locale={currentLocale} />
+      <MethodologySection locale={currentLocale} />
+      <InternationalSection locale={currentLocale} />
+      <ProfileSection locale={currentLocale} />
+      <FinalCtaSection locale={currentLocale} />
+    </>
   );
 }

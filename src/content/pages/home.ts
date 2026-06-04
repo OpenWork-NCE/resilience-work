@@ -1,4 +1,4 @@
-import type { Locale } from "@/types/content";
+import type { Locale, MethodologyStep } from "@/types/content";
 import { assets } from "../assets";
 import { globalCtas } from "../navigation";
 
@@ -50,6 +50,40 @@ export const homePage = {
         "Our multidisciplinary approach addresses the realities of multicultural teams, expatriate employees and organisations operating in demanding contexts.",
       ],
     } satisfies Record<Locale, readonly string[]>,
+  },
+
+  expertise: {
+    eyebrow: {
+      fr: "Expertises",
+      en: "Expertise",
+    } satisfies Record<Locale, string>,
+
+    title: {
+      fr: "Quatre domaines d'intervention pour renforcer durablement les équipes",
+      en: "Four areas of expertise designed to strengthen teams over time",
+    } satisfies Record<Locale, string>,
+
+    description: {
+      fr: "Des accompagnements conçus pour prévenir les risques psychosociaux, soutenir les équipes internationales et structurer des réponses adaptées aux contextes sensibles.",
+      en: "Support designed to prevent psychosocial risks, guide international teams and structure responses suited to demanding contexts.",
+    } satisfies Record<Locale, string>,
+
+    cta: {
+      label: {
+        fr: "Découvrir toutes nos expertises",
+        en: "Explore all expertise areas",
+      } satisfies Record<Locale, string>,
+      route: "expertise",
+      variant: "secondary",
+    },
+
+    itemCta: {
+      label: {
+        fr: "En savoir plus",
+        en: "Learn more",
+      } satisfies Record<Locale, string>,
+      variant: "link",
+    },
   },
 
   highlights: [
@@ -133,6 +167,69 @@ export const homePage = {
     } satisfies Record<Locale, readonly string[]>,
   },
 
+  methodology: {
+    eyebrow: {
+      fr: "Notre démarche",
+      en: "Our approach",
+    } satisfies Record<Locale, string>,
+
+    title: {
+      fr: "Un accompagnement structuré, adapté à chaque contexte",
+      en: "Structured support tailored to each context",
+    } satisfies Record<Locale, string>,
+
+    steps: [
+      {
+        id: "understand",
+        number: "01",
+        title: {
+          fr: "Comprendre",
+          en: "Understand",
+        } satisfies Record<Locale, string>,
+        description: {
+          fr: "Analyser les enjeux humains, organisationnels et interculturels propres à la situation.",
+          en: "Analyse the human, organisational and cross-cultural challenges specific to the situation.",
+        } satisfies Record<Locale, string>,
+      },
+      {
+        id: "prevent",
+        number: "02",
+        title: {
+          fr: "Prévenir",
+          en: "Prevent",
+        } satisfies Record<Locale, string>,
+        description: {
+          fr: "Identifier les facteurs de risque et mettre en place des mesures adaptées au contexte.",
+          en: "Identify risk factors and implement measures suited to the context.",
+        } satisfies Record<Locale, string>,
+      },
+      {
+        id: "support",
+        number: "03",
+        title: {
+          fr: "Accompagner",
+          en: "Support",
+        } satisfies Record<Locale, string>,
+        description: {
+          fr: "Proposer un soutien individuel, collectif ou managérial, en présentiel ou à distance.",
+          en: "Provide individual, collective or managerial support, on-site or remotely.",
+        } satisfies Record<Locale, string>,
+      },
+      {
+        id: "strengthen",
+        number: "04",
+        title: {
+          fr: "Renforcer",
+          en: "Strengthen",
+        } satisfies Record<Locale, string>,
+        description: {
+          fr: "Transmettre des outils pratiques pour inscrire la résilience dans la durée.",
+          en: "Share practical tools to support long-term resilience.",
+        } satisfies Record<Locale, string>,
+      },
+    ] as const satisfies readonly MethodologyStep[],
+  },
+
   international: {
     eyebrow: {
       fr: "Présence internationale",
@@ -167,13 +264,13 @@ export const homePage = {
     name: "Jocelyne Katshinda",
 
     role: {
-      fr: "Fondatrice & Administratrice générale",
-      en: "Founder & Managing Director",
+      fr: "Administratrice générale",
+      en: "Managing Director",
     } satisfies Record<Locale, string>,
 
     description: {
-      fr: "Jocelyne Katshinda est la fondatrice de Resilience@Work, une structure spécialisée dans le bien-être psychosocial, la prévention des risques psychosociaux et l'accompagnement des organisations évoluant dans des contextes internationaux et multiculturels.",
-      en: "Jocelyne Katshinda is the founder of Resilience@Work, an organisation specialising in psychosocial well-being, psychosocial risk prevention and support for organisations operating in international and multicultural environments.",
+      fr: "Jocelyne Katshinda dirige Resilience@Work, une structure spécialisée dans le bien-être psychosocial, la prévention des risques psychosociaux et l'accompagnement des organisations évoluant dans des contextes internationaux et multiculturels.",
+      en: "Jocelyne Katshinda leads Resilience@Work, an organisation specialising in psychosocial well-being, psychosocial risk prevention and support for organisations operating in international and multicultural environments.",
     } satisfies Record<Locale, string>,
 
     image: assets.jocelyne.portrait,

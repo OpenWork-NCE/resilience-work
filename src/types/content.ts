@@ -29,6 +29,13 @@ export interface ImageAsset {
   priority?: boolean;
 }
 
+export interface MethodologyStep {
+  id: string;
+  number: string;
+  title: LocalizedText;
+  description: LocalizedText;
+}
+
 export interface PageSeo {
   title: LocalizedText;
   description: LocalizedText;

@@ -94,8 +94,8 @@ export const aboutPage = {
   profile: {
     name: "Jocelyne Katshinda",
     role: {
-      fr: "Fondatrice & Administratrice générale",
-      en: "Founder & Managing Director",
+      fr: "Administratrice générale",
+      en: "Managing Director",
     } satisfies Record<Locale, string>,
     image: assets.jocelyne.portrait,
   },
