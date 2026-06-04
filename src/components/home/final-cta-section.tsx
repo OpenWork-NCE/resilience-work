@@ -35,7 +35,7 @@ export function FinalCtaSection({ locale }: FinalCtaSectionProps) {
                 <Button
                   variant="secondary"
                   size="lg"
-                  className="w-full border-white/10 bg-white text-[rgb(var(--primary-active))] hover:bg-white/90 sm:w-auto"
+                  className="w-full border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_10%,transparent)] bg-[rgb(var(--inverse-foreground))] text-[rgb(var(--surface-inverse))] hover:bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_92%,rgb(var(--surface-inverse)))] sm:w-auto"
                 >
                   {contactCta.label}
                 </Button>
@@ -44,7 +44,7 @@ export function FinalCtaSection({ locale }: FinalCtaSectionProps) {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-full border-white/20 text-white hover:bg-white/10 sm:w-auto"
+                  className="w-full border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_18%,transparent)] bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_8%,transparent)] text-[rgb(var(--inverse-foreground))] hover:bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_14%,transparent)] hover:border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_28%,transparent)] sm:w-auto"
                   leftIcon={<MessageCircle className="h-4 w-4" />}
                 >
                   {whatsappCta.label}
