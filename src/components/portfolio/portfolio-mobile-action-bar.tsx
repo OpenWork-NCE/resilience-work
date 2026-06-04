@@ -46,7 +46,7 @@ export function PortfolioMobileActionBar({ locale }: PortfolioMobileActionBarPro
         isVisible ? "translate-y-0" : "translate-y-[140%]"
       )}
     >
-      <div className="pointer-events-auto mx-auto flex max-w-[26rem] gap-2 rounded-[calc(var(--radius-xl)+0.25rem)] border border-[rgb(var(--border-muted))] bg-[color-mix(in_srgb,rgb(var(--surface))_92%,transparent)] p-2 shadow-[var(--shadow-floating)] supports-[backdrop-filter]:backdrop-blur-xl">
+      <div className="pointer-events-auto mx-auto grid w-full max-w-[26rem] grid-cols-3 gap-2 rounded-[calc(var(--radius-xl)+0.25rem)] border border-[rgb(var(--border-muted))] bg-[color-mix(in_srgb,rgb(var(--surface))_92%,transparent)] p-2 shadow-[var(--shadow-floating)] supports-[backdrop-filter]:backdrop-blur-xl">
         {actions.map((action) => {
           const Icon = actionIcons[action.id as keyof typeof actionIcons];
 

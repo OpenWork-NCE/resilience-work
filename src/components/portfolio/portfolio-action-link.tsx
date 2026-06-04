@@ -31,9 +31,9 @@ const variantStyles = {
   },
   bar: {
     root:
-      "group inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-full border border-[rgb(var(--border))] bg-[rgb(var(--surface))] px-4 py-3 text-center shadow-[var(--shadow-soft)] transition-colors hover:border-[rgb(var(--border-strong))] hover:bg-[rgb(var(--surface-muted))]",
+      "group inline-flex min-h-11 min-w-0 w-full items-center justify-center rounded-full border border-[rgb(var(--border))] bg-[rgb(var(--surface))] px-3 py-3 text-center shadow-[var(--shadow-soft)] transition-colors hover:border-[rgb(var(--border-strong))] hover:bg-[rgb(var(--surface-muted))]",
     icon: "inline-flex text-[rgb(var(--accent))]",
-    title: "text-sm font-semibold text-[rgb(var(--foreground))]",
+    title: "sr-only",
     description: "hidden",
   },
 } as const;
@@ -89,7 +89,7 @@ export function PortfolioActionLink({
       <span className={cn(styles.icon, toneStyle.icon)}>
         <Icon className="h-5 w-5" aria-hidden="true" />
       </span>
-      <span className={cn("min-w-0", variant === "bar" ? "contents" : "block")}>
+      <span className={cn("min-w-0", variant === "bar" ? "hidden" : "block")}>
         <span className={cn("block", styles.title, toneStyle.title)}>{label}</span>
         {description ? (
           <span className={cn("block", styles.description, toneStyle.description)}>{description}</span>
