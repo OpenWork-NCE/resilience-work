@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/shared/button";
@@ -9,6 +10,7 @@ import {
   hasContactValidationErrors,
   validateContactFormSubmission,
 } from "@/lib/contact/contact-form";
+import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/types/content";
 import type {
@@ -289,6 +291,9 @@ export function ContactForm({ locale }: ContactFormProps) {
           hint={copy.fields.message.hint[locale]}
           error={errors.message}
         >
+          <div className="mb-3 rounded-[var(--radius-lg)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface-subtle))] px-4 py-3 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
+            {copy.sensitiveDataNote[locale]}
+          </div>
           <Textarea
             id="message"
             name="message"
@@ -561,6 +566,16 @@ export function ContactForm({ locale }: ContactFormProps) {
             label={copy.fields.consent.label[locale]}
           />
           {errors.consent ? <FormError>{errors.consent}</FormError> : null}
+          <p className="text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
+            {copy.privacyNotice.text[locale]}{" "}
+            <Link
+              href={getLocalizedHref(locale, "privacy")}
+              className="font-medium text-[rgb(var(--primary))] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))]"
+            >
+              {copy.privacyNotice.linkLabel[locale]}
+            </Link>
+            .
+          </p>
         </div>
 
         {statusContent ? (

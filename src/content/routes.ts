@@ -9,6 +9,9 @@ export const routes: Record<RouteKey, string> = {
   internationalMobility: "/expertise/international-mobility",
   crisisManagement: "/expertise/crisis-management",
   training: "/training",
-  international: "/international",
+  legalNotice: "/legal-notice",
+  privacy: "/privacy",
+  cookies: "/cookies",
+  accessibility: "/accessibility",
   contact: "/contact",
 } as const;

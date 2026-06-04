@@ -22,7 +22,10 @@ export type RouteKey =
   | "internationalMobility"
   | "crisisManagement"
   | "training"
-  | "international"
+  | "legalNotice"
+  | "privacy"
+  | "cookies"
+  | "accessibility"
   | "contact";
 
 export type SocialPlatform = "whatsapp" | "linkedin" | "facebook";

@@ -230,26 +230,6 @@ export const homePage = {
     ] as const satisfies readonly MethodologyStep[],
   },
 
-  international: {
-    eyebrow: {
-      fr: "Présence internationale",
-      en: "International reach",
-    } satisfies Record<Locale, string>,
-
-    title: {
-      fr: "Une expertise pensée pour les contextes internationaux",
-      en: "Expertise designed for international contexts",
-    } satisfies Record<Locale, string>,
-
-    description: {
-      fr: "Resilience@Work intervient auprès d'organisations implantées en Afrique, en Europe et au Moyen-Orient. Les prestations sont proposées en présentiel ou à distance, en français, en anglais et en italien.",
-      en: "Resilience@Work supports organisations across Africa, Europe and the Middle East. Services are delivered on-site or remotely in French, English and Italian.",
-    } satisfies Record<Locale, string>,
-
-    image: assets.international.overview,
-    cta: globalCtas.learnMore,
-  },
-
   profile: {
     eyebrow: {
       fr: "Direction",

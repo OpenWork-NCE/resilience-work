@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { ArrowUpRight, Mail, MessageCircle, Phone } from "lucide-react";
+import { CookieSettingsTrigger } from "@/components/consent/cookie-settings-trigger";
 import { brand } from "@/content/brand";
 import { Container } from "@/components/shared/container";
 import { Logo } from "@/components/brand/logo";
@@ -9,6 +10,7 @@ import {
   getLocalizedNavigation,
   getLocalizedServiceLanguages,
 } from "@/lib/navigation/get-navigation";
+import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
 import type { Locale } from "@/types/content";
 
 export function SiteFooter() {
@@ -19,6 +21,12 @@ export function SiteFooter() {
   const expertiseItems = getLocalizedExpertiseItems(locale);
   const serviceLanguages = getLocalizedServiceLanguages(locale);
   const currentYear = new Date().getFullYear();
+  const legalLinks = [
+    { id: "legalNotice", label: t("legalNotice"), href: getLocalizedHref(locale, "legalNotice") },
+    { id: "privacy", label: t("privacy"), href: getLocalizedHref(locale, "privacy") },
+    { id: "cookies", label: t("cookies"), href: getLocalizedHref(locale, "cookies") },
+    { id: "accessibility", label: t("accessibility"), href: getLocalizedHref(locale, "accessibility") },
+  ] as const;
   const visibleSocials = Object.entries(brand.socials).filter(([, social]) => social.enabled && social.href);
   const socialLabels = {
     whatsapp: "WhatsApp",
@@ -35,7 +43,7 @@ export function SiteFooter() {
           </p>
         </div>
 
-        <div className="grid gap-10 py-14 lg:grid-cols-[1.25fr_0.85fr_0.85fr_1fr]">
+        <div className="grid gap-10 py-14 lg:grid-cols-[1.15fr_0.85fr_0.85fr_0.9fr_1fr]">
           <div className="space-y-6">
             <Logo variant="dark" size="md" />
             <p className="max-w-md text-sm leading-relaxed text-[color-mix(in_srgb,rgb(var(--background))_72%,rgb(var(--surface-inverse)))]">
@@ -74,6 +82,27 @@ export function SiteFooter() {
                   {item.label}
                 </Link>
               ))}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,rgb(var(--background))_56%,rgb(var(--surface-inverse)))]">
+              {t("legal")}
+            </h2>
+            <div className="mt-5 flex flex-col gap-3">
+              {legalLinks.map((item) => (
+                <Link
+                  key={item.id}
+                  href={item.href}
+                  className="text-sm text-[color-mix(in_srgb,rgb(var(--background))_72%,rgb(var(--surface-inverse)))] transition-colors hover:text-[rgb(var(--background))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))]"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <CookieSettingsTrigger
+                label={t("manageCookies")}
+                className="text-left text-sm text-[color-mix(in_srgb,rgb(var(--background))_72%,rgb(var(--surface-inverse)))] transition-colors hover:text-[rgb(var(--background))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))]"
+              />
             </div>
           </div>
 

@@ -5,7 +5,6 @@ import { IntroductionSection } from "@/components/home/introduction-section";
 import { ExpertiseSection } from "@/components/home/expertise-section";
 import { ImpactSection } from "@/components/home/impact-section";
 import { MethodologySection } from "@/components/home/methodology-section";
-import { InternationalSection } from "@/components/home/international-section";
 import { ProfileSection } from "@/components/home/profile-section";
 import { FinalCtaSection } from "@/components/home/final-cta-section";
 import { getPageMetadata } from "@/lib/seo/metadata";
@@ -36,7 +35,6 @@ export default async function HomePage({
       <ExpertiseSection locale={currentLocale} />
       <ImpactSection locale={currentLocale} />
       <MethodologySection locale={currentLocale} />
-      <InternationalSection locale={currentLocale} />
       <ProfileSection locale={currentLocale} />
       <FinalCtaSection locale={currentLocale} />
     </>

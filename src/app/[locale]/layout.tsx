@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "../globals.css";
+import { ConsentProvider } from "@/components/consent/consent-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteShell } from "@/components/layout/site-shell";
 import { SkipLink } from "@/components/layout/skip-link";
@@ -61,21 +62,23 @@ export default async function RootLayout({
         className={`${inter.variable} ${spaceGroteskDisplay.variable} ${spaceGroteskAccent.variable} antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <SiteShell>
-              <SkipLink />
-              <SiteHeader />
-              <main id="main-content" className="flex-1">
-                {children}
-              </main>
-              <SiteFooter />
-            </SiteShell>
-          </ThemeProvider>
+          <ConsentProvider locale={locale as "fr" | "en"}>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <SiteShell>
+                <SkipLink />
+                <SiteHeader />
+                <main id="main-content" className="flex-1">
+                  {children}
+                </main>
+                <SiteFooter />
+              </SiteShell>
+            </ThemeProvider>
+          </ConsentProvider>
         </NextIntlClientProvider>
       </body>
     </html>

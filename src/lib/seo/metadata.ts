@@ -131,17 +131,56 @@ export const pageSeo: Record<RouteKey, PageSeo> = {
     ogImage: "/images/expertise/training.webp",
   },
 
-  international: {
+  legalNotice: {
     title: {
-      fr: "Interventions internationales | Resilience@Work",
-      en: "International interventions | Resilience@Work",
+      fr: "Mentions légales | Resilience@Work",
+      en: "Legal notice | Resilience@Work",
     },
     description: {
-      fr: "Resilience@Work intervient en Afrique, en Europe et au Moyen-Orient, en présentiel ou à distance.",
-      en: "Resilience@Work provides on-site and remote support across Africa, Europe and the Middle East.",
+      fr: "Consultez les informations légales relatives au site Resilience@Work.",
+      en: "Read the legal information relating to the Resilience@Work website.",
     },
-    canonicalRoute: "international",
-    ogImage: "/images/international/africa-europe-middle-east.webp",
+    canonicalRoute: "legalNotice",
+    ogImage: "/images/hero/resilience-at-work-hero.webp",
+  },
+
+  privacy: {
+    title: {
+      fr: "Politique de confidentialité | Resilience@Work",
+      en: "Privacy policy | Resilience@Work",
+    },
+    description: {
+      fr: "Découvrez comment Resilience@Work utilise et protège les informations transmises à travers son site.",
+      en: "Learn how Resilience@Work uses and protects information submitted through its website.",
+    },
+    canonicalRoute: "privacy",
+    ogImage: "/images/hero/resilience-at-work-hero.webp",
+  },
+
+  cookies: {
+    title: {
+      fr: "Politique relative aux cookies | Resilience@Work",
+      en: "Cookie policy | Resilience@Work",
+    },
+    description: {
+      fr: "Consultez les informations relatives aux cookies et technologies similaires utilisés sur le site Resilience@Work.",
+      en: "Read information about cookies and similar technologies used on the Resilience@Work website.",
+    },
+    canonicalRoute: "cookies",
+    ogImage: "/images/hero/resilience-at-work-hero.webp",
+  },
+
+  accessibility: {
+    title: {
+      fr: "Accessibilité | Resilience@Work",
+      en: "Accessibility | Resilience@Work",
+    },
+    description: {
+      fr: "Découvrez l’engagement de Resilience@Work en faveur d’une expérience plus accessible.",
+      en: "Read about Resilience@Work’s commitment to a more accessible experience.",
+    },
+    canonicalRoute: "accessibility",
+    ogImage: "/images/hero/resilience-at-work-hero.webp",
   },
 
   contact: {

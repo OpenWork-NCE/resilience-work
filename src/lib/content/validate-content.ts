@@ -17,6 +17,11 @@ import { regions } from "../../content/pages/international";
 import { aboutPage } from "../../content/pages/about";
 import { contactPage } from "../../content/pages/contact";
 import { jocelyneKatshindaPage } from "../../content/pages/jocelyne-katshinda";
+import { legalNoticeDocument } from "../../content/legal/legal-notice";
+import { privacyPolicyDocument } from "../../content/legal/privacy-policy";
+import { cookiePolicyDocument } from "../../content/legal/cookie-policy";
+import { accessibilityDocument } from "../../content/legal/accessibility";
+import type { LegalDocument } from "../../types/legal";
 
 const errors: string[] = [];
 const warnings: string[] = [];
@@ -31,6 +36,21 @@ function checkLocalizedText(obj: Record<string, unknown>, path: string) {
       }
       if (!en || typeof en !== "string" || (en as string).trim() === "") {
         errors.push(`${path}: Missing or empty EN translation`);
+      }
+    }
+  }
+}
+
+function checkLocalizedCollection(obj: Record<string, unknown>, path: string) {
+  if (obj && typeof obj === "object") {
+    if ("fr" in obj && "en" in obj) {
+      const fr = obj.fr;
+      const en = obj.en;
+      if (!Array.isArray(fr) || fr.length === 0) {
+        errors.push(`${path}: Missing or empty FR collection`);
+      }
+      if (!Array.isArray(en) || en.length === 0) {
+        errors.push(`${path}: Missing or empty EN collection`);
       }
     }
   }
@@ -152,7 +172,6 @@ function validateHomePage() {
     checkLocalizedText(step.description, `${path}.description`);
   });
 
-  checkLocalizedText(homePage.international.title, "homePage.international.title");
   checkLocalizedText(homePage.profile.title, "homePage.profile.title");
   checkLocalizedText(homePage.profile.description, "homePage.profile.description");
   checkLocalizedText(homePage.finalCta.title, "homePage.finalCta.title");
@@ -259,6 +278,40 @@ function validateContact() {
     checkLocalizedText(item.question, `contactPage.faq.items[${idx}].question`);
     checkLocalizedText(item.answer, `contactPage.faq.items[${idx}].answer`);
   });
+
+  checkLocalizedText(contactPage.form.sensitiveDataNote, "contactPage.form.sensitiveDataNote");
+  checkLocalizedText(contactPage.form.privacyNotice.text, "contactPage.form.privacyNotice.text");
+  checkLocalizedText(contactPage.form.privacyNotice.linkLabel, "contactPage.form.privacyNotice.linkLabel");
+}
+
+function validateLegalDocument(
+  document: Pick<LegalDocument, "title" | "description" | "sections">,
+  path: string
+) {
+  checkLocalizedText(document.title, `${path}.title`);
+  checkLocalizedText(document.description, `${path}.description`);
+
+  document.sections.forEach((section, idx) => {
+    const sectionPath = `${path}.sections[${idx}]`;
+    checkLocalizedText(section.title, `${sectionPath}.title`);
+
+    if (section.paragraphs) {
+      checkLocalizedCollection(section.paragraphs, `${sectionPath}.paragraphs`);
+    }
+
+    if (section.items) {
+      checkLocalizedCollection(section.items, `${sectionPath}.items`);
+    }
+  });
+}
+
+function validateLegalPages() {
+  console.log("Validating legal pages...");
+
+  validateLegalDocument(legalNoticeDocument, "legalNoticeDocument");
+  validateLegalDocument(privacyPolicyDocument, "privacyPolicyDocument");
+  validateLegalDocument(cookiePolicyDocument, "cookiePolicyDocument");
+  validateLegalDocument(accessibilityDocument, "accessibilityDocument");
 }
 
 function validateJocelynePortfolio() {
@@ -287,6 +340,7 @@ function main() {
   validateAbout();
   validateContact();
   validateJocelynePortfolio();
+  validateLegalPages();
 
   console.log("\n📊 Validation results:\n");
 

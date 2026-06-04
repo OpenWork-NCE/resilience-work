@@ -60,14 +60,6 @@ export const navigation: readonly NavigationItem[] = [
     ],
   },
   {
-    id: "international",
-    route: "international",
-    label: {
-      fr: "International",
-      en: "International",
-    } satisfies Record<Locale, string>,
-  },
-  {
     id: "contact",
     route: "contact",
     label: {

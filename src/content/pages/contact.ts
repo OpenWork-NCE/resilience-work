@@ -627,6 +627,22 @@ export const contactPage = {
       fr: "Vos informations sont utilisées uniquement pour répondre à votre demande.",
       en: "Your information is used only to respond to your enquiry.",
     } satisfies LocalizedText,
+
+    sensitiveDataNote: {
+      fr: "Pour préserver votre confidentialité, évitez de transmettre des informations médicales détaillées ou des données personnelles sensibles qui ne sont pas nécessaires à l’examen initial de votre demande.",
+      en: "To protect your privacy, please avoid sharing detailed medical information or sensitive personal data that is not necessary for the initial review of your enquiry.",
+    } satisfies LocalizedText,
+
+    privacyNotice: {
+      text: {
+        fr: "Les informations transmises sont utilisées uniquement afin de répondre à votre demande. Pour en savoir plus, consultez notre",
+        en: "The information submitted is used solely to respond to your enquiry. For more information, read our",
+      } satisfies LocalizedText,
+      linkLabel: {
+        fr: "politique de confidentialité",
+        en: "privacy policy",
+      } satisfies LocalizedText,
+    },
   },
 
   directContact: {

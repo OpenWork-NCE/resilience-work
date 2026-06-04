@@ -7,7 +7,10 @@
     "internationalMobility": "International Mobility",
     "crisisManagement": "Crisis Management",
     "training": "Training",
-    "international": "International",
+    "legalNotice": "Legal notice",
+    "privacy": "Privacy policy",
+    "cookies": "Cookies",
+    "accessibility": "Accessibility",
     "contact": "Contact"
   },
   "navigation": {
@@ -91,6 +94,12 @@
     "navigation": "Navigation",
     "contact": "Contact",
     "expertise": "Expertise",
+    "legal": "Legal information",
+    "legalNotice": "Legal notice",
+    "privacy": "Privacy policy",
+    "cookies": "Cookies",
+    "manageCookies": "Manage cookie preferences",
+    "accessibility": "Accessibility",
     "serviceLanguages": "Service languages",
     "rights": "All rights reserved.",
     "allRightsReserved": "All rights reserved"
