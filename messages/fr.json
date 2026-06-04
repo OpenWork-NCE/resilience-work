@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "about": "À propos",
+    "expertise": "Expertises",
+    "psychosocialPrevention": "Prévention psychosociale",
+    "internationalMobility": "Mobilité internationale",
+    "crisisManagement": "Gestion de crise",
+    "training": "Formations",
+    "international": "International",
+    "contact": "Contact"
+  },
+  "home": {
+    "welcome": "La résilience professionnelle en environnement multiculturel",
+    "subtitle": "Accompagnement expert des organisations et des expatriés en Afrique, Europe et Moyen-Orient",
+    "cta": "Découvrir nos services"
+  },
+  "expertise": {
+    "psychosocial": {
+      "title": "Prévention psychosociale & bien-être au travail",
+      "description": "Évaluation et prévention des risques psychosociaux",
+      "services": {
+        "riskAssessment": "Évaluation des risques psychosociaux",
+        "preventionPrograms": "Programmes de prévention et d'intervention",
+        "multiculturalSupport": "Accompagnement des équipes multiculturelles",
+        "teamSupport": "Soutien individuel et collectif",
+        "stressPrevention": "Prévention du stress",
+        "burnoutPrevention": "Prévention du burnout",
+        "workLifeBalance": "Équilibre vie professionnelle et vie personnelle"
+      }
+    },
+    "mobility": {
+      "title": "Mobilité internationale",
+      "description": "Accompagnement psychologique de l'expatriation",
+      "services": {
+        "stressManagement": "Gestion du stress et de l'isolement",
+        "culturalAdaptation": "Adaptation culturelle",
+        "resilience": "Résilience",
+        "confidentialSupport": "Soutien psychologique confidentiel",
+        "departurePreparation": "Préparation au départ",
+        "repatriationSupport": "Accompagnement au retour d'expatriation"
+      }
+    },
+    "crisis": {
+      "title": "Management des situations de crise",
+      "description": "Soutien aux situations critiques",
+      "services": {
+        "teamSupport": "Soutien aux équipes confrontées à des événements critiques",
+        "debriefing": "Débriefings psychologiques post-incident",
+        "managerSupport": "Accompagnement des managers en contexte de tension",
+        "emergencyProtocols": "Protocoles de gestion émotionnelle en urgence"
+      }
+    },
+    "training": {
+      "title": "Formations et webinaires professionnels",
+      "description": "Développement des compétences professionnelles",
+      "services": {
+        "leadership": "Leadership en contexte international",
+        "burnoutPrevention": "Prévention du burnout",
+        "compassionFatigue": "Prévention de la fatigue compassionnelle",
+        "tensionCommunication": "Communication en situation de tension",
+        "stressManagement": "Gestion du stress",
+        "multiculturalManagement": "Management multiculturel",
+        "mobilitySupport": "Soutien en mobilité internationale",
+        "mentalHealthFirstAid": "Mental Health First Aid",
+        "workLifeBalance": "Équilibre vie professionnelle et vie personnelle"
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Construire la résilience dans les environnements professionnels complexes",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "rights": "Tous droits réservés."
+  }
+}

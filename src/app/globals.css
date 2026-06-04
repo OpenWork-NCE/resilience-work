@@ -1,26 +1,290 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --animate-aurora: aurora 60s linear infinite;
+
+  @keyframes aurora {
+    from {
+      background-position: 50% 50%, 50% 50%;
+    }
+    to {
+      background-position: 350% 50%, 350% 50%;
+    }
+  }
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-inverse: var(--surface-inverse);
+  --color-border: var(--border);
+  --color-border-muted: var(--border-muted);
+  --color-border-strong: var(--border-strong);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-active: var(--primary-active);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Resilience@Work Color System - Light Mode */
+  --background: 248 251 252;
+  --foreground: 16 43 58;
+
+  --surface: 255 255 255;
+  --surface-muted: 238 246 248;
+  --surface-subtle: 244 249 250;
+  --surface-elevated: 255 255 255;
+  --surface-inverse: 12 38 51;
+
+  --border: 215 230 234;
+  --border-muted: 230 240 242;
+  --border-strong: 184 208 216;
+
+  --primary: 18 79 120;
+  --primary-hover: 13 65 102;
+  --primary-active: 9 54 80;
+  --primary-foreground: 255 255 255;
+
+  --secondary: 221 239 244;
+  --secondary-hover: 205 229 236;
+  --secondary-foreground: 18 59 85;
+
+  --accent: 74 145 168;
+  --accent-hover: 57 127 149;
+  --accent-soft: 221 241 244;
+  --accent-foreground: 10 61 76;
+
+  --muted: 234 243 245;
+  --muted-foreground: 88 113 125;
+
+  --success: 47 118 104;
+  --success-soft: 221 239 234;
+  --warning: 155 104 27;
+  --warning-soft: 248 238 216;
+  --danger: 164 71 71;
+  --danger-soft: 248 227 227;
+
+  --overlay-soft: rgba(8, 42, 57, 0.08);
+  --overlay-strong: rgba(7, 29, 40, 0.72);
+
+  /* Shadows */
+  --shadow-soft: 0 8px 28px rgba(11, 55, 72, 0.06);
+  --shadow-card: 0 14px 36px rgba(11, 55, 72, 0.08);
+  --shadow-elevated: 0 22px 56px rgba(8, 42, 57, 0.12);
+  --shadow-floating: 0 28px 72px rgba(8, 42, 57, 0.16);
+
+  /* Border Radius */
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+  --radius-2xl: 2.25rem;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-28: 7rem;
+  --space-32: 8rem;
+
+  /* Section Spacing */
+  --section-space-sm: 4rem;
+  --section-space-md: 5.5rem;
+  --section-space-lg: 7rem;
+  --section-space-xl: 9rem;
+
+  /* Container Sizes */
+  --container-narrow: 46rem;
+  --container-content: 72rem;
+  --container-wide: 82rem;
+
+  /* Gutters */
+  --gutter-mobile: 1.25rem;
+  --gutter-tablet: 2rem;
+  --gutter-desktop: 3rem;
+
+  /* Typography Scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: clamp(2.75rem, 5vw, 4.75rem);
+  --text-6xl: clamp(3.25rem, 7vw, 6.25rem);
+
+  /* Motion */
+  --duration-fast: 160ms;
+  --duration-normal: 240ms;
+  --duration-slow: 360ms;
+  --duration-reveal: 520ms;
+
+  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Typography */
+  --font-display: "Lora", Georgia, serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+.dark {
+  /* Resilience@Work Color System - Dark Mode */
+  --background: 7 25 32;
+  --foreground: 234 244 246;
+
+  --surface: 12 37 46;
+  --surface-muted: 16 45 55;
+  --surface-subtle: 10 34 43;
+  --surface-elevated: 20 52 62;
+  --surface-inverse: 239 248 249;
+
+  --border: 36 70 80;
+  --border-muted: 25 57 67;
+  --border-strong: 59 102 113;
+
+  --primary: 131 196 212;
+  --primary-hover: 155 210 222;
+  --primary-active: 181 222 231;
+  --primary-foreground: 8 35 44;
+
+  --secondary: 23 59 70;
+  --secondary-hover: 33 75 87;
+  --secondary-foreground: 216 238 242;
+
+  --accent: 109 175 192;
+  --accent-hover: 136 195 208;
+  --accent-soft: 23 59 69;
+  --accent-foreground: 217 240 243;
+
+  --muted: 18 49 58;
+  --muted-foreground: 167 190 197;
+
+  --success: 121 185 169;
+  --success-soft: 21 59 54;
+  --warning: 220 178 105;
+  --warning-soft: 68 54 25;
+  --danger: 221 146 146;
+  --danger-soft: 71 39 39;
+
+  --overlay-soft: rgba(226, 246, 249, 0.06);
+  --overlay-strong: rgba(3, 16, 22, 0.82);
+
+  /* Shadows (adjusted for dark mode) */
+  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.24);
+  --shadow-card: 0 14px 36px rgba(0, 0, 0, 0.32);
+  --shadow-elevated: 0 22px 56px rgba(0, 0, 0, 0.42);
+  --shadow-floating: 0 28px 72px rgba(0, 0, 0, 0.52);
+}
+
+@layer base {
+  * {
+    border-color: rgb(var(--border));
+  }
+  
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@layer base {
+  * {
+    border-color: rgb(var(--border));
+  }
+  
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    font-family: var(--font-sans);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+
+  :focus-visible {
+    outline: 3px solid rgb(var(--accent));
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .reading-width {
+    max-width: 72ch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

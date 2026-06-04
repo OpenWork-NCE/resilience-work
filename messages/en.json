@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "about": "About",
+    "expertise": "Expertise",
+    "psychosocialPrevention": "Psychosocial Prevention",
+    "internationalMobility": "International Mobility",
+    "crisisManagement": "Crisis Management",
+    "training": "Training",
+    "international": "International",
+    "contact": "Contact"
+  },
+  "home": {
+    "welcome": "Professional resilience in multicultural environments",
+    "subtitle": "Expert support for organizations and expatriates in Africa, Europe and the Middle East",
+    "cta": "Discover our services"
+  },
+  "expertise": {
+    "psychosocial": {
+      "title": "Psychosocial Prevention & Well-being at Work",
+      "description": "Assessment and prevention of psychosocial risks",
+      "services": {
+        "riskAssessment": "Psychosocial risk assessment",
+        "preventionPrograms": "Prevention and intervention programs",
+        "multiculturalSupport": "Multicultural team support",
+        "teamSupport": "Individual and collective support",
+        "stressPrevention": "Stress prevention",
+        "burnoutPrevention": "Burnout prevention",
+        "workLifeBalance": "Work-life balance"
+      }
+    },
+    "mobility": {
+      "title": "International Mobility",
+      "description": "Psychological support for expatriation",
+      "services": {
+        "stressManagement": "Stress and isolation management",
+        "culturalAdaptation": "Cultural adaptation",
+        "resilience": "Resilience",
+        "confidentialSupport": "Confidential psychological support",
+        "departurePreparation": "Pre-departure preparation",
+        "repatriationSupport": "Repatriation support"
+      }
+    },
+    "crisis": {
+      "title": "Crisis Management",
+      "description": "Support for critical situations",
+      "services": {
+        "teamSupport": "Support for teams facing critical events",
+        "debriefing": "Post-incident psychological debriefing",
+        "managerSupport": "Manager support in tense contexts",
+        "emergencyProtocols": "Emotional management protocols in emergencies"
+      }
+    },
+    "training": {
+      "title": "Professional Training & Webinars",
+      "description": "Skills development for professionals",
+      "services": {
+        "leadership": "Leadership in international contexts",
+        "burnoutPrevention": "Burnout prevention",
+        "compassionFatigue": "Compassion fatigue prevention",
+        "tensionCommunication": "Communication in tense situations",
+        "stressManagement": "Stress management",
+        "multiculturalManagement": "Multicultural management",
+        "mobilitySupport": "International mobility support",
+        "mentalHealthFirstAid": "Mental Health First Aid",
+        "workLifeBalance": "Work-life balance"
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Building resilience in complex professional environments",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "rights": "All rights reserved."
+  }
+}
