@@ -1,5 +1,6 @@
 {
   "nav": {
+    "home": "Home",
     "about": "About",
     "expertise": "Expertise",
     "psychosocialPrevention": "Psychosocial Prevention",
@@ -8,6 +9,25 @@
     "training": "Training",
     "international": "International",
     "contact": "Contact"
+  },
+  "navigation": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNavigation": "Main navigation",
+    "footerNavigation": "Footer navigation",
+    "expertiseMenu": "Show expertise areas"
+  },
+  "theme": {
+    "switchToDark": "Switch to dark mode",
+    "switchToLight": "Switch to light mode"
+  },
+  "locale": {
+    "switchLanguage": "Change language",
+    "currentLanguage": "Current language"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "externalLink": "Opens in a new tab"
   },
   "home": {
     "welcome": "Professional resilience in multicultural environments",
@@ -70,6 +90,9 @@
     "tagline": "Building resilience in complex professional environments",
     "navigation": "Navigation",
     "contact": "Contact",
-    "rights": "All rights reserved."
+    "expertise": "Expertise",
+    "serviceLanguages": "Service languages",
+    "rights": "All rights reserved.",
+    "allRightsReserved": "All rights reserved"
   }
 }

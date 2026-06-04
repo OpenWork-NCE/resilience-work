@@ -2,6 +2,11 @@ import type { Locale } from "@/types/content";
 
 export const brand = {
   name: "Resilience@Work",
+
+  summary: {
+    fr: "Resilience@Work accompagne les organisations, les managers et les équipes dans la prévention des risques psychosociaux, la mobilité internationale et la gestion des situations de crise.",
+    en: "Resilience@Work supports organisations, managers and teams through psychosocial risk prevention, international mobility and crisis management.",
+  } satisfies Record<Locale, string>,
   
   person: {
     name: "Jocelyne Katshinda",
@@ -43,7 +48,8 @@ export const brand = {
     },
     linkedin: {
       href: "https://www.linkedin.com/in/jocelyne-katshinda-878bb95b/",
-      enabled: true,
+      enabled: false,
+      note: "URL officielle à confirmer",
     },
     facebook: {
       href: null,

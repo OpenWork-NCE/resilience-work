@@ -15,7 +15,8 @@ const variantStyles: Record<CardVariant, string> = {
   outline: 'bg-transparent border-2 border-[rgb(var(--border-strong))]',
   interactive: 'bg-[rgb(var(--surface))] border border-[rgb(var(--border))] cursor-pointer',
   editorial: 'bg-[rgb(var(--surface))] border border-[rgb(var(--border))] overflow-hidden',
-  inverse: 'bg-[rgb(var(--surface-inverse))] text-[rgb(var(--background))] border-none',
+  inverse:
+    'bg-[rgb(var(--surface-inverse))] text-[rgb(var(--background))] border-none [&_[data-card-title]]:text-[rgb(var(--background))] [&_[data-card-description]]:text-[color-mix(in_srgb,rgb(var(--background))_72%,rgb(var(--surface-inverse)))]',
 };
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
@@ -62,7 +63,8 @@ export const CardTitle = forwardRef<HTMLHeadingElement, HTMLAttributes<HTMLHeadi
     return (
       <h3
         ref={ref}
-        className={cn('text-xl font-semibold font-sans text-[rgb(var(--foreground))]', className)}
+        data-card-title
+        className={cn('text-xl font-semibold font-sans text-[inherit]', className)}
         {...props}
       >
         {children}
@@ -78,7 +80,8 @@ export const CardDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<H
     return (
       <p
         ref={ref}
-        className={cn('text-[rgb(var(--muted-foreground))] leading-relaxed', className)}
+        data-card-description
+        className={cn('leading-relaxed text-[rgb(var(--muted-foreground))]', className)}
         {...props}
       >
         {children}

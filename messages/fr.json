@@ -1,5 +1,6 @@
 {
   "nav": {
+    "home": "Accueil",
     "about": "À propos",
     "expertise": "Expertises",
     "psychosocialPrevention": "Prévention psychosociale",
@@ -8,6 +9,25 @@
     "training": "Formations",
     "international": "International",
     "contact": "Contact"
+  },
+  "navigation": {
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "mainNavigation": "Navigation principale",
+    "footerNavigation": "Navigation de pied de page",
+    "expertiseMenu": "Afficher les expertises"
+  },
+  "theme": {
+    "switchToDark": "Passer au thème sombre",
+    "switchToLight": "Passer au thème clair"
+  },
+  "locale": {
+    "switchLanguage": "Changer de langue",
+    "currentLanguage": "Langue actuelle"
+  },
+  "accessibility": {
+    "skipToContent": "Aller au contenu principal",
+    "externalLink": "Ouvre un nouvel onglet"
   },
   "home": {
     "welcome": "La résilience professionnelle en environnement multiculturel",
@@ -70,6 +90,9 @@
     "tagline": "Construire la résilience dans les environnements professionnels complexes",
     "navigation": "Navigation",
     "contact": "Contact",
-    "rights": "Tous droits réservés."
+    "expertise": "Expertises",
+    "serviceLanguages": "Langues de prestation",
+    "rights": "Tous droits réservés.",
+    "allRightsReserved": "Tous droits réservés"
   }
 }

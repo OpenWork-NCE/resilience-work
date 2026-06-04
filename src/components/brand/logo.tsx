@@ -31,14 +31,14 @@ export const Logo = ({
     : '/images/brand/resilience-at-work-logo.png';
 
   return (
-    <div className={cn('flex items-center', className)} {...props}>
+    <div className={cn('flex min-w-0 items-center', className)} {...props}>
       <Image
         src={logoSrc}
         alt="Resilience@Work"
         width={width}
         height={height}
         priority
-        className="h-auto w-auto"
+        className="h-auto max-w-full object-contain"
       />
     </div>
   );

@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Inter, Lora } from "next/font/google";
 import "../globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SiteShell } from "@/components/layout/site-shell";
+import { SkipLink } from "@/components/layout/skip-link";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -52,7 +56,14 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <SiteShell>
+              <SkipLink />
+              <SiteHeader />
+              <main id="main-content" className="flex-1">
+                {children}
+              </main>
+              <SiteFooter />
+            </SiteShell>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

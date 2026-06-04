@@ -1,6 +1,4 @@
 import { useTranslations } from 'next-intl';
-import { SiteHeader } from '@/components/layout/site-header';
-import { SiteFooter } from '@/components/layout/site-footer';
 import { Container } from '@/components/shared/container';
 import { Section } from '@/components/shared/section';
 import { SectionHeader } from '@/components/shared/section-header';
@@ -20,46 +18,40 @@ export default function ExpertisePage() {
   const t = useTranslations();
 
   return (
-    <>
-      <SiteHeader />
-      <main>
-        <Section>
-          <Container>
-            <SectionHeader
-              title={t('nav.expertise')}
-              description="Nos domaines d'intervention"
-            />
+    <Section>
+      <Container>
+        <SectionHeader
+          title={t('nav.expertise')}
+          description="Nos domaines d'intervention"
+        />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-              {expertiseAreas.map((area) => {
-                const Icon = iconMap[area.icon as keyof typeof iconMap];
-                return (
-                  <Link key={area.id} href={`/expertise/${area.slug}`}>
-                    <Card hover className="h-full">
-                      <div className="flex items-start gap-4">
-                        {Icon && (
-                          <div className="flex-shrink-0 w-12 h-12 rounded-[var(--radius-lg)] bg-[rgb(var(--accent-soft))] flex items-center justify-center">
-                            <Icon className="w-6 h-6 text-[rgb(var(--accent))]" />
-                          </div>
-                        )}
-                        <div>
-                          <h3 className="text-xl font-semibold mb-2">
-                            {t(area.titleKey)}
-                          </h3>
-                          <p className="text-[rgb(var(--muted-foreground))]">
-                            {t(area.descriptionKey)}
-                          </p>
-                        </div>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+          {expertiseAreas.map((area) => {
+            const Icon = iconMap[area.icon as keyof typeof iconMap];
+            return (
+              <Link key={area.id} href={`/expertise/${area.slug}`}>
+                <Card hover className="h-full">
+                  <div className="flex items-start gap-4">
+                    {Icon && (
+                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-[rgb(var(--accent-soft))]">
+                        <Icon className="h-6 w-6 text-[rgb(var(--accent))]" />
                       </div>
-                    </Card>
-                  </Link>
-                );
-              })}
-            </div>
-          </Container>
-        </Section>
-      </main>
-      <SiteFooter />
-    </>
+                    )}
+                    <div>
+                      <h3 className="mb-2 text-xl font-semibold">
+                        {t(area.titleKey)}
+                      </h3>
+                      <p className="text-[rgb(var(--muted-foreground))]">
+                        {t(area.descriptionKey)}
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+              </Link>
+            );
+          })}
+        </div>
+      </Container>
+    </Section>
   );
 }

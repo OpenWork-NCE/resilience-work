@@ -1,96 +1,132 @@
-import { Link } from '@/i18n/routing';
-import { useTranslations } from 'next-intl';
-import { Mail, Phone, ExternalLink } from 'lucide-react';
-import { Container } from '@/components/shared/container';
-import { CONTACT_INFO, SOCIAL_LINKS } from '@/lib/constants';
-import type { NavigationItem } from '@/types/content';
-
-const mainNavigation: NavigationItem[] = [
-  { href: '/about', labelKey: 'nav.about' },
-  { href: '/expertise', labelKey: 'nav.expertise' },
-  { href: '/international', labelKey: 'nav.international' },
-  { href: '/contact', labelKey: 'nav.contact' },
-];
+import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import { ArrowUpRight, Mail, MessageCircle, Phone } from "lucide-react";
+import { brand } from "@/content/brand";
+import { Container } from "@/components/shared/container";
+import { Logo } from "@/components/brand/logo";
+import {
+  getLocalizedExpertiseItems,
+  getLocalizedNavigation,
+  getLocalizedServiceLanguages,
+} from "@/lib/navigation/get-navigation";
+import type { Locale } from "@/types/content";
 
 export function SiteFooter() {
-  const t = useTranslations();
+  const locale = useLocale() as Locale;
+  const t = useTranslations("footer");
+  const navT = useTranslations("navigation");
+  const navigationItems = getLocalizedNavigation(locale);
+  const expertiseItems = getLocalizedExpertiseItems(locale);
+  const serviceLanguages = getLocalizedServiceLanguages(locale);
   const currentYear = new Date().getFullYear();
+  const visibleSocials = Object.entries(brand.socials).filter(([, social]) => social.enabled && social.href);
+  const socialLabels = {
+    whatsapp: "WhatsApp",
+    linkedin: "LinkedIn",
+    facebook: "Facebook",
+  } as const;
 
   return (
-    <footer className="border-t border-[rgb(var(--border))] bg-[rgb(var(--surface-muted))]">
-      <Container>
-        <div className="py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-lg font-bold mb-4">Resilience@Work</h3>
-            <p className="text-sm text-[rgb(var(--muted-foreground))] mb-4">
-              {t('footer.tagline')}
+    <footer className="mt-auto border-t border-[color-mix(in_srgb,rgb(var(--background))_12%,transparent)] bg-[rgb(var(--surface-inverse))] text-[rgb(var(--background))]">
+      <Container size="wide">
+        <div className="grid gap-10 py-14 lg:grid-cols-[1.2fr_0.9fr_0.9fr_1fr]">
+          <div className="space-y-5">
+            <Logo variant="dark" size="md" />
+            <p className="max-w-md text-sm leading-relaxed text-[color-mix(in_srgb,rgb(var(--background))_72%,rgb(var(--surface-inverse)))]">
+              {brand.summary[locale]}
             </p>
-            <div className="flex gap-3">
-              {SOCIAL_LINKS.linkedin && (
-                <a
-                  href={SOCIAL_LINKS.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 hover:bg-[rgb(var(--surface))] rounded-[var(--radius-md)] transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <ExternalLink size={20} />
-                </a>
-              )}
-              {SOCIAL_LINKS.facebook && (
-                <a
-                  href={SOCIAL_LINKS.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 hover:bg-[rgb(var(--surface))] rounded-[var(--radius-md)] transition-colors"
-                  aria-label="Facebook"
-                >
-                  <ExternalLink size={20} />
-                </a>
-              )}
-            </div>
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold mb-4">{t('footer.navigation')}</h4>
-            <nav className="flex flex-col gap-2">
-              {mainNavigation.map((item) => (
+            <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,rgb(var(--background))_56%,rgb(var(--surface-inverse)))]">
+              {t("navigation")}
+            </h2>
+            <nav aria-label={navT("footerNavigation")} className="mt-5 flex flex-col gap-3">
+              {navigationItems.map((item) => (
                 <Link
-                  key={item.href!}
-                  href={item.href!}
-                  className="text-sm text-[rgb(var(--muted-foreground))] hover:text-[rgb(var(--foreground))] transition-colors"
+                  key={item.id}
+                  href={item.href}
+                  className="text-sm text-[color-mix(in_srgb,rgb(var(--background))_72%,rgb(var(--surface-inverse)))] transition-colors hover:text-[rgb(var(--background))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))]"
                 >
-                  {t(item.labelKey!)}
+                  {item.label}
                 </Link>
               ))}
             </nav>
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold mb-4">{t('footer.contact')}</h4>
-            <div className="flex flex-col gap-3 text-sm text-[rgb(var(--muted-foreground))]">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,rgb(var(--background))_56%,rgb(var(--surface-inverse)))]">
+              {t("expertise")}
+            </h2>
+            <div className="mt-5 flex flex-col gap-3">
+              {expertiseItems.map((item) => (
+                <Link
+                  key={item.id}
+                  href={item.href}
+                  className="text-sm text-[color-mix(in_srgb,rgb(var(--background))_72%,rgb(var(--surface-inverse)))] transition-colors hover:text-[rgb(var(--background))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))]"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-[color-mix(in_srgb,rgb(var(--background))_56%,rgb(var(--surface-inverse)))]">
+              {t("contact")}
+            </h2>
+            <div className="mt-5 space-y-3 text-sm text-[color-mix(in_srgb,rgb(var(--background))_72%,rgb(var(--surface-inverse)))]">
+              <p className="font-medium text-[rgb(var(--background))]">{brand.person.name}</p>
+              <p>{brand.person.role[locale]}</p>
               <a
-                href={`mailto:${CONTACT_INFO.email}`}
-                className="flex items-center gap-2 hover:text-[rgb(var(--foreground))] transition-colors"
+                href={brand.contact.phoneHref}
+                className="flex items-center gap-3 transition-colors hover:text-[rgb(var(--background))]"
               >
-                <Mail size={16} />
-                {CONTACT_INFO.email}
+                <Phone className="h-4 w-4" />
+                <span>{brand.contact.phoneDisplay}</span>
               </a>
               <a
-                href={`tel:${CONTACT_INFO.phone}`}
-                className="flex items-center gap-2 hover:text-[rgb(var(--foreground))] transition-colors"
+                href={brand.contact.emailHref}
+                className="flex items-center gap-3 transition-colors hover:text-[rgb(var(--background))]"
               >
-                <Phone size={16} />
-                {CONTACT_INFO.phone}
+                <Mail className="h-4 w-4" />
+                <span>{brand.contact.email}</span>
+              </a>
+              <a
+                href={brand.contact.whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 transition-colors hover:text-[rgb(var(--background))]"
+              >
+                <MessageCircle className="h-4 w-4" />
+                <span>WhatsApp</span>
               </a>
             </div>
           </div>
         </div>
 
-        <div className="py-6 border-t border-[rgb(var(--border))] text-center text-sm text-[rgb(var(--muted-foreground))]">
-          <p>
-            © {currentYear} Resilience@Work. {t('footer.rights')}
-          </p>
+        <div className="flex flex-col gap-6 border-t border-[color-mix(in_srgb,rgb(var(--background))_12%,transparent)] py-6 text-sm text-[color-mix(in_srgb,rgb(var(--background))_68%,rgb(var(--surface-inverse)))] lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p className="font-medium text-[rgb(var(--background))]">{t("serviceLanguages")}</p>
+            <p className="mt-1">{serviceLanguages.join(" · ")}</p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-4">
+            {visibleSocials.map(([key, social]) => (
+              <a
+                key={key}
+                href={social.href ?? undefined}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 transition-colors hover:text-[rgb(var(--background))]"
+              >
+                <span>{socialLabels[key as keyof typeof socialLabels]}</span>
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            ))}
+          </div>
+
+          <p>© {currentYear} {brand.name}. {t("allRightsReserved")}</p>
         </div>
       </Container>
     </footer>
