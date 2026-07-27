@@ -151,7 +151,7 @@ EOF
 ### Task 2: Portfolio final-contact title (immédiatement → directement)
 
 **Files:**
-- Modify: `src/content/pages/jocelyne-katshinda.ts` (`finalContact.title`, ~lines 347–348)
+- Modify: `src/content/pages/jocelyne-katshinda.ts` (`finalContact.title`, ~lines 347-348)
 - Test: grep assertions below
 
 **Interfaces:**
@@ -425,7 +425,7 @@ EOF
 ### Task 4: Publics accompagnés - ONG → Institutions internationales
 
 **Files:**
-- Modify: `src/content/audiences.ts` (audience `id: "ngos"`, ~lines 26–30)
+- Modify: `src/content/audiences.ts` (audience `id: "ngos"`, ~lines 26-30)
 - Test: grep assertions below
 
 **Interfaces:**
@@ -513,7 +513,7 @@ EOF
 - Test: project validator + regression greps
 
 **Interfaces:**
-- Consumes: all Task 1–4 outputs
+- Consumes: all Task 1-4 outputs
 - Produces: confidence that the branch matches the spec
 
 - [ ] **Step 1: Regression grep - old in-scope FR/EN phrases must be gone from intended files**
@@ -579,7 +579,7 @@ With `npm run dev` if needed, in **light** mode:
 
 - [ ] **Step 6: Final commit only if Task 5 fixed anything**
 
-If verification required small fixes, commit those fixes with a clear message. If everything already passed after Tasks 1–4, **no empty commit**.
+If verification required small fixes, commit those fixes with a clear message. If everything already passed after Tasks 1-4, **no empty commit**.
 
 Optional docs status update (only if you want the branch self-describing):
 
@@ -599,9 +599,9 @@ Optional docs status update (only if you want the branch self-describing):
 | `--foreground` → `22 52 68` | Task 1 |
 | Leave primary / dark mode alone | Task 1 verification |
 | Portfolio title immédiatement → directement (+ EN) | Task 2 |
-| Évaluation des facteurs de risques psychosociaux (+ EN), overview + detail | Task 3 steps 2–3 |
+| Évaluation des facteurs de risques psychosociaux (+ EN), overview + detail | Task 3 steps 2-3 |
 | Mobility summary drop équilibre (+ EN) | Task 3 step 4 |
-| Crisis manager wording (+ EN), overview + detail | Task 3 steps 5–6 |
+| Crisis manager wording (+ EN), overview + detail | Task 3 steps 5-6 |
 | Audiences ONG → Institutions internationales (+ EN), id stable | Task 4 |
 | training.ts ONG out of scope | Task 4 step 3 |
 | validate:content + greps | Task 5 |

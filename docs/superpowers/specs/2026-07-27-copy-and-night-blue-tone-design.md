@@ -202,5 +202,5 @@ No automated unit tests exist for content strings; grep + content validator is t
 - Color scope inverse + foreground light mode: approved  
 - Amplitude ~1 tone: approved  
 - ONG only in publics list: approved  
-- Design sections 1–3: approved in brainstorming session  
+- Design sections 1-3: approved in brainstorming session  
 - This written spec: pending user review before `writing-plans`

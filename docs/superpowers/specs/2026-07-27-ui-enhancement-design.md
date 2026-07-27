@@ -137,7 +137,7 @@ Hover: one step up max; prefer border + shadow, not large layout shift.
 
 | Kind | Duration | Notes |
 |------|----------|--------|
-| Micro (hover, focus) | 150–240ms | Existing `--duration-*` |
+| Micro (hover, focus) | 150-240ms | Existing `--duration-*` |
 | Section reveal | ≤360ms preferred (current reveal 520ms → tune down in Phase B) | Keep reduced-motion = instant/opacity-only |
 | Sticky expertise | Keep but do not invent more scroll-jacking patterns | |
 
@@ -285,7 +285,7 @@ New section **after highlights or after introduction** (prefer after highlights)
 
 ### C2. CTA label alignment
 
-Inventory nav + hero + final + expertise CTAs; converge FR/EN primary labels to 1–2 phrases.
+Inventory nav + hero + final + expertise CTAs; converge FR/EN primary labels to 1-2 phrases.
 
 ### C3. Final CTA hierarchy
 
@@ -330,7 +330,7 @@ Only when client-approved content exists; use existing `Quote` in `ui/content.ts
 | Confidence strip | new home component + `src/content/pages/home.ts` |
 | i18n chrome | `messages/fr.json`, `messages/en.json` if new aria labels |
 
-No new routes required for Phases A–C.
+No new routes required for Phases A-C.
 
 ---
 
@@ -351,10 +351,10 @@ No new routes required for Phases A–C.
 
 | Metric | Before (audit) | Target |
 |--------|----------------|--------|
-| Section climate count (home) | ~5–6 visual modes | ≤3 |
+| Section climate count (home) | ~5-6 visual modes | ≤3 |
 | Eyebrow variants | 2 | 1 |
 | Header readability on hero | Risk | Pass visual QA |
-| Contact page “bands” | ~6 | ≤3–4 |
+| Contact page “bands” | ~6 | ≤3-4 |
 | Trust signals above mid-page | Weak | Explicit confidence strip |
 | Design system violations (long Button className) | High on inverse CTA | Near zero |
 
@@ -385,10 +385,10 @@ Until decided: Phase A proceeds without these; Phase B/C use defaults stated in 
 
 ## 14. Implementation order (for writing-plans / execution)
 
-1. Phase A (A1–A8) - foundation  
-2. Phase B (B1–B7) - rhythm & IA  
-3. Phase C (C1–C5) - trust  
-4. Phase D - backlog only when A–C signed off  
+1. Phase A (A1-A8) - foundation  
+2. Phase B (B1-B7) - rhythm & IA  
+3. Phase C (C1-C5) - trust  
+4. Phase D - backlog only when A-C signed off  
 
 Each phase = its own implementation plan + PR if desired.
 
