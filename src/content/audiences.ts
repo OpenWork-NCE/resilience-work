@@ -25,8 +25,8 @@ export const audiences = [
   {
     id: "ngos",
     label: {
-      fr: "ONG",
-      en: "NGOs",
+      fr: "Institutions internationales",
+      en: "International institutions",
     } satisfies Record<Locale, string>,
   },
   {
