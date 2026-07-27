@@ -323,20 +323,6 @@
       );
   }
 
-  /* Stable dark glass for chrome over media heroes (light + dark) */
-  .chrome-on-media {
-    border-color: transparent;
-    background-color: color-mix(in srgb, rgb(var(--surface-inverse)) 55%, transparent);
-    color: rgb(var(--inverse-foreground));
-  }
-
-  @supports (backdrop-filter: blur(12px)) {
-    .chrome-on-media {
-      background-color: color-mix(in srgb, rgb(var(--surface-inverse)) 48%, transparent);
-      backdrop-filter: blur(16px);
-    }
-  }
-
   .reading-width {
     max-width: 72ch;
   }

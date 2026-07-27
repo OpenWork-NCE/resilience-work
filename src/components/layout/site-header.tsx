@@ -20,12 +20,14 @@ import {
   getLocalizedExpertiseItems,
   getLocalizedNavigation,
 } from "@/lib/navigation/get-navigation";
-import { getLocalizedHref, stripLocalePrefix } from "@/lib/navigation/get-localized-href";
+import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/types/content";
 
-const SCROLL_THRESHOLD = 24;
-
+/**
+ * Header is always the solid theme chrome (same as former “scrolled” state).
+ * The transparent media-over-hero style was unreadable in both light and dark.
+ */
 export function SiteHeader() {
   const locale = useLocale() as Locale;
   const pathname = usePathname();
@@ -33,36 +35,17 @@ export function SiteHeader() {
   const { resolvedTheme } = useTheme();
   const navigationId = useId();
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [themeReady, setThemeReady] = useState(false);
 
   const navigationItems = getLocalizedNavigation(locale);
   const expertiseItems = getLocalizedExpertiseItems(locale);
   const primaryCta = getLocalizedCta(locale, "scheduleConversation");
-  const isHome = stripLocalePrefix(pathname) === "/";
-  const isMediaChrome = isHome && !isScrolled;
   const isDarkTheme = themeReady && resolvedTheme === "dark";
-  // Night header surface (media hero or full dark theme) needs light logo + bright links
-  const onNightChrome = isMediaChrome || isDarkTheme;
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => setThemeReady(true));
     return () => window.cancelAnimationFrame(frame);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const nextValue = window.scrollY > SCROLL_THRESHOLD;
-      setIsScrolled((currentValue) => (currentValue === nextValue ? currentValue : nextValue));
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
   }, []);
 
   const handleCloseMobileMenu = (restoreFocus = false) => {
@@ -78,10 +61,10 @@ export function SiteHeader() {
     <>
       <header
         className={cn(
-          "sticky top-0 z-30 border-b transition-[background-color,border-color,box-shadow,color] duration-[var(--duration-normal)] ease-[var(--ease-standard)]",
-          isMediaChrome
-            ? "chrome-on-media"
-            : "border-[rgb(var(--border-muted))] bg-[rgb(var(--background))]/95 text-[rgb(var(--foreground))] shadow-[var(--shadow-soft)] supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--background))_92%,transparent)] supports-[backdrop-filter]:backdrop-blur-xl"
+          "sticky top-0 z-30 border-b border-[rgb(var(--border-muted))]",
+          "bg-[rgb(var(--background))]/95 text-[rgb(var(--foreground))] shadow-[var(--shadow-soft)]",
+          "supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--background))_94%,transparent)] supports-[backdrop-filter]:backdrop-blur-xl",
+          "transition-[background-color,border-color,box-shadow,color] duration-[var(--duration-normal)] ease-[var(--ease-standard)]"
         )}
       >
         <Container size="wide">
@@ -89,10 +72,10 @@ export function SiteHeader() {
             <Link
               href={getLocalizedHref(locale, "home")}
               aria-label={brand.name}
-              className="min-w-0 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+              className="min-w-0 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--background))]"
             >
               <Logo
-                variant={onNightChrome ? "onDark" : "default"}
+                variant={isDarkTheme ? "onDark" : "default"}
                 size="md"
                 className="max-w-[clamp(9.5rem,40vw,12.5rem)] xl:max-w-[12.5rem]"
               />
@@ -102,20 +85,15 @@ export function SiteHeader() {
               <DesktopNavigation
                 items={navigationItems}
                 expertiseItems={expertiseItems}
-                inverse={isMediaChrome}
-                highContrast={isDarkTheme && !isMediaChrome}
+                highContrast={isDarkTheme}
               />
             </div>
 
             <div className="ml-auto hidden shrink-0 items-center gap-2 lg:flex lg:translate-y-[2px] xl:gap-3">
-              <LocaleSwitcher inverse={isMediaChrome} />
-              <ThemeToggle inverse={isMediaChrome} />
+              <LocaleSwitcher />
+              <ThemeToggle />
               <Link href={primaryCta.href}>
-                <Button
-                  variant={isMediaChrome ? "onInverse" : "primary"}
-                  size="md"
-                  className="whitespace-nowrap"
-                >
+                <Button variant="primary" size="md" className="whitespace-nowrap">
                   {primaryCta.label}
                 </Button>
               </Link>
@@ -126,22 +104,20 @@ export function SiteHeader() {
                 href={getLocalizedHref(locale, "contact")}
                 aria-label={primaryCta.label}
                 className={cn(
-                  "inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
-                  isMediaChrome
-                    ? "border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_22%,transparent)] bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_10%,transparent)] text-[rgb(var(--inverse-foreground))] hover:bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_16%,transparent)] focus-visible:ring-offset-transparent"
-                    : "border-[rgb(var(--border))] bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--surface-muted))] focus-visible:ring-offset-[rgb(var(--background))]"
+                  "inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border transition-colors",
+                  "border-[rgb(var(--border))] bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--surface-muted))]",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--background))]"
                 )}
               >
                 <MessageCircle className="h-5 w-5" aria-hidden="true" />
               </Link>
-              <ThemeToggle inverse={isMediaChrome} />
+              <ThemeToggle />
               <MobileNavigationTrigger
                 isOpen={isMobileMenuOpen}
                 controls={navigationId}
                 label={isMobileMenuOpen ? t("closeMenu") : t("openMenu")}
                 onClick={() => setIsMobileMenuOpen((value) => !value)}
                 triggerRef={triggerRef}
-                inverse={isMediaChrome}
               />
             </div>
           </div>
