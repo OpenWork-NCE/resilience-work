@@ -7,10 +7,17 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, error, success, ...props }, ref) => {
+  ({ className, error, success, type, ...props }, ref) => {
+    // Email/tel fields are frequently mutated by browser extensions
+    // (e.g. temp-mail injects data-temp-mail-org + background-image styles),
+    // which causes harmless hydration attribute mismatches in dev.
+    const suppressExtensionNoise = type === "email" || type === "tel";
+
     return (
       <input
         ref={ref}
+        type={type}
+        suppressHydrationWarning={suppressExtensionNoise}
         className={cn(
           'flex h-11 w-full rounded-[var(--radius-md)] border bg-[rgb(var(--surface))] px-4 py-2 text-base transition-colors duration-[var(--duration-normal)]',
           'placeholder:text-[rgb(var(--muted-foreground))]',
