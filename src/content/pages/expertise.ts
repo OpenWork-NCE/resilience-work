@@ -168,7 +168,7 @@ export const expertiseItems: readonly ExpertiseItem[] = [
     },
     services: {
       fr: [
-        "Évaluation des risques psychosociaux",
+        "Évaluation des facteurs de risques psychosociaux",
         "Programmes de prévention et d’intervention",
         "Accompagnement des équipes multiculturelles",
         "Soutien individuel et collectif",
@@ -176,7 +176,7 @@ export const expertiseItems: readonly ExpertiseItem[] = [
         "Équilibre entre vie professionnelle et vie personnelle",
       ],
       en: [
-        "Psychosocial risk assessment",
+        "Psychosocial risk factor assessment",
         "Prevention and intervention programmes",
         "Support for multicultural teams",
         "Individual and collective support",
@@ -214,8 +214,8 @@ export const expertiseItems: readonly ExpertiseItem[] = [
       en: "International mobility support",
     },
     summary: {
-      fr: "Accompagner les collaborateurs expatriés dans leur adaptation culturelle, leur équilibre et leur résilience.",
-      en: "Support expatriate employees in their cultural adjustment, well-being and resilience.",
+      fr: "Accompagner les collaborateurs expatriés dans leur adaptation culturelle et leur résilience.",
+      en: "Support expatriate employees in their cultural adjustment and resilience.",
     },
     description: {
       fr: [
@@ -292,13 +292,13 @@ export const expertiseItems: readonly ExpertiseItem[] = [
       fr: [
         "Soutien aux équipes confrontées à des événements critiques",
         "Débriefings psychologiques post-incident",
-        "Accompagnement des managers en contexte de tension",
+        "Accompagnement des managers dans un environnement sous pression",
         "Protocoles de gestion émotionnelle en situation d’urgence",
       ],
       en: [
         "Support for teams facing critical events",
         "Post-incident psychological debriefings",
-        "Support for managers in high-pressure situations",
+        "Support for managers in a high-pressure environment",
         "Emotional management protocols for emergency situations",
       ],
     },
@@ -441,7 +441,7 @@ export const expertiseDetailPages: readonly ExpertiseDetailPage[] = [
       en: "Services offered",
     },
     services: [
-      feature("assessment", "HeartPulse", "Évaluation des risques psychosociaux", "Psychosocial risk assessment", "Identifier les signaux de vigilance et les facteurs de risque propres au contexte.", "Identify warning signs and risk factors specific to the context."),
+      feature("assessment", "HeartPulse", "Évaluation des facteurs de risques psychosociaux", "Psychosocial risk factor assessment", "Identifier les signaux de vigilance et les facteurs de risque propres au contexte.", "Identify warning signs and risk factors specific to the context."),
       feature("programmes", "ShieldCheck", "Programmes de prévention et d’intervention", "Prevention and intervention programmes", "Structurer des actions adaptées aux besoins des équipes et de l’organisation.", "Structure interventions adapted to team and organisational needs."),
       feature("multicultural-support", "Users", "Accompagnement des équipes multiculturelles", "Support for multicultural teams", "Ajuster la prévention aux réalités interculturelles et relationnelles.", "Adapt prevention to cross-cultural and relational realities."),
       feature("support", "Scale", "Soutien individuel et collectif", "Individual and collective support", "Créer un espace d’accompagnement lorsque la situation l’exige.", "Create a support space when the situation requires it."),
@@ -611,7 +611,7 @@ export const expertiseDetailPages: readonly ExpertiseDetailPage[] = [
     services: [
       feature("team-support", "LifeBuoy", "Soutien aux équipes confrontées à des événements critiques", "Support for teams facing critical events", "Créer un cadre d’écoute et d’accompagnement adapté au contexte.", "Create a support framework adapted to the context."),
       feature("debrief", "MessagesSquare", "Débriefings psychologiques post-incident", "Post-incident psychological debriefings", "Permettre un retour encadré sur les événements difficiles.", "Provide a guided review of difficult events."),
-      feature("manager-support", "ShieldAlert", "Accompagnement des managers en contexte de tension", "Support for managers in high-pressure contexts", "Soutenir les responsables dans la conduite humaine des périodes sensibles.", "Support leaders in the human management of sensitive periods."),
+      feature("manager-support", "ShieldAlert", "Accompagnement des managers dans un environnement sous pression", "Support for managers in a high-pressure environment", "Soutenir les responsables dans la conduite humaine des périodes sensibles.", "Support leaders in the human management of sensitive periods."),
       feature("emergency-protocols", "Route", "Protocoles de gestion émotionnelle en situation d’urgence", "Emotional management protocols for emergency situations", "Structurer des repères utiles lorsque le contexte se tend.", "Structure useful reference points when the situation becomes more demanding."),
     ],
     outcomesTitle: {
