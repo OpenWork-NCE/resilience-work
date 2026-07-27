@@ -52,13 +52,13 @@
 :root {
   /* Resilience@Work Color System - Light Mode */
   --background: 248 251 252;
-  --foreground: 16 43 58;
+  --foreground: 22 52 68;
 
   --surface: 255 255 255;
   --surface-muted: 238 246 248;
   --surface-subtle: 244 249 250;
   --surface-elevated: 255 255 255;
-  --surface-inverse: 12 38 51;
+  --surface-inverse: 18 48 62;
   --inverse-foreground: 248 251 252;
   --inverse-muted-foreground: 198 214 219;
 
