@@ -2,10 +2,13 @@ import type { Locale, LocalizedParagraphs, LocalizedStringArray, LocalizedText }
 
 export type Consultant = {
   id: string;
+  slug: string;
   name: string;
   role: LocalizedText;
   /** Short hook under the name */
   lead: LocalizedText;
+  /** Highlight quote for the intro rail */
+  highlight: LocalizedText;
   /** Domain chips */
   focus: LocalizedStringArray;
   /** Full bio paragraphs */
@@ -18,6 +21,10 @@ export type Consultant = {
     width: number;
     height: number;
     objectPosition?: string;
+  };
+  seo: {
+    title: LocalizedText;
+    description: LocalizedText;
   };
 };
 
@@ -34,11 +41,75 @@ export const consultantsSection = {
     fr: "Un réseau de consultantes expérimentées, mobilisées selon les besoins de chaque mission — formation, coaching, prévention et situations de crise.",
     en: "A network of experienced consultants, engaged according to each assignment — training, coaching, prevention and crisis situations.",
   } satisfies Record<Locale, string>,
+  cta: {
+    fr: "Voir le parcours complet",
+    en: "View full background",
+  } satisfies Record<Locale, string>,
+} as const;
+
+export const consultantPageCopy = {
+  eyebrow: {
+    fr: "Consultante affiliée · Resilience@Work",
+    en: "Affiliated consultant · Resilience@Work",
+  } satisfies Record<Locale, string>,
+  focusTitle: {
+    fr: "Domaines d’intervention",
+    en: "Areas of intervention",
+  } satisfies Record<Locale, string>,
+  methodsTitle: {
+    fr: "Approches & certifications",
+    en: "Approaches & certifications",
+  } satisfies Record<Locale, string>,
+  methodsEyebrow: {
+    fr: "Boîte à outils",
+    en: "Toolkit",
+  } satisfies Record<Locale, string>,
+  bioEyebrow: {
+    fr: "Parcours",
+    en: "Background",
+  } satisfies Record<Locale, string>,
+  bioTitle: {
+    fr: "Une expertise au service des organisations",
+    en: "Expertise in service of organisations",
+  } satisfies Record<Locale, string>,
+  relatedEyebrow: {
+    fr: "Équipe",
+    en: "Team",
+  } satisfies Record<Locale, string>,
+  relatedTitle: {
+    fr: "Autres consultantes affiliées",
+    en: "Other affiliated consultants",
+  } satisfies Record<Locale, string>,
+  contactEyebrow: {
+    fr: "Prendre contact",
+    en: "Get in touch",
+  } satisfies Record<Locale, string>,
+  contactTitle: {
+    fr: "Vous souhaitez mobiliser cette expertise ?",
+    en: "Would you like to engage this expertise?",
+  } satisfies Record<Locale, string>,
+  contactDescription: {
+    fr: "Les missions sont coordonnées par Resilience@Work. Contactez-nous pour préciser votre besoin et identifier l’accompagnement le plus adapté.",
+    en: "Assignments are coordinated by Resilience@Work. Contact us to clarify your needs and identify the most suitable support.",
+  } satisfies Record<Locale, string>,
+  contactCta: {
+    fr: "Planifier un échange",
+    en: "Schedule a conversation",
+  } satisfies Record<Locale, string>,
+  backToTeam: {
+    fr: "Retour à l’équipe",
+    en: "Back to the team",
+  } satisfies Record<Locale, string>,
+  homeCta: {
+    fr: "Site Resilience@Work",
+    en: "Resilience@Work website",
+  } satisfies Record<Locale, string>,
 } as const;
 
 export const consultants: readonly Consultant[] = [
   {
     id: "murielle-de-potesta",
+    slug: "murielle-de-potesta",
     name: "Murielle de Potesta",
     role: {
       fr: "Formatrice & coach professionnelle",
@@ -47,6 +118,20 @@ export const consultants: readonly Consultant[] = [
     lead: {
       fr: "23 ans de formation comportementale en Europe et aux États-Unis, au service du leadership et de la posture managériale.",
       en: "23 years of behavioural training across Europe and the United States, supporting leadership and managerial posture.",
+    },
+    highlight: {
+      fr: "Des outils concrets pour managers et équipes, ancrés dans l’expérience terrain et les approches comportementales.",
+      en: "Practical tools for managers and teams, grounded in field experience and behavioural approaches.",
+    },
+    seo: {
+      title: {
+        fr: "Murielle de Potesta | Consultante affiliée | Resilience@Work",
+        en: "Murielle de Potesta | Affiliated consultant | Resilience@Work",
+      },
+      description: {
+        fr: "Formatrice et coach professionnelle — communication, leadership, burnout et posture du manager coach.",
+        en: "Corporate trainer and professional coach — communication, leadership, burnout and coach-manager posture.",
+      },
     },
     focus: {
       fr: [
@@ -107,6 +192,7 @@ export const consultants: readonly Consultant[] = [
   },
   {
     id: "vanessa-wright",
+    slug: "vanessa-wright",
     name: "Vanessa Wright",
     role: {
       fr: "Formatrice, animatrice & coach",
@@ -115,6 +201,20 @@ export const consultants: readonly Consultant[] = [
     lead: {
       fr: "Plus de 20 ans d’expérience en formation, animation d’équipe et coaching d’adultes en entreprise et en institutions.",
       en: "More than 20 years of experience in training, team facilitation and adult coaching in companies and institutions.",
+    },
+    highlight: {
+      fr: "Une animation exigeante et humaine pour développer communication, intelligence émotionnelle et posture professionnelle.",
+      en: "Rigorous and human facilitation to develop communication, emotional intelligence and professional posture.",
+    },
+    seo: {
+      title: {
+        fr: "Vanessa Wright | Consultante affiliée | Resilience@Work",
+        en: "Vanessa Wright | Affiliated consultant | Resilience@Work",
+      },
+      description: {
+        fr: "Formatrice et coach — communication, risques psychosociaux, PNL et développement des compétences en entreprise.",
+        en: "Trainer and coach — communication, psychosocial risks, NLP and skills development in organisations.",
+      },
     },
     focus: {
       fr: [
@@ -173,6 +273,7 @@ export const consultants: readonly Consultant[] = [
   },
   {
     id: "rym-mimouna-herdies",
+    slug: "rym-mimouna-herdies",
     name: "Rym Mimouna-Herdies",
     role: {
       fr: "Psychologue — RPS & situations de crise",
@@ -181,6 +282,20 @@ export const consultants: readonly Consultant[] = [
     lead: {
       fr: "Près de 20 ans en psychologie clinique et risques psychosociaux au travail, y compris l’intervention d’urgence en crise.",
       en: "Nearly 20 years in clinical psychology and workplace psychosocial risks, including emergency crisis intervention.",
+    },
+    highlight: {
+      fr: "Une intervention structurée pour prévenir les risques, soutenir les équipes et accompagner les situations critiques.",
+      en: "Structured intervention to prevent risks, support teams and accompany critical situations.",
+    },
+    seo: {
+      title: {
+        fr: "Rym Mimouna-Herdies | Consultante affiliée | Resilience@Work",
+        en: "Rym Mimouna-Herdies | Affiliated consultant | Resilience@Work",
+      },
+      description: {
+        fr: "Psychologue — risques psychosociaux, intervention de crise, debriefings collectifs et bien-être au travail.",
+        en: "Psychologist — psychosocial risks, crisis intervention, collective debriefings and workplace well-being.",
+      },
     },
     focus: {
       fr: [
@@ -238,3 +353,19 @@ export const consultants: readonly Consultant[] = [
     },
   },
 ] as const;
+
+export const consultantSlugParams = consultants.map((consultant) => ({
+  slug: consultant.slug,
+}));
+
+export function getConsultantBySlug(slug: string) {
+  return consultants.find((consultant) => consultant.slug === slug);
+}
+
+export function getRelatedConsultants(slug: string) {
+  return consultants.filter((consultant) => consultant.slug !== slug);
+}
+
+export function getConsultantPath(slug: string) {
+  return `/consultants/${slug}`;
+}

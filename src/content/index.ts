@@ -5,7 +5,15 @@ export { navigation, globalCtas } from "./navigation";
 export { audiences } from "./audiences";
 export { pendingConfirmations } from "./pending-confirmations";
 export { partners, partnersSection } from "./partners";
-export { consultants, consultantsSection } from "./consultants";
+export {
+  consultants,
+  consultantsSection,
+  consultantPageCopy,
+  getConsultantBySlug,
+  getConsultantPath,
+  getRelatedConsultants,
+  consultantSlugParams,
+} from "./consultants";
 export { homePage } from "./pages/home";
 export {
   expertiseItems,
