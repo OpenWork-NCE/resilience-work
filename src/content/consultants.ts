@@ -45,6 +45,10 @@ export const consultantsSection = {
     fr: "Voir le parcours complet",
     en: "View full background",
   } satisfies Record<Locale, string>,
+  affiliatedBadge: {
+    fr: "Consultante affiliée",
+    en: "Affiliated consultant",
+  } satisfies Record<Locale, string>,
 } as const;
 
 export const consultantPageCopy = {

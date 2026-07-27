@@ -149,6 +149,7 @@ export const homePage = {
     items: [
       {
         id: "regions",
+        icon: "globe",
         label: {
           fr: "Zones d’intervention",
           en: "Areas of intervention",
@@ -157,9 +158,14 @@ export const homePage = {
           fr: "Afrique, Europe et Moyen-Orient",
           en: "Africa, Europe and the Middle East",
         } satisfies Record<Locale, string>,
+        detail: {
+          fr: "Présence terrain et accompagnement à distance, selon le contexte de chaque organisation.",
+          en: "On-site presence and remote support, tailored to each organisation’s context.",
+        } satisfies Record<Locale, string>,
       },
       {
         id: "languages",
+        icon: "languages",
         label: {
           fr: "Langues de prestation",
           en: "Service languages",
@@ -168,20 +174,30 @@ export const homePage = {
           fr: "Français, anglais et italien",
           en: "French, English and Italian",
         } satisfies Record<Locale, string>,
+        detail: {
+          fr: "Des interventions dans la langue de travail des équipes, pour plus de clarté et d’adhésion.",
+          en: "Support delivered in teams’ working language for greater clarity and buy-in.",
+        } satisfies Record<Locale, string>,
       },
       {
         id: "confidentiality",
+        icon: "shield",
         label: {
           fr: "Cadre d’intervention",
           en: "Working framework",
         } satisfies Record<Locale, string>,
         value: {
-          fr: "Approche humaine, confidentielle et pragmatique",
-          en: "Human, confidential and pragmatic approach",
+          fr: "Humaine, confidentielle et pragmatique",
+          en: "Human, confidential and pragmatic",
+        } satisfies Record<Locale, string>,
+        detail: {
+          fr: "Un cadre discret, structuré et orienté résultats, adapté aux situations sensibles.",
+          en: "A discreet, structured and results-oriented framework suited to sensitive situations.",
         } satisfies Record<Locale, string>,
       },
       {
         id: "domains",
+        icon: "layers",
         label: {
           fr: "Domaines d’expertise",
           en: "Areas of expertise",
@@ -189,6 +205,10 @@ export const homePage = {
         value: {
           fr: "Quatre expertises complémentaires",
           en: "Four complementary expertise areas",
+        } satisfies Record<Locale, string>,
+        detail: {
+          fr: "Prévention, mobilité, crise et formations, mobilisées selon le besoin réel.",
+          en: "Prevention, mobility, crisis and training, engaged according to real need.",
         } satisfies Record<Locale, string>,
       },
     ] as const,
@@ -305,8 +325,8 @@ export const homePage = {
     name: "Jocelyne Katshinda",
 
     role: {
-      fr: "Administratrice générale",
-      en: "Managing Director",
+      fr: "Fondatrice et Administratrice générale",
+      en: "Founder and Managing Director",
     } satisfies Record<Locale, string>,
 
     description: {
@@ -314,7 +334,39 @@ export const homePage = {
       en: "Jocelyne Katshinda leads Resilience@Work, an organisation specialising in psychosocial well-being, psychosocial risk prevention and support for organisations operating in international and multicultural environments.",
     } satisfies Record<Locale, string>,
 
+    highlights: [
+      {
+        id: "regions",
+        label: {
+          fr: "Afrique · Europe · Moyen-Orient",
+          en: "Africa · Europe · Middle East",
+        } satisfies Record<Locale, string>,
+      },
+      {
+        id: "focus",
+        label: {
+          fr: "Bien-être psychosocial",
+          en: "Psychosocial well-being",
+        } satisfies Record<Locale, string>,
+      },
+      {
+        id: "framework",
+        label: {
+          fr: "Cadre confidentiel et opérationnel",
+          en: "Confidential and operational framework",
+        } satisfies Record<Locale, string>,
+      },
+    ] as const,
+
     image: assets.jocelyne.portrait,
+    portfolioCta: {
+      label: {
+        fr: "Voir le parcours",
+        en: "View background",
+      } satisfies Record<Locale, string>,
+      route: "jocelyneKatshinda" as const,
+      variant: "primary" as const,
+    },
     cta: globalCtas.contactUs,
   },
 
