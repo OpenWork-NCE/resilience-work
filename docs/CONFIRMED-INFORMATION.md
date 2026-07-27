@@ -1,4 +1,4 @@
-# Informations Confirmées — Resilience@Work
+# Informations Confirmées - Resilience@Work
 
 ## ✅ Informations validées
 

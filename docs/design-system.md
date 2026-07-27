@@ -9,7 +9,7 @@
 
 ## 📐 Design Philosophy: Quiet Confidence
 
-Le design system Resilience@Work incarne le principe de **quiet confidence** — une confiance tranquille qui inspire la sérénité et la fiabilité sans chercher à impressionner artificiellement.
+Le design system Resilience@Work incarne le principe de **quiet confidence** - une confiance tranquille qui inspire la sérénité et la fiabilité sans chercher à impressionner artificiellement.
 
 ### Positionnement Perceptuel
 
@@ -482,7 +482,7 @@ xl: 1280px  // Desktop standard
 
 ---
 
-## 🎨 Aceternity UI — Usage Sélectif
+## 🎨 Aceternity UI - Usage Sélectif
 
 ### Composants Autorisés (avec retenue)
 

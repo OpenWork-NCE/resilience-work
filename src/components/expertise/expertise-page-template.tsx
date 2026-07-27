@@ -93,7 +93,7 @@ export function ExpertisePageTemplate({ locale, page }: ExpertisePageTemplatePro
         />
       </Section>
 
-      {/* Challenges + services — single climate band */}
+      {/* Challenges + services - single climate band */}
       <Section spacing="md" tone="muted">
         <div className="space-y-14">
           <ExpertiseChallengesSection

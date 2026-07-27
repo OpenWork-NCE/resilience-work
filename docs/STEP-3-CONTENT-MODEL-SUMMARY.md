@@ -1,4 +1,4 @@
-# Étape 3 — Modèle de Contenu FR/EN Complet
+# Étape 3 - Modèle de Contenu FR/EN Complet
 
 ## ✅ Livrables
 
@@ -117,7 +117,7 @@ assets.international.middleEast
 ✅ **Graphie exacte** : `Resilience@Work`
 
 ### Personne
-✅ Jocelyne Katshinda — Administratrice générale / Managing Director
+✅ Jocelyne Katshinda - Administratrice générale / Managing Director
 
 ❌ **Non présentée comme** :
 - Psychologue clinicienne (non confirmé)

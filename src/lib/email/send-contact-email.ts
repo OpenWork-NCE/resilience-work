@@ -19,7 +19,7 @@ function escapeHtml(value: string) {
 }
 
 function formatValue(value?: string) {
-  return value && value.trim() ? value.trim() : "—";
+  return value && value.trim() ? value.trim() : "-";
 }
 
 function getLabel<T extends { value: string; label: Record<"fr" | "en", string> }>(
@@ -27,7 +27,7 @@ function getLabel<T extends { value: string; label: Record<"fr" | "en", string> 
   value?: string,
   locale: "fr" | "en" = "fr"
 ) {
-  return options.find((option) => option.value === value)?.label[locale] ?? "—";
+  return options.find((option) => option.value === value)?.label[locale] ?? "-";
 }
 
 function getConditionalLines(data: ContactFormSubmission, locale: "fr" | "en") {
@@ -67,7 +67,7 @@ function getConditionalLines(data: ContactFormSubmission, locale: "fr" | "en") {
       : null,
   ].filter(Boolean);
 
-  return lines.length > 0 ? lines.join("\n") : "—";
+  return lines.length > 0 ? lines.join("\n") : "-";
 }
 
 function buildContactEmailPayload(data: ContactFormSubmission) {
@@ -86,7 +86,7 @@ function buildContactEmailPayload(data: ContactFormSubmission) {
   );
   const conditionalFields = getConditionalLines(data, locale);
 
-  const internalSubject = `[Resilience@Work] Nouvelle demande — ${subjectLabel}`;
+  const internalSubject = `[Resilience@Work] Nouvelle demande - ${subjectLabel}`;
 
   const text = [
     "Nouvelle demande depuis resilienceatwork.eu",

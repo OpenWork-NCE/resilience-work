@@ -1,4 +1,4 @@
-# Design: UI/UX enhancement — visual coherence, ergonomics, conversion
+# Design: UI/UX enhancement - visual coherence, ergonomics, conversion
 
 **Date:** 2026-07-27  
 **Project:** Resilience@Work (`resilience-at-work`)  
@@ -24,9 +24,9 @@ Raise the site from **“solid professional brochure” (~7.2/10)** to **“calm
 
 | Dimension | Decision |
 |-----------|----------|
-| Product type | B2B professional services — psychosocial prevention, mobility, crisis, training |
+| Product type | B2B professional services - psychosocial prevention, mobility, crisis, training |
 | Style target | **Trust & Authority** + restrained **Hero-centric** (ui-ux-pro-max) |
-| Mood | Calm, confidential, institutional, human — not spa, not startup neon |
+| Mood | Calm, confidential, institutional, human - not spa, not startup neon |
 | Palette | Keep navy / teal token system; no cyan-wellness rebrand |
 | Typography | Keep **Inter** (body) + **Space Grotesk** (display/accent) |
 | Motion | Subtle entrance; respect `prefers-reduced-motion`; prefer ≤360ms for section reveals |
@@ -55,9 +55,9 @@ Raise the site from **“solid professional brochure” (~7.2/10)** to **“calm
 
 | Climate | Token / tone | Allowed use |
 |---------|----------------|-------------|
-| **A — Default** | `--background` / `Section tone="default"` | Editorial body, most content |
-| **B — Muted** | `--surface-muted` or `--surface-subtle` / `tone="muted"` | Alternating sections, methodology, FAQ |
-| **C — Inverse** | `--surface-inverse` / `tone="inverse"` | Hero full-bleed, footer, **one** strong final CTA band |
+| **A - Default** | `--background` / `Section tone="default"` | Editorial body, most content |
+| **B - Muted** | `--surface-muted` or `--surface-subtle` / `tone="muted"` | Alternating sections, methodology, FAQ |
+| **C - Inverse** | `--surface-inverse` / `tone="inverse"` | Hero full-bleed, footer, **one** strong final CTA band |
 
 **Rule:** Home and marketing pages cycle **A → B → A → B → C(final)**.  
 Do not introduce a fourth climate (e.g. multi-stop marketing gradients) unless it is a variant of C using tokens only.
@@ -67,10 +67,10 @@ Do not introduce a fourth climate (e.g. multi-stop marketing gradients) unless i
 | Section | Today | Target |
 |---------|--------|--------|
 | Hero | Inverse full-bleed | **C** (keep) |
-| Highlights strip | Floating elevated card | **A** surface elevated (bridge — allowed exception as child of A, not a climate) |
+| Highlights strip | Floating elevated card | **A** surface elevated (bridge - allowed exception as child of A, not a climate) |
 | Introduction | Default | **A** |
 | Expertise | Custom subtle + border | **B** via `Section` |
-| Impact | Custom gradient | **B** or **A** — drop unique gradient |
+| Impact | Custom gradient | **B** or **A** - drop unique gradient |
 | Methodology | Muted | **B** |
 | Profile | Default + media | **A** |
 | Final CTA | Inverse gradient card | **C** panel (token gradient optional, no freehand hex) |
@@ -83,7 +83,7 @@ Do not introduce a fourth climate (e.g. multi-stop marketing gradients) unless i
 
 ### 4.3 Eyebrow (single component)
 
-**Keep one implementation only** — canonical: `src/components/ui/content.tsx` `Eyebrow` (font-accent, 0.72rem, semibold, tracking 0.16em, accent color).
+**Keep one implementation only** - canonical: `src/components/ui/content.tsx` `Eyebrow` (font-accent, 0.72rem, semibold, tracking 0.16em, accent color).
 
 | Action | Detail |
 |--------|--------|
@@ -97,7 +97,7 @@ Do not introduce a fourth climate (e.g. multi-stop marketing gradients) unless i
 |------|----------------|-------|
 | Display H1 | `font-display` + existing clamps on heroes | One H1 per page |
 | Section H2 | `SectionHeader` title styles only | Prefer not reinventing clamps per page |
-| Card / step H3 | Shared class or small `Heading` primitive | e.g. `text-xl sm:text-2xl font-semibold leading-snug` — **same everywhere** |
+| Card / step H3 | Shared class or small `Heading` primitive | e.g. `text-xl sm:text-2xl font-semibold leading-snug` - **same everywhere** |
 | Body | `text-base sm:text-lg leading-relaxed` + muted for secondary | |
 | Meta / labels | Eyebrow or `text-sm` muted | |
 
@@ -130,8 +130,8 @@ Hover: one step up max; prefer border + shadow, not large layout shift.
 | Touch | **Minimum height 44px** for all interactive CTAs in chrome and primary actions (`md` = `h-11`; deprecate `sm` for header CTA or bump `sm` to `h-11`) |
 | Primary count | **≤1 primary button** visible per viewport |
 | Header CTA | Always primary brand (or inverse-outline when on inverse header) |
-| Inverse surfaces | Use `variant="inverse"` / outline-on-inverse recipes **defined once** in `Button` — no multi-line `className` overrides in Final CTA |
-| Labels | Prefer one site-wide primary phrase (e.g. contact / schedule conversation) — align FR/EN in content/nav CTAs over time |
+| Inverse surfaces | Use `variant="inverse"` / outline-on-inverse recipes **defined once** in `Button` - no multi-line `className` overrides in Final CTA |
+| Labels | Prefer one site-wide primary phrase (e.g. contact / schedule conversation) - align FR/EN in content/nav CTAs over time |
 
 ### 4.8 Motion
 
@@ -147,7 +147,7 @@ Replace hard-coded `rgba(7,29,40,…)` gradients with mixes from `--surface-inve
 
 ---
 
-## 5. Phase A — Foundation fixes (implement first)
+## 5. Phase A - Foundation fixes (implement first)
 
 **Objective:** Coherence + first-screen ergonomics without page restructure.
 
@@ -199,7 +199,7 @@ When scrolled **or** non-home: keep current light solid/blur header.
 
 ### A8. Acceptance (Phase A)
 
-- [ ] Visual: home top of page — logo/nav readable on hero
+- [ ] Visual: home top of page - logo/nav readable on hero
 - [ ] Visual: scrolled header still light and solid
 - [ ] Eyebrow identical on Introduction vs Expertise vs Contact
 - [ ] No `h-9` primary CTA in header
@@ -209,7 +209,7 @@ When scrolled **or** non-home: keep current light solid/blur header.
 
 ---
 
-## 6. Phase B — Rhythm & page structure
+## 6. Phase B - Rhythm & page structure
 
 **Objective:** Same “language” on every marketing page; reduce cognitive load.
 
@@ -237,7 +237,7 @@ Target structure (6 blocks max):
 5. Audiences + delivery (compact meta)  
 6. Related + final CTA  
 
-Optional desktop: sticky mini-TOC (anchors) for long pages — not required if merged well.
+Optional desktop: sticky mini-TOC (anchors) for long pages - not required if merged well.
 
 ### B5. Contact page layout
 
@@ -246,8 +246,8 @@ Optional desktop: sticky mini-TOC (anchors) for long pages — not required if m
 ```
 [ Hero short ]
 [ Main: Form (2/3) | Direct contact rail (1/3) ]
-[ FAQ accordion — muted ]
-[ Optional single WhatsApp/inverse CTA — or fold WhatsApp into rail ]
+[ FAQ accordion - muted ]
+[ Optional single WhatsApp/inverse CTA - or fold WhatsApp into rail ]
 ```
 
 Remove or demote redundant mid-page marketing blocks (duplicate quick actions / delivery if already in rail).
@@ -265,7 +265,7 @@ Add icon or compact contact control next to burger (MessageCircle → contact ro
 
 ---
 
-## 7. Phase C — Trust & conversion
+## 7. Phase C - Trust & conversion
 
 **Objective:** Trust & Authority pattern without inventing social proof.
 
@@ -303,7 +303,7 @@ Only when client-approved content exists; use existing `Quote` in `ui/content.ts
 
 ---
 
-## 8. Phase D — Polish (backlog)
+## 8. Phase D - Polish (backlog)
 
 | Item | Notes |
 |------|--------|
@@ -312,7 +312,7 @@ Only when client-approved content exists; use existing `Quote` in `ui/content.ts
 | Portfolio mid-page accordion | Service details collapse on mobile |
 | Shared element card → detail | Optional, low priority |
 | Dark-mode full QA pass | Header inverse, overlays, secondary CTA |
-| About IA | Optional dedicated org page vs personal portfolio — product decision |
+| About IA | Optional dedicated org page vs personal portfolio - product decision |
 
 ---
 
@@ -385,10 +385,10 @@ Until decided: Phase A proceeds without these; Phase B/C use defaults stated in 
 
 ## 14. Implementation order (for writing-plans / execution)
 
-1. Phase A (A1–A8) — foundation  
-2. Phase B (B1–B7) — rhythm & IA  
-3. Phase C (C1–C5) — trust  
-4. Phase D — backlog only when A–C signed off  
+1. Phase A (A1–A8) - foundation  
+2. Phase B (B1–B7) - rhythm & IA  
+3. Phase C (C1–C5) - trust  
+4. Phase D - backlog only when A–C signed off  
 
 Each phase = its own implementation plan + PR if desired.
 

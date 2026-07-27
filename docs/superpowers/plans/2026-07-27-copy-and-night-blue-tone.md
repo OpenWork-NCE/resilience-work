@@ -4,7 +4,7 @@
 
 **Goal:** Lighten light-mode night-blue tokens by ~1 step and apply five bilingual editorial corrections in the content layer, without changing components or architecture.
 
-**Architecture:** All editorial copy lives in typed TypeScript modules under `src/content/`. Colors are CSS variables in `src/app/globals.css` consumed via `rgb(var(--token))`. Pages and components already read these sources — no component changes are required. Verification uses project norms: exact-string grep and `npm run validate:content` (no unit-test suite for content strings).
+**Architecture:** All editorial copy lives in typed TypeScript modules under `src/content/`. Colors are CSS variables in `src/app/globals.css` consumed via `rgb(var(--token))`. Pages and components already read these sources - no component changes are required. Verification uses project norms: exact-string grep and `npm run validate:content` (no unit-test suite for content strings).
 
 **Tech Stack:** Next.js 16 App Router, TypeScript, Tailwind CSS v4 + semantic CSS variables, next-intl, content modules in `src/content/`.
 
@@ -45,7 +45,7 @@ No new files. No component, route, type, or message JSON changes.
 - Consumes: existing CSS variable names `--foreground`, `--surface-inverse`
 - Produces: updated RGB triples consumed by any `rgb(var(--foreground))` / `rgb(var(--surface-inverse))` usage
 
-- [ ] **Step 1: Baseline — confirm current token values**
+- [ ] **Step 1: Baseline - confirm current token values**
 
 Run:
 
@@ -118,7 +118,7 @@ Expected in `:root` (before `.dark`):
 --primary: 18 79 120;
 ```
 
-Expected in `.dark` (unchanged examples — still present):
+Expected in `.dark` (unchanged examples - still present):
 
 ```
 --foreground: 234 244 246;
@@ -158,7 +158,7 @@ EOF
 - Consumes: existing `jocelyneKatshindaPage.finalContact.title` shape `Record<"fr" | "en", string>`
 - Produces: updated FR/EN title strings for portfolio final contact UI
 
-- [ ] **Step 1: Baseline — old strings present**
+- [ ] **Step 1: Baseline - old strings present**
 
 Run:
 
@@ -237,7 +237,7 @@ EOF
 
 Work through the three sub-edits in one task (same file, same commit). Do not change unrelated “risques psychosociaux”, “équilibre”, or “high-pressure” phrases outside the exact strings listed.
 
-- [ ] **Step 1: Baseline — confirm all in-scope old strings**
+- [ ] **Step 1: Baseline - confirm all in-scope old strings**
 
 Run:
 
@@ -258,9 +258,9 @@ Expected matches that **will** be changed:
 | detail psychosocial `feature("assessment", ...)` | FR + EN titles as above |
 | detail crisis `feature("manager-support", ...)` | FR title + EN `Support for managers in high-pressure contexts` |
 
-Note: other lines may match `high-pressure situations` in SEO/description copy — **leave those unchanged**.
+Note: other lines may match `high-pressure situations` in SEO/description copy - **leave those unchanged**.
 
-- [ ] **Step 2: Psychosocial — overview services bullet**
+- [ ] **Step 2: Psychosocial - overview services bullet**
 
 In the `expertiseItems` entry `id: "psychosocialPrevention"`, `services` arrays, change the first FR and EN service strings:
 
@@ -288,7 +288,7 @@ In the `expertiseItems` entry `id: "psychosocialPrevention"`, `services` arrays,
         "Psychosocial risk factor assessment",
 ```
 
-- [ ] **Step 3: Psychosocial — detail page feature title**
+- [ ] **Step 3: Psychosocial - detail page feature title**
 
 Find the `feature("assessment", ...)` call (psychosocial detail services). Change title arguments only:
 
@@ -304,7 +304,7 @@ Find the `feature("assessment", ...)` call (psychosocial detail services). Chang
       feature("assessment", "HeartPulse", "Évaluation des facteurs de risques psychosociaux", "Psychosocial risk factor assessment", "Identifier les signaux de vigilance et les facteurs de risque propres au contexte.", "Identify warning signs and risk factors specific to the context."),
 ```
 
-- [ ] **Step 4: International mobility — summary under title**
+- [ ] **Step 4: International mobility - summary under title**
 
 In the `expertiseItems` entry `id: "internationalMobility"`, `summary` object:
 
@@ -328,7 +328,7 @@ In the `expertiseItems` entry `id: "internationalMobility"`, `summary` object:
 
 Do **not** change mobility `outcomes` lines such as `Soutenir l’équilibre émotionnel`.
 
-- [ ] **Step 5: Crisis management — overview services bullet**
+- [ ] **Step 5: Crisis management - overview services bullet**
 
 In the `expertiseItems` entry `id: "crisisManagement"`, `services` arrays:
 
@@ -356,9 +356,9 @@ In the `expertiseItems` entry `id: "crisisManagement"`, `services` arrays:
         "Support for managers in a high-pressure environment",
 ```
 
-Only change the manager accompaniment service line — not other “high-pressure situations” strings in summaries/SEO.
+Only change the manager accompaniment service line - not other “high-pressure situations” strings in summaries/SEO.
 
-- [ ] **Step 6: Crisis management — detail page feature title**
+- [ ] **Step 6: Crisis management - detail page feature title**
 
 Find `feature("manager-support", "ShieldAlert", ...)` in the crisis detail services list:
 
@@ -399,7 +399,7 @@ rg -n "Psychosocial risk assessment\"|well-being and resilience|managers in high
 ```
 
 Expected: no matches for the manager-service EN titles / mobility well-being summary.  
-Note: other copy may still contain the words `high-pressure situations` in body/SEO — that is allowed. If the last command is awkward, use:
+Note: other copy may still contain the words `high-pressure situations` in body/SEO - that is allowed. If the last command is awkward, use:
 
 ```bash
 rg -n "Support for managers in high-pressure (contexts|situations)" src/content/pages/expertise.ts
@@ -422,7 +422,7 @@ EOF
 
 ---
 
-### Task 4: Publics accompagnés — ONG → Institutions internationales
+### Task 4: Publics accompagnés - ONG → Institutions internationales
 
 **Files:**
 - Modify: `src/content/audiences.ts` (audience `id: "ngos"`, ~lines 26–30)
@@ -516,7 +516,7 @@ EOF
 - Consumes: all Task 1–4 outputs
 - Produces: confidence that the branch matches the spec
 
-- [ ] **Step 1: Regression grep — old in-scope FR/EN phrases must be gone from intended files**
+- [ ] **Step 1: Regression grep - old in-scope FR/EN phrases must be gone from intended files**
 
 Run:
 
@@ -529,7 +529,7 @@ rg -n "Support for managers in high-pressure (contexts|situations)|Psychosocial 
 
 Expected: all commands exit with no matches (rg exit code 1 is OK when no matches).
 
-- [ ] **Step 2: Positive grep — new phrases present**
+- [ ] **Step 2: Positive grep - new phrases present**
 
 Run:
 
@@ -568,14 +568,14 @@ Expected: exit 0.
 
 With `npm run dev` if needed, in **light** mode:
 
-1. Any page body text — slightly softer navy, still readable  
-2. Inverse/footer-style dark band — less black, still night-blue; white text legible  
-3. Primary button — same blue as before (`18 79 120`)  
+1. Any page body text - slightly softer navy, still readable  
+2. Inverse/footer-style dark band - less black, still night-blue; white text legible  
+3. Primary button - same blue as before (`18 79 120`)  
 4. `/fr/jocelyne-katshinda` final contact title uses **directement**  
 5. `/en/jocelyne-katshinda` final contact title uses **directly**  
 6. Expertise overview / psychosocial & crisis service lists show new FR wording  
 7. Portfolio “Publics accompagnés” shows **Institutions internationales** (not ONG)  
-8. Toggle dark mode briefly — still works; no intentional dark token changes
+8. Toggle dark mode briefly - still works; no intentional dark token changes
 
 - [ ] **Step 6: Final commit only if Task 5 fixed anything**
 
@@ -584,7 +584,7 @@ If verification required small fixes, commit those fixes with a clear message. I
 Optional docs status update (only if you want the branch self-describing):
 
 ```bash
-# Optional — not required for product correctness
+# Optional - not required for product correctness
 # Update spec status line to "Implemented" in
 # docs/superpowers/specs/2026-07-27-copy-and-night-blue-tone-design.md
 ```

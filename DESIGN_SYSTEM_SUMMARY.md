@@ -274,8 +274,8 @@ Lora (variable --font-display)
 ```
 
 ### Échelle Fluide
-- `text-6xl`: clamp(3.25rem, 7vw, 6.25rem) — Hero
-- `text-5xl`: clamp(2.75rem, 5vw, 4.75rem) — Page titles
+- `text-6xl`: clamp(3.25rem, 7vw, 6.25rem) - Hero
+- `text-5xl`: clamp(2.75rem, 5vw, 4.75rem) - Page titles
 - `text-base` à `text-4xl`: Fixes
 
 ### Règle CSS Globale

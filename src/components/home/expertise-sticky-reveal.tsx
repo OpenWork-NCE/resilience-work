@@ -165,7 +165,7 @@ export function ExpertiseStickyReveal({ locale }: ExpertiseStickyRevealProps) {
                 />
               </motion.div>
             </AnimatePresence>
-            {/* Media caption: fixed dark scrim + white type — independent of theme tokens */}
+            {/* Media caption: fixed dark scrim + white type - independent of theme tokens */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent p-8 pt-24">
               <p className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-white/75">
                 {activeItem.shortTitle[locale]}

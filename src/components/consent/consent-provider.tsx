@@ -54,7 +54,7 @@ export function ConsentProvider({ children, locale }: ConsentProviderProps) {
     preferences: false,
     analytics: false,
     marketing: false,
-    // Stable SSR snapshot — real timestamps are applied after hydrate / save.
+    // Stable SSR snapshot - real timestamps are applied after hydrate / save.
     updatedAt: "",
     version: "1",
   });

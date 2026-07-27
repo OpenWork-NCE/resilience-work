@@ -32,7 +32,7 @@ export function ConsultantPortfolioPage({ locale, consultant }: ConsultantPortfo
 
   return (
     <div className="pb-28 lg:pb-0">
-      {/* Hero — portfolio style */}
+      {/* Hero - portfolio style */}
       <section className="relative isolate overflow-hidden bg-[rgb(var(--surface-inverse))] text-[rgb(var(--inverse-foreground))]">
         <div className="hero-scrim-diagonal absolute inset-0" />
         <div className="absolute inset-x-0 top-0 h-px bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_12%,transparent)]" />
@@ -232,7 +232,7 @@ export function ConsultantPortfolioPage({ locale, consultant }: ConsultantPortfo
         </Section>
       ) : null}
 
-      {/* Contact CTA — company coordinated */}
+      {/* Contact CTA - company coordinated */}
       <Section spacing="md" tone="default" containerSize="wide">
         <AnimatedSection className="relative overflow-hidden rounded-[var(--radius-2xl)] bg-[rgb(var(--surface-inverse))] px-6 py-8 text-[rgb(var(--inverse-foreground))] shadow-[var(--shadow-elevated)] sm:px-8 lg:px-12 lg:py-12">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,rgb(var(--inverse-foreground))_10%,transparent),transparent_34%)]" />

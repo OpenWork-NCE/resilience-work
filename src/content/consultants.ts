@@ -38,8 +38,8 @@ export const consultantsSection = {
     en: "Affiliated consultants",
   } satisfies Record<Locale, string>,
   description: {
-    fr: "Un réseau de consultantes expérimentées, mobilisées selon les besoins de chaque mission — formation, coaching, prévention et situations de crise.",
-    en: "A network of experienced consultants, engaged according to each assignment — training, coaching, prevention and crisis situations.",
+    fr: "Un réseau de consultantes expérimentées, mobilisées selon les besoins de chaque mission - formation, coaching, prévention et situations de crise.",
+    en: "A network of experienced consultants, engaged according to each assignment - training, coaching, prevention and crisis situations.",
   } satisfies Record<Locale, string>,
   cta: {
     fr: "Voir le parcours complet",
@@ -129,8 +129,8 @@ export const consultants: readonly Consultant[] = [
         en: "Murielle de Potesta | Affiliated consultant | Resilience@Work",
       },
       description: {
-        fr: "Formatrice et coach professionnelle — communication, leadership, burnout et posture du manager coach.",
-        en: "Corporate trainer and professional coach — communication, leadership, burnout and coach-manager posture.",
+        fr: "Formatrice et coach professionnelle - communication, leadership, burnout et posture du manager coach.",
+        en: "Corporate trainer and professional coach - communication, leadership, burnout and coach-manager posture.",
       },
     },
     focus: {
@@ -212,8 +212,8 @@ export const consultants: readonly Consultant[] = [
         en: "Vanessa Wright | Affiliated consultant | Resilience@Work",
       },
       description: {
-        fr: "Formatrice et coach — communication, risques psychosociaux, PNL et développement des compétences en entreprise.",
-        en: "Trainer and coach — communication, psychosocial risks, NLP and skills development in organisations.",
+        fr: "Formatrice et coach - communication, risques psychosociaux, PNL et développement des compétences en entreprise.",
+        en: "Trainer and coach - communication, psychosocial risks, NLP and skills development in organisations.",
       },
     },
     focus: {
@@ -239,7 +239,7 @@ export const consultants: readonly Consultant[] = [
         "Certifiée maître praticienne en PNL (NLPNL) et coach de vie, elle est aussi formée à l’hypnose ericksonienne, à la thérapie brève, à l’entretien motivationnel et à la sophrologie.",
       ],
       en: [
-        "With more than 20 years of experience in training, team facilitation and adult coaching in business settings, Vanessa works on communication and personal development across sectors — within institutions, companies and individual coaching sessions.",
+        "With more than 20 years of experience in training, team facilitation and adult coaching in business settings, Vanessa works on communication and personal development across sectors - within institutions, companies and individual coaching sessions.",
         "She facilitates workshops on communication skills, psychosocial risks, emotional intelligence, NLP, change management, public speaking and train-the-trainer practices.",
         "A certified NLP Master Practitioner (NLPNL) and life coach, she is also trained in Ericksonian hypnosis, brief therapy, motivational interviewing and sophrology.",
       ],
@@ -276,8 +276,8 @@ export const consultants: readonly Consultant[] = [
     slug: "rym-mimouna-herdies",
     name: "Rym Mimouna-Herdies",
     role: {
-      fr: "Psychologue — RPS & situations de crise",
-      en: "Psychologist — psychosocial risks & crisis situations",
+      fr: "Psychologue - RPS & situations de crise",
+      en: "Psychologist - psychosocial risks & crisis situations",
     },
     lead: {
       fr: "Près de 20 ans en psychologie clinique et risques psychosociaux au travail, y compris l’intervention d’urgence en crise.",
@@ -293,8 +293,8 @@ export const consultants: readonly Consultant[] = [
         en: "Rym Mimouna-Herdies | Affiliated consultant | Resilience@Work",
       },
       description: {
-        fr: "Psychologue — risques psychosociaux, intervention de crise, debriefings collectifs et bien-être au travail.",
-        en: "Psychologist — psychosocial risks, crisis intervention, collective debriefings and workplace well-being.",
+        fr: "Psychologue - risques psychosociaux, intervention de crise, debriefings collectifs et bien-être au travail.",
+        en: "Psychologist - psychosocial risks, crisis intervention, collective debriefings and workplace well-being.",
       },
     },
     focus: {

@@ -1,4 +1,4 @@
-# Modèle de Contenu — Resilience@Work
+# Modèle de Contenu - Resilience@Work
 
 Ce document décrit l'architecture et l'utilisation du système de contenu centralisé bilingue FR/EN.
 

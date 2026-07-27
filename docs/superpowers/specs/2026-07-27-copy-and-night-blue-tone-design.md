@@ -46,7 +46,7 @@ In light mode, the darkest brand surfaces and body text use:
 
 - `--primary`, `--primary-hover`, `--primary-active` (buttons / CTAs)
 - Entire `.dark` palette
-- Shadows / overlays (unless a later visual QA forces a tiny shadow opacity tweak — default: no)
+- Shadows / overlays (unless a later visual QA forces a tiny shadow opacity tweak - default: no)
 
 ### 4.2 Target values (~1 tone lighter)
 
@@ -82,7 +82,7 @@ All edits follow the existing bilingual shape: `{ fr: "...", en: "..." }` (or pa
 
 Capitalization: keep sentence-case as currently stored (leading capital on FR/EN strings).
 
-### 5.2 Psychosocial prevention — risk assessment wording
+### 5.2 Psychosocial prevention - risk assessment wording
 
 User request: “évaluation des risques psychosociaux” → “évaluation des facteurs de risques psychosociaux” (expertise services on the overview / “page 4” content model).
 
@@ -100,7 +100,7 @@ To keep listing and detail pages consistent, update **both** the overview servic
 - General marketing phrases like “prévenir les risques psychosociaux” (brand, home, SEO, other body copy)
 - Feature already titled “Identifier les facteurs de risque” (unchanged)
 
-### 5.3 International mobility — remove “équilibre” under title
+### 5.3 International mobility - remove “équilibre” under title
 
 **File:** `src/content/pages/expertise.ts` → `expertiseItems` item `internationalMobility` → `summary`
 
@@ -111,7 +111,7 @@ To keep listing and detail pages consistent, update **both** the overview servic
 
 **Not in scope:** other uses of “équilibre” (outcomes, training, home, about).
 
-### 5.4 Crisis management — manager accompaniment wording
+### 5.4 Crisis management - manager accompaniment wording
 
 Avoid repetition of “contexte de tension”. Update list bullet **and** matching detail service title.
 
@@ -124,7 +124,7 @@ Avoid repetition of “contexte de tension”. Update list bullet **and** matchi
 
 EN is normalized to the same target phrase on overview + detail for consistency.
 
-### 5.5 Audiences — ONG → institutions internationales
+### 5.5 Audiences - ONG → institutions internationales
 
 **File:** `src/content/audiences.ts` → audience `id: "ngos"`
 
@@ -161,11 +161,11 @@ No new modules, types, routes, or API changes.
 
 ## 7. Implementation units (for the plan)
 
-1. **Color tokens** — edit `:root` in `src/app/globals.css` only.  
-2. **Portfolio contact title** — `jocelyne-katshinda.ts`.  
-3. **Expertise copy** — three service areas in `expertise.ts` (overview + detail where mirrored).  
-4. **Audiences label** — `audiences.ts`.  
-5. **Verify** — grep for old strings; `npm run validate:content`; visual check light mode inverse + expertise/portfolio pages FR/EN.
+1. **Color tokens** - edit `:root` in `src/app/globals.css` only.  
+2. **Portfolio contact title** - `jocelyne-katshinda.ts`.  
+3. **Expertise copy** - three service areas in `expertise.ts` (overview + detail where mirrored).  
+4. **Audiences label** - `audiences.ts`.  
+5. **Verify** - grep for old strings; `npm run validate:content`; visual check light mode inverse + expertise/portfolio pages FR/EN.
 
 ## 8. Testing / verification
 

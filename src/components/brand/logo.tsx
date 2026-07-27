@@ -30,7 +30,7 @@ export const Logo = ({
   ...props
 }: LogoProps) => {
   const { height, width } = sizeStyles[size];
-  // "dark" historically meant "for dark backgrounds" — keep as alias of onDark.
+  // "dark" historically meant "for dark backgrounds" - keep as alias of onDark.
   const onDark = variant === "dark" || variant === "light" || variant === "onDark";
 
   return (

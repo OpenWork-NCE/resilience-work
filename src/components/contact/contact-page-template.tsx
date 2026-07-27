@@ -100,7 +100,7 @@ export function ContactPageTemplate({ locale }: ContactPageTemplateProps) {
               <span className="font-semibold text-[rgb(var(--foreground))]">
                 {copy.reassurance.title[locale]}
               </span>
-              {" — "}
+              {" · "}
               {copy.reassurance.description[locale]}
             </p>
             <ContactForm locale={locale} />

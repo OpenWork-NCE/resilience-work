@@ -298,7 +298,7 @@
     }
   }
 
-  /* Scrims always darken toward brand night — safe in light and dark */
+  /* Scrims always darken toward brand night - safe in light and dark */
   .hero-scrim-horizontal {
     background-image: linear-gradient(
       90deg,
@@ -328,7 +328,7 @@
   }
 }
 
-/* Partner logo marquee — outside @layer so animation is never stripped */
+/* Partner logo marquee - outside @layer so animation is never stripped */
 .partners-marquee-track {
   animation: partners-marquee 38s linear infinite;
   will-change: transform;

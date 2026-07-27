@@ -27,7 +27,7 @@ function PartnerMark({ partner, locale }: { partner: Partner; locale: Locale }) 
     >
       {partner.logos.map((logo) => {
         const scale = logo.scale ?? 1;
-        // Larger visual well: ~56–68px logo height
+        // Larger visual well: ~56-68px logo height
         const displayHeight = Math.round(60 * scale);
         const displayWidth = Math.round((logo.width / logo.height) * displayHeight);
         const maxWidth = isPair ? 120 : 220;
