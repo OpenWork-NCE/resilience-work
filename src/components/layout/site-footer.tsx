@@ -144,9 +144,12 @@ export function SiteFooter() {
             ))}
           </div>
 
-          <p>
-            © {currentYear} {brand.name}. {t("allRightsReserved")}
-          </p>
+          <div className="space-y-1 lg:text-right">
+            <p>
+              © {currentYear} {brand.name}. {t("allRightsReserved")}
+            </p>
+            <p className="text-xs text-[rgb(var(--inverse-muted-foreground))]">{t("builtBy")}</p>
+          </div>
         </div>
       </Container>
     </footer>
