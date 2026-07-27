@@ -31,7 +31,8 @@
   },
   "accessibility": {
     "skipToContent": "Aller au contenu principal",
-    "externalLink": "Ouvre un nouvel onglet"
+    "externalLink": "Ouvre un nouvel onglet",
+    "backToTop": "Remonter en haut de la page"
   },
   "home": {
     "welcome": "La résilience professionnelle en environnement multiculturel",

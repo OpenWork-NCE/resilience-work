@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "../globals.css";
 import { ConsentProvider } from "@/components/consent/consent-provider";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ScrollToTop } from "@/components/layout/scroll-to-top";
 import { SiteShell } from "@/components/layout/site-shell";
 import { SkipLink } from "@/components/layout/skip-link";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -76,6 +77,7 @@ export default async function RootLayout({
                   {children}
                 </main>
                 <SiteFooter />
+                <ScrollToTop />
               </SiteShell>
             </ThemeProvider>
           </ConsentProvider>

@@ -31,7 +31,8 @@
   },
   "accessibility": {
     "skipToContent": "Skip to main content",
-    "externalLink": "Opens in a new tab"
+    "externalLink": "Opens in a new tab",
+    "backToTop": "Back to top"
   },
   "home": {
     "welcome": "Professional resilience in multicultural environments",
