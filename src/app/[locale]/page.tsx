@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/home/hero-section";
-import { ConfidenceSection } from "@/components/home/confidence-section";
 import { PartnersMarquee } from "@/components/home/partners-marquee";
 import { IntroductionSection } from "@/components/home/introduction-section";
+import { ConfidenceSection } from "@/components/home/confidence-section";
 import { ExpertiseSection } from "@/components/home/expertise-section";
 import { ImpactSection } from "@/components/home/impact-section";
 import { MethodologySection } from "@/components/home/methodology-section";
@@ -21,6 +21,11 @@ export async function generateMetadata({
   return getPageMetadata(locale as Locale, "home");
 }
 
+/**
+ * Home order follows Trust & Authority + conversion:
+ * Hero (mission + proof) → social proof → approach → confidence →
+ * expertise → impact → method → leadership → team → final CTA.
+ */
 export default async function HomePage({
   params,
 }: {
@@ -32,9 +37,9 @@ export default async function HomePage({
   return (
     <>
       <HeroSection locale={currentLocale} />
+      <PartnersMarquee locale={currentLocale} />
       <IntroductionSection locale={currentLocale} />
       <ConfidenceSection locale={currentLocale} />
-      <PartnersMarquee locale={currentLocale} />
       <ExpertiseSection locale={currentLocale} />
       <ImpactSection locale={currentLocale} />
       <MethodologySection locale={currentLocale} />

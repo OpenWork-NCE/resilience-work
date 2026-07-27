@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
+import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -21,22 +22,26 @@ import {
   getLocalizedNavigation,
 } from "@/lib/navigation/get-navigation";
 import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
+import { headerReveal } from "@/lib/animations";
+import { useReducedMotion } from "@/lib/hooks/use-reduced-motion";
 import { cn } from "@/lib/utils";
 import type { Locale } from "@/types/content";
 
 /**
- * Header is always the solid theme chrome (same as former “scrolled” state).
- * The transparent media-over-hero style was unreadable in both light and dark.
+ * Solid theme chrome header with subtle living behaviour:
+ * entrance reveal + scroll elevation. Layout stays the trusted full-width bar.
  */
 export function SiteHeader() {
   const locale = useLocale() as Locale;
   const pathname = usePathname();
   const t = useTranslations("navigation");
   const { resolvedTheme } = useTheme();
+  const prefersReducedMotion = useReducedMotion();
   const navigationId = useId();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [themeReady, setThemeReady] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const navigationItems = getLocalizedNavigation(locale);
   const expertiseItems = getLocalizedExpertiseItems(locale);
@@ -46,6 +51,13 @@ export function SiteHeader() {
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => setThemeReady(true));
     return () => window.cancelAnimationFrame(frame);
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const handleCloseMobileMenu = (restoreFocus = false) => {
@@ -59,12 +71,25 @@ export function SiteHeader() {
 
   return (
     <>
-      <header
+      <motion.header
+        initial={prefersReducedMotion ? false : "hidden"}
+        animate="visible"
+        variants={prefersReducedMotion ? undefined : headerReveal}
         className={cn(
-          "sticky top-0 z-30 border-b border-[rgb(var(--border-muted))]",
-          "bg-[rgb(var(--background))]/95 text-[rgb(var(--foreground))] shadow-[var(--shadow-soft)]",
-          "supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--background))_94%,transparent)] supports-[backdrop-filter]:backdrop-blur-xl",
-          "transition-[background-color,border-color,box-shadow,color] duration-[var(--duration-normal)] ease-[var(--ease-standard)]"
+          "sticky top-0 z-30 border-b text-[rgb(var(--foreground))]",
+          "supports-[backdrop-filter]:backdrop-blur-xl",
+          "transition-[background-color,border-color,box-shadow] duration-[var(--duration-normal)] ease-[var(--ease-standard)]",
+          isScrolled
+            ? cn(
+                "border-[rgb(var(--border-muted))]",
+                "bg-[rgb(var(--background))]/96 shadow-[var(--shadow-card)]",
+                "supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--background))_92%,transparent)]"
+              )
+            : cn(
+                "border-[color-mix(in_srgb,rgb(var(--border-muted))_70%,transparent)]",
+                "bg-[rgb(var(--background))]/90 shadow-[var(--shadow-soft)]",
+                "supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--background))_88%,transparent)]"
+              )
         )}
       >
         <Container size="wide">
@@ -122,7 +147,7 @@ export function SiteHeader() {
             </div>
           </div>
         </Container>
-      </header>
+      </motion.header>
 
       <MobileNavigation
         isOpen={isMobileMenuOpen}

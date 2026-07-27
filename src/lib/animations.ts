@@ -138,3 +138,51 @@ export const mobileMenuReveal: Variants = {
     },
   },
 };
+
+/** Hero load choreography — longer, more cinematic than section reveals */
+export const heroStaggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.12,
+    },
+  },
+};
+
+export const heroStaggerItem: Variants = {
+  hidden: { opacity: 0, y: 22 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: motionTokens.ease.emphasized,
+    },
+  },
+};
+
+export const heroMediaReveal: Variants = {
+  hidden: { opacity: 0, scale: 1.08 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 1.1,
+      ease: motionTokens.ease.emphasized,
+    },
+  },
+};
+
+export const headerReveal: Variants = {
+  hidden: { opacity: 0, y: -10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.45,
+      ease: motionTokens.ease.out,
+    },
+  },
+};

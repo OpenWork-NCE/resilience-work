@@ -142,6 +142,41 @@ export const contactPage = {
       fr: "Prévention psychosociale, mobilité internationale, gestion de crise ou formation : nous vous invitons à nous transmettre les informations essentielles à votre demande.",
       en: "Psychosocial prevention, international mobility, crisis management or training: please share the essential information related to your enquiry.",
     } satisfies LocalizedText,
+    trustSignals: [
+      {
+        id: "confidential",
+        label: {
+          fr: "Confidentiel",
+          en: "Confidential",
+        } satisfies LocalizedText,
+        description: {
+          fr: "Cadre discret, adapté aux situations sensibles.",
+          en: "A discreet framework suited to sensitive situations.",
+        } satisfies LocalizedText,
+      },
+      {
+        id: "response",
+        label: {
+          fr: "Réponse soignée",
+          en: "Careful response",
+        } satisfies LocalizedText,
+        description: {
+          fr: "Chaque demande est lue et orientée avec attention.",
+          en: "Each enquiry is reviewed and directed carefully.",
+        } satisfies LocalizedText,
+      },
+      {
+        id: "channels",
+        label: {
+          fr: "Plusieurs canaux",
+          en: "Multiple channels",
+        } satisfies LocalizedText,
+        description: {
+          fr: "Formulaire, email, téléphone ou WhatsApp.",
+          en: "Form, email, phone or WhatsApp.",
+        } satisfies LocalizedText,
+      },
+    ] as const,
   },
 
   reassurance: {
@@ -158,8 +193,8 @@ export const contactPage = {
   form: {
     section: {
       eyebrow: {
-        fr: "Formulaire principal",
-        en: "Main form",
+        fr: "Formulaire",
+        en: "Form",
       } satisfies LocalizedText,
       title: {
         fr: "Partagez les informations utiles à votre demande",
@@ -168,6 +203,69 @@ export const contactPage = {
       description: {
         fr: "Le formulaire reste volontairement concis afin de faciliter une première prise de contact claire, simple et adaptée à votre contexte.",
         en: "The form is intentionally concise to support a clear, simple first conversation tailored to your context.",
+      } satisfies LocalizedText,
+    },
+
+    groups: {
+      identity: {
+        title: {
+          fr: "Vos coordonnées",
+          en: "Your details",
+        } satisfies LocalizedText,
+        description: {
+          fr: "Les informations nécessaires pour vous recontacter.",
+          en: "The essentials we need to get back to you.",
+        } satisfies LocalizedText,
+      },
+      request: {
+        title: {
+          fr: "Votre demande",
+          en: "Your enquiry",
+        } satisfies LocalizedText,
+        description: {
+          fr: "Précisez le sujet et le contexte utile.",
+          en: "Share the subject and useful context.",
+        } satisfies LocalizedText,
+      },
+      preferences: {
+        title: {
+          fr: "Préférences de réponse",
+          en: "Response preferences",
+        } satisfies LocalizedText,
+        description: {
+          fr: "Indiquez comment et dans quelle langue nous répondre.",
+          en: "Tell us how and in which language to respond.",
+        } satisfies LocalizedText,
+      },
+    },
+
+    errorSummary: {
+      title: {
+        fr: "Veuillez corriger les éléments suivants",
+        en: "Please correct the following items",
+      } satisfies LocalizedText,
+      description: {
+        fr: "Certains champs requis sont incomplets ou invalides.",
+        en: "Some required fields are incomplete or invalid.",
+      } satisfies LocalizedText,
+    },
+
+    successActions: {
+      title: {
+        fr: "Besoin d’un échange plus direct ?",
+        en: "Need a more direct conversation?",
+      } satisfies LocalizedText,
+      whatsapp: {
+        fr: "Continuer sur WhatsApp",
+        en: "Continue on WhatsApp",
+      } satisfies LocalizedText,
+      email: {
+        fr: "Écrire par email",
+        en: "Write by email",
+      } satisfies LocalizedText,
+      reset: {
+        fr: "Envoyer une autre demande",
+        en: "Send another enquiry",
       } satisfies LocalizedText,
     },
 

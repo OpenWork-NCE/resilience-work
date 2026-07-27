@@ -1,107 +1,205 @@
-import Image from "next/image";
+"use client";
+
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
 import { homePage } from "@/content/pages/home";
 import { Container } from "@/components/shared/container";
 import { Button } from "@/components/shared/button";
-import { AnimatedSection } from "@/components/motion/animated";
+import {
+  HeroDepthBackground,
+  useHeroDepthPointer,
+} from "@/components/home/hero-depth-background";
 import { getLocalizedCta } from "@/lib/navigation/get-navigation";
-import { Locale } from "@/types/content";
+import { useReducedMotion } from "@/lib/hooks/use-reduced-motion";
+import {
+  heroStaggerContainer,
+  heroStaggerItem,
+  motionTokens,
+} from "@/lib/animations";
+import { cn } from "@/lib/utils";
+import type { Locale } from "@/types/content";
 
 interface HeroSectionProps {
   locale: Locale;
 }
 
+/**
+ * Trust & Authority hero:
+ * - High-contrast text plane over depth photography
+ * - Primary CTA above the fold
+ * - Full trust proof rail (not desktop-only)
+ * - Motion layered but reduced-motion safe
+ */
 export function HeroSection({ locale }: HeroSectionProps) {
   const hero = homePage.hero;
   const primaryCta = getLocalizedCta(locale, "scheduleConversation");
   const secondaryCta = getLocalizedCta(locale, "discoverExpertise");
-  const heroHighlights = homePage.highlights.slice(0, 2);
+  const prefersReducedMotion = useReducedMotion();
+  const { springX, springY, onPointerMove, onPointerLeave } =
+    useHeroDepthPointer(!prefersReducedMotion);
 
   return (
-    <section className="relative isolate flex min-h-[88svh] items-end overflow-hidden bg-[rgb(var(--surface-inverse))]">
-      <Image
+    <section
+      aria-labelledby="home-hero-title"
+      className="relative isolate flex min-h-[min(100svh,56rem)] flex-col justify-end overflow-hidden bg-[rgb(var(--surface-inverse))]"
+      onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
+    >
+      <HeroDepthBackground
         src={hero.image.src}
         alt={hero.image.alt[locale]}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-        style={{ objectPosition: hero.image.objectPosition ?? "center" }}
+        objectPosition={hero.image.objectPosition}
+        prefersReducedMotion={prefersReducedMotion}
+        springX={springX}
+        springY={springY}
       />
 
-      <div className="hero-scrim-horizontal absolute inset-0" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_26%,color-mix(in_srgb,rgb(var(--accent-soft))_55%,transparent),transparent_42%)]" />
+      {/* Readability scrims — contrast first */}
+      <div className="hero-scrim-horizontal pointer-events-none absolute inset-0 z-[1]" />
+      <div className="hero-scrim-vertical pointer-events-none absolute inset-0 z-[1]" />
+      <div
+        className={cn(
+          "pointer-events-none absolute inset-0 z-[1]",
+          "bg-[radial-gradient(ellipse_70%_55%_at_12%_40%,color-mix(in_srgb,rgb(var(--surface-inverse))_55%,transparent),transparent_70%)]"
+        )}
+      />
 
-      <Container size="wide" className="relative z-10 w-full pb-14 pt-16 sm:pb-18 sm:pt-18 lg:pb-24 lg:pt-20">
-        <div className="mx-auto grid w-full max-w-[78rem] items-end gap-10 px-5 sm:px-6 xl:px-7 xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-8">
-          <div className="min-w-0 max-w-[min(44rem,100%)]">
-            <AnimatedSection>
-              <p className="mb-5 inline-flex rounded-full border border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_18%,transparent)] bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_8%,transparent)] px-4 py-2 font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,rgb(var(--inverse-foreground))_88%,transparent)] backdrop-blur-sm">
-                {hero.eyebrow[locale]}
-              </p>
-            </AnimatedSection>
+      {/* Soft brand ambience (low opacity — never fights text) */}
+      {!prefersReducedMotion ? (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-[1] overflow-hidden"
+        >
+          <div className="hero-orb hero-orb--a absolute -left-20 top-[12%] h-64 w-64 rounded-full bg-[rgb(var(--accent))] opacity-25 blur-3xl" />
+          <div className="hero-orb hero-orb--b absolute right-[4%] top-[18%] h-80 w-80 rounded-full bg-[rgb(var(--primary))] opacity-20 blur-3xl" />
+        </div>
+      ) : null}
 
-            <AnimatedSection delay={0.06}>
-              <h1 className="max-w-full text-pretty break-words font-display text-[clamp(2.45rem,9vw,4rem)] font-medium leading-[1] text-[rgb(var(--inverse-foreground))] sm:max-w-[15ch] sm:text-[clamp(3.15rem,5.8vw,4.35rem)] sm:leading-[0.98] lg:text-[clamp(3.75rem,5vw,5rem)] lg:leading-[0.93]">
-                {hero.title[locale]}
-              </h1>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.12}>
-              <p className="mt-6 max-w-xl text-[0.98rem] leading-relaxed text-[color-mix(in_srgb,rgb(var(--inverse-foreground))_88%,transparent)] sm:text-base lg:text-[1.08rem]">
-                {hero.description[locale]}
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.18}>
-              <p className="mt-5 max-w-xl border-l border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_18%,transparent)] pl-4 text-[0.92rem] leading-relaxed text-[rgb(var(--inverse-muted-foreground))] sm:text-[0.98rem] lg:text-[1rem]">
-                {hero.supportingText[locale]}
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.24}>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link href={primaryCta.href} className="block w-full sm:w-auto">
-                  <Button size="lg" className="w-full sm:w-auto" rightIcon={<ArrowRight className="h-4 w-4" />}>
-                    {primaryCta.label}
-                  </Button>
-                </Link>
-                <Link href={secondaryCta.href} className="block w-full sm:w-auto">
-                  <Button variant="onInverse" size="lg" className="w-full sm:w-auto">
-                    {secondaryCta.label}
-                  </Button>
-                </Link>
-              </div>
-            </AnimatedSection>
-          </div>
-
-          <AnimatedSection
-            delay={0.28}
-            className="hidden self-end rounded-[var(--radius-xl)] border border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_14%,transparent)] bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_8%,transparent)] p-5 backdrop-blur-md xl:block"
+      <Container
+        size="wide"
+        className="relative z-[2] w-full pb-8 pt-20 sm:pb-10 sm:pt-22 lg:pb-12 lg:pt-24"
+      >
+        <div className="mx-auto w-full max-w-[78rem] px-5 sm:px-6 xl:px-7">
+          <motion.div
+            className="max-w-[min(44rem,100%)]"
+            initial={prefersReducedMotion ? false : "hidden"}
+            animate="visible"
+            variants={prefersReducedMotion ? undefined : heroStaggerContainer}
           >
-            <div className="space-y-4">
-              {heroHighlights.map((item, index) => (
-                <div
-                  key={item.id}
-                  className={
-                    index === 0
-                      ? "border-b border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_14%,transparent)] pb-4"
-                      : ""
-                  }
+            <motion.p
+              variants={prefersReducedMotion ? undefined : heroStaggerItem}
+              className="mb-5 inline-flex max-w-full items-center gap-2 rounded-full border border-white/20 bg-black/25 px-4 py-2 font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-white/90 backdrop-blur-md"
+            >
+              <span
+                aria-hidden="true"
+                className={cn(
+                  "h-1.5 w-1.5 shrink-0 rounded-full bg-[rgb(var(--accent))]",
+                  !prefersReducedMotion && "hero-glow-pulse"
+                )}
+              />
+              <span className="truncate">{hero.eyebrow[locale]}</span>
+            </motion.p>
+
+            <motion.h1
+              id="home-hero-title"
+              variants={prefersReducedMotion ? undefined : heroStaggerItem}
+              className="max-w-full text-pretty break-words font-display text-[clamp(2.5rem,8.5vw,4.75rem)] font-medium leading-[0.98] text-white sm:max-w-[16ch] sm:leading-[0.96] lg:leading-[0.94]"
+            >
+              {hero.title[locale]}
+            </motion.h1>
+
+            <motion.p
+              variants={prefersReducedMotion ? undefined : heroStaggerItem}
+              className="mt-6 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg lg:text-[1.1rem]"
+            >
+              {hero.description[locale]}
+            </motion.p>
+
+            <motion.p
+              variants={prefersReducedMotion ? undefined : heroStaggerItem}
+              className="mt-4 max-w-lg border-l-2 border-[rgb(var(--accent))] pl-4 text-sm leading-relaxed text-white/72 sm:text-[0.98rem]"
+            >
+              {hero.supportingText[locale]}
+            </motion.p>
+
+            <motion.div
+              variants={prefersReducedMotion ? undefined : heroStaggerItem}
+              className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+            >
+              <Link href={primaryCta.href} className="block w-full sm:w-auto">
+                <Button
+                  size="lg"
+                  className="w-full min-h-12 sm:w-auto"
+                  rightIcon={<ArrowRight className="h-4 w-4" aria-hidden="true" />}
                 >
-                  <p className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[rgb(var(--inverse-muted-foreground))]">
+                  {primaryCta.label}
+                </Button>
+              </Link>
+              <Link href={secondaryCta.href} className="block w-full sm:w-auto">
+                <Button
+                  variant="onInverse"
+                  size="lg"
+                  className="w-full min-h-12 border-white/25 bg-white/10 text-white hover:bg-white/16 sm:w-auto"
+                >
+                  {secondaryCta.label}
+                </Button>
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* Trust proof rail — always visible, above the fold on large screens */}
+          <motion.div
+            initial={
+              prefersReducedMotion ? false : { opacity: 0, y: 18 }
+            }
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: prefersReducedMotion ? 0 : 0.42,
+              duration: 0.5,
+              ease: motionTokens.ease.emphasized,
+            }}
+            className="mt-10 sm:mt-12 lg:mt-14"
+          >
+            <ul
+              className={cn(
+                "grid gap-px overflow-hidden rounded-[var(--radius-2xl)]",
+                "border border-white/15 bg-white/15 shadow-[var(--shadow-elevated)] backdrop-blur-xl",
+                "sm:grid-cols-2 xl:grid-cols-4"
+              )}
+            >
+              {homePage.highlights.map((item) => (
+                <li
+                  key={item.id}
+                  className="bg-[color-mix(in_srgb,rgb(var(--surface-inverse))_55%,transparent)] px-5 py-5 sm:px-6 sm:py-6"
+                >
+                  <p className="font-[family:var(--font-accent)] text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
                     {item.label[locale]}
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-[color-mix(in_srgb,rgb(var(--inverse-foreground))_88%,transparent)]">
+                  <p className="mt-2.5 text-sm font-medium leading-snug text-white sm:text-[0.98rem]">
                     {item.value[locale]}
                   </p>
-                </div>
+                </li>
               ))}
-            </div>
-          </AnimatedSection>
+            </ul>
+          </motion.div>
         </div>
       </Container>
+
+      {!prefersReducedMotion ? (
+        <motion.div
+          aria-hidden="true"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.45 }}
+          className="pointer-events-none absolute bottom-3 left-1/2 z-[2] hidden -translate-x-1/2 flex-col items-center gap-1 md:flex"
+        >
+          <span className="font-[family:var(--font-accent)] text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-white/55">
+            {hero.scrollHint[locale]}
+          </span>
+          <ChevronDown className="hero-scroll-hint h-4 w-4 text-white/70" />
+        </motion.div>
+      ) : null}
     </section>
   );
 }

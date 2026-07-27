@@ -302,10 +302,20 @@
   .hero-scrim-horizontal {
     background-image: linear-gradient(
       90deg,
-      color-mix(in srgb, rgb(var(--surface-inverse)) 94%, black) 0%,
-      color-mix(in srgb, rgb(var(--surface-inverse)) 84%, transparent) 38%,
-      color-mix(in srgb, rgb(var(--surface-inverse)) 38%, transparent) 68%,
-      color-mix(in srgb, rgb(var(--surface-inverse)) 12%, transparent) 100%
+      color-mix(in srgb, rgb(var(--surface-inverse)) 96%, black) 0%,
+      color-mix(in srgb, rgb(var(--surface-inverse)) 88%, transparent) 34%,
+      color-mix(in srgb, rgb(var(--surface-inverse)) 42%, transparent) 62%,
+      color-mix(in srgb, rgb(var(--surface-inverse)) 14%, transparent) 100%
+    );
+  }
+
+  /* Bottom scrim: keeps trust rail + CTA legible on mobile/photo */
+  .hero-scrim-vertical {
+    background-image: linear-gradient(
+      180deg,
+      color-mix(in srgb, rgb(var(--surface-inverse)) 28%, transparent) 0%,
+      color-mix(in srgb, rgb(var(--surface-inverse)) 18%, transparent) 42%,
+      color-mix(in srgb, rgb(var(--surface-inverse)) 78%, black) 100%
     );
   }
 
@@ -347,10 +357,177 @@
   }
 }
 
+/* Hero — living cinematic ambience + depth layers */
+.hero-depth-scene {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.hero-depth-far {
+  animation: hero-depth-far 32s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.hero-depth-mid {
+  animation: hero-depth-mid 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.hero-depth-near {
+  animation: hero-depth-near 20s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.hero-orb {
+  will-change: transform, opacity;
+}
+
+.hero-orb--a {
+  animation: hero-orb-drift-a 14s ease-in-out infinite;
+}
+
+.hero-orb--b {
+  animation: hero-orb-drift-b 18s ease-in-out infinite;
+}
+
+.hero-orb--c {
+  animation: hero-orb-drift-c 16s ease-in-out infinite;
+}
+
+.hero-glow-pulse {
+  animation: hero-glow-pulse 7s ease-in-out infinite;
+}
+
+.hero-scroll-hint {
+  animation: hero-scroll-hint 2.2s ease-in-out infinite;
+}
+
+/* Far plane: slower, larger, soft blur = background depth */
+@keyframes hero-depth-far {
+  0% {
+    transform: scale(1.18) translate3d(0%, 0%, -40px);
+  }
+  50% {
+    transform: scale(1.24) translate3d(-2.2%, -1.4%, -40px);
+  }
+  100% {
+    transform: scale(1.2) translate3d(1.6%, -0.8%, -40px);
+  }
+}
+
+/* Mid plane: main photographic layer */
+@keyframes hero-depth-mid {
+  0% {
+    transform: scale(1.08) translate3d(0%, 0%, 0);
+  }
+  40% {
+    transform: scale(1.14) translate3d(-1.6%, -1.1%, 0);
+  }
+  100% {
+    transform: scale(1.12) translate3d(1.2%, 0.6%, 0);
+  }
+}
+
+/* Near haze: faster micro-drift in front of the photo */
+@keyframes hero-depth-near {
+  0% {
+    transform: scale(1.04) translate3d(0%, 0%, 24px);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.1) translate3d(1.8%, -1.2%, 24px);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.06) translate3d(-1.4%, 0.9%, 24px);
+    opacity: 0.4;
+  }
+}
+
+@keyframes hero-orb-drift-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate3d(18px, -28px, 0) scale(1.08);
+    opacity: 0.85;
+  }
+}
+
+@keyframes hero-orb-drift-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate3d(-22px, 16px, 0) scale(1.12);
+    opacity: 0.7;
+  }
+}
+
+@keyframes hero-orb-drift-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate3d(12px, 22px, 0);
+    opacity: 0.6;
+  }
+}
+
+@keyframes hero-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+@keyframes hero-scroll-hint {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate3d(0, 8px, 0);
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .partners-marquee-track {
     animation: none !important;
     will-change: auto;
+  }
+
+  .hero-depth-far,
+  .hero-depth-mid,
+  .hero-depth-near,
+  .hero-orb,
+  .hero-orb--a,
+  .hero-orb--b,
+  .hero-orb--c,
+  .hero-glow-pulse,
+  .hero-scroll-hint {
+    animation: none !important;
+    will-change: auto;
+  }
+
+  .hero-depth-far,
+  .hero-depth-mid {
+    transform: scale(1.06) !important;
+  }
+
+  .hero-depth-near {
+    opacity: 0.25 !important;
   }
 
   *,

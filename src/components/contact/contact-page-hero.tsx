@@ -1,7 +1,14 @@
-import { AnimatedSection } from "@/components/motion/animated";
+import { Clock3, MessageSquare, ShieldCheck } from "lucide-react";
+import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/motion/animated";
 import { Breadcrumbs, type BreadcrumbItem } from "@/components/navigation/breadcrumbs";
 import { Container } from "@/components/shared/container";
 import type { Locale } from "@/types/content";
+
+interface TrustSignal {
+  id: string;
+  label: string;
+  description: string;
+}
 
 interface ContactPageHeroProps {
   locale: Locale;
@@ -10,7 +17,14 @@ interface ContactPageHeroProps {
   description: string;
   supportingText: string;
   breadcrumbs: BreadcrumbItem[];
+  trustSignals: readonly TrustSignal[];
 }
+
+const trustIconMap = {
+  confidential: ShieldCheck,
+  response: Clock3,
+  channels: MessageSquare,
+} as const;
 
 export function ContactPageHero({
   locale,
@@ -19,15 +33,20 @@ export function ContactPageHero({
   description,
   supportingText,
   breadcrumbs,
+  trustSignals,
 }: ContactPageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-[rgb(var(--surface-subtle))] py-[var(--section-space-md)]">
+    <section className="relative overflow-hidden border-b border-[rgb(var(--border-muted))] bg-[rgb(var(--surface-subtle))] py-[var(--section-space-md)]">
       <div
-        className="absolute right-0 top-0 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,rgb(var(--accent))_16%,transparent),transparent_68%)] blur-3xl"
         aria-hidden="true"
-      />
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+      >
+        <div className="absolute -right-20 top-0 h-72 w-72 rounded-full bg-[rgb(var(--accent))] opacity-[0.08] blur-3xl" />
+        <div className="absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-[rgb(var(--primary))] opacity-[0.06] blur-3xl" />
+      </div>
+
       <Container size="page" className="relative">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,22rem)] lg:items-end">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,22rem)] lg:items-end lg:gap-12">
           <div className="min-w-0">
             <AnimatedSection>
               <Breadcrumbs
@@ -41,7 +60,7 @@ export function ContactPageHero({
               </p>
             </AnimatedSection>
             <AnimatedSection delay={0.08} className="mt-4">
-              <h1 className="max-w-[12ch] font-display text-[clamp(2.5rem,8vw,4.3rem)] font-medium leading-[0.98] text-balance">
+              <h1 className="max-w-[14ch] font-display text-[clamp(2.5rem,8vw,4.2rem)] font-medium leading-[0.98] text-balance">
                 {title}
               </h1>
             </AnimatedSection>
@@ -49,25 +68,36 @@ export function ContactPageHero({
               <p className="text-base leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-lg">
                 {description}
               </p>
-              <p className="mt-4 border-l border-[rgb(var(--border-strong))] pl-4 text-sm leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-base">
+              <p className="mt-4 border-l-2 border-[rgb(var(--accent))] pl-4 text-sm leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-base">
                 {supportingText}
               </p>
             </AnimatedSection>
           </div>
 
-          <AnimatedSection
-            delay={0.1}
-            className="relative hidden min-h-[16rem] overflow-hidden rounded-[var(--radius-2xl)] border border-[rgb(var(--border-muted))] bg-[linear-gradient(180deg,color-mix(in_srgb,rgb(var(--surface))_88%,transparent),color-mix(in_srgb,rgb(var(--surface-muted))_92%,transparent))] shadow-[var(--shadow-soft)] lg:block"
-          >
-            <div className="absolute inset-x-6 top-6 h-px bg-[rgb(var(--border-muted))]" />
-            <div className="absolute left-6 top-10 h-24 w-24 rounded-full border border-[color-mix(in_srgb,rgb(var(--accent))_22%,transparent)]" />
-            <div className="absolute bottom-8 right-8 h-32 w-32 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,rgb(var(--accent))_18%,transparent),transparent_72%)]" />
-            <div className="absolute inset-x-8 bottom-8 space-y-3">
-              <div className="h-3 w-24 rounded-full bg-[rgb(var(--accent-soft))]" />
-              <div className="h-3 w-40 rounded-full bg-[rgb(var(--surface-muted))]" />
-              <div className="h-3 w-32 rounded-full bg-[rgb(var(--surface-muted))]" />
-            </div>
-          </AnimatedSection>
+          <StaggerContainer className="grid gap-3">
+            {trustSignals.map((signal) => {
+              const Icon =
+                trustIconMap[signal.id as keyof typeof trustIconMap] ?? ShieldCheck;
+
+              return (
+                <StaggerItem key={signal.id}>
+                  <div className="flex gap-3.5 rounded-[var(--radius-xl)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))] p-4 shadow-[var(--shadow-soft)]">
+                    <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[rgb(var(--accent-soft))] text-[rgb(var(--accent-foreground))]">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-[rgb(var(--foreground))]">
+                        {signal.label}
+                      </p>
+                      <p className="mt-1 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
+                        {signal.description}
+                      </p>
+                    </div>
+                  </div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
         </div>
       </Container>
     </section>

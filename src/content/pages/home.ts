@@ -20,8 +20,13 @@ export const homePage = {
     } satisfies Record<Locale, string>,
 
     supportingText: {
-      fr: "Nous intervenons pour prévenir les risques psychosociaux, renforcer la santé mentale au travail et soutenir durablement la performance humaine des organisations.",
-      en: "We help prevent psychosocial risks, strengthen workplace mental health and sustain long-term human performance within organisations.",
+      fr: "Prévention des risques psychosociaux, santé mentale au travail et performance humaine durable.",
+      en: "Psychosocial risk prevention, workplace mental health and sustainable human performance.",
+    } satisfies Record<Locale, string>,
+
+    scrollHint: {
+      fr: "Découvrir",
+      en: "Explore",
     } satisfies Record<Locale, string>,
 
     primaryCta: globalCtas.scheduleConversation,
