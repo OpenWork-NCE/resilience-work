@@ -9,7 +9,11 @@ import { localizePathname } from "@/lib/navigation/get-localized-href";
 
 const locales: readonly Locale[] = ["fr", "en"];
 
-export function LocaleSwitcher() {
+interface LocaleSwitcherProps {
+  inverse?: boolean;
+}
+
+export function LocaleSwitcher({ inverse = false }: LocaleSwitcherProps) {
   const currentLocale = useLocale() as Locale;
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -19,7 +23,15 @@ export function LocaleSwitcher() {
   const basePath = localizePathname(currentLocale, pathname);
 
   return (
-    <div aria-label={t("switchLanguage")} className="inline-flex items-center gap-1 rounded-full border border-[rgb(var(--border))] bg-[rgb(var(--surface))] p-1">
+    <div
+      aria-label={t("switchLanguage")}
+      className={cn(
+        "inline-flex items-center gap-1 rounded-full border p-1",
+        inverse
+          ? "border-white/20 bg-white/10"
+          : "border-[rgb(var(--border))] bg-[rgb(var(--surface))]"
+      )}
+    >
       <span className="sr-only">{t("currentLanguage")}</span>
       {locales.map((locale) => {
         const href = `${localizePathname(locale, basePath)}${search ? `?${search}` : ""}`;
@@ -34,10 +46,17 @@ export function LocaleSwitcher() {
             aria-current={isActive ? "true" : undefined}
             className={cn(
               "inline-flex min-w-11 items-center justify-center rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] transition-colors",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--background))]",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
+              inverse
+                ? "focus-visible:ring-offset-transparent"
+                : "focus-visible:ring-offset-[rgb(var(--background))]",
               isActive
-                ? "bg-[rgb(var(--primary))] text-[rgb(var(--primary-foreground))]"
-                : "text-[rgb(var(--muted-foreground))] hover:text-[rgb(var(--foreground))]"
+                ? inverse
+                  ? "bg-white text-[rgb(var(--surface-inverse))]"
+                  : "bg-[rgb(var(--primary))] text-[rgb(var(--primary-foreground))]"
+                : inverse
+                  ? "text-white/75 hover:text-white"
+                  : "text-[rgb(var(--muted-foreground))] hover:text-[rgb(var(--foreground))]"
             )}
           >
             {locale}

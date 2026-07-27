@@ -6,17 +6,22 @@ import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 
-export function ThemeToggle() {
+interface ThemeToggleProps {
+  inverse?: boolean;
+}
+
+export function ThemeToggle({ inverse = false }: ThemeToggleProps) {
   const { resolvedTheme, setTheme } = useTheme();
   const t = useTranslations("theme");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = window.requestAnimationFrame(() => {
+      setMounted(true);
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
-  // Keep SSR and the first client render identical so hydration cannot
-  // diverge on system theme / localStorage.
   const isDark = mounted && resolvedTheme === "dark";
   const label = isDark ? t("switchToLight") : t("switchToDark");
 
@@ -30,9 +35,11 @@ export function ThemeToggle() {
         setTheme(isDark ? "light" : "dark");
       }}
       className={cn(
-        "inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border border-[rgb(var(--border))]",
-        "bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] transition-colors hover:bg-[rgb(var(--surface-muted))]",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--background))]"
+        "inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border transition-colors",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
+        inverse
+          ? "border-white/20 bg-white/10 text-white hover:bg-white/18 focus-visible:ring-offset-transparent"
+          : "border-[rgb(var(--border))] bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--surface-muted))] focus-visible:ring-offset-[rgb(var(--background))]"
       )}
     >
       {mounted ? (

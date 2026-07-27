@@ -83,7 +83,8 @@ export function ExpertisePageTemplate({ locale, page }: ExpertisePageTemplatePro
         breadcrumbs={breadcrumbs}
         contactHref={getLocalizedHref(locale, "contact")}
       />
-      <Section spacing="md">
+
+      <Section spacing="md" tone="default">
         <ExpertiseEditorialIntro
           locale={locale}
           eyebrow={locale === "fr" ? "Introduction" : "Introduction"}
@@ -91,36 +92,61 @@ export function ExpertisePageTemplate({ locale, page }: ExpertisePageTemplatePro
           paragraphs={page.introduction[locale]}
         />
       </Section>
+
+      {/* Challenges + services — single climate band */}
       <Section spacing="md" tone="muted">
-        <ExpertiseChallengesSection locale={locale} title={page.challengesTitle[locale]} items={page.challenges} />
+        <div className="space-y-14">
+          <ExpertiseChallengesSection
+            locale={locale}
+            title={page.challengesTitle[locale]}
+            items={page.challenges}
+          />
+          <ExpertiseServicesGrid
+            locale={locale}
+            title={page.servicesTitle[locale]}
+            items={page.services}
+          />
+        </div>
       </Section>
-      <Section spacing="md">
-        <ExpertiseServicesGrid locale={locale} title={page.servicesTitle[locale]} items={page.services} />
+
+      {/* Outcomes + process */}
+      <Section spacing="md" tone="default">
+        <div className="space-y-14">
+          <ExpertiseOutcomesSection
+            locale={locale}
+            title={page.outcomesTitle[locale]}
+            items={page.outcomes}
+          />
+          <div id="process">
+            <ExpertiseProcessSection locale={locale} items={page.process} />
+          </div>
+        </div>
       </Section>
-      <Section spacing="md">
-        <ExpertiseOutcomesSection locale={locale} title={page.outcomesTitle[locale]} items={page.outcomes} />
-      </Section>
-      <Section id="process" spacing="md" tone="muted">
-        <ExpertiseProcessSection locale={locale} items={page.process} />
-      </Section>
-      <Section spacing="md">
-        <ExpertiseAudiencesSection locale={locale} audienceIds={page.audiences} />
-      </Section>
+
+      {/* Audiences + delivery meta */}
       <Section spacing="md" tone="muted">
-        <ExpertiseDeliverySection locale={locale} delivery={page.delivery} />
+        <div className="space-y-14">
+          <ExpertiseAudiencesSection locale={locale} audienceIds={page.audiences} />
+          <ExpertiseDeliverySection locale={locale} delivery={page.delivery} />
+        </div>
       </Section>
-      <Section spacing="md">
-        <ExpertiseRelatedServices locale={locale} ids={page.relatedExpertiseIds} />
-      </Section>
-      <Section spacing="md">
-        <ExpertiseFinalCta
-          locale={locale}
-          title={page.finalCta.title[locale]}
-          description={page.finalCta.description[locale]}
-          note={locale === "fr" ? "Échangeons afin d’identifier la forme d’accompagnement la plus pertinente." : "Let’s discuss the most appropriate form of support."}
-          primaryCta={page.finalCta.primaryCta}
-          secondaryCta={page.finalCta.secondaryCta}
-        />
+
+      <Section spacing="md" tone="default">
+        <div className="space-y-14">
+          <ExpertiseRelatedServices locale={locale} ids={page.relatedExpertiseIds} />
+          <ExpertiseFinalCta
+            locale={locale}
+            title={page.finalCta.title[locale]}
+            description={page.finalCta.description[locale]}
+            note={
+              locale === "fr"
+                ? "Échangeons afin d’identifier la forme d’accompagnement la plus pertinente."
+                : "Let’s discuss the most appropriate form of support."
+            }
+            primaryCta={page.finalCta.primaryCta}
+            secondaryCta={page.finalCta.secondaryCta}
+          />
+        </div>
       </Section>
     </>
   );

@@ -3,7 +3,7 @@ import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react';
 import Link from 'next/link';
 
 interface ButtonBaseProps {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'inverse';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'inverse' | 'outlineInverse' | 'onInverse';
   size?: 'sm' | 'md' | 'lg' | 'icon';
   isLoading?: boolean;
   leftIcon?: ReactNode;
@@ -24,21 +24,27 @@ const variantStyles = {
   secondary:
     'bg-[rgb(var(--secondary))] text-[rgb(var(--secondary-foreground))] hover:bg-[rgb(var(--secondary-hover))] border border-[rgb(var(--border))]',
   outline:
-    'border border-[rgb(var(--border-strong))] hover:bg-[rgb(var(--surface-muted))] hover:border-[rgb(var(--primary))]',
-  ghost: 'hover:bg-[rgb(var(--surface-muted))]',
+    'border border-[rgb(var(--border-strong))] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--surface-muted))] hover:border-[rgb(var(--primary))]',
+  ghost: 'text-[rgb(var(--foreground))] hover:bg-[rgb(var(--surface-muted))]',
   link: 'text-[rgb(var(--primary))] hover:text-[rgb(var(--primary-hover))] hover:underline',
   inverse:
-    'bg-[rgb(var(--surface-inverse))] text-[rgb(var(--background))] hover:opacity-90',
+    'bg-[rgb(var(--inverse-foreground))] text-[rgb(var(--surface-inverse))] hover:bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_92%,rgb(var(--surface-inverse)))]',
+  outlineInverse:
+    'border border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_28%,transparent)] bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_8%,transparent)] text-[rgb(var(--inverse-foreground))] hover:bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_14%,transparent)] hover:border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_40%,transparent)]',
+  onInverse:
+    'border border-white/25 bg-white/12 text-white backdrop-blur-sm hover:bg-white/20',
 };
 
+// sm/md meet ≥44px touch target; icon is 44×44.
 const sizeStyles = {
-  sm: 'h-9 px-4 text-sm',
+  sm: 'h-11 px-4 text-sm',
   md: 'h-11 px-6 text-base',
   lg: 'h-14 px-8 text-lg',
-  icon: 'h-10 w-10',
+  icon: 'h-11 w-11',
 };
 
-const baseStyles = 'inline-flex items-center justify-center gap-2 rounded-[var(--radius-md)] font-medium transition-all duration-[var(--duration-normal)] ease-[var(--ease-standard)] focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none hover:-translate-y-px active:translate-y-0';
+const baseStyles =
+  'inline-flex items-center justify-center gap-2 rounded-[var(--radius-md)] font-medium transition-all duration-[var(--duration-normal)] ease-[var(--ease-standard)] focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none hover:-translate-y-px active:translate-y-0 cursor-pointer';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children, variant = 'primary', size = 'md', isLoading = false, leftIcon, rightIcon, className, disabled, ...props }, ref) => {
@@ -46,17 +52,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         disabled={disabled || isLoading}
-        className={cn(
-          baseStyles,
-          variantStyles[variant],
-          sizeStyles[size],
-          className
-        )}
+        className={cn(baseStyles, variantStyles[variant], sizeStyles[size], className)}
         {...props}
       >
         {isLoading ? (
           <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-        ) : leftIcon}
+        ) : (
+          leftIcon
+        )}
         {children}
         {!isLoading && rightIcon}
       </button>
@@ -73,12 +76,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
         ref={ref}
         href={href}
         locale={locale}
-        className={cn(
-          baseStyles,
-          variantStyles[variant],
-          sizeStyles[size],
-          className
-        )}
+        className={cn(baseStyles, variantStyles[variant], sizeStyles[size], className)}
         {...props}
       >
         {leftIcon}
@@ -110,7 +108,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         ref={ref}
         aria-label={label}
         className={cn(
-          'inline-flex items-center justify-center h-10 w-10 rounded-[var(--radius-md)] transition-colors duration-[var(--duration-normal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none',
+          'inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-[var(--radius-md)] transition-colors duration-[var(--duration-normal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
           iconVariants[variant],
           className
         )}

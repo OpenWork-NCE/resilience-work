@@ -10,9 +10,14 @@ import { NavigationLink } from "@/components/navigation/navigation-link";
 interface DesktopNavigationProps {
   items: ResolvedNavigationItem[];
   expertiseItems: ResolvedExpertiseItem[];
+  inverse?: boolean;
 }
 
-export function DesktopNavigation({ items, expertiseItems }: DesktopNavigationProps) {
+export function DesktopNavigation({
+  items,
+  expertiseItems,
+  inverse = false,
+}: DesktopNavigationProps) {
   const pathname = usePathname();
   const t = useTranslations("navigation");
 
@@ -29,6 +34,7 @@ export function DesktopNavigation({ items, expertiseItems }: DesktopNavigationPr
             items={expertiseItems}
             currentPathname={pathname}
             buttonLabel={t("expertiseMenu")}
+            inverse={inverse}
           />
         ) : (
           <NavigationLink
@@ -36,6 +42,7 @@ export function DesktopNavigation({ items, expertiseItems }: DesktopNavigationPr
             href={item.href}
             label={item.label}
             isActive={isActiveRoute(pathname, item.href, { exact: item.route === "home" })}
+            inverse={inverse}
           />
         )
       )}

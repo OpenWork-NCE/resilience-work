@@ -81,7 +81,8 @@
   --accent-foreground: 10 61 76;
 
   --muted: 234 243 245;
-  --muted-foreground: 88 113 125;
+  /* Slightly deeper for AA on surface-muted (~4.5:1+) */
+  --muted-foreground: 70 96 108;
 
   --success: 47 118 104;
   --success-soft: 221 239 234;
@@ -92,6 +93,11 @@
 
   --overlay-soft: rgba(8, 42, 57, 0.08);
   --overlay-strong: rgba(7, 29, 40, 0.72);
+  /* Hero scrims derived from night surface (keep in sync with --surface-inverse) */
+  --hero-scrim-from: color-mix(in srgb, rgb(var(--surface-inverse)) 92%, black);
+  --hero-scrim-mid: color-mix(in srgb, rgb(var(--surface-inverse)) 78%, transparent);
+  --hero-scrim-soft: color-mix(in srgb, rgb(var(--surface-inverse)) 30%, transparent);
+  --hero-scrim-fade: color-mix(in srgb, rgb(var(--surface-inverse)) 8%, transparent);
 
   /* Shadows */
   --shadow-soft: 0 8px 28px rgba(11, 55, 72, 0.06);
@@ -218,34 +224,6 @@
   --shadow-floating: 0 28px 72px rgba(0, 0, 0, 0.52);
 }
 
-@layer base {
-  html,
-  body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: clip;
-  }
-
-  * {
-    border-color: rgb(var(--border));
-  }
-  
-  body {
-    background-color: rgb(var(--background));
-    color: rgb(var(--foreground));
-    font-feature-settings: "rlig" 1, "calt" 1;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,
@@ -257,6 +235,10 @@
 }
 
 @layer base {
+  html {
+    scroll-padding-top: 5.5rem;
+  }
+
   html,
   body {
     width: 100%;
@@ -267,7 +249,7 @@
   * {
     border-color: rgb(var(--border));
   }
-  
+
   body {
     background-color: rgb(var(--background));
     color: rgb(var(--foreground));
@@ -278,7 +260,12 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
     font-weight: 500;
     letter-spacing: -0.03em;
@@ -293,6 +280,39 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .heading-card {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: rgb(var(--foreground));
+  }
+
+  @media (min-width: 640px) {
+    .heading-card {
+      font-size: 1.5rem;
+    }
+  }
+
+  .hero-scrim-horizontal {
+    background-image: linear-gradient(
+      90deg,
+      color-mix(in srgb, rgb(var(--surface-inverse)) 92%, black) 0%,
+      color-mix(in srgb, rgb(var(--surface-inverse)) 82%, transparent) 38%,
+      color-mix(in srgb, rgb(var(--surface-inverse)) 32%, transparent) 68%,
+      color-mix(in srgb, rgb(var(--surface-inverse)) 8%, transparent) 100%
+    );
+  }
+
+  .hero-scrim-diagonal {
+    background-image:
+      radial-gradient(circle at top left, color-mix(in srgb, white 12%, transparent), transparent 34%),
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, rgb(var(--surface-inverse)) 94%, black),
+        color-mix(in srgb, rgb(var(--surface-inverse)) 88%, transparent)
+      );
   }
 
   .reading-width {

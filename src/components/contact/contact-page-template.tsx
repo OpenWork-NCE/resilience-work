@@ -63,6 +63,10 @@ export function ContactPageTemplate({ locale }: ContactPageTemplateProps) {
     },
   };
 
+  const primaryActions = copy.directContact.actions.filter((action) =>
+    ["whatsapp", "phone", "email", "vcard"].includes(action.id)
+  );
+
   return (
     <>
       <Script
@@ -80,65 +84,41 @@ export function ContactPageTemplate({ locale }: ContactPageTemplateProps) {
         breadcrumbs={breadcrumbs}
       />
 
-      <Section spacing="sm">
-        <AnimatedSection>
-          <div className="rounded-[var(--radius-2xl)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))] px-6 py-6 shadow-[var(--shadow-soft)] sm:px-8">
-            <p className="font-[family:var(--font-accent)] text-xs font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
-              {copy.reassurance.title[locale]}
-            </p>
-            <p className="mt-3 max-w-[48rem] text-base leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-lg">
+      {/* Main conversion band: form + direct contact rail */}
+      <Section spacing="md" tone="default" containerSize="wide">
+        <div className="grid gap-10 xl:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] xl:items-start xl:gap-12">
+          <div>
+            <SectionHeader
+              eyebrow={copy.form.section.eyebrow[locale]}
+              title={copy.form.section.title[locale]}
+              description={copy.form.section.description[locale]}
+              align="left"
+              maxWidth="wide"
+              className="mb-8 lg:mb-10"
+            />
+            <p className="mb-6 rounded-[var(--radius-xl)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface-muted))] px-5 py-4 text-sm leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-base">
+              <span className="font-semibold text-[rgb(var(--foreground))]">
+                {copy.reassurance.title[locale]}
+              </span>
+              {" — "}
               {copy.reassurance.description[locale]}
             </p>
+            <ContactForm locale={locale} />
           </div>
-        </AnimatedSection>
-      </Section>
 
-      <Section spacing="md">
-        <SectionHeader
-          eyebrow={copy.form.section.eyebrow[locale]}
-          title={copy.form.section.title[locale]}
-          description={copy.form.section.description[locale]}
-          align="left"
-          maxWidth="wide"
-        />
-        <ContactForm locale={locale} />
-      </Section>
-
-      <Section spacing="md" tone="muted">
-        <div className="grid gap-8 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] xl:items-start">
-          <AnimatedSection className="order-2 xl:order-1">
-            <div className="rounded-[var(--radius-2xl)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))] p-6 shadow-[var(--shadow-card)] sm:p-8">
-              <p className="font-[family:var(--font-accent)] text-xs font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
+          <aside className="xl:sticky xl:top-28">
+            <AnimatedSection className="rounded-[var(--radius-2xl)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))] p-6 shadow-[var(--shadow-card)] sm:p-7">
+              <p className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
                 {copy.directContact.eyebrow[locale]}
               </p>
-              <h2 className="mt-4 max-w-[14ch] font-display text-[clamp(2.1rem,5vw,3.3rem)] font-medium leading-[1.02] text-balance">
+              <h2 className="mt-3 font-display text-[clamp(1.75rem,3.5vw,2.35rem)] font-medium leading-[1.05] text-balance">
                 {copy.directContact.title[locale]}
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-[rgb(var(--muted-foreground))]">
+              <p className="mt-3 text-sm leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-base">
                 {copy.directContact.description[locale]}
               </p>
 
-              <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(14rem,16rem)] lg:items-start">
-                <div className="space-y-3 text-sm leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-base">
-                  <p className="font-semibold text-[rgb(var(--foreground))]">{copy.directContact.personName}</p>
-                  <p>{copy.directContact.role[locale]}</p>
-                  <p>{brand.name}</p>
-                  <a className="block transition-colors hover:text-[rgb(var(--foreground))]" href={brand.contact.phoneHref}>
-                    {brand.contact.phoneDisplay}
-                  </a>
-                  <a className="block transition-colors hover:text-[rgb(var(--foreground))]" href={brand.contact.emailHref}>
-                    {brand.contact.email}
-                  </a>
-                  <a
-                    className="block transition-colors hover:text-[rgb(var(--foreground))]"
-                    href={`https://${brand.domain}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {brand.domain}
-                  </a>
-                </div>
-
+              <div className="mt-6 overflow-hidden rounded-[var(--radius-xl)]">
                 <ImageFrame
                   src={assets.jocelyne.portrait.src}
                   alt={assets.jocelyne.portrait.alt[locale]}
@@ -146,14 +126,24 @@ export function ContactPageTemplate({ locale }: ContactPageTemplateProps) {
                   height={assets.jocelyne.portrait.height}
                   aspectRatio="1/1"
                   objectPosition={assets.jocelyne.portrait.objectPosition}
-                  className="w-full rounded-[var(--radius-xl)] shadow-[var(--shadow-soft)]"
+                  className="w-full shadow-[var(--shadow-soft)]"
                 />
               </div>
 
-              <StaggerContainer className="mt-8 grid gap-3 sm:grid-cols-2">
-                {copy.directContact.actions.map((action) => {
-                  const Icon = actionIcons[action.id as ContactActionId];
+              <div className="mt-6 space-y-2 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
+                <p className="font-semibold text-[rgb(var(--foreground))]">{copy.directContact.personName}</p>
+                <p>{copy.directContact.role[locale]}</p>
+                <a className="block transition-colors hover:text-[rgb(var(--foreground))]" href={brand.contact.phoneHref}>
+                  {brand.contact.phoneDisplay}
+                </a>
+                <a className="block transition-colors hover:text-[rgb(var(--foreground))]" href={brand.contact.emailHref}>
+                  {brand.contact.email}
+                </a>
+              </div>
 
+              <StaggerContainer className="mt-6 grid gap-3">
+                {primaryActions.map((action) => {
+                  const Icon = actionIcons[action.id as ContactActionId];
                   return (
                     <StaggerItem key={action.id}>
                       <PortfolioActionLink
@@ -168,65 +158,32 @@ export function ContactPageTemplate({ locale }: ContactPageTemplateProps) {
                   );
                 })}
               </StaggerContainer>
-            </div>
-          </AnimatedSection>
 
-          <AnimatedSection delay={0.06} className="order-1 xl:order-2">
-            <div className="rounded-[var(--radius-2xl)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))] p-6 shadow-[var(--shadow-soft)] sm:p-8">
-              <SectionHeader
-                eyebrow={copy.quickActions.eyebrow[locale]}
-                title={copy.quickActions.title[locale]}
-                description={copy.quickActions.description[locale]}
-                align="left"
-                className="mb-8"
-              />
-              <StaggerContainer className="grid gap-4 sm:grid-cols-2">
-                {copy.quickActions.actions.map((action) => {
-                  const Icon = actionIcons[action.id as ContactActionId];
-
-                  return (
-                    <StaggerItem key={action.id}>
-                      <PortfolioActionLink
-                        href={action.href}
-                        label={action.label[locale]}
-                        description={action.description[locale]}
-                        icon={Icon}
-                        external={Boolean(action.external)}
-                      />
-                    </StaggerItem>
-                  );
-                })}
-              </StaggerContainer>
-            </div>
-          </AnimatedSection>
-        </div>
-      </Section>
-
-      <Section spacing="md">
-        <SectionHeader
-          eyebrow={copy.delivery.eyebrow[locale]}
-          title={copy.delivery.title[locale]}
-          align="left"
-          maxWidth="wide"
-        />
-        <div className="grid gap-4 md:grid-cols-3">
-          {copy.delivery.items.map((item) => {
-            const Icon = deliveryIcons[item.id];
-
-            return (
-              <AnimatedSection key={item.id} className="rounded-[var(--radius-xl)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))] p-5 shadow-[var(--shadow-soft)]">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[rgb(var(--accent-soft))] text-[rgb(var(--accent-foreground))]">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <p className="mt-4 text-sm font-semibold uppercase tracking-[0.12em] text-[rgb(var(--accent))]">
-                  {item.label[locale]}
+              <div className="mt-8 border-t border-[rgb(var(--border-muted))] pt-6">
+                <p className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
+                  {copy.delivery.eyebrow[locale]}
                 </p>
-                <p className="mt-3 text-base leading-relaxed text-[rgb(var(--muted-foreground))]">
-                  {item.value[locale]}
-                </p>
-              </AnimatedSection>
-            );
-          })}
+                <ul className="mt-4 space-y-4">
+                  {copy.delivery.items.map((item) => {
+                    const Icon = deliveryIcons[item.id];
+                    return (
+                      <li key={item.id} className="flex gap-3">
+                        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--accent-soft))] text-[rgb(var(--accent-foreground))]">
+                          <Icon className="h-4 w-4" aria-hidden="true" />
+                        </span>
+                        <div>
+                          <p className="text-sm font-semibold text-[rgb(var(--foreground))]">{item.label[locale]}</p>
+                          <p className="mt-1 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
+                            {item.value[locale]}
+                          </p>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </AnimatedSection>
+          </aside>
         </div>
       </Section>
 
@@ -251,7 +208,7 @@ export function ContactPageTemplate({ locale }: ContactPageTemplateProps) {
         <AnimatedSection>
           <div className="flex flex-col gap-6 rounded-[var(--radius-2xl)] border border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_14%,transparent)] bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_8%,transparent)] px-6 py-8 shadow-[var(--shadow-elevated)] sm:px-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-[40rem]">
-              <p className="font-[family:var(--font-accent)] text-xs font-semibold uppercase tracking-[0.16em] text-[rgb(var(--inverse-muted-foreground))]">
+              <p className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[rgb(var(--inverse-muted-foreground))]">
                 {copy.whatsAppCta.eyebrow[locale]}
               </p>
               <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.1rem)] font-medium leading-[1.02] text-balance text-[rgb(var(--inverse-foreground))]">

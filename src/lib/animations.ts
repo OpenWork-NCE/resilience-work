@@ -5,7 +5,7 @@ export const motionTokens = {
     fast: 0.16,
     normal: 0.24,
     slow: 0.36,
-    reveal: 0.52,
+    reveal: 0.36,
   },
   ease: {
     standard: [0.2, 0.8, 0.2, 1] as const,

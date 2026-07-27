@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/home/hero-section";
 import { HighlightsStrip } from "@/components/home/highlights-strip";
+import { ConfidenceSection } from "@/components/home/confidence-section";
 import { IntroductionSection } from "@/components/home/introduction-section";
 import { ExpertiseSection } from "@/components/home/expertise-section";
 import { ImpactSection } from "@/components/home/impact-section";
@@ -32,6 +33,7 @@ export default async function HomePage({
       <HeroSection locale={currentLocale} />
       <HighlightsStrip locale={currentLocale} />
       <IntroductionSection locale={currentLocale} />
+      <ConfidenceSection locale={currentLocale} />
       <ExpertiseSection locale={currentLocale} />
       <ImpactSection locale={currentLocale} />
       <MethodologySection locale={currentLocale} />

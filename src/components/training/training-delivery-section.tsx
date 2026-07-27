@@ -33,7 +33,7 @@ export function TrainingDeliverySection({ locale, blocks }: TrainingDeliverySect
               <div className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[rgb(var(--accent-soft))] text-[rgb(var(--accent-foreground))]">
                 <Icon className="h-5 w-5" />
               </div>
-              <h3 className="mt-5 font-display text-2xl font-medium">{block.title[locale]}</h3>
+              <h3 className="heading-card mt-5">{block.title[locale]}</h3>
               <p className="mt-4 text-base leading-relaxed text-[rgb(var(--muted-foreground))]">{block.description[locale]}</p>
             </div>
           );

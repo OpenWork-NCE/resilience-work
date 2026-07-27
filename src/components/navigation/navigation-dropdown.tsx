@@ -14,6 +14,7 @@ interface NavigationDropdownProps {
   items: ResolvedExpertiseItem[];
   currentPathname: string;
   buttonLabel: string;
+  inverse?: boolean;
 }
 
 const iconMap = {
@@ -28,6 +29,7 @@ export function NavigationDropdown({
   items,
   currentPathname,
   buttonLabel,
+  inverse = false,
 }: NavigationDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -104,8 +106,14 @@ export function NavigationDropdown({
         className={cn(
           "inline-flex h-11 items-center gap-2 whitespace-nowrap text-sm font-medium transition-colors",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
-          "focus-visible:ring-offset-[rgb(var(--background))]",
-          isSectionActive ? "text-[rgb(var(--primary))]" : "text-[rgb(var(--foreground))] hover:text-[rgb(var(--primary))]"
+          inverse
+            ? "text-white/88 hover:text-white focus-visible:ring-offset-transparent"
+            : "focus-visible:ring-offset-[rgb(var(--background))]",
+          !inverse &&
+            (isSectionActive
+              ? "text-[rgb(var(--primary))]"
+              : "text-[rgb(var(--foreground))] hover:text-[rgb(var(--primary))]"),
+          inverse && isSectionActive && "text-white"
         )}
       >
         <span>{label}</span>

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { ContactRound, Mail, MessageCircle, Phone } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/motion/animated";
-import { Logo } from "@/components/brand/logo";
 import { Container } from "@/components/shared/container";
 import { Badge } from "@/components/ui/badge";
 import { getJocelyneContactActions, jocelyneKatshindaPage } from "@/content/pages/jocelyne-katshinda";
@@ -28,7 +27,7 @@ export function PortfolioHero({ locale }: PortfolioHeroProps) {
 
   return (
     <section className="relative isolate overflow-hidden bg-[rgb(var(--surface-inverse))] text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.12),transparent_34%),linear-gradient(135deg,rgba(7,29,40,0.94),rgba(13,47,60,0.88))]" />
+      <div className="hero-scrim-diagonal absolute inset-0" />
       <div className="absolute inset-x-0 top-0 h-px bg-white/12" />
 
       <Container size="wide" className="relative z-10 py-10 sm:py-14 lg:py-20">

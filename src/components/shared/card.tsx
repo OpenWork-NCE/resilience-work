@@ -64,7 +64,7 @@ export const CardTitle = forwardRef<HTMLHeadingElement, HTMLAttributes<HTMLHeadi
       <h3
         ref={ref}
         data-card-title
-        className={cn('text-xl font-semibold font-sans text-[inherit]', className)}
+        className={cn('heading-card font-sans text-[inherit]', className)}
         {...props}
       >
         {children}

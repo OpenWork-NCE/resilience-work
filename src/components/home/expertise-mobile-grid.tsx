@@ -48,7 +48,7 @@ export function ExpertiseMobileGrid({ locale }: ExpertiseMobileGridProps) {
                   </span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-semibold text-[rgb(var(--foreground))]">
+                  <h3 className="heading-card">
                     {item.title[locale]}
                   </h3>
                   <p className="mt-3 text-[rgb(var(--muted-foreground))]">

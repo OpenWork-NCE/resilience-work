@@ -1,26 +1,8 @@
 import { cn } from '@/lib/utils';
 import { HTMLAttributes, forwardRef } from 'react';
+import { Eyebrow } from '@/components/ui/content';
 
-type EyebrowProps = HTMLAttributes<HTMLParagraphElement>;
-
-export const Eyebrow = forwardRef<HTMLParagraphElement, EyebrowProps>(
-  ({ children, className, ...props }, ref) => {
-    return (
-      <p
-        ref={ref}
-        className={cn(
-          'text-xs font-bold uppercase tracking-[0.14em] text-[rgb(var(--accent))]',
-          className
-        )}
-        {...props}
-      >
-        {children}
-      </p>
-    );
-  }
-);
-
-Eyebrow.displayName = 'Eyebrow';
+export { Eyebrow } from '@/components/ui/content';
 
 interface SectionHeaderProps extends HTMLAttributes<HTMLDivElement> {
   eyebrow?: string;

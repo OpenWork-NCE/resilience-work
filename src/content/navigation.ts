@@ -85,7 +85,7 @@ export const globalCtas = {
       en: "Schedule a conversation",
     } satisfies Record<Locale, string>,
     route: "contact",
-    variant: "secondary",
+    variant: "primary",
   } satisfies Cta,
 
   contactUs: {

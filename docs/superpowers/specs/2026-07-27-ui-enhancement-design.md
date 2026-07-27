@@ -2,7 +2,7 @@
 
 **Date:** 2026-07-27  
 **Project:** Resilience@Work (`resilience-at-work`)  
-**Status:** Draft for review (from deep UI/UX audit + ui-ux-pro-max)  
+**Status:** Approved and implemented (2026-07-27)  
 **Related:** Deep audit conversation (2026-07-27); design system tokens in `src/app/globals.css`
 
 ---

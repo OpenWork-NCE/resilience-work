@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { homePage } from "@/content/pages/home";
 import { Container } from "@/components/shared/container";
 import { Button } from "@/components/shared/button";
@@ -14,8 +14,8 @@ interface HeroSectionProps {
 
 export function HeroSection({ locale }: HeroSectionProps) {
   const hero = homePage.hero;
-  const primaryCta = getLocalizedCta(locale, "discoverExpertise");
-  const secondaryCta = getLocalizedCta(locale, "scheduleConversation");
+  const primaryCta = getLocalizedCta(locale, "scheduleConversation");
+  const secondaryCta = getLocalizedCta(locale, "discoverExpertise");
   const heroHighlights = homePage.highlights.slice(0, 2);
 
   return (
@@ -30,8 +30,8 @@ export function HeroSection({ locale }: HeroSectionProps) {
         style={{ objectPosition: hero.image.objectPosition ?? "center" }}
       />
 
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,29,40,0.9)_0%,rgba(7,29,40,0.78)_38%,rgba(7,29,40,0.3)_68%,rgba(7,29,40,0.08)_100%)] dark:bg-[linear-gradient(90deg,rgba(3,16,22,0.92)_0%,rgba(3,16,22,0.84)_42%,rgba(3,16,22,0.42)_72%,rgba(3,16,22,0.14)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_26%,rgba(221,241,244,0.16),transparent_42%)] dark:bg-[radial-gradient(circle_at_16%_26%,rgba(109,175,192,0.18),transparent_42%)]" />
+      <div className="hero-scrim-horizontal absolute inset-0" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_26%,color-mix(in_srgb,rgb(var(--accent-soft))_55%,transparent),transparent_42%)]" />
 
       <Container size="wide" className="relative z-10 w-full pb-14 pt-16 sm:pb-18 sm:pt-18 lg:pb-24 lg:pt-20">
         <div className="mx-auto grid w-full max-w-[78rem] items-end gap-10 px-5 sm:px-6 xl:px-7 xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-8">
@@ -68,12 +68,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
                   </Button>
                 </Link>
                 <Link href={secondaryCta.href} className="block w-full sm:w-auto">
-                  <Button
-                    variant="secondary"
-                    size="lg"
-                    className="w-full border-white/20 bg-white/10 text-white backdrop-blur-sm hover:bg-white/18 sm:w-auto"
-                    leftIcon={<MessageCircle className="h-4 w-4" />}
-                  >
+                  <Button variant="onInverse" size="lg" className="w-full sm:w-auto">
                     {secondaryCta.label}
                   </Button>
                 </Link>

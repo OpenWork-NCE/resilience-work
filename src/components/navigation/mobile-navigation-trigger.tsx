@@ -9,6 +9,7 @@ interface MobileNavigationTriggerProps {
   label: string;
   onClick: () => void;
   triggerRef: React.RefObject<HTMLButtonElement | null>;
+  inverse?: boolean;
 }
 
 export function MobileNavigationTrigger({
@@ -17,6 +18,7 @@ export function MobileNavigationTrigger({
   label,
   onClick,
   triggerRef,
+  inverse = false,
 }: MobileNavigationTriggerProps) {
   return (
     <button
@@ -27,9 +29,11 @@ export function MobileNavigationTrigger({
       aria-label={label}
       onClick={onClick}
       className={cn(
-        "inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border border-[rgb(var(--border))]",
-        "bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] transition-colors hover:bg-[rgb(var(--surface-muted))]",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--background))]"
+        "inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border transition-colors",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
+        inverse
+          ? "border-white/20 bg-white/10 text-white hover:bg-white/18 focus-visible:ring-offset-transparent"
+          : "border-[rgb(var(--border))] bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--surface-muted))] focus-visible:ring-offset-[rgb(var(--background))]"
       )}
     >
       {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

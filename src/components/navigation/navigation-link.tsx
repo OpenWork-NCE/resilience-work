@@ -8,6 +8,7 @@ interface NavigationLinkProps {
   label: string;
   isActive?: boolean;
   variant?: NavigationLinkVariant;
+  inverse?: boolean;
   className?: string;
   onClick?: () => void;
 }
@@ -28,6 +29,7 @@ export function NavigationLink({
   label,
   isActive = false,
   variant = "desktop",
+  inverse = false,
   className,
   onClick,
 }: NavigationLinkProps) {
@@ -38,7 +40,11 @@ export function NavigationLink({
       aria-current={isActive ? "page" : undefined}
       className={cn(
         variantStyles[variant],
-        isActive && variant === "desktop" && "text-[rgb(var(--primary))]",
+        inverse &&
+          variant === "desktop" &&
+          "text-white/88 hover:text-white focus-visible:ring-offset-transparent",
+        isActive && variant === "desktop" && !inverse && "text-[rgb(var(--primary))]",
+        isActive && variant === "desktop" && inverse && "text-white",
         isActive && variant === "dropdown" && "bg-[rgb(var(--surface-muted))]",
         isActive && variant === "mobile" && "bg-[rgb(var(--surface-muted))] text-[rgb(var(--primary))]",
         isActive && variant === "footer" && "text-[rgb(var(--foreground))]",

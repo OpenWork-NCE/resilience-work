@@ -24,8 +24,8 @@ export const homePage = {
       en: "We help prevent psychosocial risks, strengthen workplace mental health and sustain long-term human performance within organisations.",
     } satisfies Record<Locale, string>,
 
-    primaryCta: globalCtas.discoverExpertise,
-    secondaryCta: globalCtas.scheduleConversation,
+    primaryCta: globalCtas.scheduleConversation,
+    secondaryCta: globalCtas.discoverExpertise,
     image: assets.hero.main,
   },
 
@@ -132,6 +132,67 @@ export const homePage = {
       } satisfies Record<Locale, string>,
     },
   ] as const,
+
+  confidence: {
+    eyebrow: {
+      fr: "Confiance",
+      en: "Trust",
+    } satisfies Record<Locale, string>,
+    title: {
+      fr: "Un cadre clair, confidentiel et opérationnel",
+      en: "A clear, confidential and operational framework",
+    } satisfies Record<Locale, string>,
+    description: {
+      fr: "Des repères concrets pour les organisations qui cherchent un accompagnement sérieux, discret et adapté aux contextes internationaux.",
+      en: "Clear reference points for organisations seeking serious, discreet support adapted to international contexts.",
+    } satisfies Record<Locale, string>,
+    items: [
+      {
+        id: "regions",
+        label: {
+          fr: "Zones d’intervention",
+          en: "Areas of intervention",
+        } satisfies Record<Locale, string>,
+        value: {
+          fr: "Afrique, Europe et Moyen-Orient",
+          en: "Africa, Europe and the Middle East",
+        } satisfies Record<Locale, string>,
+      },
+      {
+        id: "languages",
+        label: {
+          fr: "Langues de prestation",
+          en: "Service languages",
+        } satisfies Record<Locale, string>,
+        value: {
+          fr: "Français, anglais et italien",
+          en: "French, English and Italian",
+        } satisfies Record<Locale, string>,
+      },
+      {
+        id: "confidentiality",
+        label: {
+          fr: "Cadre d’intervention",
+          en: "Working framework",
+        } satisfies Record<Locale, string>,
+        value: {
+          fr: "Approche humaine, confidentielle et pragmatique",
+          en: "Human, confidential and pragmatic approach",
+        } satisfies Record<Locale, string>,
+      },
+      {
+        id: "domains",
+        label: {
+          fr: "Domaines d’expertise",
+          en: "Areas of expertise",
+        } satisfies Record<Locale, string>,
+        value: {
+          fr: "Quatre expertises complémentaires",
+          en: "Four complementary expertise areas",
+        } satisfies Record<Locale, string>,
+      },
+    ] as const,
+  },
 
   impact: {
     eyebrow: {

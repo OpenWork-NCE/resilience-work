@@ -47,7 +47,7 @@ export function ExpertiseDeliverySection({ locale, delivery }: ExpertiseDelivery
             <div className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[rgb(var(--accent-soft))] text-[rgb(var(--accent-foreground))]">
               <block.icon className="h-5 w-5" />
             </div>
-            <h3 className="mt-5 font-display text-2xl font-medium">{block.title}</h3>
+            <h3 className="heading-card mt-5">{block.title}</h3>
             <div className="mt-5 flex flex-wrap gap-2">
               {block.items.map((item) => (
                 <Badge key={item} className="px-4 py-2 text-sm">

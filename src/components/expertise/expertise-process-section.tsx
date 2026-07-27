@@ -25,7 +25,7 @@ export function ExpertiseProcessSection({ locale, items }: ExpertiseProcessSecti
             <div className="inline-flex h-10 min-w-10 items-center justify-center rounded-full bg-[rgb(var(--surface-inverse))] px-3 text-sm font-semibold text-[rgb(var(--inverse-foreground))]">
               {item.number}
             </div>
-            <h3 className="mt-5 text-2xl font-semibold text-[rgb(var(--foreground))]">
+            <h3 className="heading-card mt-5">
               {item.title[locale]}
             </h3>
             <p className="mt-3 text-[rgb(var(--muted-foreground))]">{item.description[locale]}</p>

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { PortfolioAudiences } from "@/components/portfolio/portfolio-audiences";
 import { PortfolioBrandSection } from "@/components/portfolio/portfolio-brand-section";
-import { PortfolioCompactFooter } from "@/components/portfolio/portfolio-compact-footer";
 import { PortfolioContactCard } from "@/components/portfolio/portfolio-contact-card";
 import { PortfolioExpertiseGrid } from "@/components/portfolio/portfolio-expertise-grid";
 import { PortfolioHero } from "@/components/portfolio/portfolio-hero";

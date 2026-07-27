@@ -61,11 +61,15 @@ export function ConsentProvider({ children, locale }: ConsentProviderProps) {
   const lastTriggerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const next = readConsentPreferences();
-    setPreferences(next);
-    setHasAnswered(Boolean(next));
-    setDraft(next ?? createRejectedConsentPreferences());
-    setIsHydrated(true);
+    const hydrate = () => {
+      const next = readConsentPreferences();
+      setPreferences(next);
+      setHasAnswered(Boolean(next));
+      setDraft(next ?? createRejectedConsentPreferences());
+      setIsHydrated(true);
+    };
+
+    const frame = window.requestAnimationFrame(hydrate);
 
     const handleStorage = () => {
       const stored = readConsentPreferences();
@@ -75,7 +79,10 @@ export function ConsentProvider({ children, locale }: ConsentProviderProps) {
     };
 
     window.addEventListener("storage", handleStorage);
-    return () => window.removeEventListener("storage", handleStorage);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("storage", handleStorage);
+    };
   }, []);
 
   const updatePreferences = useCallback((next: ConsentPreferences) => {
