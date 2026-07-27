@@ -54,13 +54,11 @@ export function ImpactBentoGrid({ locale }: ImpactBentoGridProps) {
                 </p>
                 {isCompactCard ? (
                   <p className="mt-3 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
-                    {index === 3
-                      ? locale === "fr"
-                        ? "Soutien à la coordination humaine dans les périodes exigeantes."
-                        : "Support for human coordination during demanding periods."
-                      : locale === "fr"
-                        ? "Des repères concrets pour inscrire l’accompagnement dans la durée."
-                        : "Practical reference points that help support last over time."}
+                    {
+                      homePage.impact.compactDetails[locale][
+                        index === 3 ? 0 : 1
+                      ]
+                    }
                   </p>
                 ) : null}
               </div>

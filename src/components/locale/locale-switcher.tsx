@@ -7,7 +7,7 @@ import type { Locale } from "@/types/content";
 import { cn } from "@/lib/utils";
 import { localizePathname } from "@/lib/navigation/get-localized-href";
 
-const locales: readonly Locale[] = ["fr", "en"];
+const locales: readonly Locale[] = ["fr", "en", "it"];
 
 interface LocaleSwitcherProps {
   inverse?: boolean;

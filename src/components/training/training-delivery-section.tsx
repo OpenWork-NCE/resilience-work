@@ -1,5 +1,6 @@
 import { MonitorSmartphone, UsersRound } from "lucide-react";
 import { SectionHeader } from "@/components/shared/section-header";
+import { trainingUiCopy } from "@/content/pages/training";
 import type { Locale } from "@/types/content";
 
 interface TrainingDeliverySectionProps {
@@ -17,8 +18,8 @@ export function TrainingDeliverySection({ locale, blocks }: TrainingDeliverySect
   return (
     <>
       <SectionHeader
-        eyebrow={locale === "fr" ? "Formats d’intervention" : "Delivery formats"}
-        title={locale === "fr" ? "Des formats ajustés aux besoins des organisations" : "Formats tailored to organisational needs"}
+        eyebrow={trainingUiCopy.deliveryEyebrow[locale]}
+        title={trainingUiCopy.deliveryTitle[locale]}
         align="left"
         maxWidth="wide"
       />

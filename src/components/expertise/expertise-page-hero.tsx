@@ -5,6 +5,7 @@ import { BreadcrumbItem, Breadcrumbs } from "@/components/navigation/breadcrumbs
 import { Button } from "@/components/shared/button";
 import { Container } from "@/components/shared/container";
 import { ImageFrame } from "@/components/ui/image-frame";
+import { expertiseUiCopy } from "@/content/pages/expertise";
 import type { ExpertiseDetailPage, Locale } from "@/types/content";
 
 interface ExpertisePageHeroProps {
@@ -28,7 +29,7 @@ export function ExpertisePageHero({
             <AnimatedSection>
               <Breadcrumbs
                 items={breadcrumbs}
-                ariaLabel={locale === "fr" ? "Fil d'Ariane" : "Breadcrumb"}
+                ariaLabel={expertiseUiCopy.breadcrumbAria[locale]}
               />
             </AnimatedSection>
             <AnimatedSection delay={0.04} className="mt-6">
@@ -52,7 +53,7 @@ export function ExpertisePageHero({
                   className="w-full md:min-w-[14rem] xl:w-auto"
                   rightIcon={<ArrowRight className="h-4 w-4" />}
                 >
-                  {locale === "fr" ? "Échanger sur vos besoins" : "Discuss your needs"}
+                  {expertiseUiCopy.discussNeeds[locale]}
                 </Button>
               </Link>
               <a href="#process" className="w-full md:w-auto">
@@ -61,7 +62,7 @@ export function ExpertisePageHero({
                   className="w-full md:min-w-[14rem] xl:w-auto"
                   leftIcon={<MessageCircle className="h-4 w-4" />}
                 >
-                  {locale === "fr" ? "Découvrir notre démarche" : "Explore our approach"}
+                  {expertiseUiCopy.exploreApproach[locale]}
                 </Button>
               </a>
             </AnimatedSection>

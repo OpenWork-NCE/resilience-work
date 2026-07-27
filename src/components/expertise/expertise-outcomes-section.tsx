@@ -1,5 +1,6 @@
 import { StaggerContainer, StaggerItem } from "@/components/motion/animated";
 import { SectionHeader } from "@/components/shared/section-header";
+import { expertiseUiCopy } from "@/content/pages/expertise";
 import { expertiseIconMap } from "./expertise-icon-map";
 import type { LocalizedFeature, Locale } from "@/types/content";
 
@@ -13,7 +14,7 @@ export function ExpertiseOutcomesSection({ locale, title, items }: ExpertiseOutc
   return (
     <div className="rounded-[var(--radius-2xl)] bg-[rgb(var(--accent-soft))] px-6 py-8 sm:px-8 lg:px-10 lg:py-10">
       <SectionHeader
-        eyebrow={locale === "fr" ? "Résultats recherchés" : "Expected outcomes"}
+        eyebrow={expertiseUiCopy.outcomesEyebrow[locale]}
         title={title}
         align="left"
         maxWidth="wide"

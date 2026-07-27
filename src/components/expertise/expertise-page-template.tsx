@@ -11,6 +11,9 @@ import { ExpertisePageHero } from "./expertise-page-hero";
 import { ExpertiseProcessSection } from "./expertise-process-section";
 import { ExpertiseRelatedServices } from "./expertise-related-services";
 import { ExpertiseServicesGrid } from "./expertise-services-grid";
+import { navigation } from "@/content/navigation";
+import { expertiseUiCopy } from "@/content/pages/expertise";
+import { trainingUiCopy } from "@/content/pages/training";
 import { routes } from "@/content/routes";
 import type { ExpertiseDetailPage, Locale, RouteKey } from "@/types/content";
 import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
@@ -20,38 +23,26 @@ interface ExpertisePageTemplateProps {
   page: ExpertiseDetailPage;
 }
 
-export function ExpertisePageTemplate({ locale, page }: ExpertisePageTemplateProps) {
+function buildBreadcrumbLabels(locale: Locale): Record<RouteKey, string> {
   const labels = Object.fromEntries(
-    Object.entries(routes).map(([key]) => [
-      key,
-      key === "home"
-        ? locale === "fr"
-          ? "Accueil"
-          : "Home"
-        : key === "expertise"
-          ? locale === "fr"
-            ? "Expertises"
-            : "Expertise"
-          : key === "psychosocialPrevention"
-            ? locale === "fr"
-              ? "Prévention psychosociale"
-              : "Psychosocial prevention"
-            : key === "internationalMobility"
-              ? locale === "fr"
-                ? "Mobilité internationale"
-                : "International mobility"
-              : key === "crisisManagement"
-                ? locale === "fr"
-                  ? "Gestion de crise"
-                  : "Crisis management"
-                : key === "training"
-                  ? locale === "fr"
-                    ? "Formations"
-                    : "Training"
-                  : key,
-    ])
+    Object.keys(routes).map((key) => [key, key])
   ) as Record<RouteKey, string>;
 
+  labels.home = expertiseUiCopy.breadcrumbHome[locale];
+  labels.expertise = expertiseUiCopy.breadcrumbExpertise[locale];
+
+  const expertiseNav = navigation.find((item) => item.id === "expertise");
+  for (const child of expertiseNav?.children ?? []) {
+    if (child.route) {
+      labels[child.route] = child.label?.[locale] ?? labels[child.route];
+    }
+  }
+
+  return labels;
+}
+
+export function ExpertisePageTemplate({ locale, page }: ExpertisePageTemplateProps) {
+  const labels = buildBreadcrumbLabels(locale);
   const breadcrumbs = buildBreadcrumbsFromPath(locale, routes[page.route], labels);
   const localizedTitle = page.title[locale];
   const localizedSummary = page.summary[locale];
@@ -87,7 +78,7 @@ export function ExpertisePageTemplate({ locale, page }: ExpertisePageTemplatePro
       <Section spacing="md" tone="default">
         <ExpertiseEditorialIntro
           locale={locale}
-          eyebrow={locale === "fr" ? "Introduction" : "Introduction"}
+          eyebrow={expertiseUiCopy.introductionEyebrow[locale]}
           title={page.title[locale]}
           paragraphs={page.introduction[locale]}
         />
@@ -138,11 +129,7 @@ export function ExpertisePageTemplate({ locale, page }: ExpertisePageTemplatePro
             locale={locale}
             title={page.finalCta.title[locale]}
             description={page.finalCta.description[locale]}
-            note={
-              locale === "fr"
-                ? "Échangeons afin d’identifier la forme d’accompagnement la plus pertinente."
-                : "Let’s discuss the most appropriate form of support."
-            }
+            note={trainingUiCopy.finalNote[locale]}
             primaryCta={page.finalCta.primaryCta}
             secondaryCta={page.finalCta.secondaryCta}
           />

@@ -6,7 +6,7 @@ import { ExpertiseEditorialIntro } from "@/components/expertise/expertise-editor
 import { TrainingDeliverySection } from "./training-delivery-section";
 import { TrainingTopicsGrid } from "./training-topics-grid";
 import { trainingPageContent } from "@/content/pages/expertise";
-import { trainingTopics } from "@/content/pages/training";
+import { trainingTopics, trainingUiCopy } from "@/content/pages/training";
 import { assets } from "@/content/assets";
 import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
 import type { Locale } from "@/types/content";
@@ -16,10 +16,11 @@ interface TrainingPageTemplateProps {
 }
 
 export function TrainingPageTemplate({ locale }: TrainingPageTemplateProps) {
+  const ui = trainingUiCopy;
   const breadcrumbs = [
-    { label: locale === "fr" ? "Accueil" : "Home", href: getLocalizedHref(locale, "home") },
-    { label: locale === "fr" ? "Expertises" : "Expertise", href: getLocalizedHref(locale, "expertise") },
-    { label: locale === "fr" ? "Formations" : "Training" },
+    { label: ui.breadcrumbHome[locale], href: getLocalizedHref(locale, "home") },
+    { label: ui.breadcrumbExpertise[locale], href: getLocalizedHref(locale, "expertise") },
+    { label: ui.breadcrumbTraining[locale] },
   ];
 
   const jsonLd = {
@@ -63,9 +64,9 @@ export function TrainingPageTemplate({ locale }: TrainingPageTemplateProps) {
           process: [],
           audiences: [],
           delivery: {
-            formats: { fr: [], en: [] },
-            languages: { fr: [], en: [] },
-            regions: { fr: [], en: [] },
+            formats: { fr: [], en: [], it: [] },
+            languages: { fr: [], en: [], it: [] },
+            regions: { fr: [], en: [], it: [] },
           },
           image: assets.expertise.training,
           relatedExpertiseIds: [],
@@ -78,7 +79,7 @@ export function TrainingPageTemplate({ locale }: TrainingPageTemplateProps) {
       <Section spacing="md">
         <ExpertiseEditorialIntro
           locale={locale}
-          eyebrow={locale === "fr" ? "Introduction" : "Introduction"}
+          eyebrow={ui.introduction[locale]}
           title={trainingPageContent.title[locale]}
           paragraphs={trainingPageContent.introduction[locale]}
         />
@@ -98,7 +99,7 @@ export function TrainingPageTemplate({ locale }: TrainingPageTemplateProps) {
           locale={locale}
           title={trainingPageContent.finalCta.title[locale]}
           description={trainingPageContent.finalCta.description[locale]}
-          note={locale === "fr" ? "Échangeons afin d’identifier la forme d’accompagnement la plus pertinente." : "Let’s discuss the most appropriate form of support."}
+          note={ui.finalNote[locale]}
           primaryCta={trainingPageContent.finalCta.primaryCta}
           secondaryCta={trainingPageContent.finalCta.secondaryCta}
         />

@@ -1,4 +1,4 @@
-export type Locale = "fr" | "en";
+export type Locale = "fr" | "en" | "it";
 
 export type LocalizedText = Record<Locale, string>;
 

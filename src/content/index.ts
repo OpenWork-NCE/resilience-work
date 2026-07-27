@@ -23,9 +23,14 @@ export {
   getExpertiseDetailPageBySlug,
   getExpertiseItemById,
   trainingPageContent,
+  expertiseUiCopy,
 } from "./pages/expertise";
-export { trainingTopics } from "./pages/training";
+export { trainingTopics, trainingUiCopy } from "./pages/training";
 export { regions } from "./pages/international";
 export { aboutPage } from "./pages/about";
-export { contactPage } from "./pages/contact";
-export { jocelyneKatshindaPage, getJocelyneContactActions } from "./pages/jocelyne-katshinda";
+export { contactPage, contactUiCopy, contactEmailLabels } from "./pages/contact";
+export {
+  jocelyneKatshindaPage,
+  getJocelyneContactActions,
+  portfolioUiCopy,
+} from "./pages/jocelyne-katshinda";

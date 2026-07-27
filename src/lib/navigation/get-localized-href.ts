@@ -1,7 +1,7 @@
 import { routes } from "@/content/routes";
 import type { Locale, RouteKey } from "@/types/content";
 
-const LOCALE_PREFIX = /^\/(en|fr)(?=\/|$)/;
+const LOCALE_PREFIX = /^\/(en|fr|it)(?=\/|$)/;
 
 function ensureLeadingSlash(value: string) {
   return value.startsWith("/") ? value : `/${value}`;

@@ -6,6 +6,7 @@ export const brand = {
   summary: {
     fr: "Resilience@Work accompagne les organisations, les managers et les équipes dans la prévention des risques psychosociaux, la mobilité internationale et la gestion des situations de crise.",
     en: "Resilience@Work supports organisations, managers and teams through psychosocial risk prevention, international mobility and crisis management.",
+    it: "Resilience@Work accompagna organizzazioni, manager e team nella prevenzione dei rischi psicosociali, nella mobilità internazionale e nella gestione delle situazioni di crisi.",
   } satisfies Record<Locale, string>,
   
   person: {
@@ -13,6 +14,7 @@ export const brand = {
     role: {
       fr: "Fondatrice et Administratrice générale",
       en: "Founder and Managing Director",
+      it: "Fondatrice e Amministratrice generale",
     } satisfies Record<Locale, string>,
   },
 
@@ -27,19 +29,19 @@ export const brand = {
   serviceLanguages: [
     {
       code: "fr",
-      label: { fr: "Français", en: "French" } satisfies Record<Locale, string>,
+      label: { fr: "Français", en: "French", it: "Francese" } satisfies Record<Locale, string>,
     },
     {
       code: "en",
-      label: { fr: "Anglais", en: "English" } satisfies Record<Locale, string>,
+      label: { fr: "Anglais", en: "English", it: "Inglese" } satisfies Record<Locale, string>,
     },
     {
       code: "it",
-      label: { fr: "Italien", en: "Italian" } satisfies Record<Locale, string>,
+      label: { fr: "Italien", en: "Italian", it: "Italiano" } satisfies Record<Locale, string>,
     },
   ] as const,
 
-  websiteLocales: ["fr", "en"] as const,
+  websiteLocales: ["fr", "en", "it"] as const,
 
   socials: {
     whatsapp: {

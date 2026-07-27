@@ -1,0 +1,80 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Chi siamo",
+    "expertise": "Competenze",
+    "psychosocialPrevention": "Prevenzione psicosociale",
+    "internationalMobility": "Mobilità internazionale",
+    "crisisManagement": "Gestione delle crisi",
+    "training": "Formazione",
+    "legalNotice": "Note legali",
+    "privacy": "Informativa sulla privacy",
+    "cookies": "Cookie",
+    "accessibility": "Accessibilità",
+    "contact": "Contatto"
+  },
+  "navigation": {
+    "openMenu": "Apri il menu",
+    "closeMenu": "Chiudi il menu",
+    "mainNavigation": "Navigazione principale",
+    "footerNavigation": "Navigazione del piè di pagina",
+    "expertiseMenu": "Mostra le aree di competenza",
+    "aboutMenu": "Mostra il team"
+  },
+  "theme": {
+    "switchToDark": "Passa al tema scuro",
+    "switchToLight": "Passa al tema chiaro"
+  },
+  "locale": {
+    "switchLanguage": "Cambia lingua",
+    "currentLanguage": "Lingua attuale"
+  },
+  "accessibility": {
+    "skipToContent": "Vai al contenuto principale",
+    "externalLink": "Si apre in una nuova scheda",
+    "backToTop": "Torna su",
+    "breadcrumb": "Percorso di navigazione"
+  },
+  "common": {
+    "home": "Home",
+    "learnMore": "Scopri di più",
+    "lastUpdated": "Ultimo aggiornamento",
+    "tableOfContents": "Indice",
+    "contents": "Sommario",
+    "introduction": "Introduzione",
+    "getInTouch": "Contattaci",
+    "contact": "Contatto"
+  },
+  "footer": {
+    "tagline": "Costruire resilienza negli ambienti professionali complessi",
+    "navigation": "Navigazione",
+    "contact": "Contatto",
+    "expertise": "Competenze",
+    "legal": "Informazioni legali",
+    "legalNotice": "Note legali",
+    "privacy": "Informativa sulla privacy",
+    "cookies": "Cookie",
+    "manageCookies": "Gestisci le preferenze sui cookie",
+    "accessibility": "Accessibilità",
+    "serviceLanguages": "Lingue di erogazione",
+    "rights": "Tutti i diritti riservati.",
+    "allRightsReserved": "Tutti i diritti riservati"
+  },
+  "cookies": {
+    "bannerTitle": "Cookie",
+    "bannerDescription": "Utilizziamo i cookie per garantire il corretto funzionamento del sito e, con il tuo consenso, per misurare l’audience e migliorare la tua esperienza.",
+    "bannerSecondary": "Puoi accettare tutti i cookie, rifiutare quelli non essenziali o personalizzare le preferenze.",
+    "acceptAll": "Accetta tutti",
+    "rejectAll": "Rifiuta i non essenziali",
+    "customise": "Personalizza",
+    "preferencesTitle": "Preferenze sui cookie",
+    "preferencesDescription": "Scegli le categorie di cookie che autorizzi. I cookie essenziali restano sempre attivi.",
+    "save": "Salva le preferenze",
+    "essential": "Essenziali",
+    "essentialDescription": "Necessari al funzionamento del sito e alla sicurezza. Non possono essere disattivati.",
+    "analytics": "Analitica",
+    "analyticsDescription": "Ci aiutano a capire come viene usato il sito per migliorarlo.",
+    "marketing": "Marketing",
+    "marketingDescription": "Usati per personalizzare i contenuti o misurare le campagne, se attivati."
+  }
+}

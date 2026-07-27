@@ -4,6 +4,12 @@ import { brand } from "@/content/brand";
 import { contactPage } from "@/content/pages/contact";
 import type { Locale } from "@/types/content";
 
+const ogLocaleMap: Record<Locale, string> = {
+  fr: "fr_FR",
+  en: "en_US",
+  it: "it_IT",
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -22,12 +28,13 @@ export async function generateMetadata({
       languages: {
         fr: `${baseUrl}/fr/contact`,
         en: `${baseUrl}/en/contact`,
+        it: `${baseUrl}/it/contact`,
       },
     },
     openGraph: {
       title: contactPage.seo.title[currentLocale],
       description: contactPage.seo.description[currentLocale],
-      locale: currentLocale === "fr" ? "fr_FR" : "en_US",
+      locale: ogLocaleMap[currentLocale],
       type: "website",
       siteName: brand.name,
       images: [{ url: contactPage.seo.ogImage }],

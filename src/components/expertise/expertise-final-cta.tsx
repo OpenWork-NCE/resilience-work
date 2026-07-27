@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/shared/button";
+import { expertiseUiCopy } from "@/content/pages/expertise";
 import type { Cta, Locale } from "@/types/content";
 import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
 
@@ -33,7 +34,7 @@ export function ExpertiseFinalCta({
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,color-mix(in_srgb,rgb(var(--inverse-foreground))_10%,transparent),transparent_34%),linear-gradient(135deg,color-mix(in_srgb,rgb(var(--inverse-foreground))_3%,transparent),transparent_45%)]" />
       <div className="relative">
         <p className="font-[family:var(--font-accent)] text-xs font-semibold uppercase tracking-[0.16em] text-[rgb(var(--inverse-muted-foreground))]">
-          {locale === "fr" ? "Prendre contact" : "Get in touch"}
+          {expertiseUiCopy.getInTouch[locale]}
         </p>
         <div className="mt-5 max-w-[44rem]">
           <h2 className="font-display text-[clamp(2.2rem,5vw,3.6rem)] font-medium leading-[1.02] text-balance">

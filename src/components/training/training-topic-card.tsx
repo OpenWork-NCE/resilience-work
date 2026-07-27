@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, UsersRound } from "lucide-react";
 import { Card, CardDescription, CardTitle } from "@/components/shared/card";
 import { Button } from "@/components/shared/button";
+import { trainingUiCopy } from "@/content/pages/training";
 import type { Locale, TrainingTopic } from "@/types/content";
 
 interface TrainingTopicCardProps {
@@ -20,7 +21,7 @@ export function TrainingTopicCard({ locale, topic, contactHref }: TrainingTopicC
       <CardDescription className="mt-3 text-base">{topic.summary[locale]}</CardDescription>
       <div className="mt-5">
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[rgb(var(--accent))]">
-          {locale === "fr" ? "Publics concernés" : "Relevant audiences"}
+          {trainingUiCopy.relevantAudiences[locale]}
         </p>
         <p className="mt-2 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
           {topic.audiences[locale].join(" · ")}
@@ -29,7 +30,7 @@ export function TrainingTopicCard({ locale, topic, contactHref }: TrainingTopicC
       <div className="mt-6">
         <Link href={contactHref}>
           <Button variant="secondary" rightIcon={<ArrowRight className="h-4 w-4" />}>
-            {locale === "fr" ? "Échanger sur vos besoins" : "Discuss your needs"}
+            {trainingUiCopy.discussNeeds[locale]}
           </Button>
         </Link>
       </div>

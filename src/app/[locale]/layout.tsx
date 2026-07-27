@@ -50,7 +50,7 @@ export default async function RootLayout({
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as 'en' | 'fr')) {
+  if (!routing.locales.includes(locale as 'fr' | 'en' | 'it')) {
     notFound();
   }
  
@@ -63,7 +63,7 @@ export default async function RootLayout({
         className={`${inter.variable} ${spaceGroteskDisplay.variable} ${spaceGroteskAccent.variable} antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          <ConsentProvider locale={locale as "fr" | "en"}>
+          <ConsentProvider locale={locale as "fr" | "en" | "it"}>
             <ThemeProvider
               attribute="class"
               defaultTheme="light"

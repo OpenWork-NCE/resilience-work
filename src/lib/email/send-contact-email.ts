@@ -1,6 +1,7 @@
 import { brand } from "@/content/brand";
-import { contactPage } from "@/content/pages/contact";
+import { contactEmailLabels, contactPage } from "@/content/pages/contact";
 import type { ContactFormSubmission } from "@/types/contact";
+import type { Locale } from "@/types/content";
 
 class ContactEmailConfigurationError extends Error {
   constructor(message: string) {
@@ -22,44 +23,45 @@ function formatValue(value?: string) {
   return value && value.trim() ? value.trim() : "-";
 }
 
-function getLabel<T extends { value: string; label: Record<"fr" | "en", string> }>(
+function getLabel<T extends { value: string; label: Record<Locale, string> }>(
   options: readonly T[],
-  value?: string,
-  locale: "fr" | "en" = "fr"
+  value: string | undefined,
+  locale: Locale
 ) {
   return options.find((option) => option.value === value)?.label[locale] ?? "-";
 }
 
-function getConditionalLines(data: ContactFormSubmission, locale: "fr" | "en") {
+function getConditionalLines(data: ContactFormSubmission, locale: Locale) {
+  const labels = contactEmailLabels;
   const lines = [
     data.crisisContext
-      ? `${locale === "fr" ? "Contexte général" : "General context"}: ${data.crisisContext}`
+      ? `${labels.crisisContext[locale]}: ${data.crisisContext}`
       : null,
     data.urgencyLevel
-      ? `${locale === "fr" ? "Niveau de priorité" : "Priority level"}: ${getLabel(
+      ? `${labels.urgencyLevel[locale]}: ${getLabel(
           contactPage.form.fields.urgencyLevel.options,
           data.urgencyLevel,
           locale
         )}`
       : null,
     data.trainingAudience
-      ? `${locale === "fr" ? "Public concerné" : "Audience"}: ${data.trainingAudience}`
+      ? `${labels.trainingAudience[locale]}: ${data.trainingAudience}`
       : null,
     data.estimatedParticipants
-      ? `${locale === "fr" ? "Participants approximatifs" : "Estimated participants"}: ${data.estimatedParticipants}`
+      ? `${labels.estimatedParticipants[locale]}: ${data.estimatedParticipants}`
       : null,
     data.trainingFormat
-      ? `${locale === "fr" ? "Format envisagé" : "Preferred format"}: ${getLabel(
+      ? `${labels.trainingFormat[locale]}: ${getLabel(
           contactPage.form.fields.trainingFormat.options,
           data.trainingFormat,
           locale
         )}`
       : null,
     data.mobilityRegion
-      ? `${locale === "fr" ? "Pays ou région concernée" : "Country or region involved"}: ${data.mobilityRegion}`
+      ? `${labels.mobilityRegion[locale]}: ${data.mobilityRegion}`
       : null,
     data.mobilityStage
-      ? `${locale === "fr" ? "Étape de la mobilité" : "Mobility stage"}: ${getLabel(
+      ? `${labels.mobilityStage[locale]}: ${getLabel(
           contactPage.form.fields.mobilityStage.options,
           data.mobilityStage,
           locale
@@ -72,6 +74,7 @@ function getConditionalLines(data: ContactFormSubmission, locale: "fr" | "en") {
 
 function buildContactEmailPayload(data: ContactFormSubmission) {
   const locale = data.locale;
+  const labels = contactEmailLabels;
   const submittedAt = new Date().toISOString();
   const subjectLabel = getLabel(contactPage.form.fields.subject.options, data.subject, locale);
   const preferredLanguageLabel = getLabel(
@@ -86,43 +89,43 @@ function buildContactEmailPayload(data: ContactFormSubmission) {
   );
   const conditionalFields = getConditionalLines(data, locale);
 
-  const internalSubject = `[Resilience@Work] Nouvelle demande - ${subjectLabel}`;
+  const internalSubject = `${labels.subjectPrefix[locale]}${subjectLabel}`;
 
   const text = [
-    "Nouvelle demande depuis resilienceatwork.eu",
+    labels.newRequest[locale],
     "",
-    `Nom : ${formatValue(data.fullName)}`,
-    `Organisation : ${formatValue(data.organisation)}`,
-    `Email : ${formatValue(data.email)}`,
-    `Téléphone : ${formatValue(data.phone)}`,
-    `Pays ou région : ${formatValue(data.country)}`,
-    `Objet : ${subjectLabel}`,
-    `Langue souhaitée : ${preferredLanguageLabel}`,
-    `Mode de contact souhaité : ${preferredContactMethodLabel}`,
-    `Informations complémentaires : ${conditionalFields}`,
+    `${labels.fullName[locale]} : ${formatValue(data.fullName)}`,
+    `${labels.organisation[locale]} : ${formatValue(data.organisation)}`,
+    `${labels.email[locale]} : ${formatValue(data.email)}`,
+    `${labels.phone[locale]} : ${formatValue(data.phone)}`,
+    `${labels.country[locale]} : ${formatValue(data.country)}`,
+    `${labels.subject[locale]} : ${subjectLabel}`,
+    `${labels.preferredLanguage[locale]} : ${preferredLanguageLabel}`,
+    `${labels.preferredContactMethod[locale]} : ${preferredContactMethodLabel}`,
+    `${labels.additionalInfo[locale]} : ${conditionalFields}`,
     "",
-    "Message :",
+    `${labels.message[locale]} :`,
     data.message,
     "",
-    "Consentement : Oui",
-    `Date : ${submittedAt}`,
+    `${labels.consent[locale]} : ${labels.consentYes[locale]}`,
+    `${labels.date[locale]} : ${submittedAt}`,
   ].join("\n");
 
   const html = `
     <div style="font-family: Arial, sans-serif; color: #102b3a; line-height: 1.6;">
-      <p><strong>Nouvelle demande depuis resilienceatwork.eu</strong></p>
-      <p><strong>Nom :</strong> ${escapeHtml(formatValue(data.fullName))}<br />
-      <strong>Organisation :</strong> ${escapeHtml(formatValue(data.organisation))}<br />
-      <strong>Email :</strong> ${escapeHtml(formatValue(data.email))}<br />
-      <strong>Téléphone :</strong> ${escapeHtml(formatValue(data.phone))}<br />
-      <strong>Pays ou région :</strong> ${escapeHtml(formatValue(data.country))}<br />
-      <strong>Objet :</strong> ${escapeHtml(subjectLabel)}<br />
-      <strong>Langue souhaitée :</strong> ${escapeHtml(preferredLanguageLabel)}<br />
-      <strong>Mode de contact souhaité :</strong> ${escapeHtml(preferredContactMethodLabel)}<br />
-      <strong>Informations complémentaires :</strong><br />${escapeHtml(conditionalFields).replaceAll("\n", "<br />")}</p>
-      <p><strong>Message :</strong><br />${escapeHtml(data.message).replaceAll("\n", "<br />")}</p>
-      <p><strong>Consentement :</strong> Oui<br />
-      <strong>Date :</strong> ${escapeHtml(submittedAt)}</p>
+      <p><strong>${escapeHtml(labels.newRequest[locale])}</strong></p>
+      <p><strong>${escapeHtml(labels.fullName[locale])} :</strong> ${escapeHtml(formatValue(data.fullName))}<br />
+      <strong>${escapeHtml(labels.organisation[locale])} :</strong> ${escapeHtml(formatValue(data.organisation))}<br />
+      <strong>${escapeHtml(labels.email[locale])} :</strong> ${escapeHtml(formatValue(data.email))}<br />
+      <strong>${escapeHtml(labels.phone[locale])} :</strong> ${escapeHtml(formatValue(data.phone))}<br />
+      <strong>${escapeHtml(labels.country[locale])} :</strong> ${escapeHtml(formatValue(data.country))}<br />
+      <strong>${escapeHtml(labels.subject[locale])} :</strong> ${escapeHtml(subjectLabel)}<br />
+      <strong>${escapeHtml(labels.preferredLanguage[locale])} :</strong> ${escapeHtml(preferredLanguageLabel)}<br />
+      <strong>${escapeHtml(labels.preferredContactMethod[locale])} :</strong> ${escapeHtml(preferredContactMethodLabel)}<br />
+      <strong>${escapeHtml(labels.additionalInfo[locale])} :</strong><br />${escapeHtml(conditionalFields).replaceAll("\n", "<br />")}</p>
+      <p><strong>${escapeHtml(labels.message[locale])} :</strong><br />${escapeHtml(data.message).replaceAll("\n", "<br />")}</p>
+      <p><strong>${escapeHtml(labels.consent[locale])} :</strong> ${escapeHtml(labels.consentYes[locale])}<br />
+      <strong>${escapeHtml(labels.date[locale])} :</strong> ${escapeHtml(submittedAt)}</p>
     </div>
   `.trim();
 

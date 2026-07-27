@@ -62,4 +62,20 @@ export const defaultSEO = {
       'multiculturel',
     ],
   },
+  it: {
+    title: 'Resilience@Work',
+    description:
+      'Accompagnamento professionale di organizzazioni ed espatriati. Prevenzione psicosociale, mobilità internazionale, gestione delle crisi e formazione in Africa, Europa e Medio Oriente.',
+    keywords: [
+      'resilienza',
+      'sostegno psicosociale',
+      'mobilità internazionale',
+      'espatrio',
+      'gestione delle crisi',
+      'formazione professionale',
+      'prevenzione burnout',
+      'salute mentale',
+      'multiculturale',
+    ],
+  },
 };

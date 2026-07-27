@@ -8,24 +8,29 @@ export const legalNoticeDocument: LegalDocument = {
   eyebrow: {
     fr: "Mentions légales",
     en: "Legal notice",
+    it: "Note legali",
   },
   title: {
     fr: "Mentions légales",
     en: "Legal notice",
+    it: "Note legali",
   },
   description: {
     fr: "Consultez les informations légales relatives au site Resilience@Work.",
     en: "Read the legal information relating to the Resilience@Work website.",
+    it: "Consultate le informazioni legali relative al sito Resilience@Work.",
   },
   lastUpdated,
   seo: {
     title: {
       fr: "Mentions légales | Resilience@Work",
       en: "Legal notice | Resilience@Work",
+      it: "Note legali | Resilience@Work",
     },
     description: {
       fr: "Consultez les informations légales relatives au site Resilience@Work.",
       en: "Read the legal information relating to the Resilience@Work website.",
+      it: "Consultate le informazioni legali relative al sito Resilience@Work.",
     },
     canonicalRoute: "legalNotice",
     ogImage: "/images/hero/resilience-at-work-hero.webp",
@@ -36,6 +41,7 @@ export const legalNoticeDocument: LegalDocument = {
       title: {
         fr: "Éditeur du site",
         en: "Website publisher",
+        it: "Editore del sito",
       },
       paragraphs: {
         fr: [
@@ -44,27 +50,38 @@ export const legalNoticeDocument: LegalDocument = {
         en: [
           "This page publishes only the information currently confirmed for the Resilience@Work website.",
         ],
+        it: [
+          "Le informazioni pubblicate in questa pagina riprendono esclusivamente gli elementi attualmente confermati per il sito Resilience@Work.",
+        ],
       },
       definitions: [
         {
           id: "trade-name",
-          label: { fr: "Nom commercial", en: "Trading name" },
-          value: { fr: brand.name, en: brand.name },
+          label: { fr: "Nom commercial", en: "Trading name", it: "Nome commerciale" },
+          value: { fr: brand.name, en: brand.name, it: brand.name },
         },
         {
           id: "responsible-person",
-          label: { fr: "Responsable de la structure", en: "Responsible person" },
-          value: { fr: brand.person.name, en: brand.person.name },
+          label: {
+            fr: "Responsable de la structure",
+            en: "Responsible person",
+            it: "Responsabile della struttura",
+          },
+          value: { fr: brand.person.name, en: brand.person.name, it: brand.person.name },
         },
         {
           id: "role",
-          label: { fr: "Fonction", en: "Role" },
+          label: { fr: "Fonction", en: "Role", it: "Funzione" },
           value: brand.person.role,
         },
         {
           id: "site",
-          label: { fr: "Site", en: "Website" },
-          value: { fr: `https://${brand.domain}`, en: `https://${brand.domain}` },
+          label: { fr: "Site", en: "Website", it: "Sito" },
+          value: {
+            fr: `https://${brand.domain}`,
+            en: `https://${brand.domain}`,
+            it: `https://${brand.domain}`,
+          },
         },
       ],
     },
@@ -73,6 +90,7 @@ export const legalNoticeDocument: LegalDocument = {
       title: {
         fr: "Responsable de publication",
         en: "Publication manager",
+        it: "Responsabile della pubblicazione",
       },
       paragraphs: {
         fr: [
@@ -80,6 +98,9 @@ export const legalNoticeDocument: LegalDocument = {
         ],
         en: [
           "The final publication manager must be confirmed before production release. Until then, only the confirmed contact details are published.",
+        ],
+        it: [
+          "Il responsabile definitivo della pubblicazione deve essere confermato prima della messa in produzione. In attesa di tale validazione, vengono pubblicate solo le informazioni di contatto confermate.",
         ],
       },
       isPendingSensitive: true,
@@ -89,17 +110,22 @@ export const legalNoticeDocument: LegalDocument = {
       title: {
         fr: "Contact",
         en: "Contact",
+        it: "Contatti",
       },
       definitions: [
         {
           id: "email",
-          label: { fr: "Email", en: "Email" },
-          value: { fr: brand.contact.email, en: brand.contact.email },
+          label: { fr: "Email", en: "Email", it: "Email" },
+          value: { fr: brand.contact.email, en: brand.contact.email, it: brand.contact.email },
         },
         {
           id: "phone",
-          label: { fr: "Téléphone", en: "Phone" },
-          value: { fr: brand.contact.phoneDisplay, en: brand.contact.phoneDisplay },
+          label: { fr: "Téléphone", en: "Phone", it: "Telefono" },
+          value: {
+            fr: brand.contact.phoneDisplay,
+            en: brand.contact.phoneDisplay,
+            it: brand.contact.phoneDisplay,
+          },
         },
       ],
     },
@@ -108,6 +134,7 @@ export const legalNoticeDocument: LegalDocument = {
       title: {
         fr: "Hébergement",
         en: "Hosting",
+        it: "Hosting",
       },
       paragraphs: {
         fr: [
@@ -115,6 +142,9 @@ export const legalNoticeDocument: LegalDocument = {
         ],
         en: [
           "The precise hosting provider and hosting-country details must be confirmed before publication.",
+        ],
+        it: [
+          "Le informazioni precise relative al provider di hosting e al paese di hosting devono essere confermate prima della pubblicazione.",
         ],
       },
       isPendingSensitive: true,
@@ -124,6 +154,7 @@ export const legalNoticeDocument: LegalDocument = {
       title: {
         fr: "Propriété intellectuelle",
         en: "Intellectual property",
+        it: "Proprietà intellettuale",
       },
       paragraphs: {
         fr: [
@@ -132,6 +163,9 @@ export const legalNoticeDocument: LegalDocument = {
         en: [
           "Unless otherwise stated, the content published on this website is provided for information purposes and may not be reproduced, adapted or distributed without prior permission where such permission is required.",
         ],
+        it: [
+          "Salvo diversa indicazione, i contenuti pubblicati su questo sito sono presentati a fini informativi e non possono essere riprodotti, adattati o diffusi senza previa autorizzazione, laddove tale autorizzazione sia richiesta.",
+        ],
       },
     },
     {
@@ -139,6 +173,7 @@ export const legalNoticeDocument: LegalDocument = {
       title: {
         fr: "Limitation de responsabilité",
         en: "Limitation of liability",
+        it: "Limitazione di responsabilità",
       },
       paragraphs: {
         fr: [
@@ -147,6 +182,9 @@ export const legalNoticeDocument: LegalDocument = {
         en: [
           "Resilience@Work aims to provide clear and up-to-date information, without guaranteeing the total absence of errors, omissions or technical unavailability.",
         ],
+        it: [
+          "Resilience@Work si impegna a presentare informazioni chiare e aggiornate, senza garantire l’assenza totale di errori, omissioni o indisponibilità tecniche.",
+        ],
       },
     },
     {
@@ -154,6 +192,7 @@ export const legalNoticeDocument: LegalDocument = {
       title: {
         fr: "Liens externes",
         en: "External links",
+        it: "Collegamenti esterni",
       },
       paragraphs: {
         fr: [
@@ -162,6 +201,9 @@ export const legalNoticeDocument: LegalDocument = {
         en: [
           "The website may provide links to third-party services such as WhatsApp or LinkedIn. Access to those services is then governed by their own policies and terms.",
         ],
+        it: [
+          "Il sito può proporre collegamenti a servizi di terze parti quali WhatsApp o LinkedIn. L’accesso a tali servizi è successivamente disciplinato dalle rispettive politiche e condizioni.",
+        ],
       },
     },
     {
@@ -169,6 +211,7 @@ export const legalNoticeDocument: LegalDocument = {
       title: {
         fr: "Protection des données personnelles",
         en: "Personal data protection",
+        it: "Protezione dei dati personali",
       },
       paragraphs: {
         fr: [
@@ -177,6 +220,9 @@ export const legalNoticeDocument: LegalDocument = {
         en: [
           "For more information about how personal data is used through this website, please refer to the privacy policy.",
         ],
+        it: [
+          "Per ulteriori informazioni sull’utilizzo dei dati personali tramite questo sito, consultate l’informativa sulla privacy.",
+        ],
       },
     },
     {
@@ -184,6 +230,7 @@ export const legalNoticeDocument: LegalDocument = {
       title: {
         fr: "Droit applicable",
         en: "Applicable law",
+        it: "Diritto applicabile",
       },
       paragraphs: {
         fr: [
@@ -191,6 +238,9 @@ export const legalNoticeDocument: LegalDocument = {
         ],
         en: [
           "The applicable law and competent authorities must be confirmed based on the final country of establishment of the organisation.",
+        ],
+        it: [
+          "Il diritto applicabile e le autorità competenti dovranno essere confermati in base al paese di stabilimento definitivo della struttura.",
         ],
       },
       isPendingSensitive: true,
@@ -200,6 +250,7 @@ export const legalNoticeDocument: LegalDocument = {
       title: {
         fr: "Mise à jour",
         en: "Updates",
+        it: "Aggiornamento",
       },
       paragraphs: {
         fr: [
@@ -207,6 +258,9 @@ export const legalNoticeDocument: LegalDocument = {
         ],
         en: [
           "This page may be updated to reflect changes in the website’s administrative, technical or legal information.",
+        ],
+        it: [
+          "Questa pagina può essere aggiornata per riflettere l’evoluzione delle informazioni amministrative, tecniche o giuridiche del sito.",
         ],
       },
     },

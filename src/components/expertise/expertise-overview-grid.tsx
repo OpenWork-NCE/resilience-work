@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { StaggerContainer, StaggerItem } from "@/components/motion/animated";
 import { Card, CardDescription, CardTitle } from "@/components/shared/card";
 import { ImageFrame } from "@/components/ui/image-frame";
+import { expertiseUiCopy } from "@/content/pages/expertise";
 import { expertiseIconMap } from "./expertise-icon-map";
 import type { ExpertiseItem, Locale } from "@/types/content";
 import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
@@ -50,7 +51,7 @@ export function ExpertiseOverviewGrid({ locale, items }: ExpertiseOverviewGridPr
                     {item.summary[locale]}
                   </CardDescription>
                   <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[rgb(var(--primary))]">
-                    <span>{locale === "fr" ? "En savoir plus" : "Learn more"}</span>
+                    <span>{expertiseUiCopy.learnMore[locale]}</span>
                     <ArrowRight className="h-4 w-4 transition-transform duration-[var(--duration-fast)] group-hover:translate-x-1" />
                   </div>
                 </div>

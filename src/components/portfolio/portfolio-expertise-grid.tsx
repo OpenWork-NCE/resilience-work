@@ -6,7 +6,10 @@ import { Section } from "@/components/shared/section";
 import { SectionHeader } from "@/components/shared/section-header";
 import { ImageFrame } from "@/components/ui/image-frame";
 import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
-import { jocelynePortfolioExpertiseItems } from "@/content/pages/jocelyne-katshinda";
+import {
+  jocelynePortfolioExpertiseItems,
+  portfolioUiCopy,
+} from "@/content/pages/jocelyne-katshinda";
 import type { Locale } from "@/types/content";
 
 const iconMap = {
@@ -21,21 +24,15 @@ interface PortfolioExpertiseGridProps {
 }
 
 export function PortfolioExpertiseGrid({ locale }: PortfolioExpertiseGridProps) {
+  const copy = portfolioUiCopy.expertise;
+
   return (
     <Section spacing="lg">
       <AnimatedSection>
         <SectionHeader
-          eyebrow={locale === "fr" ? "Domaines d’intervention" : "Areas of expertise"}
-          title={
-            locale === "fr"
-              ? "Quatre domaines d’intervention, présentés avec clarté"
-              : "Four areas of expertise, presented with clarity"
-          }
-          description={
-            locale === "fr"
-              ? "Chaque domaine reprend les expertises déjà structurées dans la codebase, dans un format plus direct et mobile-friendly."
-              : "Each area reuses the expertise already structured in the codebase, in a more direct and mobile-friendly format."
-          }
+          eyebrow={copy.eyebrow[locale]}
+          title={copy.title[locale]}
+          description={copy.description[locale]}
           align="left"
           maxWidth="wide"
         />
@@ -87,7 +84,7 @@ export function PortfolioExpertiseGrid({ locale }: PortfolioExpertiseGridProps) 
                     href={getLocalizedHref(locale, item.route)}
                     className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[rgb(var(--primary))] transition-colors hover:text-[rgb(var(--primary-hover))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--surface))]"
                   >
-                    <span>{locale === "fr" ? "En savoir plus" : "Learn more"}</span>
+                    <span>{copy.learnMore[locale]}</span>
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>

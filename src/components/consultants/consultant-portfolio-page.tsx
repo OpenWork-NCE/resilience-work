@@ -153,7 +153,7 @@ export function ConsultantPortfolioPage({ locale, consultant }: ConsultantPortfo
       {/* Focus areas */}
       <Section spacing="md" tone="muted" containerSize="wide">
         <SectionHeader
-          eyebrow={locale === "fr" ? "Expertises" : "Expertise"}
+          eyebrow={copy.focusEyebrow[locale]}
           title={copy.focusTitle[locale]}
           align="left"
           maxWidth="wide"
@@ -253,11 +253,7 @@ export function ConsultantPortfolioPage({ locale, consultant }: ConsultantPortfo
                 <PortfolioActionLink
                   href={contactHref}
                   label={copy.contactCta[locale]}
-                  description={
-                    locale === "fr"
-                      ? "Formulaire ou échange direct avec Resilience@Work"
-                      : "Form or direct conversation with Resilience@Work"
-                  }
+                  description={copy.contactFormDescription[locale]}
                   icon={Mail}
                   tone="inverse"
                 />
@@ -265,10 +261,8 @@ export function ConsultantPortfolioPage({ locale, consultant }: ConsultantPortfo
               <StaggerItem>
                 <PortfolioActionLink
                   href={brand.contact.whatsappHref}
-                  label={locale === "fr" ? "WhatsApp" : "WhatsApp"}
-                  description={
-                    locale === "fr" ? "Échanger rapidement avec l’équipe" : "Chat quickly with the team"
-                  }
+                  label={copy.whatsappLabel[locale]}
+                  description={copy.whatsappDescription[locale]}
                   icon={MessageCircle}
                   external
                   tone="inverse"
@@ -290,7 +284,7 @@ export function ConsultantPortfolioPage({ locale, consultant }: ConsultantPortfo
           />
           <PortfolioActionLink
             href={brand.contact.whatsappHref}
-            label="WhatsApp"
+            label={copy.whatsappLabel[locale]}
             icon={MessageCircle}
             external
             variant="bar"

@@ -10,6 +10,7 @@ const aboutChildren: NavigationItem[] = [
     label: {
       fr: brand.person.name,
       en: brand.person.name,
+      it: brand.person.name,
     } satisfies Record<Locale, string>,
   },
   ...consultants.map(
@@ -20,6 +21,7 @@ const aboutChildren: NavigationItem[] = [
         label: {
           fr: consultant.name,
           en: consultant.name,
+          it: consultant.name,
         } satisfies Record<Locale, string>,
       }) satisfies NavigationItem
   ),
@@ -32,6 +34,7 @@ export const navigation: readonly NavigationItem[] = [
     label: {
       fr: "Accueil",
       en: "Home",
+      it: "Home",
     } satisfies Record<Locale, string>,
   },
   {
@@ -41,6 +44,7 @@ export const navigation: readonly NavigationItem[] = [
     label: {
       fr: "À propos",
       en: "About",
+      it: "Chi siamo",
     } satisfies Record<Locale, string>,
     children: aboutChildren,
   },
@@ -50,6 +54,7 @@ export const navigation: readonly NavigationItem[] = [
     label: {
       fr: "Expertises",
       en: "Expertise",
+      it: "Competenze",
     } satisfies Record<Locale, string>,
     children: [
       {
@@ -58,6 +63,7 @@ export const navigation: readonly NavigationItem[] = [
         label: {
           fr: "Prévention psychosociale",
           en: "Psychosocial prevention",
+          it: "Prevenzione psicosociale",
         } satisfies Record<Locale, string>,
       },
       {
@@ -66,6 +72,7 @@ export const navigation: readonly NavigationItem[] = [
         label: {
           fr: "Mobilité internationale",
           en: "International mobility",
+          it: "Mobilità internazionale",
         } satisfies Record<Locale, string>,
       },
       {
@@ -74,6 +81,7 @@ export const navigation: readonly NavigationItem[] = [
         label: {
           fr: "Gestion de crise",
           en: "Crisis management",
+          it: "Gestione delle crisi",
         } satisfies Record<Locale, string>,
       },
       {
@@ -82,6 +90,7 @@ export const navigation: readonly NavigationItem[] = [
         label: {
           fr: "Formations",
           en: "Training",
+          it: "Formazione",
         } satisfies Record<Locale, string>,
       },
     ],
@@ -92,6 +101,7 @@ export const navigation: readonly NavigationItem[] = [
     label: {
       fr: "Contact",
       en: "Contact",
+      it: "Contatto",
     } satisfies Record<Locale, string>,
   },
 ] as const;
@@ -101,6 +111,7 @@ export const globalCtas = {
     label: {
       fr: "Découvrir nos expertises",
       en: "Explore our expertise",
+      it: "Scopri le nostre competenze",
     } satisfies Record<Locale, string>,
     route: "expertise",
     variant: "primary",
@@ -110,6 +121,7 @@ export const globalCtas = {
     label: {
       fr: "Planifier un échange",
       en: "Schedule a conversation",
+      it: "Pianificare un colloquio",
     } satisfies Record<Locale, string>,
     route: "contact",
     variant: "primary",
@@ -119,6 +131,7 @@ export const globalCtas = {
     label: {
       fr: "Nous contacter",
       en: "Contact us",
+      it: "Contattaci",
     } satisfies Record<Locale, string>,
     route: "contact",
     variant: "primary",
@@ -128,6 +141,7 @@ export const globalCtas = {
     label: {
       fr: "En savoir plus",
       en: "Learn more",
+      it: "Scopri di più",
     } satisfies Record<Locale, string>,
     variant: "link",
   } satisfies Cta,
@@ -136,6 +150,7 @@ export const globalCtas = {
     label: {
       fr: "Échanger sur WhatsApp",
       en: "Chat on WhatsApp",
+      it: "Scrivici su WhatsApp",
     } satisfies Record<Locale, string>,
     href: "https://wa.me/32470542390",
     external: true,

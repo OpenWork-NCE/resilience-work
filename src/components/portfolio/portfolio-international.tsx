@@ -2,7 +2,7 @@ import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/mot
 import { Section } from "@/components/shared/section";
 import { SectionHeader } from "@/components/shared/section-header";
 import { ImageFrame } from "@/components/ui/image-frame";
-import { jocelyneKatshindaPage } from "@/content/pages/jocelyne-katshinda";
+import { jocelyneKatshindaPage, portfolioUiCopy } from "@/content/pages/jocelyne-katshinda";
 import type { Locale } from "@/types/content";
 
 interface PortfolioInternationalProps {
@@ -11,6 +11,7 @@ interface PortfolioInternationalProps {
 
 export function PortfolioInternational({ locale }: PortfolioInternationalProps) {
   const section = jocelyneKatshindaPage.international;
+  const delivery = portfolioUiCopy.international;
 
   return (
     <Section spacing="lg">
@@ -30,12 +31,10 @@ export function PortfolioInternational({ locale }: PortfolioInternationalProps) 
 
             <div className="rounded-[var(--radius-xl)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface-subtle))] p-5 sm:p-6">
               <p className="font-[family:var(--font-accent)] text-xs font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
-                {locale === "fr" ? "Modalités d’intervention" : "Delivery approach"}
+                {delivery.deliveryApproachTitle[locale]}
               </p>
               <p className="mt-3 text-sm leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-base">
-                {locale === "fr"
-                  ? "Des interventions en présentiel ou à distance, adaptées aux rythmes des organisations, à la complexité des contextes et aux réalités multiculturelles des équipes."
-                  : "On-site or remote interventions adapted to organisational rhythms, contextual complexity and the multicultural realities faced by teams."}
+                {delivery.deliveryApproachDescription[locale]}
               </p>
             </div>
           </div>

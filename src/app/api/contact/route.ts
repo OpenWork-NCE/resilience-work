@@ -13,7 +13,7 @@ import type { Locale } from "@/types/content";
 
 function getLocaleFromPayload(payload: Record<string, unknown>): Locale {
   const locale = typeof payload.locale === "string" ? payload.locale : "";
-  return isSupportedLocale(locale) ? locale : "en";
+  return isSupportedLocale(locale) ? locale : "fr";
 }
 
 function getClientIdentifier(request: Request) {

@@ -12,7 +12,7 @@ import { SectionHeader } from "@/components/shared/section-header";
 import { ImageFrame } from "@/components/ui/image-frame";
 import { audiences } from "@/content/audiences";
 import { assets } from "@/content/assets";
-import { expertiseItems, expertiseLandingPage } from "@/content/pages/expertise";
+import { expertiseItems, expertiseLandingPage, expertiseUiCopy } from "@/content/pages/expertise";
 import { homePage } from "@/content/pages/home";
 import { regions } from "@/content/pages/international";
 import { getPageMetadata } from "@/lib/seo/metadata";
@@ -36,6 +36,7 @@ export default async function ExpertiseLandingPage({
   const { locale } = await params;
   const currentLocale = locale as Locale;
   const copy = expertiseLandingPage;
+  const ui = expertiseUiCopy;
 
   return (
     <>
@@ -43,10 +44,13 @@ export default async function ExpertiseLandingPage({
         <div className="mx-auto w-[min(90vw,var(--container-wide))] px-[var(--gutter-mobile)] md:px-[var(--gutter-tablet)] lg:px-[var(--gutter-desktop)]">
           <AnimatedSection>
             <Breadcrumbs
-              ariaLabel={currentLocale === "fr" ? "Fil d'Ariane" : "Breadcrumb"}
+              ariaLabel={ui.breadcrumbAria[currentLocale]}
               items={[
-                { label: currentLocale === "fr" ? "Accueil" : "Home", href: getLocalizedHref(currentLocale, "home") },
-                { label: currentLocale === "fr" ? "Expertises" : "Expertise" },
+                {
+                  label: ui.breadcrumbHome[currentLocale],
+                  href: getLocalizedHref(currentLocale, "home"),
+                },
+                { label: ui.breadcrumbExpertise[currentLocale] },
               ]}
             />
           </AnimatedSection>
@@ -94,8 +98,8 @@ export default async function ExpertiseLandingPage({
       <Section spacing="md">
         <ExpertiseEditorialIntro
           locale={currentLocale}
-          eyebrow={currentLocale === "fr" ? "Introduction" : "Introduction"}
-          title={currentLocale === "fr" ? "Quatre domaines pour prévenir, accompagner et renforcer" : "Four areas to prevent, support and strengthen"}
+          eyebrow={ui.landingIntroEyebrow[currentLocale]}
+          title={ui.landingIntroTitle[currentLocale]}
           paragraphs={[
             copy.hero.description[currentLocale],
             copy.hero.supportingText[currentLocale],
@@ -105,8 +109,8 @@ export default async function ExpertiseLandingPage({
 
       <Section spacing="lg">
         <SectionHeader
-          eyebrow={currentLocale === "fr" ? "Nos expertises" : "Our expertise"}
-          title={currentLocale === "fr" ? "Des accompagnements structurés pour des contextes exigeants" : "Structured support for demanding contexts"}
+          eyebrow={ui.landingGridEyebrow[currentLocale]}
+          title={ui.landingGridTitle[currentLocale]}
           align="left"
           maxWidth="wide"
         />
@@ -134,9 +138,21 @@ export default async function ExpertiseLandingPage({
         <ExpertiseDeliverySection
           locale={currentLocale}
           delivery={{
-            formats: { fr: ["Présentiel", "Distanciel"], en: ["On-site", "Remote"] },
-            languages: { fr: ["Français", "Anglais", "Italien"], en: ["French", "English", "Italian"] },
-            regions: { fr: ["Afrique", "Europe", "Moyen-Orient"], en: ["Africa", "Europe", "Middle East"] },
+            formats: {
+              fr: ["Présentiel", "Distanciel"],
+              en: ["On-site", "Remote"],
+              it: ["In presenza", "A distanza"],
+            },
+            languages: {
+              fr: ["Français", "Anglais", "Italien"],
+              en: ["French", "English", "Italian"],
+              it: ["Francese", "Inglese", "Italiano"],
+            },
+            regions: {
+              fr: ["Afrique", "Europe", "Moyen-Orient"],
+              en: ["Africa", "Europe", "Middle East"],
+              it: ["Africa", "Europa", "Medio Oriente"],
+            },
           }}
         />
       </Section>
@@ -145,9 +161,9 @@ export default async function ExpertiseLandingPage({
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,30rem)] lg:items-start">
           <div>
             <SectionHeader
-              eyebrow={currentLocale === "fr" ? "Présence internationale" : "International reach"}
-              title={currentLocale === "fr" ? "Une expertise pensée pour des contextes multiculturels" : "Expertise designed for multicultural contexts"}
-              description={currentLocale === "fr" ? "Resilience@Work intervient auprès d’organisations implantées en Afrique, en Europe et au Moyen-Orient." : "Resilience@Work supports organisations across Africa, Europe and the Middle East."}
+              eyebrow={ui.landingInternationalEyebrow[currentLocale]}
+              title={ui.landingInternationalTitle[currentLocale]}
+              description={ui.landingInternationalDescription[currentLocale]}
               align="left"
             />
             <div className="mt-6 grid gap-3 sm:grid-cols-3">

@@ -1,6 +1,7 @@
 import { Languages, MapPinned, MonitorSmartphone } from "lucide-react";
 import { SectionHeader } from "@/components/shared/section-header";
 import { Badge } from "@/components/ui/badge";
+import { expertiseUiCopy } from "@/content/pages/expertise";
 import type { ExpertiseDetailPage, Locale } from "@/types/content";
 
 interface ExpertiseDeliverySectionProps {
@@ -13,19 +14,19 @@ export function ExpertiseDeliverySection({ locale, delivery }: ExpertiseDelivery
     {
       id: "formats",
       icon: MonitorSmartphone,
-      title: locale === "fr" ? "Formats d’intervention" : "Delivery formats",
+      title: expertiseUiCopy.deliveryFormatsTitle[locale],
       items: delivery.formats[locale],
     },
     {
       id: "languages",
       icon: Languages,
-      title: locale === "fr" ? "Langues de prestation" : "Service languages",
+      title: expertiseUiCopy.deliveryLanguagesTitle[locale],
       items: delivery.languages[locale],
     },
     {
       id: "regions",
       icon: MapPinned,
-      title: locale === "fr" ? "Zones d’intervention" : "Regions",
+      title: expertiseUiCopy.deliveryRegionsTitle[locale],
       items: delivery.regions[locale],
     },
   ] as const;
@@ -33,8 +34,8 @@ export function ExpertiseDeliverySection({ locale, delivery }: ExpertiseDelivery
   return (
     <>
       <SectionHeader
-        eyebrow={locale === "fr" ? "Formats d’intervention" : "How support is delivered"}
-        title={locale === "fr" ? "Des modalités adaptées au contexte de chaque organisation" : "Delivery formats adapted to each organisation’s context"}
+        eyebrow={expertiseUiCopy.deliveryEyebrow[locale]}
+        title={expertiseUiCopy.deliveryTitle[locale]}
         align="left"
         maxWidth="wide"
       />

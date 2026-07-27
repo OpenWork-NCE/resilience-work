@@ -20,7 +20,7 @@ import { SectionHeader } from "@/components/shared/section-header";
 import { ImageFrame } from "@/components/ui/image-frame";
 import { assets } from "@/content/assets";
 import { brand } from "@/content/brand";
-import { contactPage } from "@/content/pages/contact";
+import { contactPage, contactUiCopy } from "@/content/pages/contact";
 import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
 import { cn } from "@/lib/utils";
 import type { ContactActionId } from "@/types/contact";
@@ -47,7 +47,7 @@ interface ContactPageTemplateProps {
 export function ContactPageTemplate({ locale }: ContactPageTemplateProps) {
   const copy = contactPage;
   const breadcrumbs = [
-    { label: locale === "fr" ? "Accueil" : "Home", href: getLocalizedHref(locale, "home") },
+    { label: contactUiCopy.breadcrumbHome[locale], href: getLocalizedHref(locale, "home") },
     { label: copy.hero.eyebrow[locale] },
   ];
 

@@ -1,6 +1,7 @@
 import { Building2, BriefcaseBusiness, Globe, Handshake, Landmark, Users } from "lucide-react";
 import { SectionHeader } from "@/components/shared/section-header";
 import { audiences } from "@/content/audiences";
+import { expertiseUiCopy } from "@/content/pages/expertise";
 import type { Locale } from "@/types/content";
 
 const iconList = [Building2, BriefcaseBusiness, Landmark, Handshake, Users, Globe] as const;
@@ -16,8 +17,8 @@ export function ExpertiseAudiencesSection({ locale, audienceIds }: ExpertiseAudi
   return (
     <>
       <SectionHeader
-        eyebrow={locale === "fr" ? "Publics concernés" : "Who this is for"}
-        title={locale === "fr" ? "Des accompagnements pensés pour plusieurs réalités professionnelles" : "Support designed for different professional realities"}
+        eyebrow={expertiseUiCopy.audiencesEyebrow[locale]}
+        title={expertiseUiCopy.audiencesTitle[locale]}
         align="left"
         maxWidth="wide"
       />

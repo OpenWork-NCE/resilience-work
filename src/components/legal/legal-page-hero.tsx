@@ -1,6 +1,7 @@
 import { AnimatedSection } from "@/components/motion/animated";
 import { Breadcrumbs, type BreadcrumbItem } from "@/components/navigation/breadcrumbs";
 import { Container } from "@/components/shared/container";
+import { legalUiCopy } from "@/content/legal/legal-ui";
 import type { Locale } from "@/types/content";
 
 interface LegalPageHeroProps {
@@ -26,7 +27,7 @@ export function LegalPageHero({
         <AnimatedSection>
           <Breadcrumbs
             items={breadcrumbs}
-            ariaLabel={locale === "fr" ? "Fil d'Ariane" : "Breadcrumb"}
+            ariaLabel={legalUiCopy.breadcrumbAria[locale]}
           />
         </AnimatedSection>
         <AnimatedSection delay={0.04} className="mt-6">
@@ -44,7 +45,7 @@ export function LegalPageHero({
             {description}
           </p>
           <p className="mt-4 text-sm text-[rgb(var(--muted-foreground))]">
-            {locale === "fr" ? "Dernière mise à jour" : "Last updated"}: {lastUpdated}
+            {legalUiCopy.lastUpdated[locale]}: {lastUpdated}
           </p>
         </AnimatedSection>
       </Container>

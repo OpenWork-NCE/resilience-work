@@ -3,7 +3,7 @@ import { AnimatedSection } from "@/components/motion/animated";
 import { Section } from "@/components/shared/section";
 import { SectionHeader } from "@/components/shared/section-header";
 import { Badge } from "@/components/ui/badge";
-import { jocelyneKatshindaPage } from "@/content/pages/jocelyne-katshinda";
+import { jocelyneKatshindaPage, portfolioUiCopy } from "@/content/pages/jocelyne-katshinda";
 import type { Locale } from "@/types/content";
 
 interface PortfolioServiceDetailsProps {
@@ -12,6 +12,7 @@ interface PortfolioServiceDetailsProps {
 
 export function PortfolioServiceDetails({ locale }: PortfolioServiceDetailsProps) {
   const section = jocelyneKatshindaPage.serviceDetails;
+  const framework = portfolioUiCopy.serviceDetails;
 
   return (
     <Section spacing="md" tone="muted">
@@ -64,12 +65,10 @@ export function PortfolioServiceDetails({ locale }: PortfolioServiceDetailsProps
             <Shield className="h-5 w-5" />
           </div>
           <h3 className="mt-5 font-display text-2xl font-medium">
-            {locale === "fr" ? "Cadre d’intervention" : "Working framework"}
+            {framework.workingFrameworkTitle[locale]}
           </h3>
           <p className="mt-5 text-sm leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-base">
-            {locale === "fr"
-              ? "Les échanges privilégient la clarté, la confidentialité et l’adaptation aux contraintes concrètes des équipes et des organisations."
-              : "Interactions prioritise clarity, confidentiality and adaptation to the concrete constraints faced by teams and organisations."}
+            {framework.workingFrameworkDescription[locale]}
           </p>
           <div className="mt-6 flex items-center gap-3 rounded-[var(--radius-lg)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface-subtle))] px-4 py-3">
             <Globe2 className="h-4 w-4 text-[rgb(var(--accent))]" />

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://resilienceatwork.eu";
-const locales = ["fr", "en"] as const;
+const locales = ["fr", "en", "it"] as const;
 
 const localizedPaths = [
   "",

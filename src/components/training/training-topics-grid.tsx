@@ -1,4 +1,5 @@
 import { SectionHeader } from "@/components/shared/section-header";
+import { trainingUiCopy } from "@/content/pages/training";
 import { TrainingTopicCard } from "./training-topic-card";
 import type { Locale, TrainingTopic } from "@/types/content";
 
@@ -12,8 +13,8 @@ export function TrainingTopicsGrid({ locale, topics, contactHref }: TrainingTopi
   return (
     <>
       <SectionHeader
-        eyebrow={locale === "fr" ? "Catalogue" : "Catalogue"}
-        title={locale === "fr" ? "Des contenus conçus pour transmettre des repères concrets" : "Content designed to share practical reference points"}
+        eyebrow={trainingUiCopy.catalogue[locale]}
+        title={trainingUiCopy.catalogueTitle[locale]}
         align="left"
         maxWidth="wide"
       />

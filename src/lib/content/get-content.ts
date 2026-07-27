@@ -8,5 +8,5 @@ export function getLocalizedValue<T>(
 }
 
 export function isSupportedLocale(value: string): value is Locale {
-  return value === "fr" || value === "en";
+  return value === "fr" || value === "en" || value === "it";
 }

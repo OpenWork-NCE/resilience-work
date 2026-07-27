@@ -1,3 +1,4 @@
+import { legalUiCopy } from "@/content/legal/legal-ui";
 import type { Locale } from "@/types/content";
 
 interface LegalTocItem {
@@ -13,11 +14,11 @@ interface LegalTocProps {
 export function LegalToc({ locale, items }: LegalTocProps) {
   return (
     <nav
-      aria-label={locale === "fr" ? "Table des matières" : "Table of contents"}
+      aria-label={legalUiCopy.tableOfContentsAria[locale]}
       className="rounded-[var(--radius-xl)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))] p-5"
     >
       <p className="font-[family:var(--font-accent)] text-xs font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
-        {locale === "fr" ? "Sommaire" : "Contents"}
+        {legalUiCopy.tableOfContentsTitle[locale]}
       </p>
       <ol className="mt-4 space-y-2">
         {items.map((item) => (

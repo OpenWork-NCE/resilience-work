@@ -32,64 +32,18 @@
   "accessibility": {
     "skipToContent": "Aller au contenu principal",
     "externalLink": "Ouvre un nouvel onglet",
-    "backToTop": "Remonter en haut de la page"
+    "backToTop": "Remonter en haut de la page",
+    "breadcrumb": "Fil d'Ariane"
   },
-  "home": {
-    "welcome": "La résilience professionnelle en environnement multiculturel",
-    "subtitle": "Accompagnement expert des organisations et des expatriés en Afrique, Europe et Moyen-Orient",
-    "cta": "Découvrir nos services"
-  },
-  "expertise": {
-    "psychosocial": {
-      "title": "Prévention psychosociale & bien-être au travail",
-      "description": "Évaluation et prévention des risques psychosociaux",
-      "services": {
-        "riskAssessment": "Évaluation des risques psychosociaux",
-        "preventionPrograms": "Programmes de prévention et d'intervention",
-        "multiculturalSupport": "Accompagnement des équipes multiculturelles",
-        "teamSupport": "Soutien individuel et collectif",
-        "stressPrevention": "Prévention du stress",
-        "burnoutPrevention": "Prévention du burnout",
-        "workLifeBalance": "Équilibre vie professionnelle et vie personnelle"
-      }
-    },
-    "mobility": {
-      "title": "Mobilité internationale",
-      "description": "Accompagnement psychologique de l'expatriation",
-      "services": {
-        "stressManagement": "Gestion du stress et de l'isolement",
-        "culturalAdaptation": "Adaptation culturelle",
-        "resilience": "Résilience",
-        "confidentialSupport": "Soutien psychologique confidentiel",
-        "departurePreparation": "Préparation au départ",
-        "repatriationSupport": "Accompagnement au retour d'expatriation"
-      }
-    },
-    "crisis": {
-      "title": "Management des situations de crise",
-      "description": "Soutien aux situations critiques",
-      "services": {
-        "teamSupport": "Soutien aux équipes confrontées à des événements critiques",
-        "debriefing": "Débriefings psychologiques post-incident",
-        "managerSupport": "Accompagnement des managers en contexte de tension",
-        "emergencyProtocols": "Protocoles de gestion émotionnelle en urgence"
-      }
-    },
-    "training": {
-      "title": "Formations et webinaires professionnels",
-      "description": "Développement des compétences professionnelles",
-      "services": {
-        "leadership": "Leadership en contexte international",
-        "burnoutPrevention": "Prévention du burnout",
-        "compassionFatigue": "Prévention de la fatigue compassionnelle",
-        "tensionCommunication": "Communication en situation de tension",
-        "stressManagement": "Gestion du stress",
-        "multiculturalManagement": "Management multiculturel",
-        "mobilitySupport": "Soutien en mobilité internationale",
-        "mentalHealthFirstAid": "Mental Health First Aid",
-        "workLifeBalance": "Équilibre vie professionnelle et vie personnelle"
-      }
-    }
+  "common": {
+    "home": "Accueil",
+    "learnMore": "En savoir plus",
+    "lastUpdated": "Dernière mise à jour",
+    "tableOfContents": "Table des matières",
+    "contents": "Sommaire",
+    "introduction": "Introduction",
+    "getInTouch": "Prendre contact",
+    "contact": "Contact"
   },
   "footer": {
     "tagline": "Construire la résilience dans les environnements professionnels complexes",
@@ -105,5 +59,22 @@
     "serviceLanguages": "Langues de prestation",
     "rights": "Tous droits réservés.",
     "allRightsReserved": "Tous droits réservés"
+  },
+  "cookies": {
+    "bannerTitle": "Cookies",
+    "bannerDescription": "Nous utilisons des cookies pour assurer le bon fonctionnement du site et, avec votre consentement, pour mesurer l’audience et améliorer votre expérience.",
+    "bannerSecondary": "Vous pouvez accepter tous les cookies, refuser les cookies non essentiels, ou personnaliser vos préférences.",
+    "acceptAll": "Tout accepter",
+    "rejectAll": "Refuser le non essentiel",
+    "customise": "Personnaliser",
+    "preferencesTitle": "Préférences de cookies",
+    "preferencesDescription": "Choisissez les catégories de cookies que vous autorisez. Les cookies essentiels restent toujours actifs.",
+    "save": "Enregistrer les préférences",
+    "essential": "Essentiels",
+    "essentialDescription": "Indispensables au fonctionnement du site et à la sécurité. Ne peuvent pas être désactivés.",
+    "analytics": "Mesure d’audience",
+    "analyticsDescription": "Nous aident à comprendre l’usage du site pour l’améliorer.",
+    "marketing": "Marketing",
+    "marketingDescription": "Utilisés pour personnaliser le contenu ou mesurer des campagnes, s’ils sont activés."
   }
 }

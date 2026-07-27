@@ -1,6 +1,7 @@
 import { StaggerContainer, StaggerItem } from "@/components/motion/animated";
 import { Card, CardDescription, CardTitle } from "@/components/shared/card";
 import { SectionHeader } from "@/components/shared/section-header";
+import { expertiseUiCopy } from "@/content/pages/expertise";
 import { expertiseIconMap } from "./expertise-icon-map";
 import type { LocalizedFeature, Locale } from "@/types/content";
 
@@ -14,7 +15,7 @@ export function ExpertiseServicesGrid({ locale, title, items }: ExpertiseService
   return (
     <>
       <SectionHeader
-        eyebrow={locale === "fr" ? "Services" : "Services"}
+        eyebrow={expertiseUiCopy.servicesEyebrow[locale]}
         title={title}
         align="left"
         maxWidth="wide"

@@ -6,6 +6,7 @@ export const audiences = [
     label: {
       fr: "Directions et responsables des ressources humaines",
       en: "HR directors and leaders",
+      it: "Direzioni e responsabili delle risorse umane",
     } satisfies Record<Locale, string>,
   },
   {
@@ -13,6 +14,7 @@ export const audiences = [
     label: {
       fr: "Managers d'équipes internationales",
       en: "International team managers",
+      it: "Manager di team internazionali",
     } satisfies Record<Locale, string>,
   },
   {
@@ -20,6 +22,7 @@ export const audiences = [
     label: {
       fr: "Employeurs du secteur privé",
       en: "Private-sector employers",
+      it: "Datori di lavoro del settore privato",
     } satisfies Record<Locale, string>,
   },
   {
@@ -27,6 +30,7 @@ export const audiences = [
     label: {
       fr: "Institutions internationales",
       en: "International institutions",
+      it: "Istituzioni internazionali",
     } satisfies Record<Locale, string>,
   },
   {
@@ -34,6 +38,7 @@ export const audiences = [
     label: {
       fr: "Expatriés et collaborateurs en mission à l'étranger",
       en: "Expatriates and employees on international assignments",
+      it: "Espatriati e collaboratori in missione all'estero",
     } satisfies Record<Locale, string>,
   },
   {
@@ -41,6 +46,7 @@ export const audiences = [
     label: {
       fr: "Organisations implantées en Afrique, en Europe et au Moyen-Orient",
       en: "Organisations operating across Africa, Europe and the Middle East",
+      it: "Organizzazioni presenti in Africa, Europa e Medio Oriente",
     } satisfies Record<Locale, string>,
   },
 ] as const;

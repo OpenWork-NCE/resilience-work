@@ -26,16 +26,16 @@ import type { LegalDocument } from "../../types/legal";
 const errors: string[] = [];
 const warnings: string[] = [];
 
+const REQUIRED_LOCALES = ["fr", "en", "it"] as const;
+
 function checkLocalizedText(obj: Record<string, unknown>, path: string) {
   if (obj && typeof obj === "object") {
-    if ("fr" in obj && "en" in obj) {
-      const fr = obj.fr;
-      const en = obj.en;
-      if (!fr || typeof fr !== "string" || (fr as string).trim() === "") {
-        errors.push(`${path}: Missing or empty FR translation`);
-      }
-      if (!en || typeof en !== "string" || (en as string).trim() === "") {
-        errors.push(`${path}: Missing or empty EN translation`);
+    if ("fr" in obj || "en" in obj || "it" in obj) {
+      for (const locale of REQUIRED_LOCALES) {
+        const value = obj[locale];
+        if (!value || typeof value !== "string" || value.trim() === "") {
+          errors.push(`${path}: Missing or empty ${locale.toUpperCase()} translation`);
+        }
       }
     }
   }
@@ -43,14 +43,12 @@ function checkLocalizedText(obj: Record<string, unknown>, path: string) {
 
 function checkLocalizedCollection(obj: Record<string, unknown>, path: string) {
   if (obj && typeof obj === "object") {
-    if ("fr" in obj && "en" in obj) {
-      const fr = obj.fr;
-      const en = obj.en;
-      if (!Array.isArray(fr) || fr.length === 0) {
-        errors.push(`${path}: Missing or empty FR collection`);
-      }
-      if (!Array.isArray(en) || en.length === 0) {
-        errors.push(`${path}: Missing or empty EN collection`);
+    if ("fr" in obj || "en" in obj || "it" in obj) {
+      for (const locale of REQUIRED_LOCALES) {
+        const value = obj[locale];
+        if (!Array.isArray(value) || value.length === 0) {
+          errors.push(`${path}: Missing or empty ${locale.toUpperCase()} collection`);
+        }
       }
     }
   }

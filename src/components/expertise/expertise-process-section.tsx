@@ -1,4 +1,5 @@
 import { SectionHeader } from "@/components/shared/section-header";
+import { expertiseUiCopy } from "@/content/pages/expertise";
 import type { LocalizedProcessStep, Locale } from "@/types/content";
 
 interface ExpertiseProcessSectionProps {
@@ -10,8 +11,8 @@ export function ExpertiseProcessSection({ locale, items }: ExpertiseProcessSecti
   return (
     <>
       <SectionHeader
-        eyebrow={locale === "fr" ? "Notre démarche" : "Our approach"}
-        title={locale === "fr" ? "Un parcours d’accompagnement structuré" : "A structured support pathway"}
+        eyebrow={expertiseUiCopy.processEyebrow[locale]}
+        title={expertiseUiCopy.processTitle[locale]}
         align="left"
         maxWidth="wide"
       />

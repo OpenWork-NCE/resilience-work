@@ -2,6 +2,7 @@ import { Clock3, MessageSquare, ShieldCheck } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/motion/animated";
 import { Breadcrumbs, type BreadcrumbItem } from "@/components/navigation/breadcrumbs";
 import { Container } from "@/components/shared/container";
+import { contactUiCopy } from "@/content/pages/contact";
 import type { Locale } from "@/types/content";
 
 interface TrustSignal {
@@ -51,7 +52,7 @@ export function ContactPageHero({
             <AnimatedSection>
               <Breadcrumbs
                 items={breadcrumbs}
-                ariaLabel={locale === "fr" ? "Fil d'Ariane" : "Breadcrumb"}
+                ariaLabel={contactUiCopy.breadcrumbAria[locale]}
               />
             </AnimatedSection>
             <AnimatedSection delay={0.04} className="mt-6">

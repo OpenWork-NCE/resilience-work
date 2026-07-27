@@ -11,7 +11,7 @@ export type PartnerLogo = {
 export type Partner = {
   id: string;
   name: string;
-  /** Accessible label FR/EN */
+  /** Accessible label FR/EN/IT */
   label: Record<Locale, string>;
   logos: readonly PartnerLogo[];
 };
@@ -32,6 +32,7 @@ export const partners: readonly Partner[] = [
     label: {
       fr: "Commission européenne",
       en: "European Commission",
+      it: "Commissione europea",
     },
     logos: [
       {
@@ -48,6 +49,7 @@ export const partners: readonly Partner[] = [
     label: {
       fr: "CBC & KBC Assurances",
       en: "CBC & KBC Insurance",
+      it: "CBC & KBC Assicurazioni",
     },
     logos: [
       {
@@ -70,6 +72,7 @@ export const partners: readonly Partner[] = [
     label: {
       fr: "La Fleur du Pain",
       en: "La Fleur du Pain",
+      it: "La Fleur du Pain",
     },
     logos: [
       {
@@ -86,6 +89,7 @@ export const partners: readonly Partner[] = [
     label: {
       fr: "Abilways / Skolae",
       en: "Abilways / Skolae",
+      it: "Abilways / Skolae",
     },
     logos: [
       {
@@ -102,6 +106,7 @@ export const partners: readonly Partner[] = [
     label: {
       fr: "Cresept asbl",
       en: "Cresept asbl",
+      it: "Cresept asbl",
     },
     logos: [
       {
@@ -118,6 +123,7 @@ export const partners: readonly Partner[] = [
     label: {
       fr: "Vidyas",
       en: "Vidyas",
+      it: "Vidyas",
     },
     logos: [
       {
@@ -134,6 +140,7 @@ export const partners: readonly Partner[] = [
     label: {
       fr: "Parlement européen",
       en: "European Parliament",
+      it: "Parlamento europeo",
     },
     logos: [
       {
@@ -150,13 +157,16 @@ export const partnersSection = {
   eyebrow: {
     fr: "Ils nous font confiance",
     en: "They trust us",
+    it: "Si fidano di noi",
   } satisfies Record<Locale, string>,
   title: {
     fr: "Des organisations qui placent l’humain au centre",
     en: "Organisations that put people first",
+    it: "Organizzazioni che mettono le persone al centro",
   } satisfies Record<Locale, string>,
   description: {
     fr: "Institutions européennes, entreprises et acteurs engagés accompagnés par Resilience@Work.",
     en: "European institutions, companies and committed organisations supported by Resilience@Work.",
+    it: "Istituzioni europee, imprese e attori impegnati accompagnati da Resilience@Work.",
   } satisfies Record<Locale, string>,
 } as const;

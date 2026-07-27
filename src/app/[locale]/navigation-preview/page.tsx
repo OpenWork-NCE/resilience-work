@@ -9,6 +9,7 @@ import type { Locale, RouteKey } from "@/types/content";
 
 const previewCopy = {
   fr: {
+    shellEyebrow: "Shell",
     title: "Prévisualisation navigation",
     description:
       "Cette route interne permet de vérifier la shell publique, le header sticky, les liens actifs, le footer et les composants de navigation réutilisables.",
@@ -25,6 +26,7 @@ const previewCopy = {
     ],
   },
   en: {
+    shellEyebrow: "Shell",
     title: "Navigation preview",
     description:
       "This internal route helps validate the public shell, sticky header, active links, footer, and the reusable navigation components.",
@@ -38,6 +40,23 @@ const previewCopy = {
       "Mobile drawer, accordion behavior, and focus restoration",
       "Theme and locale switching on the current route",
       "Institutional footer, active links, and contact actions",
+    ],
+  },
+  it: {
+    shellEyebrow: "Shell",
+    title: "Anteprima navigazione",
+    description:
+      "Questa route interna permette di verificare la shell pubblica, l’header sticky, i link attivi, il footer e i componenti di navigazione riutilizzabili.",
+    stickyTitle: "Header sticky",
+    stickyDescription:
+      "Scorri la pagina per verificare la transizione dell’header, il contrasto e il comportamento sticky su una pagina interna.",
+    breadcrumbsLabel: "Dimostrazione percorso di navigazione",
+    examplesTitle: "Stati da verificare",
+    examples: [
+      "Navigazione desktop e dropdown Competenze",
+      "Menu mobile, accordion e ripristino del focus",
+      "Cambio di tema e lingua sulla route corrente",
+      "Footer istituzionale, link attivi e azioni di contatto",
     ],
   },
 } as const;
@@ -63,7 +82,7 @@ export default function NavigationPreviewPage() {
     <>
       <Section spacing="md">
         <SectionHeader
-          eyebrow="Shell"
+          eyebrow={copy.shellEyebrow}
           title={copy.title}
           description={copy.description}
           align="left"
