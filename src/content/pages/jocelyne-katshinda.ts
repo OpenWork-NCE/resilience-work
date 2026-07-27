@@ -344,8 +344,8 @@ export const jocelyneKatshindaPage = {
       en: "Get in touch",
     } satisfies Record<Locale, string>,
     title: {
-      fr: "Vous pouvez joindre Jocelyne Katshinda immédiatement",
-      en: "You can contact Jocelyne Katshinda right away",
+      fr: "Vous pouvez joindre Jocelyne Katshinda directement",
+      en: "You can contact Jocelyne Katshinda directly",
     } satisfies Record<Locale, string>,
     description: {
       fr: "Cette page a été pensée pour un usage direct depuis un QR code. Les principales actions restent accessibles en quelques secondes.",
