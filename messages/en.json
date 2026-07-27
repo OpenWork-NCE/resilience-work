@@ -18,7 +18,8 @@
     "closeMenu": "Close menu",
     "mainNavigation": "Main navigation",
     "footerNavigation": "Footer navigation",
-    "expertiseMenu": "Show expertise areas"
+    "expertiseMenu": "Show expertise areas",
+    "aboutMenu": "Show the team"
   },
   "theme": {
     "switchToDark": "Switch to dark mode",

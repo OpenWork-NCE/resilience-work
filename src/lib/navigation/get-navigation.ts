@@ -1,8 +1,8 @@
 import { brand } from "@/content/brand";
 import { expertiseItems } from "@/content/pages/expertise";
 import { globalCtas, navigation } from "@/content/navigation";
-import type { Cta, ExpertiseId, Locale, RouteKey } from "@/types/content";
-import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
+import type { Cta, ExpertiseId, Locale, NavigationItem, RouteKey } from "@/types/content";
+import { getLocalizedHref, localizePathname } from "@/lib/navigation/get-localized-href";
 
 export interface ResolvedNavigationItem {
   id: string;
@@ -19,6 +19,14 @@ export interface ResolvedExpertiseItem {
   href: string;
 }
 
+/** Dropdown row: expertise (rich) or about/team (simple). */
+export interface ResolvedDropdownItem {
+  id: string;
+  label: string;
+  href: string;
+  summary?: string;
+}
+
 export interface ResolvedCta {
   label: string;
   href: string;
@@ -26,19 +34,28 @@ export interface ResolvedCta {
   variant: NonNullable<Cta["variant"]>;
 }
 
-export function getLocalizedNavigation(locale: Locale): ResolvedNavigationItem[] {
-  return navigation.map((item) => ({
+function resolveNavigationHref(locale: Locale, item: NavigationItem): string {
+  if (item.route) {
+    return getLocalizedHref(locale, item.route);
+  }
+  if (item.href) {
+    return localizePathname(locale, item.href);
+  }
+  return "#";
+}
+
+function resolveNavigationItem(locale: Locale, item: NavigationItem): ResolvedNavigationItem {
+  return {
     id: item.id ?? item.route ?? item.href ?? item.label?.[locale] ?? "navigation-item",
     label: item.label?.[locale] ?? "",
-    href: item.route ? getLocalizedHref(locale, item.route) : item.href ?? "#",
+    href: resolveNavigationHref(locale, item),
     route: item.route,
-    children: item.children?.map((child) => ({
-      id: child.id ?? child.route ?? child.href ?? child.label?.[locale] ?? "navigation-child",
-      label: child.label?.[locale] ?? "",
-      href: child.route ? getLocalizedHref(locale, child.route) : child.href ?? "#",
-      route: child.route,
-    })),
-  }));
+    children: item.children?.map((child) => resolveNavigationItem(locale, child)),
+  };
+}
+
+export function getLocalizedNavigation(locale: Locale): ResolvedNavigationItem[] {
+  return navigation.map((item) => resolveNavigationItem(locale, item));
 }
 
 export function getLocalizedExpertiseItems(locale: Locale): ResolvedExpertiseItem[] {

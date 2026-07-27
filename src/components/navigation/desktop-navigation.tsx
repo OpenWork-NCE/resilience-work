@@ -29,28 +29,43 @@ export function DesktopNavigation({
       aria-label={t("mainNavigation")}
       className="hidden min-w-0 flex-1 lg:ml-4 lg:flex lg:items-center lg:justify-start lg:gap-3 xl:ml-8 xl:gap-7"
     >
-      {items.map((item) =>
-        item.children?.length ? (
+      {items.map((item) => {
+        if (!item.children?.length) {
+          return (
+            <NavigationLink
+              key={item.id}
+              href={item.href}
+              label={item.label}
+              isActive={isActiveRoute(pathname, item.href, { exact: item.route === "home" })}
+              inverse={inverse}
+              highContrast={highContrast}
+            />
+          );
+        }
+
+        const isExpertise = item.id === "expertise";
+        const dropdownItems = isExpertise
+          ? expertiseItems
+          : item.children.map((child) => ({
+              id: child.id,
+              label: child.label,
+              href: child.href,
+            }));
+
+        return (
           <NavigationDropdown
             key={item.id}
             label={item.label}
-            items={expertiseItems}
+            items={dropdownItems}
             currentPathname={pathname}
-            buttonLabel={t("expertiseMenu")}
+            buttonLabel={isExpertise ? t("expertiseMenu") : t("aboutMenu")}
+            parentHref={isExpertise ? undefined : item.href}
+            variant={isExpertise ? "rich" : "simple"}
             inverse={inverse}
             highContrast={highContrast}
           />
-        ) : (
-          <NavigationLink
-            key={item.id}
-            href={item.href}
-            label={item.label}
-            isActive={isActiveRoute(pathname, item.href, { exact: item.route === "home" })}
-            inverse={inverse}
-            highContrast={highContrast}
-          />
-        )
-      )}
+        );
+      })}
     </nav>
   );
 }

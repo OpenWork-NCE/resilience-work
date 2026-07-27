@@ -65,8 +65,8 @@ export default async function RootLayout({
           <ConsentProvider locale={locale as "fr" | "en"}>
             <ThemeProvider
               attribute="class"
-              defaultTheme="system"
-              enableSystem
+              defaultTheme="light"
+              enableSystem={false}
               disableTransitionOnChange
             >
               <SiteShell>

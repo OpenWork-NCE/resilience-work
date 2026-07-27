@@ -1,4 +1,29 @@
 import type { NavigationItem, Cta, Locale } from "@/types/content";
+import { brand } from "@/content/brand";
+import { consultants, getConsultantPath } from "@/content/consultants";
+
+/** Portfolio first, then each affiliated consultant. Parent "À propos" also points to portfolio. */
+const aboutChildren: NavigationItem[] = [
+  {
+    id: "jocelyneKatshinda",
+    route: "jocelyneKatshinda",
+    label: {
+      fr: brand.person.name,
+      en: brand.person.name,
+    } satisfies Record<Locale, string>,
+  },
+  ...consultants.map(
+    (consultant) =>
+      ({
+        id: consultant.id,
+        href: getConsultantPath(consultant.slug),
+        label: {
+          fr: consultant.name,
+          en: consultant.name,
+        } satisfies Record<Locale, string>,
+      }) satisfies NavigationItem
+  ),
+];
 
 export const navigation: readonly NavigationItem[] = [
   {
@@ -11,11 +36,13 @@ export const navigation: readonly NavigationItem[] = [
   },
   {
     id: "about",
-    route: "about",
+    // Parent click / bare "À propos" → portfolio page
+    route: "jocelyneKatshinda",
     label: {
       fr: "À propos",
       en: "About",
     } satisfies Record<Locale, string>,
+    children: aboutChildren,
   },
   {
     id: "expertise",

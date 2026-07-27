@@ -18,7 +18,8 @@
     "closeMenu": "Fermer le menu",
     "mainNavigation": "Navigation principale",
     "footerNavigation": "Navigation de pied de page",
-    "expertiseMenu": "Afficher les expertises"
+    "expertiseMenu": "Afficher les expertises",
+    "aboutMenu": "Afficher l’équipe"
   },
   "theme": {
     "switchToDark": "Passer au thème sombre",

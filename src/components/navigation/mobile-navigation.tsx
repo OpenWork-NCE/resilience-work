@@ -40,6 +40,20 @@ interface MobileNavigationProps {
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
+function getSubmenuItems(
+  item: ResolvedNavigationItem,
+  expertiseItems: ResolvedExpertiseItem[]
+): { id: string; label: string; href: string }[] {
+  if (item.id === "expertise") {
+    return expertiseItems;
+  }
+  return (item.children ?? []).map((child) => ({
+    id: child.id,
+    label: child.label,
+    href: child.href,
+  }));
+}
+
 export function MobileNavigation({
   isOpen,
   navigationId,
@@ -55,12 +69,27 @@ export function MobileNavigation({
   const shouldReduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
   const headingId = useId();
-  const expertiseIsActive = expertiseItems.some((item) => isActiveRoute(currentPathname, item.href));
-  const [isExpertiseOpen, setIsExpertiseOpen] = useState(expertiseIsActive);
 
-  const activeIds = new Set(
-    expertiseItems.filter((item) => isActiveRoute(currentPathname, item.href)).map((item) => item.id)
-  );
+  const initiallyOpenIds = items
+    .filter((item) => {
+      if (!item.children?.length) {
+        return false;
+      }
+      const submenu = getSubmenuItems(item, expertiseItems);
+      return (
+        submenu.some((entry) => isActiveRoute(currentPathname, entry.href)) ||
+        isActiveRoute(currentPathname, item.href)
+      );
+    })
+    .map((item) => item.id);
+
+  const [openSectionIds, setOpenSectionIds] = useState<string[]>(initiallyOpenIds);
+
+  const toggleSection = (id: string) => {
+    setOpenSectionIds((current) =>
+      current.includes(id) ? current.filter((value) => value !== id) : [...current, id]
+    );
+  };
 
   useEffect(() => {
     if (!isOpen) {
@@ -161,46 +190,116 @@ export function MobileNavigation({
             </div>
 
             <div className="mt-8 space-y-2">
-              {items.map((item) =>
-                item.children?.length ? (
+              {items.map((item) => {
+                if (!item.children?.length) {
+                  return (
+                    <NavigationLink
+                      key={item.id}
+                      href={item.href}
+                      label={item.label}
+                      variant="mobile"
+                      isActive={isActiveRoute(currentPathname, item.href, {
+                        exact: item.route === "home",
+                      })}
+                      onClick={() => onClose()}
+                    />
+                  );
+                }
+
+                const submenuItems = getSubmenuItems(item, expertiseItems);
+                const isSectionOpen = openSectionIds.includes(item.id);
+                const isExpertise = item.id === "expertise";
+                const panelControlId = `${navigationId}-${item.id}`;
+                const sectionActive =
+                  submenuItems.some((entry) => isActiveRoute(currentPathname, entry.href)) ||
+                  isActiveRoute(currentPathname, item.href);
+
+                return (
                   <div
                     key={item.id}
                     className="rounded-[var(--radius-lg)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))]"
                   >
-                    <button
-                      type="button"
-                      aria-expanded={isExpertiseOpen}
-                      aria-controls={`${navigationId}-expertise`}
-                      onClick={() => setIsExpertiseOpen((value) => !value)}
-                      className="flex w-full items-center justify-between px-4 py-3 text-left text-base font-medium text-[rgb(var(--foreground))] transition-colors hover:bg-[rgb(var(--surface-muted))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))]"
-                    >
-                      <span>{item.label}</span>
-                      <ChevronDown
-                        className={cn(
-                          "h-5 w-5 transition-transform duration-[var(--duration-fast)] ease-[var(--ease-out)]",
-                          isExpertiseOpen && "rotate-180"
-                        )}
-                        aria-hidden="true"
-                      />
-                    </button>
+                    <div className="flex items-stretch">
+                      {isExpertise ? (
+                        <button
+                          type="button"
+                          aria-expanded={isSectionOpen}
+                          aria-controls={panelControlId}
+                          onClick={() => toggleSection(item.id)}
+                          className={cn(
+                            "flex w-full items-center justify-between px-4 py-3 text-left text-base font-medium transition-colors",
+                            "hover:bg-[rgb(var(--surface-muted))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))]",
+                            sectionActive
+                              ? "text-[rgb(var(--primary))]"
+                              : "text-[rgb(var(--foreground))]"
+                          )}
+                        >
+                          <span>{item.label}</span>
+                          <ChevronDown
+                            className={cn(
+                              "h-5 w-5 transition-transform duration-[var(--duration-fast)] ease-[var(--ease-out)]",
+                              isSectionOpen && "rotate-180"
+                            )}
+                            aria-hidden="true"
+                          />
+                        </button>
+                      ) : (
+                        <>
+                          <Link
+                            href={item.href}
+                            onClick={() => onClose()}
+                            aria-current={
+                              isActiveRoute(currentPathname, item.href) ? "page" : undefined
+                            }
+                            className={cn(
+                              "min-w-0 flex-1 px-4 py-3 text-left text-base font-medium transition-colors",
+                              "hover:bg-[rgb(var(--surface-muted))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))]",
+                              sectionActive
+                                ? "text-[rgb(var(--primary))]"
+                                : "text-[rgb(var(--foreground))]"
+                            )}
+                          >
+                            {item.label}
+                          </Link>
+                          <button
+                            type="button"
+                            aria-expanded={isSectionOpen}
+                            aria-controls={panelControlId}
+                            aria-label={
+                              isExpertise ? t("navigation.expertiseMenu") : t("navigation.aboutMenu")
+                            }
+                            onClick={() => toggleSection(item.id)}
+                            className="flex shrink-0 items-center px-3 text-[rgb(var(--foreground))] transition-colors hover:bg-[rgb(var(--surface-muted))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))]"
+                          >
+                            <ChevronDown
+                              className={cn(
+                                "h-5 w-5 transition-transform duration-[var(--duration-fast)] ease-[var(--ease-out)]",
+                                isSectionOpen && "rotate-180"
+                              )}
+                              aria-hidden="true"
+                            />
+                          </button>
+                        </>
+                      )}
+                    </div>
 
                     <AnimatePresence initial={false}>
-                      {isExpertiseOpen ? (
+                      {isSectionOpen ? (
                         <motion.div
-                          id={`${navigationId}-expertise`}
+                          id={panelControlId}
                           variants={mobileMenuReveal}
                           initial="hidden"
                           animate="visible"
                           exit="hidden"
                           className="overflow-hidden border-t border-[rgb(var(--border-muted))] px-2 py-2"
                         >
-                          {expertiseItems.map((expertiseItem) => (
+                          {submenuItems.map((subItem) => (
                             <NavigationLink
-                              key={expertiseItem.id}
-                              href={expertiseItem.href}
-                              label={expertiseItem.label}
+                              key={subItem.id}
+                              href={subItem.href}
+                              label={subItem.label}
                               variant="mobile"
-                              isActive={activeIds.has(expertiseItem.id)}
+                              isActive={isActiveRoute(currentPathname, subItem.href)}
                               onClick={() => onClose()}
                               className="text-sm"
                             />
@@ -209,17 +308,8 @@ export function MobileNavigation({
                       ) : null}
                     </AnimatePresence>
                   </div>
-                ) : (
-                  <NavigationLink
-                    key={item.id}
-                    href={item.href}
-                    label={item.label}
-                    variant="mobile"
-                    isActive={isActiveRoute(currentPathname, item.href, { exact: item.route === "home" })}
-                    onClick={() => onClose()}
-                  />
-                )
-              )}
+                );
+              })}
             </div>
 
             <div className="mt-6">
