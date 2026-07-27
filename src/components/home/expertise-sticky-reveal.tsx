@@ -165,11 +165,12 @@ export function ExpertiseStickyReveal({ locale }: ExpertiseStickyRevealProps) {
                 />
               </motion.div>
             </AnimatePresence>
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[color-mix(in_srgb,rgb(var(--surface-inverse))_94%,black)] via-[color-mix(in_srgb,rgb(var(--surface-inverse))_40%,transparent)] to-transparent p-8 text-[rgb(var(--inverse-foreground))]">
-              <p className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[rgb(var(--inverse-muted-foreground))]">
+            {/* Media caption: fixed dark scrim + white type — independent of theme tokens */}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent p-8 pt-24">
+              <p className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-white/75">
                 {activeItem.shortTitle[locale]}
               </p>
-              <p className="mt-3 max-w-md text-[1.3rem] font-medium leading-relaxed text-[color-mix(in_srgb,rgb(var(--inverse-foreground))_92%,transparent)]">
+              <p className="mt-3 max-w-md text-[1.3rem] font-medium leading-relaxed text-white">
                 {activeItem.description[locale][0]}
               </p>
             </div>

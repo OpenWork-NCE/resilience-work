@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 import { brand } from "@/content/brand";
 import { Container } from "@/components/shared/container";
 import { Logo } from "@/components/brand/logo";
@@ -29,17 +30,26 @@ export function SiteHeader() {
   const locale = useLocale() as Locale;
   const pathname = usePathname();
   const t = useTranslations("navigation");
+  const { resolvedTheme } = useTheme();
   const navigationId = useId();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [themeReady, setThemeReady] = useState(false);
 
   const navigationItems = getLocalizedNavigation(locale);
   const expertiseItems = getLocalizedExpertiseItems(locale);
   const primaryCta = getLocalizedCta(locale, "scheduleConversation");
   const isHome = stripLocalePrefix(pathname) === "/";
-  // Over media hero: always dark-glass chrome (stable in light + dark)
   const isMediaChrome = isHome && !isScrolled;
+  const isDarkTheme = themeReady && resolvedTheme === "dark";
+  // Night header surface (media hero or full dark theme) needs light logo + bright links
+  const onNightChrome = isMediaChrome || isDarkTheme;
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => setThemeReady(true));
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,7 +81,7 @@ export function SiteHeader() {
           "sticky top-0 z-30 border-b transition-[background-color,border-color,box-shadow,color] duration-[var(--duration-normal)] ease-[var(--ease-standard)]",
           isMediaChrome
             ? "chrome-on-media"
-            : "border-[rgb(var(--border-muted))] bg-[rgb(var(--background))]/95 text-[rgb(var(--foreground))] shadow-[var(--shadow-soft)] supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--background))_88%,transparent)] supports-[backdrop-filter]:backdrop-blur-xl"
+            : "border-[rgb(var(--border-muted))] bg-[rgb(var(--background))]/95 text-[rgb(var(--foreground))] shadow-[var(--shadow-soft)] supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--background))_92%,transparent)] supports-[backdrop-filter]:backdrop-blur-xl"
         )}
       >
         <Container size="wide">
@@ -82,7 +92,7 @@ export function SiteHeader() {
               className="min-w-0 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
             >
               <Logo
-                variant={isMediaChrome ? "dark" : "default"}
+                variant={onNightChrome ? "onDark" : "default"}
                 size="md"
                 className="max-w-[clamp(9.5rem,40vw,12.5rem)] xl:max-w-[12.5rem]"
               />
@@ -93,6 +103,7 @@ export function SiteHeader() {
                 items={navigationItems}
                 expertiseItems={expertiseItems}
                 inverse={isMediaChrome}
+                highContrast={isDarkTheme && !isMediaChrome}
               />
             </div>
 

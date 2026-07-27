@@ -1,11 +1,16 @@
-import { cn } from '@/lib/utils';
-import Image from 'next/image';
-import { HTMLAttributes } from 'react';
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { HTMLAttributes } from "react";
 
-type LogoVariant = 'default' | 'dark' | 'light' | 'monochrome';
-type LogoSize = 'sm' | 'md' | 'lg' | 'xl';
+/**
+ * Asset note: both PNG files are currently the same dark-navy logo.
+ * `onDark` applies a CSS invert so the mark reads light on night surfaces.
+ * When a true light logo asset exists, point `onDark` at it and drop the filter.
+ */
+type LogoVariant = "default" | "dark" | "light" | "monochrome" | "onDark";
+type LogoSize = "sm" | "md" | "lg" | "xl";
 
-interface LogoProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
+interface LogoProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
   variant?: LogoVariant;
   size?: LogoSize;
   showText?: boolean;
@@ -19,26 +24,28 @@ const sizeStyles: Record<LogoSize, { height: number; width: number }> = {
 };
 
 export const Logo = ({
-  variant = 'default',
-  size = 'md',
+  variant = "default",
+  size = "md",
   className,
   ...props
 }: LogoProps) => {
   const { height, width } = sizeStyles[size];
-
-  const logoSrc = variant === 'dark' 
-    ? '/images/brand/resilience-at-work-logo-dark.png'
-    : '/images/brand/resilience-at-work-logo.png';
+  // "dark" historically meant "for dark backgrounds" — keep as alias of onDark.
+  const onDark = variant === "dark" || variant === "light" || variant === "onDark";
 
   return (
-    <div className={cn('flex min-w-0 items-center', className)} {...props}>
+    <div className={cn("flex min-w-0 items-center", className)} {...props}>
       <Image
-        src={logoSrc}
+        src="/images/brand/resilience-at-work-logo.png"
         alt="Resilience@Work"
         width={width}
         height={height}
         priority
-        className="h-auto max-w-full object-contain"
+        className={cn(
+          "h-auto max-w-full object-contain",
+          // Monochrome light mark for night / dark UI chrome
+          onDark && "brightness-0 invert"
+        )}
       />
     </div>
   );

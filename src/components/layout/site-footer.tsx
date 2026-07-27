@@ -51,7 +51,7 @@ export function SiteFooter() {
 
         <div className="grid gap-10 py-14 lg:grid-cols-[1.15fr_0.85fr_0.85fr_0.9fr_1fr]">
           <div className="space-y-6">
-            <Logo variant="dark" size="md" />
+            <Logo variant="onDark" size="md" />
             <p className={`max-w-md text-sm leading-relaxed ${mutedOnInverse}`}>{brand.summary[locale]}</p>
           </div>
 

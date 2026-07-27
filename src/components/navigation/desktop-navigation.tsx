@@ -11,12 +11,15 @@ interface DesktopNavigationProps {
   items: ResolvedNavigationItem[];
   expertiseItems: ResolvedExpertiseItem[];
   inverse?: boolean;
+  /** Brighter link color for solid dark-theme chrome */
+  highContrast?: boolean;
 }
 
 export function DesktopNavigation({
   items,
   expertiseItems,
   inverse = false,
+  highContrast = false,
 }: DesktopNavigationProps) {
   const pathname = usePathname();
   const t = useTranslations("navigation");
@@ -35,6 +38,7 @@ export function DesktopNavigation({
             currentPathname={pathname}
             buttonLabel={t("expertiseMenu")}
             inverse={inverse}
+            highContrast={highContrast}
           />
         ) : (
           <NavigationLink
@@ -43,6 +47,7 @@ export function DesktopNavigation({
             label={item.label}
             isActive={isActiveRoute(pathname, item.href, { exact: item.route === "home" })}
             inverse={inverse}
+            highContrast={highContrast}
           />
         )
       )}

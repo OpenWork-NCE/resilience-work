@@ -9,6 +9,7 @@ interface NavigationLinkProps {
   isActive?: boolean;
   variant?: NavigationLinkVariant;
   inverse?: boolean;
+  highContrast?: boolean;
   className?: string;
   onClick?: () => void;
 }
@@ -30,6 +31,7 @@ export function NavigationLink({
   isActive = false,
   variant = "desktop",
   inverse = false,
+  highContrast = false,
   className,
   onClick,
 }: NavigationLinkProps) {
@@ -40,11 +42,18 @@ export function NavigationLink({
       aria-current={isActive ? "page" : undefined}
       className={cn(
         variantStyles[variant],
+        // Solid dark theme chrome: full foreground brightness
+        highContrast &&
+          variant === "desktop" &&
+          !inverse &&
+          "text-[rgb(var(--foreground))] hover:text-[rgb(var(--accent))]",
+        // Media / inverse chrome: bright on-night text
         inverse &&
           variant === "desktop" &&
-          "text-[rgb(var(--inverse-muted-foreground))] hover:text-[rgb(var(--inverse-foreground))] focus-visible:ring-offset-transparent",
+          "text-[rgb(var(--inverse-foreground))] hover:text-[rgb(var(--inverse-foreground))] focus-visible:ring-offset-transparent opacity-90 hover:opacity-100",
         isActive && variant === "desktop" && !inverse && "text-[rgb(var(--primary))]",
-        isActive && variant === "desktop" && inverse && "text-[rgb(var(--inverse-foreground))]",
+        isActive && variant === "desktop" && inverse && "text-[rgb(var(--inverse-foreground))] opacity-100",
+        isActive && highContrast && variant === "desktop" && !inverse && "text-[rgb(var(--accent))]",
         isActive && variant === "dropdown" && "bg-[rgb(var(--surface-muted))]",
         isActive && variant === "mobile" && "bg-[rgb(var(--surface-muted))] text-[rgb(var(--primary))]",
         isActive && variant === "footer" && "text-[rgb(var(--foreground))]",

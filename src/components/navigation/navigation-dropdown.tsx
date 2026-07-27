@@ -15,6 +15,7 @@ interface NavigationDropdownProps {
   currentPathname: string;
   buttonLabel: string;
   inverse?: boolean;
+  highContrast?: boolean;
 }
 
 const iconMap = {
@@ -30,6 +31,7 @@ export function NavigationDropdown({
   currentPathname,
   buttonLabel,
   inverse = false,
+  highContrast = false,
 }: NavigationDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -107,13 +109,17 @@ export function NavigationDropdown({
           "inline-flex h-11 items-center gap-2 whitespace-nowrap text-sm font-medium transition-colors",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
           inverse
-            ? "text-[rgb(var(--inverse-muted-foreground))] hover:text-[rgb(var(--inverse-foreground))] focus-visible:ring-offset-transparent"
+            ? "text-[rgb(var(--inverse-foreground))] opacity-90 hover:opacity-100 focus-visible:ring-offset-transparent"
             : "focus-visible:ring-offset-[rgb(var(--background))]",
           !inverse &&
             (isSectionActive
-              ? "text-[rgb(var(--primary))]"
-              : "text-[rgb(var(--foreground))] hover:text-[rgb(var(--primary))]"),
-          inverse && isSectionActive && "text-[rgb(var(--inverse-foreground))]"
+              ? highContrast
+                ? "text-[rgb(var(--accent))]"
+                : "text-[rgb(var(--primary))]"
+              : highContrast
+                ? "text-[rgb(var(--foreground))] hover:text-[rgb(var(--accent))]"
+                : "text-[rgb(var(--foreground))] hover:text-[rgb(var(--primary))]"),
+          inverse && isSectionActive && "opacity-100"
         )}
       >
         <span>{label}</span>
