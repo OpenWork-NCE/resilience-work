@@ -84,9 +84,9 @@ export function ContactPageTemplate({ locale }: ContactPageTemplateProps) {
         breadcrumbs={breadcrumbs}
       />
 
-      {/* Main conversion band: form + direct contact rail */}
+      {/* Main conversion band: form + compact contact rail */}
       <Section spacing="md" tone="default" containerSize="wide">
-        <div className="grid gap-10 xl:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] xl:items-start xl:gap-12">
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,1.2fr)_minmax(17rem,20rem)] xl:items-start xl:gap-10">
           <div>
             <SectionHeader
               eyebrow={copy.form.section.eyebrow[locale]}
@@ -94,9 +94,9 @@ export function ContactPageTemplate({ locale }: ContactPageTemplateProps) {
               description={copy.form.section.description[locale]}
               align="left"
               maxWidth="wide"
-              className="mb-8 lg:mb-10"
+              className="mb-6 lg:mb-8"
             />
-            <p className="mb-6 rounded-[var(--radius-xl)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface-muted))] px-5 py-4 text-sm leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-base">
+            <p className="mb-5 rounded-[var(--radius-lg)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface-muted))] px-4 py-3 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
               <span className="font-semibold text-[rgb(var(--foreground))]">
                 {copy.reassurance.title[locale]}
               </span>
@@ -107,41 +107,50 @@ export function ContactPageTemplate({ locale }: ContactPageTemplateProps) {
           </div>
 
           <aside className="xl:sticky xl:top-28">
-            <AnimatedSection className="rounded-[var(--radius-2xl)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))] p-6 shadow-[var(--shadow-card)] sm:p-7">
-              <p className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
+            <AnimatedSection className="rounded-[var(--radius-xl)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))] p-5 shadow-[var(--shadow-card)] sm:p-5">
+              <p className="font-[family:var(--font-accent)] text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
                 {copy.directContact.eyebrow[locale]}
               </p>
-              <h2 className="mt-3 font-display text-[clamp(1.75rem,3.5vw,2.35rem)] font-medium leading-[1.05] text-balance">
+              <h2 className="mt-2 font-display text-[clamp(1.35rem,2.5vw,1.65rem)] font-medium leading-[1.1] text-balance">
                 {copy.directContact.title[locale]}
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-base">
+              <p className="mt-2 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
                 {copy.directContact.description[locale]}
               </p>
 
-              <div className="mt-6 overflow-hidden rounded-[var(--radius-xl)]">
-                <ImageFrame
-                  src={assets.jocelyne.portrait.src}
-                  alt={assets.jocelyne.portrait.alt[locale]}
-                  width={assets.jocelyne.portrait.width}
-                  height={assets.jocelyne.portrait.height}
-                  aspectRatio="1/1"
-                  objectPosition={assets.jocelyne.portrait.objectPosition}
-                  className="w-full shadow-[var(--shadow-soft)]"
-                />
+              <div className="mt-4 flex gap-3">
+                <div className="relative w-[5.5rem] shrink-0 overflow-hidden rounded-[var(--radius-lg)] sm:w-24">
+                  <ImageFrame
+                    src={assets.jocelyne.portrait.src}
+                    alt={assets.jocelyne.portrait.alt[locale]}
+                    width={assets.jocelyne.portrait.width}
+                    height={assets.jocelyne.portrait.height}
+                    aspectRatio="1/1"
+                    objectPosition={assets.jocelyne.portrait.objectPosition}
+                    className="w-full shadow-[var(--shadow-soft)]"
+                  />
+                </div>
+                <div className="min-w-0 flex-1 space-y-1 self-center text-sm leading-snug text-[rgb(var(--muted-foreground))]">
+                  <p className="font-semibold text-[rgb(var(--foreground))]">
+                    {copy.directContact.personName}
+                  </p>
+                  <p className="text-xs sm:text-sm">{copy.directContact.role[locale]}</p>
+                  <a
+                    className="block text-xs transition-colors hover:text-[rgb(var(--foreground))] sm:text-sm"
+                    href={brand.contact.phoneHref}
+                  >
+                    {brand.contact.phoneDisplay}
+                  </a>
+                  <a
+                    className="block break-all text-xs transition-colors hover:text-[rgb(var(--foreground))] sm:text-sm"
+                    href={brand.contact.emailHref}
+                  >
+                    {brand.contact.email}
+                  </a>
+                </div>
               </div>
 
-              <div className="mt-6 space-y-2 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
-                <p className="font-semibold text-[rgb(var(--foreground))]">{copy.directContact.personName}</p>
-                <p>{copy.directContact.role[locale]}</p>
-                <a className="block transition-colors hover:text-[rgb(var(--foreground))]" href={brand.contact.phoneHref}>
-                  {brand.contact.phoneDisplay}
-                </a>
-                <a className="block transition-colors hover:text-[rgb(var(--foreground))]" href={brand.contact.emailHref}>
-                  {brand.contact.email}
-                </a>
-              </div>
-
-              <StaggerContainer className="mt-6 grid gap-3">
+              <StaggerContainer className="mt-4 grid gap-2">
                 {primaryActions.map((action) => {
                   const Icon = actionIcons[action.id as ContactActionId];
                   return (
@@ -153,27 +162,30 @@ export function ContactPageTemplate({ locale }: ContactPageTemplateProps) {
                         icon={Icon}
                         external={Boolean(action.external)}
                         download={action.download}
+                        variant="compact"
                       />
                     </StaggerItem>
                   );
                 })}
               </StaggerContainer>
 
-              <div className="mt-8 border-t border-[rgb(var(--border-muted))] pt-6">
-                <p className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
+              <div className="mt-5 border-t border-[rgb(var(--border-muted))] pt-4">
+                <p className="font-[family:var(--font-accent)] text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
                   {copy.delivery.eyebrow[locale]}
                 </p>
-                <ul className="mt-4 space-y-4">
+                <ul className="mt-3 space-y-2.5">
                   {copy.delivery.items.map((item) => {
                     const Icon = deliveryIcons[item.id];
                     return (
-                      <li key={item.id} className="flex gap-3">
-                        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--accent-soft))] text-[rgb(var(--accent-foreground))]">
-                          <Icon className="h-4 w-4" aria-hidden="true" />
+                      <li key={item.id} className="flex gap-2.5">
+                        <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--accent-soft))] text-[rgb(var(--accent-foreground))]">
+                          <Icon className="h-3.5 w-3.5" aria-hidden="true" />
                         </span>
-                        <div>
-                          <p className="text-sm font-semibold text-[rgb(var(--foreground))]">{item.label[locale]}</p>
-                          <p className="mt-1 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
+                        <div className="min-w-0">
+                          <p className="text-xs font-semibold text-[rgb(var(--foreground))]">
+                            {item.label[locale]}
+                          </p>
+                          <p className="mt-0.5 text-xs leading-snug text-[rgb(var(--muted-foreground))]">
                             {item.value[locale]}
                           </p>
                         </div>
@@ -206,15 +218,15 @@ export function ContactPageTemplate({ locale }: ContactPageTemplateProps) {
 
       <Section spacing="md" tone="inverse">
         <AnimatedSection>
-          <div className="flex flex-col gap-6 rounded-[var(--radius-2xl)] border border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_14%,transparent)] bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_8%,transparent)] px-6 py-8 shadow-[var(--shadow-elevated)] sm:px-8 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-5 rounded-[var(--radius-2xl)] border border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_14%,transparent)] bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_8%,transparent)] px-6 py-7 shadow-[var(--shadow-elevated)] sm:px-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-[40rem]">
               <p className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[rgb(var(--inverse-muted-foreground))]">
                 {copy.whatsAppCta.eyebrow[locale]}
               </p>
-              <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.1rem)] font-medium leading-[1.02] text-balance text-[rgb(var(--inverse-foreground))]">
+              <h2 className="mt-3 font-display text-[clamp(1.75rem,3.5vw,2.6rem)] font-medium leading-[1.05] text-balance text-[rgb(var(--inverse-foreground))]">
                 {copy.whatsAppCta.title[locale]}
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-[rgb(var(--inverse-muted-foreground))] sm:text-lg">
+              <p className="mt-3 text-sm leading-relaxed text-[rgb(var(--inverse-muted-foreground))] sm:text-base">
                 {copy.whatsAppCta.description[locale]}
               </p>
             </div>

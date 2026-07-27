@@ -9,7 +9,7 @@ interface PortfolioActionLinkProps {
   icon: LucideIcon;
   external?: boolean;
   download?: string;
-  variant?: "card" | "pill" | "bar";
+  variant?: "card" | "pill" | "bar" | "compact";
   tone?: "default" | "inverse";
   className?: string;
 }
@@ -21,6 +21,14 @@ const variantStyles = {
     icon: "mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-[rgb(var(--accent-soft))] text-[rgb(var(--accent-foreground))]",
     title: "text-base font-semibold text-[rgb(var(--foreground))]",
     description: "mt-2 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]",
+  },
+  /** Dense horizontal row for sidebars / contact rails */
+  compact: {
+    root:
+      "group inline-flex min-h-11 w-full items-center gap-2.5 rounded-[var(--radius-md)] border border-[rgb(var(--border))] bg-[rgb(var(--surface))] px-3 py-2 text-left transition-colors hover:border-[rgb(var(--border-strong))] hover:bg-[rgb(var(--surface-muted))]",
+    icon: "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--accent-soft))] text-[rgb(var(--accent-foreground))]",
+    title: "text-sm font-semibold leading-tight text-[rgb(var(--foreground))]",
+    description: "mt-0.5 text-[0.7rem] leading-snug text-[rgb(var(--muted-foreground))] line-clamp-1",
   },
   pill: {
     root:
@@ -87,9 +95,9 @@ export function PortfolioActionLink({
       )}
     >
       <span className={cn(styles.icon, toneStyle.icon)}>
-        <Icon className="h-5 w-5" aria-hidden="true" />
+        <Icon className={variant === "compact" ? "h-4 w-4" : "h-5 w-5"} aria-hidden="true" />
       </span>
-      <span className={cn("min-w-0", variant === "bar" ? "hidden" : "block")}>
+      <span className={cn("min-w-0 flex-1", variant === "bar" ? "hidden" : "block")}>
         <span className={cn("block", styles.title, toneStyle.title)}>{label}</span>
         {description ? (
           <span className={cn("block", styles.description, toneStyle.description)}>{description}</span>
@@ -98,7 +106,8 @@ export function PortfolioActionLink({
       {external && variant !== "bar" ? (
         <ArrowUpRight
           className={cn(
-            "mt-1 h-4 w-4 transition-transform duration-[var(--duration-fast)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5",
+            "h-3.5 w-3.5 shrink-0 transition-transform duration-[var(--duration-fast)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5",
+            variant === "card" && "mt-1 h-4 w-4",
             toneStyle.externalIcon
           )}
         />
