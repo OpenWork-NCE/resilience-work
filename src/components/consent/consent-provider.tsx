@@ -42,30 +42,36 @@ interface ConsentProviderProps {
 }
 
 export function ConsentProvider({ children, locale }: ConsentProviderProps) {
-  const [preferences, setPreferences] = useState<ConsentPreferences | null>(() =>
-    typeof window === "undefined" ? null : readConsentPreferences()
-  );
-  const [hasAnswered, setHasAnswered] = useState(() =>
-    typeof window === "undefined" ? false : Boolean(readConsentPreferences())
-  );
+  // Always start with the same SSR/client snapshot. Reading localStorage in
+  // useState() causes hydration mismatches (banner present on server, absent
+  // on client when consent already exists) and can leave the page stuck.
+  const [preferences, setPreferences] = useState<ConsentPreferences | null>(null);
+  const [hasAnswered, setHasAnswered] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
   const [isPreferencesOpen, setIsPreferencesOpen] = useState(false);
-  const [draft, setDraft] = useState<ConsentPreferences>(
-    () => {
-      if (typeof window === "undefined") {
-        return createRejectedConsentPreferences();
-      }
-
-      return readConsentPreferences() ?? createRejectedConsentPreferences();
-    }
-  );
+  const [draft, setDraft] = useState<ConsentPreferences>({
+    necessary: true,
+    preferences: false,
+    analytics: false,
+    marketing: false,
+    // Stable SSR snapshot — real timestamps are applied after hydrate / save.
+    updatedAt: "",
+    version: "1",
+  });
   const lastTriggerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    const next = readConsentPreferences();
+    setPreferences(next);
+    setHasAnswered(Boolean(next));
+    setDraft(next ?? createRejectedConsentPreferences());
+    setIsHydrated(true);
+
     const handleStorage = () => {
-      const next = readConsentPreferences();
-      setPreferences(next);
-      setHasAnswered(Boolean(next));
-      setDraft(next ?? createRejectedConsentPreferences());
+      const stored = readConsentPreferences();
+      setPreferences(stored);
+      setHasAnswered(Boolean(stored));
+      setDraft(stored ?? createRejectedConsentPreferences());
     };
 
     window.addEventListener("storage", handleStorage);
@@ -136,7 +142,7 @@ export function ConsentProvider({ children, locale }: ConsentProviderProps) {
   return (
     <ConsentContext.Provider value={value}>
       {children}
-      {!hasAnswered ? (
+      {isHydrated && !hasAnswered ? (
         <CookieBanner
           locale={locale}
           onAcceptAll={acceptAll}

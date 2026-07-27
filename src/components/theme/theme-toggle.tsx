@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
@@ -8,7 +9,15 @@ import { useTranslations } from "next-intl";
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const t = useTranslations("theme");
-  const isDark = resolvedTheme === "dark";
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Keep SSR and the first client render identical so hydration cannot
+  // diverge on system theme / localStorage.
+  const isDark = mounted && resolvedTheme === "dark";
   const label = isDark ? t("switchToLight") : t("switchToDark");
 
   return (
@@ -16,14 +25,17 @@ export function ThemeToggle() {
       type="button"
       aria-label={label}
       title={label}
-      onClick={() => setTheme(isDark ? "light" : "dark")}
+      onClick={() => {
+        if (!mounted) return;
+        setTheme(isDark ? "light" : "dark");
+      }}
       className={cn(
         "inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border border-[rgb(var(--border))]",
         "bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] transition-colors hover:bg-[rgb(var(--surface-muted))]",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--background))]"
       )}
     >
-      {resolvedTheme ? (
+      {mounted ? (
         isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />
       ) : (
         <span className="h-5 w-5" aria-hidden="true" />
