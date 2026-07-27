@@ -4,6 +4,7 @@ export { brand } from "./brand";
 export { navigation, globalCtas } from "./navigation";
 export { audiences } from "./audiences";
 export { pendingConfirmations } from "./pending-confirmations";
+export { partners, partnersSection } from "./partners";
 export { homePage } from "./pages/home";
 export {
   expertiseItems,

@@ -326,6 +326,30 @@
   .reading-width {
     max-width: 72ch;
   }
+
+  /* Partner logo marquee — seamless infinite scroll */
+  .partners-marquee-track {
+    animation: partners-marquee 42s linear infinite;
+  }
+
+  .partners-marquee:hover .partners-marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes partners-marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partners-marquee-track {
+    animation: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
