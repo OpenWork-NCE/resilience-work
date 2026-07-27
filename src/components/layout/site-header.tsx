@@ -38,7 +38,8 @@ export function SiteHeader() {
   const expertiseItems = getLocalizedExpertiseItems(locale);
   const primaryCta = getLocalizedCta(locale, "scheduleConversation");
   const isHome = stripLocalePrefix(pathname) === "/";
-  const isInverseChrome = isHome && !isScrolled;
+  // Over media hero: always dark-glass chrome (stable in light + dark)
+  const isMediaChrome = isHome && !isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,8 +69,8 @@ export function SiteHeader() {
       <header
         className={cn(
           "sticky top-0 z-30 border-b transition-[background-color,border-color,box-shadow,color] duration-[var(--duration-normal)] ease-[var(--ease-standard)]",
-          isInverseChrome
-            ? "border-transparent bg-[color-mix(in_srgb,rgb(var(--surface-inverse))_42%,transparent)] text-white supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--surface-inverse))_38%,transparent)] supports-[backdrop-filter]:backdrop-blur-xl"
+          isMediaChrome
+            ? "chrome-on-media"
             : "border-[rgb(var(--border-muted))] bg-[rgb(var(--background))]/95 text-[rgb(var(--foreground))] shadow-[var(--shadow-soft)] supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--background))_88%,transparent)] supports-[backdrop-filter]:backdrop-blur-xl"
         )}
       >
@@ -81,7 +82,7 @@ export function SiteHeader() {
               className="min-w-0 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
             >
               <Logo
-                variant={isInverseChrome ? "dark" : "default"}
+                variant={isMediaChrome ? "dark" : "default"}
                 size="md"
                 className="max-w-[clamp(9.5rem,40vw,12.5rem)] xl:max-w-[12.5rem]"
               />
@@ -91,16 +92,16 @@ export function SiteHeader() {
               <DesktopNavigation
                 items={navigationItems}
                 expertiseItems={expertiseItems}
-                inverse={isInverseChrome}
+                inverse={isMediaChrome}
               />
             </div>
 
             <div className="ml-auto hidden shrink-0 items-center gap-2 lg:flex lg:translate-y-[2px] xl:gap-3">
-              <LocaleSwitcher inverse={isInverseChrome} />
-              <ThemeToggle inverse={isInverseChrome} />
+              <LocaleSwitcher inverse={isMediaChrome} />
+              <ThemeToggle inverse={isMediaChrome} />
               <Link href={primaryCta.href}>
                 <Button
-                  variant={isInverseChrome ? "onInverse" : "primary"}
+                  variant={isMediaChrome ? "onInverse" : "primary"}
                   size="md"
                   className="whitespace-nowrap"
                 >
@@ -115,21 +116,21 @@ export function SiteHeader() {
                 aria-label={primaryCta.label}
                 className={cn(
                   "inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
-                  isInverseChrome
-                    ? "border-white/20 bg-white/10 text-white hover:bg-white/18 focus-visible:ring-offset-transparent"
+                  isMediaChrome
+                    ? "border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_22%,transparent)] bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_10%,transparent)] text-[rgb(var(--inverse-foreground))] hover:bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_16%,transparent)] focus-visible:ring-offset-transparent"
                     : "border-[rgb(var(--border))] bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--surface-muted))] focus-visible:ring-offset-[rgb(var(--background))]"
                 )}
               >
                 <MessageCircle className="h-5 w-5" aria-hidden="true" />
               </Link>
-              <ThemeToggle inverse={isInverseChrome} />
+              <ThemeToggle inverse={isMediaChrome} />
               <MobileNavigationTrigger
                 isOpen={isMobileMenuOpen}
                 controls={navigationId}
                 label={isMobileMenuOpen ? t("closeMenu") : t("openMenu")}
                 onClick={() => setIsMobileMenuOpen((value) => !value)}
                 triggerRef={triggerRef}
-                inverse={isInverseChrome}
+                inverse={isMediaChrome}
               />
             </div>
           </div>

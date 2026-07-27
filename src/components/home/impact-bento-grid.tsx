@@ -40,7 +40,7 @@ export function ImpactBentoGrid({ locale }: ImpactBentoGridProps) {
               <div className={cn(
                 "flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)]",
                 isInverseCard
-                  ? "bg-white/10 text-white"
+                  ? "bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_12%,transparent)] text-[rgb(var(--inverse-foreground))]"
                   : "bg-[rgb(var(--accent-soft))] text-[rgb(var(--accent-foreground))]"
               )}>
                 <Icon className="h-5 w-5" />
@@ -48,7 +48,7 @@ export function ImpactBentoGrid({ locale }: ImpactBentoGridProps) {
               <div className={cn("mt-12", isCompactCard && "mt-8")}>
                 <p className={cn(
                   "max-w-[20ch] text-xl font-semibold leading-snug",
-                  isInverseCard ? "text-[rgb(var(--background))]" : "text-[rgb(var(--foreground))]"
+                  isInverseCard ? "text-[rgb(var(--inverse-foreground))]" : "text-[rgb(var(--foreground))]"
                 )}>
                   {item}
                 </p>

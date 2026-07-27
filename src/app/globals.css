@@ -174,7 +174,9 @@
 }
 
 .dark {
-  /* Resilience@Work Color System - Dark Mode */
+  /* Resilience@Work Color System - Dark Mode
+     Rule: --surface-inverse stays brand-night (never flips to light).
+     On-inverse text stays light via --inverse-foreground. */
   --background: 7 25 32;
   --foreground: 234 244 246;
 
@@ -182,9 +184,10 @@
   --surface-muted: 16 45 55;
   --surface-subtle: 10 34 43;
   --surface-elevated: 20 52 62;
-  --surface-inverse: 239 248 249;
-  --inverse-foreground: 7 25 32;
-  --inverse-muted-foreground: 88 113 125;
+  /* Night band: slightly elevated vs page bg, still dark */
+  --surface-inverse: 16 48 62;
+  --inverse-foreground: 241 248 250;
+  --inverse-muted-foreground: 176 204 214;
 
   --border: 36 70 80;
   --border-muted: 25 57 67;
@@ -295,24 +298,43 @@
     }
   }
 
+  /* Scrims always darken toward brand night — safe in light and dark */
   .hero-scrim-horizontal {
     background-image: linear-gradient(
       90deg,
-      color-mix(in srgb, rgb(var(--surface-inverse)) 92%, black) 0%,
-      color-mix(in srgb, rgb(var(--surface-inverse)) 82%, transparent) 38%,
-      color-mix(in srgb, rgb(var(--surface-inverse)) 32%, transparent) 68%,
-      color-mix(in srgb, rgb(var(--surface-inverse)) 8%, transparent) 100%
+      color-mix(in srgb, rgb(var(--surface-inverse)) 94%, black) 0%,
+      color-mix(in srgb, rgb(var(--surface-inverse)) 84%, transparent) 38%,
+      color-mix(in srgb, rgb(var(--surface-inverse)) 38%, transparent) 68%,
+      color-mix(in srgb, rgb(var(--surface-inverse)) 12%, transparent) 100%
     );
   }
 
   .hero-scrim-diagonal {
     background-image:
-      radial-gradient(circle at top left, color-mix(in srgb, white 12%, transparent), transparent 34%),
+      radial-gradient(
+        circle at top left,
+        color-mix(in srgb, rgb(var(--inverse-foreground)) 12%, transparent),
+        transparent 34%
+      ),
       linear-gradient(
         135deg,
-        color-mix(in srgb, rgb(var(--surface-inverse)) 94%, black),
-        color-mix(in srgb, rgb(var(--surface-inverse)) 88%, transparent)
+        color-mix(in srgb, rgb(var(--surface-inverse)) 96%, black),
+        color-mix(in srgb, rgb(var(--surface-inverse)) 90%, black)
       );
+  }
+
+  /* Stable dark glass for chrome over media heroes (light + dark) */
+  .chrome-on-media {
+    border-color: transparent;
+    background-color: color-mix(in srgb, rgb(var(--surface-inverse)) 55%, transparent);
+    color: rgb(var(--inverse-foreground));
+  }
+
+  @supports (backdrop-filter: blur(12px)) {
+    .chrome-on-media {
+      background-color: color-mix(in srgb, rgb(var(--surface-inverse)) 48%, transparent);
+      backdrop-filter: blur(16px);
+    }
   }
 
   .reading-width {

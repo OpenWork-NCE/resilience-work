@@ -35,7 +35,7 @@ export function PortfolioImpact({ locale }: PortfolioImpactProps) {
             return (
               <StaggerItem
                 key={item}
-                className="rounded-[var(--radius-lg)] border border-[rgba(16,43,58,0.08)] bg-white/70 p-5 backdrop-blur-sm dark:bg-[rgb(var(--surface))]"
+                className="rounded-[var(--radius-lg)] border border-[rgb(var(--border-muted))] bg-[color-mix(in_srgb,rgb(var(--surface))_88%,transparent)] p-5 backdrop-blur-sm"
               >
                 <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[rgb(var(--surface))] text-[rgb(var(--accent-foreground))] shadow-[var(--shadow-soft)]">
                   <Icon className="h-4 w-4" />

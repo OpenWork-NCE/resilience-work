@@ -32,7 +32,7 @@ export function MobileNavigationTrigger({
         "inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border transition-colors",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
         inverse
-          ? "border-white/20 bg-white/10 text-white hover:bg-white/18 focus-visible:ring-offset-transparent"
+          ? "border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_22%,transparent)] bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_10%,transparent)] text-[rgb(var(--inverse-foreground))] hover:bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_16%,transparent)] focus-visible:ring-offset-transparent"
           : "border-[rgb(var(--border))] bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--surface-muted))] focus-visible:ring-offset-[rgb(var(--background))]"
       )}
     >

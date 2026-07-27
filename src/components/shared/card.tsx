@@ -16,7 +16,7 @@ const variantStyles: Record<CardVariant, string> = {
   interactive: 'bg-[rgb(var(--surface))] border border-[rgb(var(--border))] cursor-pointer',
   editorial: 'bg-[rgb(var(--surface))] border border-[rgb(var(--border))] overflow-hidden',
   inverse:
-    'bg-[rgb(var(--surface-inverse))] text-[rgb(var(--background))] border-none [&_[data-card-title]]:text-[rgb(var(--background))] [&_[data-card-description]]:text-[color-mix(in_srgb,rgb(var(--background))_72%,rgb(var(--surface-inverse)))]',
+    'bg-[rgb(var(--surface-inverse))] text-[rgb(var(--inverse-foreground))] border-none [&_[data-card-title]]:text-[rgb(var(--inverse-foreground))] [&_[data-card-description]]:text-[rgb(var(--inverse-muted-foreground))]',
 };
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(

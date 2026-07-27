@@ -32,7 +32,7 @@ const variantStyles = {
   outlineInverse:
     'border border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_28%,transparent)] bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_8%,transparent)] text-[rgb(var(--inverse-foreground))] hover:bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_14%,transparent)] hover:border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_40%,transparent)]',
   onInverse:
-    'border border-white/25 bg-white/12 text-white backdrop-blur-sm hover:bg-white/20',
+    'border border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_28%,transparent)] bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_12%,transparent)] text-[rgb(var(--inverse-foreground))] backdrop-blur-sm hover:bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_18%,transparent)]',
 };
 
 // sm/md meet ≥44px touch target; icon is 44×44.

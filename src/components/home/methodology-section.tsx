@@ -29,7 +29,7 @@ export function MethodologySection({ locale }: MethodologySectionProps) {
             key={step.id}
             className="relative rounded-[var(--radius-xl)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))] p-6 shadow-[var(--shadow-soft)]"
           >
-            <div className="inline-flex h-10 min-w-10 items-center justify-center rounded-full bg-[rgb(var(--surface-inverse))] px-3 text-sm font-semibold text-[rgb(var(--background))]">
+            <div className="inline-flex h-10 min-w-10 items-center justify-center rounded-full bg-[rgb(var(--surface-inverse))] px-3 text-sm font-semibold text-[rgb(var(--inverse-foreground))]">
               {step.number}
             </div>
             <h3 className="heading-card mt-5">{step.title[locale]}</h3>

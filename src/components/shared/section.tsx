@@ -23,7 +23,7 @@ const toneStyles: Record<SectionTone, string> = {
   default: 'bg-[rgb(var(--background))] text-[rgb(var(--foreground))]',
   muted: 'bg-[rgb(var(--surface-muted))] text-[rgb(var(--foreground))]',
   accent: 'bg-[rgb(var(--accent-soft))] text-[rgb(var(--foreground))]',
-  inverse: 'bg-[rgb(var(--surface-inverse))] text-[rgb(var(--background))]',
+  inverse: 'bg-[rgb(var(--surface-inverse))] text-[rgb(var(--inverse-foreground))]',
 };
 
 export const Section = forwardRef<HTMLElement, SectionProps>(

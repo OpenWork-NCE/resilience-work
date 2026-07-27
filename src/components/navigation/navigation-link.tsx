@@ -42,9 +42,9 @@ export function NavigationLink({
         variantStyles[variant],
         inverse &&
           variant === "desktop" &&
-          "text-white/88 hover:text-white focus-visible:ring-offset-transparent",
+          "text-[rgb(var(--inverse-muted-foreground))] hover:text-[rgb(var(--inverse-foreground))] focus-visible:ring-offset-transparent",
         isActive && variant === "desktop" && !inverse && "text-[rgb(var(--primary))]",
-        isActive && variant === "desktop" && inverse && "text-white",
+        isActive && variant === "desktop" && inverse && "text-[rgb(var(--inverse-foreground))]",
         isActive && variant === "dropdown" && "bg-[rgb(var(--surface-muted))]",
         isActive && variant === "mobile" && "bg-[rgb(var(--surface-muted))] text-[rgb(var(--primary))]",
         isActive && variant === "footer" && "text-[rgb(var(--foreground))]",

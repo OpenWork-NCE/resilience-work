@@ -28,7 +28,7 @@ export function LocaleSwitcher({ inverse = false }: LocaleSwitcherProps) {
       className={cn(
         "inline-flex items-center gap-1 rounded-full border p-1",
         inverse
-          ? "border-white/20 bg-white/10"
+          ? "border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_22%,transparent)] bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_10%,transparent)]"
           : "border-[rgb(var(--border))] bg-[rgb(var(--surface))]"
       )}
     >
@@ -52,10 +52,10 @@ export function LocaleSwitcher({ inverse = false }: LocaleSwitcherProps) {
                 : "focus-visible:ring-offset-[rgb(var(--background))]",
               isActive
                 ? inverse
-                  ? "bg-white text-[rgb(var(--surface-inverse))]"
+                  ? "bg-[rgb(var(--inverse-foreground))] text-[rgb(var(--surface-inverse))]"
                   : "bg-[rgb(var(--primary))] text-[rgb(var(--primary-foreground))]"
                 : inverse
-                  ? "text-white/75 hover:text-white"
+                  ? "text-[rgb(var(--inverse-muted-foreground))] hover:text-[rgb(var(--inverse-foreground))]"
                   : "text-[rgb(var(--muted-foreground))] hover:text-[rgb(var(--foreground))]"
             )}
           >

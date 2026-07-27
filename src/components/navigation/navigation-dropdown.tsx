@@ -107,13 +107,13 @@ export function NavigationDropdown({
           "inline-flex h-11 items-center gap-2 whitespace-nowrap text-sm font-medium transition-colors",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
           inverse
-            ? "text-white/88 hover:text-white focus-visible:ring-offset-transparent"
+            ? "text-[rgb(var(--inverse-muted-foreground))] hover:text-[rgb(var(--inverse-foreground))] focus-visible:ring-offset-transparent"
             : "focus-visible:ring-offset-[rgb(var(--background))]",
           !inverse &&
             (isSectionActive
               ? "text-[rgb(var(--primary))]"
               : "text-[rgb(var(--foreground))] hover:text-[rgb(var(--primary))]"),
-          inverse && isSectionActive && "text-white"
+          inverse && isSectionActive && "text-[rgb(var(--inverse-foreground))]"
         )}
       >
         <span>{label}</span>

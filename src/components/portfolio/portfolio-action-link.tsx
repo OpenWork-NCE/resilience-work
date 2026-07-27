@@ -24,10 +24,10 @@ const variantStyles = {
   },
   pill: {
     root:
-      "group inline-flex min-h-12 items-center gap-3 rounded-full border border-[rgba(255,255,255,0.14)] bg-[rgba(255,255,255,0.1)] px-4 py-3 text-left text-white transition-colors hover:bg-[rgba(255,255,255,0.16)]",
-    icon: "inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white",
-    title: "text-sm font-semibold text-white",
-    description: "mt-0.5 text-xs text-white/70",
+      "group inline-flex min-h-12 items-center gap-3 rounded-full border border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_16%,transparent)] bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_10%,transparent)] px-4 py-3 text-left text-[rgb(var(--inverse-foreground))] transition-colors hover:bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_16%,transparent)]",
+    icon: "inline-flex h-9 w-9 items-center justify-center rounded-full bg-[color-mix(in_srgb,rgb(var(--inverse-foreground))_12%,transparent)] text-[rgb(var(--inverse-foreground))]",
+    title: "text-sm font-semibold text-[rgb(var(--inverse-foreground))]",
+    description: "mt-0.5 text-xs text-[rgb(var(--inverse-muted-foreground))]",
   },
   bar: {
     root:
