@@ -19,17 +19,18 @@ function PartnerMark({ partner, locale }: { partner: Partner; locale: Locale }) 
   return (
     <li
       className={cn(
-        "flex h-[4.5rem] shrink-0 items-center justify-center rounded-[var(--radius-lg)] border border-[rgb(var(--border-muted))] bg-white px-6 shadow-[var(--shadow-soft)] sm:h-20 sm:px-8",
-        isPair ? "min-w-[13.5rem] gap-4 sm:min-w-[15rem]" : "min-w-[11rem] sm:min-w-[12.5rem]"
+        "flex shrink-0 items-center justify-center rounded-[var(--radius-xl)] border border-[rgb(var(--border-muted))] bg-white shadow-[var(--shadow-soft)]",
+        "h-28 px-8 sm:h-32 sm:px-10 lg:h-36 lg:px-12",
+        isPair ? "min-w-[17rem] gap-5 sm:min-w-[19rem] lg:min-w-[21rem]" : "min-w-[15rem] sm:min-w-[17rem] lg:min-w-[18.5rem]"
       )}
       aria-label={partner.label[locale]}
     >
       {partner.logos.map((logo) => {
         const scale = logo.scale ?? 1;
-        // Fixed visual height well; width follows aspect ratio, capped for ultra-wide marks.
-        const displayHeight = Math.round(36 * scale);
+        // Larger visual well: ~56–68px logo height
+        const displayHeight = Math.round(60 * scale);
         const displayWidth = Math.round((logo.width / logo.height) * displayHeight);
-        const maxWidth = isPair ? 88 : 160;
+        const maxWidth = isPair ? 120 : 220;
         const width = Math.min(displayWidth, maxWidth);
         const height = Math.round(width * (logo.height / logo.width));
 
@@ -41,8 +42,8 @@ function PartnerMark({ partner, locale }: { partner: Partner; locale: Locale }) 
             width={logo.width}
             height={logo.height}
             className="object-contain object-center"
-            style={{ width, height, maxHeight: 44 }}
-            sizes="160px"
+            style={{ width, height, maxHeight: 72 }}
+            sizes="220px"
           />
         );
       })}
@@ -53,7 +54,7 @@ function PartnerMark({ partner, locale }: { partner: Partner; locale: Locale }) 
 export function PartnersMarquee({ locale }: PartnersMarqueeProps) {
   const prefersReducedMotion = useReducedMotion();
   const copy = partnersSection;
-  // Duplicate for seamless CSS loop (translate -50%)
+  // Two identical sequences → seamless loop at -50%
   const track = [...partners, ...partners];
 
   return (
@@ -68,7 +69,7 @@ export function PartnersMarquee({ locale }: PartnersMarqueeProps) {
       />
 
       {prefersReducedMotion ? (
-        <ul className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+        <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-5">
           {partners.map((partner) => (
             <PartnerMark key={partner.id} partner={partner} locale={locale} />
           ))}
@@ -79,10 +80,10 @@ export function PartnersMarquee({ locale }: PartnersMarqueeProps) {
           role="region"
           aria-label={copy.eyebrow[locale]}
         >
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[rgb(var(--background))] to-transparent sm:w-16" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[rgb(var(--background))] to-transparent sm:w-16" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-[rgb(var(--background))] to-transparent sm:w-20" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-[rgb(var(--background))] to-transparent sm:w-20" />
 
-          <ul className="partners-marquee-track flex w-max items-center gap-3 py-1 sm:gap-4">
+          <ul className="partners-marquee-track flex w-max items-center gap-4 py-2 sm:gap-5" aria-hidden="true">
             {track.map((partner, index) => (
               <PartnerMark
                 key={`${partner.id}-${index}`}

@@ -326,33 +326,33 @@
   .reading-width {
     max-width: 72ch;
   }
+}
 
-  /* Partner logo marquee — seamless infinite scroll */
-  .partners-marquee-track {
-    animation: partners-marquee 42s linear infinite;
+/* Partner logo marquee — outside @layer so animation is never stripped */
+.partners-marquee-track {
+  animation: partners-marquee 38s linear infinite;
+  will-change: transform;
+}
+
+.partners-marquee:hover .partners-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes partners-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
   }
-
-  .partners-marquee:hover .partners-marquee-track {
-    animation-play-state: paused;
-  }
-
-  @keyframes partners-marquee {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(-50%, 0, 0);
-    }
+  to {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .partners-marquee-track {
     animation: none !important;
+    will-change: auto;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
   *,
   ::before,
   ::after {
