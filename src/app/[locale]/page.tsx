@@ -8,6 +8,7 @@ import { ExpertiseSection } from "@/components/home/expertise-section";
 import { ImpactSection } from "@/components/home/impact-section";
 import { MethodologySection } from "@/components/home/methodology-section";
 import { ProfileSection } from "@/components/home/profile-section";
+import { ConsultantsSection } from "@/components/home/consultants-section";
 import { FinalCtaSection } from "@/components/home/final-cta-section";
 import { getPageMetadata } from "@/lib/seo/metadata";
 import type { Locale } from "@/types/content";
@@ -40,6 +41,7 @@ export default async function HomePage({
       <ImpactSection locale={currentLocale} />
       <MethodologySection locale={currentLocale} />
       <ProfileSection locale={currentLocale} />
+      <ConsultantsSection locale={currentLocale} />
       <FinalCtaSection locale={currentLocale} />
     </>
   );
