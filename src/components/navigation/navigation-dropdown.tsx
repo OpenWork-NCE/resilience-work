@@ -94,7 +94,7 @@ export function NavigationDropdown({
     "inline-flex h-11 items-center gap-2 whitespace-nowrap text-sm font-medium transition-colors",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
     inverse
-      ? "text-[rgb(var(--inverse-foreground))] opacity-90 hover:opacity-100 focus-visible:ring-offset-transparent"
+      ? "text-white opacity-90 hover:opacity-100 focus-visible:ring-offset-transparent"
       : "focus-visible:ring-offset-[rgb(var(--background))]",
     !inverse &&
       (isSectionActive
@@ -191,7 +191,7 @@ export function NavigationDropdown({
             exit="hidden"
             className={cn(
               "absolute left-1/2 top-full z-50 mt-3 -translate-x-1/2 rounded-[var(--radius-xl)] border border-[rgb(var(--border-muted))]",
-              "bg-[rgb(var(--surface-elevated))] p-3 shadow-[var(--shadow-elevated)]",
+              "bg-[rgb(var(--surface-elevated))] p-3 text-[rgb(var(--foreground))] shadow-[var(--shadow-elevated)]",
               variant === "rich" ? "w-[30rem]" : "w-[18rem]"
             )}
           >

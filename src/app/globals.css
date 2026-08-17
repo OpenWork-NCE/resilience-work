@@ -59,6 +59,7 @@
   --surface-subtle: 244 249 250;
   --surface-elevated: 255 255 255;
   --surface-inverse: 18 48 62;
+  --hero-void: 7 16 24;
   --inverse-foreground: 248 251 252;
   --inverse-muted-foreground: 198 214 219;
 
@@ -186,6 +187,7 @@
   --surface-elevated: 20 52 62;
   /* Night band: slightly elevated vs page bg, still dark */
   --surface-inverse: 16 48 62;
+  --hero-void: 7 16 24;
   --inverse-foreground: 241 248 250;
   --inverse-muted-foreground: 176 204 214;
 
@@ -538,6 +540,19 @@
   }
 }
 
+.hero-plate-reveal {
+  animation: hero-plate-reveal 1.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes hero-plate-reveal {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .partners-marquee-track {
     animation: none !important;
@@ -554,7 +569,8 @@
   .hero-glow-pulse,
   .hero-scroll-hint,
   .hero-kenburns,
-  .hero-rule-draw {
+  .hero-rule-draw,
+  .hero-plate-reveal {
     animation: none !important;
     will-change: auto;
   }

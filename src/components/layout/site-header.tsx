@@ -21,7 +21,7 @@ import {
   getLocalizedExpertiseItems,
   getLocalizedNavigation,
 } from "@/lib/navigation/get-navigation";
-import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
+import { getLocalizedHref, stripLocalePrefix } from "@/lib/navigation/get-localized-href";
 import { headerReveal } from "@/lib/animations";
 import { useReducedMotion } from "@/lib/hooks/use-reduced-motion";
 import { cn } from "@/lib/utils";
@@ -46,7 +46,10 @@ export function SiteHeader() {
   const navigationItems = getLocalizedNavigation(locale);
   const expertiseItems = getLocalizedExpertiseItems(locale);
   const primaryCta = getLocalizedCta(locale, "scheduleConversation");
+  const isHome = stripLocalePrefix(pathname) === "/";
+  const isHeroGhost = isHome && !isScrolled && !isMobileMenuOpen;
   const isDarkTheme = themeReady && resolvedTheme === "dark";
+  const useNightChrome = isHeroGhost || isDarkTheme;
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => setThemeReady(true));
@@ -76,19 +79,23 @@ export function SiteHeader() {
         animate="visible"
         variants={prefersReducedMotion ? undefined : headerReveal}
         className={cn(
-          "sticky top-0 z-30 border-b text-[rgb(var(--foreground))]",
-          "supports-[backdrop-filter]:backdrop-blur-xl",
-          "transition-[background-color,border-color,box-shadow] duration-[var(--duration-normal)] ease-[var(--ease-standard)]",
-          isScrolled
-            ? cn(
-                "border-[rgb(var(--border-muted))]",
-                "bg-[rgb(var(--background))]/96 shadow-[var(--shadow-card)]",
-                "supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--background))_92%,transparent)]"
-              )
+          "sticky top-0 z-30 border-b",
+          "transition-[background-color,border-color,box-shadow,color] duration-[var(--duration-normal)] ease-[var(--ease-standard)]",
+          isHeroGhost
+            ? "border-transparent bg-transparent text-[rgb(var(--foreground))]"
             : cn(
-                "border-[color-mix(in_srgb,rgb(var(--border-muted))_70%,transparent)]",
-                "bg-[rgb(var(--background))]/90 shadow-[var(--shadow-soft)]",
-                "supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--background))_88%,transparent)]"
+                "text-[rgb(var(--foreground))] supports-[backdrop-filter]:backdrop-blur-xl",
+                isScrolled || !isHome
+                  ? cn(
+                      "border-[rgb(var(--border-muted))]",
+                      "bg-[rgb(var(--background))]/96 shadow-[var(--shadow-card)]",
+                      "supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--background))_92%,transparent)]"
+                    )
+                  : cn(
+                      "border-[color-mix(in_srgb,rgb(var(--border-muted))_70%,transparent)]",
+                      "bg-[rgb(var(--background))]/90 shadow-[var(--shadow-soft)]",
+                      "supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--background))_88%,transparent)]"
+                    )
               )
         )}
       >
@@ -97,10 +104,15 @@ export function SiteHeader() {
             <Link
               href={getLocalizedHref(locale, "home")}
               aria-label={brand.name}
-              className="min-w-0 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--background))]"
+              className={cn(
+                "min-w-0 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
+                isHeroGhost
+                  ? "focus-visible:ring-offset-transparent"
+                  : "focus-visible:ring-offset-[rgb(var(--background))]"
+              )}
             >
               <Logo
-                variant={isDarkTheme ? "onDark" : "default"}
+                variant={useNightChrome ? "onDark" : "default"}
                 size="md"
                 className="max-w-[clamp(9.5rem,40vw,12.5rem)] xl:max-w-[12.5rem]"
               />
@@ -110,15 +122,20 @@ export function SiteHeader() {
               <DesktopNavigation
                 items={navigationItems}
                 expertiseItems={expertiseItems}
-                highContrast={isDarkTheme}
+                inverse={isHeroGhost}
+                highContrast={isDarkTheme && !isHeroGhost}
               />
             </div>
 
             <div className="ml-auto hidden shrink-0 items-center gap-2 lg:flex lg:translate-y-[2px] xl:gap-3">
-              <LocaleSwitcher />
-              <ThemeToggle />
+              <LocaleSwitcher inverse={isHeroGhost} />
+              <ThemeToggle inverse={isHeroGhost} />
               <Link href={primaryCta.href}>
-                <Button variant="primary" size="md" className="whitespace-nowrap">
+                <Button
+                  variant={isHeroGhost ? "inverse" : "primary"}
+                  size="md"
+                  className="whitespace-nowrap"
+                >
                   {primaryCta.label}
                 </Button>
               </Link>
@@ -130,8 +147,10 @@ export function SiteHeader() {
                 aria-label={primaryCta.label}
                 className={cn(
                   "inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] border px-3 text-sm font-medium transition-colors",
-                  "border-[rgb(var(--border))] bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--surface-muted))]",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--background))]"
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))]",
+                  isHeroGhost
+                    ? "border-white/20 bg-white/10 text-white hover:bg-white/16 focus-visible:ring-offset-transparent"
+                    : "border-[rgb(var(--border))] bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--surface-muted))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--background))]"
                 )}
               >
                 <MessageCircle className="mr-2 h-4 w-4" aria-hidden="true" />
@@ -143,6 +162,7 @@ export function SiteHeader() {
                 label={isMobileMenuOpen ? t("closeMenu") : t("openMenu")}
                 onClick={() => setIsMobileMenuOpen((value) => !value)}
                 triggerRef={triggerRef}
+                inverse={isHeroGhost}
               />
             </div>
           </div>

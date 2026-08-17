@@ -20,7 +20,7 @@ const variantStyles: Record<NavigationLinkVariant, string> = {
   dropdown:
     "group block rounded-[var(--radius-md)] px-4 py-3 transition-colors hover:bg-[rgb(var(--surface-muted))]",
   mobile:
-    "block rounded-[var(--radius-md)] px-4 py-3 text-base font-medium transition-colors hover:bg-[rgb(var(--surface-muted))]",
+    "block rounded-[var(--radius-md)] px-4 py-3 text-base font-medium text-[rgb(var(--foreground))] transition-colors hover:bg-[rgb(var(--surface-muted))]",
   footer:
     "text-sm text-[rgb(var(--muted-foreground))] transition-colors hover:text-[rgb(var(--foreground))]",
 };
@@ -50,7 +50,7 @@ export function NavigationLink({
         // Media / inverse chrome: bright on-night text
         inverse &&
           variant === "desktop" &&
-          "text-[rgb(var(--inverse-foreground))] hover:text-[rgb(var(--inverse-foreground))] focus-visible:ring-offset-transparent opacity-90 hover:opacity-100",
+          "text-white hover:text-white focus-visible:ring-offset-transparent opacity-90 hover:opacity-100",
         isActive && variant === "desktop" && !inverse && "text-[rgb(var(--primary))]",
         isActive && variant === "desktop" && inverse && "text-[rgb(var(--inverse-foreground))] opacity-100",
         isActive && highContrast && variant === "desktop" && !inverse && "text-[rgb(var(--accent))]",

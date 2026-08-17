@@ -41,7 +41,7 @@ export function SiteFooter() {
     "font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[rgb(var(--inverse-muted-foreground))]";
 
   return (
-    <footer className="mt-auto border-t border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_12%,transparent)] bg-[rgb(var(--surface-inverse))] text-[rgb(var(--inverse-foreground))]">
+    <footer className="mt-auto border-t border-white/10 bg-[rgb(var(--hero-void))] text-white">
       <Container size="wide">
         <div className="border-b border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_10%,transparent)] py-6">
           <p className="font-[family:var(--font-accent)] text-[0.78rem] font-semibold uppercase tracking-[0.18em] text-[rgb(var(--inverse-muted-foreground))]">
