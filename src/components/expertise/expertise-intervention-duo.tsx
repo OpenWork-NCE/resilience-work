@@ -1,6 +1,6 @@
 import { AnimatedSection } from "@/components/motion/animated";
-import { SectionHeader } from "@/components/shared/section-header";
-import { expertiseIconMap } from "@/components/expertise/expertise-icon-map";
+import { Card } from "@/components/shared/card";
+import { HomeSectionIntro } from "@/components/home/home-section-intro";
 import { expertiseUiCopy } from "@/content/pages/expertise";
 import type { Locale, LocalizedFeature } from "@/types/content";
 
@@ -24,7 +24,7 @@ export function ExpertiseInterventionDuo({
   return (
     <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-16">
       <AnimatedSection>
-        <SectionHeader eyebrow={eyebrow} title={title} align="left" className="mb-0" />
+        <HomeSectionIntro eyebrow={eyebrow} title={title} />
         <div className="mt-6 max-w-[40rem] space-y-5">
           {paragraphs.map((paragraph) => (
             <p
@@ -37,36 +37,26 @@ export function ExpertiseInterventionDuo({
         </div>
       </AnimatedSection>
 
-      <AnimatedSection delay={0.06} className="space-y-5">
-        <p className="font-[family:var(--font-accent)] text-xs font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
+      <AnimatedSection delay={0.06}>
+        <p className="font-[family:var(--font-accent)] text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-[rgb(var(--accent))]">
           {servicesTitle || expertiseUiCopy.servicesEyebrow[locale]}
         </p>
-        {services.slice(0, 2).map((item) => {
-          const Icon =
-            expertiseIconMap[item.icon as keyof typeof expertiseIconMap] ??
-            expertiseIconMap.Activity;
-
-          return (
-            <div
-              key={item.id}
-              className="rounded-[var(--radius-xl)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))] px-5 py-6 sm:px-6"
-            >
-              <div className="flex items-start gap-4">
-                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--accent-soft))] text-[rgb(var(--accent-foreground))]">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <div className="min-w-0">
-                  <h3 className="font-display text-xl font-medium leading-snug">
-                    {item.title[locale]}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-base">
-                    {item.description[locale]}
-                  </p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+        <span aria-hidden="true" className="mt-4 block h-px w-14 bg-[rgb(var(--accent))]" />
+        <div className="mt-6 grid gap-4">
+          {services.map((item, index) => (
+            <Card key={item.id} variant="elevated" className="p-5">
+              <p className="font-[family:var(--font-accent)] text-[0.62rem] font-semibold tabular-nums tracking-[0.2em] text-[rgb(var(--accent))]">
+                {String(index + 1).padStart(2, "0")}
+              </p>
+              <h3 className="mt-3 font-display text-[clamp(1.2rem,2vw,1.45rem)] font-medium leading-snug tracking-[-0.02em]">
+                {item.title[locale]}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
+                {item.description[locale]}
+              </p>
+            </Card>
+          ))}
+        </div>
       </AnimatedSection>
     </div>
   );

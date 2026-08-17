@@ -3,6 +3,7 @@ import { ChevronRight } from "lucide-react";
 import { routes } from "@/content/routes";
 import type { Locale, RouteKey } from "@/types/content";
 import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
+import { cn } from "@/lib/utils";
 
 export interface BreadcrumbItem {
   label: string;
@@ -12,29 +13,43 @@ export interface BreadcrumbItem {
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];
   ariaLabel: string;
+  invert?: boolean;
 }
 
-export function Breadcrumbs({ items, ariaLabel }: BreadcrumbsProps) {
+export function Breadcrumbs({ items, ariaLabel, invert = false }: BreadcrumbsProps) {
   if (items.length <= 1) {
     return null;
   }
 
   return (
     <nav aria-label={ariaLabel}>
-      <ol className="flex flex-wrap items-center gap-2 text-sm text-[rgb(var(--muted-foreground))]">
+      <ol
+        className={cn(
+          "flex flex-wrap items-center gap-2 text-sm",
+          invert ? "text-white/50" : "text-[rgb(var(--muted-foreground))]"
+        )}
+      >
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
 
           return (
             <li key={`${item.label}-${index}`} className="flex items-center gap-2">
               {isLast || !item.href ? (
-                <span aria-current="page" className="font-medium text-[rgb(var(--foreground))]">
+                <span
+                  aria-current="page"
+                  className={cn("font-medium", invert ? "text-white" : "text-[rgb(var(--foreground))]")}
+                >
                   {item.label}
                 </span>
               ) : (
                 <Link
                   href={item.href}
-                  className="transition-colors hover:text-[rgb(var(--foreground))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2"
+                  className={cn(
+                    "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))]",
+                    invert
+                      ? "hover:text-white focus-visible:ring-offset-transparent"
+                      : "hover:text-[rgb(var(--foreground))] focus-visible:ring-offset-2"
+                  )}
                 >
                   {item.label}
                 </Link>

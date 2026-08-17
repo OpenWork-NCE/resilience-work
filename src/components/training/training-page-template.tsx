@@ -1,6 +1,7 @@
 import Script from "next/script";
 import { Section } from "@/components/shared/section";
 import { ExpertiseFinalCta } from "@/components/expertise/expertise-final-cta";
+import { assets } from "@/content/assets";
 import { TrainingPageHero } from "./training-page-hero";
 import { TrainingTopicsGrid } from "./training-topics-grid";
 import { trainingPageContent } from "@/content/pages/expertise";
@@ -19,6 +20,7 @@ export function TrainingPageTemplate({ locale }: TrainingPageTemplateProps) {
     { label: ui.breadcrumbExpertise[locale], href: getLocalizedHref(locale, "expertise") },
     { label: ui.breadcrumbTraining[locale] },
   ];
+  const still = assets.expertise.training;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -46,21 +48,25 @@ export function TrainingPageTemplate({ locale }: TrainingPageTemplateProps) {
         breadcrumbs={breadcrumbs}
         contactHref={getLocalizedHref(locale, "contact")}
       />
-      <Section spacing="md">
+      <Section spacing="sm" containerSize="home">
         <TrainingTopicsGrid
           locale={locale}
           topics={trainingTopics}
           contactHref={getLocalizedHref(locale, "contact")}
         />
       </Section>
-      <Section spacing="md">
+      <Section spacing="sm" containerSize="home">
         <ExpertiseFinalCta
           locale={locale}
           title={trainingPageContent.finalCta.title[locale]}
-          description={trainingPageContent.finalCta.description[locale]}
-          note={ui.finalNote[locale]}
           primaryCta={trainingPageContent.finalCta.primaryCta}
           secondaryCta={trainingPageContent.finalCta.secondaryCta}
+          still={{
+            src: still.src,
+            alt: still.alt[locale],
+            objectPosition: still.objectPosition,
+          }}
+          caption={trainingPageContent.eyebrow[locale]}
         />
       </Section>
     </>

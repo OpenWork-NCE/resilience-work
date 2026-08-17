@@ -7,10 +7,10 @@ import { ExpertisePageHero } from "./expertise-page-hero";
 import { ExpertiseRelatedServices } from "./expertise-related-services";
 import { navigation } from "@/content/navigation";
 import { expertiseUiCopy } from "@/content/pages/expertise";
-import { trainingUiCopy } from "@/content/pages/training";
 import { routes } from "@/content/routes";
 import type { ExpertiseDetailPage, Locale, RouteKey } from "@/types/content";
 import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
+import { activityIdentity } from "@/lib/activity-identity";
 
 interface ExpertisePageTemplateProps {
   locale: Locale;
@@ -69,7 +69,7 @@ export function ExpertisePageTemplate({ locale, page }: ExpertisePageTemplatePro
         contactHref={getLocalizedHref(locale, "contact")}
       />
 
-      <Section spacing="md" tone="default">
+      <Section spacing="sm" tone="default" containerSize="home">
         <ExpertiseInterventionDuo
           locale={locale}
           eyebrow={expertiseUiCopy.introductionEyebrow[locale]}
@@ -80,16 +80,20 @@ export function ExpertisePageTemplate({ locale, page }: ExpertisePageTemplatePro
         />
       </Section>
 
-      <Section spacing="md" tone="default">
-        <div className="space-y-14">
+      <Section spacing="sm" tone="default" containerSize="home">
+        <div className="space-y-12">
           <ExpertiseRelatedServices locale={locale} ids={page.relatedExpertiseIds} />
           <ExpertiseFinalCta
             locale={locale}
             title={page.finalCta.title[locale]}
-            description={page.finalCta.description[locale]}
-            note={trainingUiCopy.finalNote[locale]}
             primaryCta={page.finalCta.primaryCta}
             secondaryCta={page.finalCta.secondaryCta}
+            still={{
+              src: page.image.src,
+              alt: page.image.alt[locale],
+              objectPosition: activityIdentity[page.id].objectPosition,
+            }}
+            caption={page.eyebrow[locale]}
           />
         </div>
       </Section>
