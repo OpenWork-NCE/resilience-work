@@ -16,6 +16,12 @@ export const homePage = {
       it: "Un sostegno umano dopo l’incidente, e nelle crisi internazionali.",
     } satisfies Record<Locale, string>,
 
+    titleLines: {
+      fr: ["Après l’incident.", "Un soutien humain."],
+      en: ["After the incident.", "Human support."],
+      it: ["Dopo l’incidente.", "Un sostegno umano."],
+    } satisfies Record<Locale, readonly [string, string]>,
+
     description: {
       fr: "Resilience@Work intervient auprès des organisations confrontées à un incident critique, à une situation de crise en mobilité internationale, ou à un besoin de sensibilisation sur le bien-être et la santé mentale.",
       en: "Resilience@Work works with organisations facing a critical incident, a crisis in international mobility, or a need to raise awareness of well-being and mental health.",
