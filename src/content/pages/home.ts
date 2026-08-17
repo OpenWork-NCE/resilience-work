@@ -5,27 +5,27 @@ import { globalCtas } from "../navigation";
 export const homePage = {
   hero: {
     eyebrow: {
-      fr: "Bien-être psychosocial · Résilience organisationnelle",
-      en: "Psychosocial well-being · Organisational resilience",
-      it: "Benessere psicosociale · Resilienza organizzativa",
+      fr: "Soutien psychologique · Crise internationale · Santé mentale",
+      en: "Psychological support · International crisis · Mental health",
+      it: "Sostegno psicologico · Crisi internazionale · Salute mentale",
     } satisfies Record<Locale, string>,
 
     title: {
-      fr: "Des équipes plus résilientes dans les environnements les plus exigeants.",
-      en: "More resilient teams in the most demanding environments.",
-      it: "Team più resilienti negli ambienti più esigenti.",
+      fr: "Un soutien humain après l’incident, et dans les crises internationales.",
+      en: "Human support after the incident, and in international crises.",
+      it: "Un sostegno umano dopo l’incidente, e nelle crisi internazionali.",
     } satisfies Record<Locale, string>,
 
     description: {
-      fr: "Resilience@Work accompagne les organisations, les managers et les collaborateurs exposés à des situations professionnelles complexes, multiculturelles ou internationales.",
-      en: "Resilience@Work supports organisations, managers and employees navigating complex, multicultural or international professional environments.",
-      it: "Resilience@Work accompagna organizzazioni, manager e collaboratori esposti a situazioni professionali complesse, multiculturali o internazionali.",
+      fr: "Resilience@Work intervient auprès des organisations confrontées à un incident critique, à une situation de crise en mobilité internationale, ou à un besoin de sensibilisation sur le bien-être et la santé mentale.",
+      en: "Resilience@Work works with organisations facing a critical incident, a crisis in international mobility, or a need to raise awareness of well-being and mental health.",
+      it: "Resilience@Work interviene presso organizzazioni confrontate con un incidente critico, una situazione di crisi in mobilità internazionale, o un bisogno di sensibilizzazione su benessere e salute mentale.",
     } satisfies Record<Locale, string>,
 
     supportingText: {
-      fr: "Prévention des risques psychosociaux, santé mentale au travail et performance humaine durable.",
-      en: "Psychosocial risk prevention, workplace mental health and sustainable human performance.",
-      it: "Prevenzione dei rischi psicosociali, salute mentale sul lavoro e performance umana sostenibile.",
+      fr: "Entretiens individuels, débriefing collectif, appui en crise internationale, webinaires et workshops.",
+      en: "Individual interviews, collective debriefing, international crisis support, webinars and workshops.",
+      it: "Colloqui individuali, debriefing collettivo, sostegno in crisi internazionale, webinar e workshop.",
     } satisfies Record<Locale, string>,
 
     scrollHint: {
@@ -47,51 +47,51 @@ export const homePage = {
     } satisfies Record<Locale, string>,
 
     title: {
-      fr: "L'humain au cœur de la résilience organisationnelle",
-      en: "People at the heart of organisational resilience",
-      it: "Le persone al centro della resilienza organizzativa",
+      fr: "Trois activités, un cadre confidentiel",
+      en: "Three activities, one confidential framework",
+      it: "Tre attività, un quadro confidenziale",
     } satisfies Record<Locale, string>,
 
     paragraphs: {
       fr: [
-        "Resilience@Work accompagne les entreprises dans la création d'environnements de travail sains, performants et humains.",
-        "Notre approche multidisciplinaire répond aux réalités des équipes multiculturelles, des collaborateurs expatriés et des organisations confrontées à des contextes sensibles.",
+        "Resilience@Work intervient de façon ciblée : après un événement critique, dans une crise liée à la mobilité internationale, ou pour sensibiliser au bien-être et à la santé mentale.",
+        "L’approche reste humaine, confidentielle et pragmatique. Le détail se précise avec vous.",
       ],
       en: [
-        "Resilience@Work helps organisations create healthy, high-performing and people-centred work environments.",
-        "Our multidisciplinary approach addresses the realities of multicultural teams, expatriate employees and organisations operating in demanding contexts.",
+        "Resilience@Work intervenes in a focused way: after a critical event, in a crisis linked to international mobility, or to raise awareness of well-being and mental health.",
+        "The approach remains human, confidential and pragmatic. The details can be clarified with you.",
       ],
       it: [
-        "Resilience@Work accompagna le imprese nella creazione di ambienti di lavoro sani, performanti e orientati alle persone.",
-        "Il nostro approccio multidisciplinare risponde alle realtà dei team multiculturali, dei collaboratori espatriati e delle organizzazioni che operano in contesti sensibili.",
+        "Resilience@Work interviene in modo mirato: dopo un evento critico, in una crisi legata alla mobilità internazionale, o per sensibilizzare su benessere e salute mentale.",
+        "L’approccio resta umano, confidenziale e pragmatico. I dettagli si precisano insieme a voi.",
       ],
     } satisfies Record<Locale, readonly string[]>,
   },
 
   expertise: {
     eyebrow: {
-      fr: "Expertises",
-      en: "Expertise",
-      it: "Competenze",
+      fr: "Activités",
+      en: "Activities",
+      it: "Attività",
     } satisfies Record<Locale, string>,
 
     title: {
-      fr: "Quatre domaines d'intervention pour renforcer durablement les équipes",
-      en: "Four areas of expertise designed to strengthen teams over time",
-      it: "Quattro ambiti di intervento per rafforzare i team in modo duraturo",
+      fr: "Trois activités, clairement identifiables",
+      en: "Three activities, clearly defined",
+      it: "Tre attività, chiaramente identificabili",
     } satisfies Record<Locale, string>,
 
     description: {
-      fr: "Des accompagnements conçus pour prévenir les risques psychosociaux, soutenir les équipes internationales et structurer des réponses adaptées aux contextes sensibles.",
-      en: "Support designed to prevent psychosocial risks, guide international teams and structure responses suited to demanding contexts.",
-      it: "Percorsi di accompagnamento progettati per prevenire i rischi psicosociali, sostenere i team internazionali e strutturare risposte adeguate ai contesti sensibili.",
+      fr: "Support psychologique post-incident, management de crise en mobilité internationale, webinaires et workshops sur le bien-être et la santé mentale.",
+      en: "Post-incident psychological support, crisis management in international mobility, webinars and workshops on well-being and mental health.",
+      it: "Supporto psicologico post-incidente, gestione delle crisi nella mobilità internazionale, webinar e workshop su benessere e salute mentale.",
     } satisfies Record<Locale, string>,
 
     cta: {
       label: {
-        fr: "Découvrir toutes nos expertises",
-        en: "Explore all expertise areas",
-        it: "Scopri tutte le nostre competenze",
+        fr: "Voir nos activités",
+        en: "See our activities",
+        it: "Vedi le nostre attività",
       } satisfies Record<Locale, string>,
       route: "expertise",
       variant: "secondary",
@@ -245,14 +245,14 @@ export const homePage = {
           it: "Ambiti di competenza",
         } satisfies Record<Locale, string>,
         value: {
-          fr: "Quatre expertises complémentaires",
-          en: "Four complementary expertise areas",
-          it: "Quattro competenze complementari",
+          fr: "Trois activités complémentaires",
+          en: "Three complementary activities",
+          it: "Tre attività complementari",
         } satisfies Record<Locale, string>,
         detail: {
-          fr: "Prévention, mobilité, crise et formations, mobilisées selon le besoin réel.",
-          en: "Prevention, mobility, crisis and training, engaged according to real need.",
-          it: "Prevenzione, mobilità, crisi e formazione, mobilitate in base al bisogno reale.",
+          fr: "Support post-incident, crise en mobilité internationale, webinaires et workshops.",
+          en: "Post-incident support, crisis in international mobility, webinars and workshops.",
+          it: "Supporto post-incidente, crisi in mobilità internazionale, webinar e workshop.",
         } satisfies Record<Locale, string>,
       },
     ] as const,
@@ -350,14 +350,14 @@ export const homePage = {
         id: "prevent",
         number: "02",
         title: {
-          fr: "Prévenir",
-          en: "Prevent",
-          it: "Prevenire",
+          fr: "Intervenir",
+          en: "Intervene",
+          it: "Intervenire",
         } satisfies Record<Locale, string>,
         description: {
-          fr: "Identifier les facteurs de risque et mettre en place des mesures adaptées au contexte.",
-          en: "Identify risk factors and implement measures suited to the context.",
-          it: "Identificare i fattori di rischio e mettere in atto misure adeguate al contesto.",
+          fr: "Proposer le format adapté : entretien individuel, débriefing collectif, appui en crise ou session de sensibilisation.",
+          en: "Propose the right format: individual interview, collective debriefing, crisis support or awareness session.",
+          it: "Proporre il formato adatto: colloquio individuale, debriefing collettivo, sostegno in crisi o sessione di sensibilizzazione.",
         } satisfies Record<Locale, string>,
       },
       {
@@ -413,9 +413,9 @@ export const homePage = {
     } satisfies Record<Locale, string>,
 
     description: {
-      fr: "Jocelyne Katshinda dirige Resilience@Work, une structure spécialisée dans le bien-être psychosocial, la prévention des risques psychosociaux et l'accompagnement des organisations évoluant dans des contextes internationaux et multiculturels.",
-      en: "Jocelyne Katshinda leads Resilience@Work, an organisation specialising in psychosocial well-being, psychosocial risk prevention and support for organisations operating in international and multicultural environments.",
-      it: "Jocelyne Katshinda dirige Resilience@Work, una struttura specializzata nel benessere psicosociale, nella prevenzione dei rischi psicosociali e nell'accompagnamento di organizzazioni che operano in contesti internazionali e multiculturali.",
+      fr: "Jocelyne Katshinda dirige Resilience@Work. La structure propose un soutien psychologique après un incident critique, un appui en situation de crise liée à la mobilité internationale, ainsi que des webinaires et workshops sur le bien-être et la santé mentale.",
+      en: "Jocelyne Katshinda leads Resilience@Work. The organisation provides psychological support after a critical incident, crisis support in international mobility, and webinars and workshops on well-being and mental health.",
+      it: "Jocelyne Katshinda dirige Resilience@Work. La struttura offre un sostegno psicologico dopo un incidente critico, un appoggio in situazioni di crisi legate alla mobilità internazionale, nonché webinar e workshop su benessere e salute mentale.",
     } satisfies Record<Locale, string>,
 
     highlights: [
@@ -430,9 +430,9 @@ export const homePage = {
       {
         id: "focus",
         label: {
-          fr: "Bien-être psychosocial",
-          en: "Psychosocial well-being",
-          it: "Benessere psicosociale",
+          fr: "Bien-être et santé mentale",
+          en: "Well-being and mental health",
+          it: "Benessere e salute mentale",
         } satisfies Record<Locale, string>,
       },
       {
@@ -472,9 +472,9 @@ export const homePage = {
     } satisfies Record<Locale, string>,
 
     description: {
-      fr: "Vous souhaitez prévenir les risques psychosociaux, accompagner une équipe internationale ou structurer un dispositif de soutien adapté à votre organisation ? Échangeons sur vos besoins.",
-      en: "Would you like to prevent psychosocial risks, support an international team or structure a support programme tailored to your organisation? Let's discuss your needs.",
-      it: "Desiderate prevenire i rischi psicosociali, accompagnare un team internazionale o strutturare un dispositivo di supporto adatto alla vostra organizzazione? Parliamone insieme.",
+      fr: "Un incident critique, une crise en mobilité internationale, un webinaire ou un workshop : décrivez-nous simplement le contexte.",
+      en: "A critical incident, a crisis in international mobility, a webinar or a workshop: simply describe the context.",
+      it: "Un incidente critico, una crisi in mobilità internazionale, un webinar o un workshop: descriveteci semplicemente il contesto.",
     } satisfies Record<Locale, string>,
 
     primaryCta: globalCtas.contactUs,

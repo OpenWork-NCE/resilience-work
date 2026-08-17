@@ -141,14 +141,14 @@ export const portfolioUiCopy = {
       it: "Aree di competenza",
     } satisfies Record<Locale, string>,
     title: {
-      fr: "Quatre domaines d’intervention, présentés avec clarté",
-      en: "Four areas of expertise, presented with clarity",
-      it: "Quattro aree di intervento, presentate con chiarezza",
+      fr: "Trois activités, présentées simplement",
+      en: "Three activities, presented simply",
+      it: "Tre attività, presentate in modo semplice",
     } satisfies Record<Locale, string>,
     description: {
-      fr: "Chaque domaine reprend les expertises déjà structurées dans la codebase, dans un format plus direct et mobile-friendly.",
-      en: "Each area reuses the expertise already structured in the codebase, in a more direct and mobile-friendly format.",
-      it: "Ogni area riprende le competenze già strutturate nel sito, in un formato più diretto e adatto al mobile.",
+      fr: "Support psychologique post-incident, crise en mobilité internationale, webinaires et workshops.",
+      en: "Post-incident psychological support, crisis in international mobility, webinars and workshops.",
+      it: "Supporto psicologico post-incidente, crisi in mobilità internazionale, webinar e workshop.",
     } satisfies Record<Locale, string>,
     learnMore: {
       fr: "En savoir plus",
@@ -185,9 +185,9 @@ export const portfolioUiCopy = {
 export const jocelyneKatshindaPage = {
   hero: {
     eyebrow: {
-      fr: "Direction · Résilience organisationnelle · Bien-être psychosocial",
-      en: "Leadership · Organisational resilience · Psychosocial well-being",
-      it: "Direzione · Resilienza organizzativa · Benessere psicosociale",
+      fr: "Direction · Soutien psychologique · Crise internationale",
+      en: "Leadership · Psychological support · International crisis",
+      it: "Direzione · Sostegno psicologico · Crisi internazionale",
     } satisfies Record<Locale, string>,
     name: "Jocelyne Katshinda",
     role: {
@@ -196,9 +196,9 @@ export const jocelyneKatshindaPage = {
       it: "Fondatrice e Amministratrice generale di Resilience@Work",
     } satisfies Record<Locale, string>,
     intro: {
-      fr: "J’accompagne les organisations, les managers et les équipes confrontés à des environnements professionnels exigeants, multiculturels ou internationaux.",
-      en: "I support organisations, managers and teams navigating demanding, multicultural or international professional environments.",
-      it: "Accompagno organizzazioni, manager e team che operano in contesti professionali esigenti, multiculturali o internazionali.",
+      fr: "J’interviens auprès des organisations confrontées à un incident critique, à une crise en mobilité internationale, ou à un besoin de sensibilisation sur le bien-être et la santé mentale.",
+      en: "I work with organisations facing a critical incident, a crisis in international mobility, or a need to raise awareness of well-being and mental health.",
+      it: "Intervengo presso organizzazioni confrontate con un incidente critico, una crisi in mobilità internazionale, o un bisogno di sensibilizzazione su benessere e salute mentale.",
     } satisfies Record<Locale, string>,
     goal: {
       fr: "Mon objectif : contribuer à créer des environnements de travail plus humains, plus solides et plus résilients.",
@@ -249,19 +249,19 @@ export const jocelyneKatshindaPage = {
     } satisfies Record<Locale, string>,
     paragraphs: {
       fr: [
-        "Jocelyne Katshinda est la fondatrice et Administratrice générale de Resilience@Work, une structure spécialisée dans le bien-être psychosocial et la résilience organisationnelle.",
-        "À travers Resilience@Work, elle accompagne les organisations, les managers et les collaborateurs exposés à des situations professionnelles complexes, multiculturelles ou géographiquement dispersées.",
-        "Son approche privilégie l’écoute, la confidentialité, le pragmatisme et l’adaptation aux réalités du terrain.",
+        "Jocelyne Katshinda est la fondatrice et Administratrice générale de Resilience@Work.",
+        "La structure propose un soutien psychologique après un incident critique, un appui en situation de crise liée à la mobilité internationale, ainsi que des webinaires et workshops sur le bien-être et la santé mentale.",
+        "Son approche privilégie l’écoute, la confidentialité et le pragmatisme.",
       ],
       en: [
-        "Jocelyne Katshinda is the Founder and Managing Director of Resilience@Work, an organisation specialising in psychosocial well-being and organisational resilience.",
-        "Through Resilience@Work, she supports organisations, managers and employees navigating complex, multicultural or geographically distributed professional environments.",
-        "Her approach focuses on listening, confidentiality, pragmatism and adaptation to real-world conditions.",
+        "Jocelyne Katshinda is the Founder and Managing Director of Resilience@Work.",
+        "The organisation provides psychological support after a critical incident, crisis support in international mobility, and webinars and workshops on well-being and mental health.",
+        "Her approach focuses on listening, confidentiality and pragmatism.",
       ],
       it: [
-        "Jocelyne Katshinda è la fondatrice e Amministratrice generale di Resilience@Work, una struttura specializzata nel benessere psicosociale e nella resilienza organizzativa.",
-        "Attraverso Resilience@Work, accompagna organizzazioni, manager e collaboratori esposti a situazioni professionali complesse, multiculturali o geograficamente distribuite.",
-        "Il suo approccio privilegia l’ascolto, la riservatezza, il pragmatismo e l’adattamento alle realtà sul campo.",
+        "Jocelyne Katshinda è la fondatrice e Amministratrice generale di Resilience@Work.",
+        "La struttura offre un sostegno psicologico dopo un incidente critico, un appoggio in situazioni di crisi legate alla mobilità internazionale, nonché webinar e workshop su benessere e salute mentale.",
+        "Il suo approccio privilegia l’ascolto, la riservatezza e il pragmatismo.",
       ],
     } satisfies Record<Locale, readonly string[]>,
     highlight: {
@@ -403,22 +403,22 @@ export const jocelyneKatshindaPage = {
       it: "Resilience@Work",
     } satisfies Record<Locale, string>,
     title: {
-      fr: "Une structure dédiée au bien-être psychosocial et à la résilience organisationnelle",
-      en: "An organisation dedicated to psychosocial well-being and organisational resilience",
-      it: "Una struttura dedicata al benessere psicosociale e alla resilienza organizzativa",
+      fr: "Une structure dédiée au soutien post-incident, à la crise internationale et à la santé mentale",
+      en: "An organisation dedicated to post-incident support, international crisis and mental health",
+      it: "Una struttura dedicata al sostegno post-incidente, alla crisi internazionale e alla salute mentale",
     } satisfies Record<Locale, string>,
     paragraphs: {
       fr: [
-        "Resilience@Work accompagne les organisations, les managers et les équipes confrontés à des situations professionnelles complexes, multiculturelles ou géographiquement dispersées.",
-        "La structure intervient notamment en prévention psychosociale, en mobilité internationale, en gestion de crise et à travers des formations professionnelles.",
+        "Resilience@Work intervient après un incident critique, dans les situations de crise liées à la mobilité internationale, et à travers des webinaires et workshops.",
+        "Les trois activités restent distinctes, afin que chaque organisation identifie clairement ce dont elle a besoin.",
       ],
       en: [
-        "Resilience@Work supports organisations, managers and teams navigating complex, multicultural or geographically distributed professional environments.",
-        "The organisation works across psychosocial prevention, international mobility, crisis management and professional training.",
+        "Resilience@Work intervenes after a critical incident, in crisis situations linked to international mobility, and through webinars and workshops.",
+        "The three activities remain distinct, so each organisation can clearly identify what it needs.",
       ],
       it: [
-        "Resilience@Work accompagna organizzazioni, manager e team confrontati con situazioni professionali complesse, multiculturali o geograficamente distribuite.",
-        "La struttura interviene in particolare nella prevenzione psicosociale, nella mobilità internazionale, nella gestione delle crisi e attraverso formazioni professionali.",
+        "Resilience@Work interviene dopo un incidente critico, nelle situazioni di crisi legate alla mobilità internazionale, e attraverso webinar e workshop.",
+        "Le tre attività restano distinte, affinché ogni organizzazione identifichi con chiarezza di cosa ha bisogno.",
       ],
     } satisfies Record<Locale, readonly string[]>,
     links: [
@@ -500,9 +500,9 @@ export const jocelyneKatshindaPage = {
         id: "expertise",
         route: "expertise",
         label: {
-          fr: "Expertises",
-          en: "Expertise",
-          it: "Competenze",
+          fr: "Activités",
+          en: "Activities",
+          it: "Attività",
         } satisfies Record<Locale, string>,
       },
       {

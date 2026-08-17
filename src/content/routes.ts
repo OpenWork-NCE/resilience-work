@@ -5,7 +5,7 @@ export const routes: Record<RouteKey, string> = {
   about: "/about",
   jocelyneKatshinda: "/jocelyne-katshinda",
   expertise: "/expertise",
-  psychosocialPrevention: "/expertise/psychosocial-prevention",
+  psychosocialPrevention: "/expertise/critical-incident-support",
   internationalMobility: "/expertise/international-mobility",
   crisisManagement: "/expertise/crisis-management",
   training: "/training",

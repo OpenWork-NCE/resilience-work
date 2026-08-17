@@ -158,9 +158,9 @@ export const contactPage = {
       it: "Presentateci il vostro contesto affinché possiamo individuare la forma di accompagnamento più adatta.",
     } satisfies LocalizedText,
     supportingText: {
-      fr: "Prévention psychosociale, mobilité internationale, gestion de crise ou formation : nous vous invitons à nous transmettre les informations essentielles à votre demande.",
-      en: "Psychosocial prevention, international mobility, crisis management or training: please share the essential information related to your enquiry.",
-      it: "Prevenzione psicosociale, mobilità internazionale, gestione delle crisi o formazione: vi invitiamo a trasmetterci le informazioni essenziali relative alla vostra richiesta.",
+      fr: "Support post-incident, crise en mobilité internationale, webinaire ou workshop : transmettez-nous l’essentiel de votre demande.",
+      en: "Post-incident support, crisis in international mobility, webinar or workshop: share the essentials of your enquiry.",
+      it: "Supporto post-incidente, crisi in mobilità internazionale, webinar o workshop: trasmetteteci l’essenziale della vostra richiesta.",
     } satisfies LocalizedText,
     trustSignals: [
       {
@@ -388,33 +388,25 @@ export const contactPage = {
           {
             value: "psychosocial-prevention",
             label: {
-              fr: "Prévention psychosociale",
-              en: "Psychosocial prevention",
-              it: "Prevenzione psicosociale",
-            } satisfies LocalizedText,
-          },
-          {
-            value: "international-mobility",
-            label: {
-              fr: "Mobilité internationale",
-              en: "International mobility",
-              it: "Mobilità internazionale",
+              fr: "Support psychologique post-incident",
+              en: "Post-incident psychological support",
+              it: "Supporto psicologico post-incidente",
             } satisfies LocalizedText,
           },
           {
             value: "crisis-management",
             label: {
-              fr: "Gestion de crise",
-              en: "Crisis management",
-              it: "Gestione delle crisi",
+              fr: "Crise et mobilité internationale",
+              en: "Crisis and international mobility",
+              it: "Crisi e mobilità internazionale",
             } satisfies LocalizedText,
           },
           {
             value: "training",
             label: {
-              fr: "Formation ou webinaire",
-              en: "Training or webinar",
-              it: "Formazione o webinar",
+              fr: "Webinaire ou workshop",
+              en: "Webinar or workshop",
+              it: "Webinar o workshop",
             } satisfies LocalizedText,
           },
           {
@@ -1001,9 +993,9 @@ export const contactPage = {
           it: "Quali tipi di richieste posso inviare?",
         } satisfies LocalizedText,
         answer: {
-          fr: "Vous pouvez nous contacter pour échanger sur la prévention psychosociale, la mobilité internationale, la gestion de crise, les formations ou les besoins spécifiques de votre organisation.",
-          en: "You can contact us to discuss psychosocial prevention, international mobility, crisis management, training or your organisation’s specific needs.",
-          it: "Potete contattarci per confrontarvi su prevenzione psicosociale, mobilità internazionale, gestione delle crisi, formazione o esigenze specifiche della vostra organizzazione.",
+          fr: "Vous pouvez nous contacter pour un soutien post-incident, une crise en mobilité internationale, un webinaire, un workshop ou tout autre besoin de votre organisation.",
+          en: "You can contact us for post-incident support, a crisis in international mobility, a webinar, a workshop or any other organisational need.",
+          it: "Potete contattarci per un sostegno post-incidente, una crisi in mobilità internazionale, un webinar, un workshop o qualsiasi altra esigenza della vostra organizzazione.",
         } satisfies LocalizedText,
       },
       {
@@ -1080,9 +1072,9 @@ export const contactPage = {
       it: "Contatto | Resilience@Work",
     } satisfies LocalizedText,
     description: {
-      fr: "Contactez Resilience@Work pour échanger sur les besoins de votre organisation : prévention psychosociale, mobilité internationale, gestion de crise ou formation.",
-      en: "Contact Resilience@Work to discuss your organisation’s needs: psychosocial prevention, international mobility, crisis management or training.",
-      it: "Contattate Resilience@Work per confrontarvi sulle esigenze della vostra organizzazione: prevenzione psicosociale, mobilità internazionale, gestione delle crisi o formazione.",
+      fr: "Contactez Resilience@Work pour un soutien post-incident, une crise en mobilité internationale, un webinaire ou un workshop.",
+      en: "Contact Resilience@Work for post-incident support, a crisis in international mobility, a webinar or a workshop.",
+      it: "Contattate Resilience@Work per un sostegno post-incidente, una crisi in mobilità internazionale, un webinar o un workshop.",
     } satisfies LocalizedText,
     ogImage: "/images/hero/resilience-at-work-hero.webp",
   },

@@ -17,8 +17,7 @@ const localizedPaths = [
   "/privacy",
   "/cookies",
   "/accessibility",
-  "/expertise/psychosocial-prevention",
-  "/expertise/international-mobility",
+  "/expertise/critical-incident-support",
   "/expertise/crisis-management",
 ] as const;
 

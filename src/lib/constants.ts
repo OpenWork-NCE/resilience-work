@@ -25,7 +25,7 @@ export const INTERVENTION_ZONES: ZoneInfo[] = [
 ];
 
 export const LANGUAGES = {
-  site: ['fr', 'en'],
+  site: ['fr', 'en', 'it'],
   services: ['fr', 'en', 'it'],
 } as const;
 

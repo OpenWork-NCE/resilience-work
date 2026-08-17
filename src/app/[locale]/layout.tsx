@@ -32,7 +32,7 @@ const spaceGroteskAccent = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Resilience@Work",
-  description: "Building resilience in the workplace.",
+  description: "Psychological support after a critical incident, crisis support in international mobility, webinars and workshops on well-being and mental health.",
   icons: {
     icon: "/images/brand/resilience-at-work-favicon.png",
     shortcut: "/images/brand/resilience-at-work-favicon.png",

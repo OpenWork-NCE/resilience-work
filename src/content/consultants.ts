@@ -40,9 +40,9 @@ export const consultantsSection = {
     it: "Consulenti affiliate",
   } satisfies Record<Locale, string>,
   description: {
-    fr: "Un réseau de consultantes expérimentées, mobilisées selon les besoins de chaque mission - formation, coaching, prévention et situations de crise.",
-    en: "A network of experienced consultants, engaged according to each assignment - training, coaching, prevention and crisis situations.",
-    it: "Una rete di consulenti esperte, mobilitate in base alle esigenze di ogni incarico: formazione, coaching, prevenzione e situazioni di crisi.",
+    fr: "Un réseau de consultantes expérimentées, mobilisées selon les besoins de chaque mission : soutien post-incident, crise internationale, webinaires et workshops.",
+    en: "A network of experienced consultants, engaged according to each assignment: post-incident support, international crisis, webinars and workshops.",
+    it: "Una rete di consulenti esperte, mobilitate in base alle esigenze di ogni incarico: sostegno post-incidente, crisi internazionale, webinar e workshop.",
   } satisfies Record<Locale, string>,
   cta: {
     fr: "Voir le parcours complet",

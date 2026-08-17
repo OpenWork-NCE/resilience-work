@@ -74,7 +74,7 @@ export default function NavigationPreviewPage() {
 
   const breadcrumbs = buildBreadcrumbsFromPath(
     locale,
-    "/expertise/international-mobility",
+    "/expertise/crisis-management",
     labels
   );
 

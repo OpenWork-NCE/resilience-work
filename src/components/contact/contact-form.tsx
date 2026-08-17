@@ -130,7 +130,9 @@ export function ContactForm({ locale }: ContactFormProps) {
   const selectedSubject = formData.subject;
   const showCrisisFields = selectedSubject === "crisis-management";
   const showTrainingFields = selectedSubject === "training";
-  const showMobilityFields = selectedSubject === "international-mobility";
+  const showMobilityFields =
+    selectedSubject === "international-mobility" ||
+    selectedSubject === "crisis-management";
   const hasConditional =
     showCrisisFields || showTrainingFields || showMobilityFields;
 

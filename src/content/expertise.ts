@@ -8,13 +8,8 @@ export const expertiseAreas: ExpertiseArea[] = [
     descriptionKey: 'expertise.psychosocial.description',
     icon: 'shield-heart',
     services: [
-      'expertise.psychosocial.services.riskAssessment',
-      'expertise.psychosocial.services.preventionPrograms',
-      'expertise.psychosocial.services.multiculturalSupport',
-      'expertise.psychosocial.services.teamSupport',
-      'expertise.psychosocial.services.stressPrevention',
-      'expertise.psychosocial.services.burnoutPrevention',
-      'expertise.psychosocial.services.workLifeBalance',
+      'expertise.psychosocial.services.individualInterviews',
+      'expertise.psychosocial.services.collectiveDebriefing',
     ],
   },
   {

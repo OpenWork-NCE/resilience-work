@@ -52,45 +52,36 @@ export const navigation: readonly NavigationItem[] = [
     id: "expertise",
     route: "expertise",
     label: {
-      fr: "Expertises",
-      en: "Expertise",
-      it: "Competenze",
+      fr: "Activités",
+      en: "Activities",
+      it: "Attività",
     } satisfies Record<Locale, string>,
     children: [
       {
         id: "psychosocialPrevention",
         route: "psychosocialPrevention",
         label: {
-          fr: "Prévention psychosociale",
-          en: "Psychosocial prevention",
-          it: "Prevenzione psicosociale",
-        } satisfies Record<Locale, string>,
-      },
-      {
-        id: "internationalMobility",
-        route: "internationalMobility",
-        label: {
-          fr: "Mobilité internationale",
-          en: "International mobility",
-          it: "Mobilità internazionale",
+          fr: "Support post-incident",
+          en: "Post-incident support",
+          it: "Supporto post-incidente",
         } satisfies Record<Locale, string>,
       },
       {
         id: "crisisManagement",
         route: "crisisManagement",
         label: {
-          fr: "Gestion de crise",
-          en: "Crisis management",
-          it: "Gestione delle crisi",
+          fr: "Crise et mobilité",
+          en: "Crisis and mobility",
+          it: "Crisi e mobilità",
         } satisfies Record<Locale, string>,
       },
       {
         id: "training",
         route: "training",
         label: {
-          fr: "Formations",
-          en: "Training",
-          it: "Formazione",
+          fr: "Webinaires et workshops",
+          en: "Webinars and workshops",
+          it: "Webinar e workshop",
         } satisfies Record<Locale, string>,
       },
     ],
@@ -109,9 +100,9 @@ export const navigation: readonly NavigationItem[] = [
 export const globalCtas = {
   discoverExpertise: {
     label: {
-      fr: "Découvrir nos expertises",
-      en: "Explore our expertise",
-      it: "Scopri le nostre competenze",
+      fr: "Découvrir nos activités",
+      en: "Explore our activities",
+      it: "Scopri le nostre attività",
     } satisfies Record<Locale, string>,
     route: "expertise",
     variant: "primary",

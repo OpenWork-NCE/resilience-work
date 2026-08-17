@@ -1,14 +1,9 @@
 import Script from "next/script";
 import { Section } from "@/components/shared/section";
 import { buildBreadcrumbsFromPath } from "@/components/navigation/breadcrumbs";
-import { ExpertiseAudiencesSection } from "./expertise-audiences-section";
-import { ExpertiseChallengesSection } from "./expertise-challenges-section";
-import { ExpertiseDeliverySection } from "./expertise-delivery-section";
 import { ExpertiseEditorialIntro } from "./expertise-editorial-intro";
 import { ExpertiseFinalCta } from "./expertise-final-cta";
-import { ExpertiseOutcomesSection } from "./expertise-outcomes-section";
 import { ExpertisePageHero } from "./expertise-page-hero";
-import { ExpertiseProcessSection } from "./expertise-process-section";
 import { ExpertiseRelatedServices } from "./expertise-related-services";
 import { ExpertiseServicesGrid } from "./expertise-services-grid";
 import { navigation } from "@/content/navigation";
@@ -84,42 +79,12 @@ export function ExpertisePageTemplate({ locale, page }: ExpertisePageTemplatePro
         />
       </Section>
 
-      {/* Challenges + services - single climate band */}
       <Section spacing="md" tone="muted">
-        <div className="space-y-14">
-          <ExpertiseChallengesSection
-            locale={locale}
-            title={page.challengesTitle[locale]}
-            items={page.challenges}
-          />
-          <ExpertiseServicesGrid
-            locale={locale}
-            title={page.servicesTitle[locale]}
-            items={page.services}
-          />
-        </div>
-      </Section>
-
-      {/* Outcomes + process */}
-      <Section spacing="md" tone="default">
-        <div className="space-y-14">
-          <ExpertiseOutcomesSection
-            locale={locale}
-            title={page.outcomesTitle[locale]}
-            items={page.outcomes}
-          />
-          <div id="process">
-            <ExpertiseProcessSection locale={locale} items={page.process} />
-          </div>
-        </div>
-      </Section>
-
-      {/* Audiences + delivery meta */}
-      <Section spacing="md" tone="muted">
-        <div className="space-y-14">
-          <ExpertiseAudiencesSection locale={locale} audienceIds={page.audiences} />
-          <ExpertiseDeliverySection locale={locale} delivery={page.delivery} />
-        </div>
+        <ExpertiseServicesGrid
+          locale={locale}
+          title={page.servicesTitle[locale]}
+          items={page.services}
+        />
       </Section>
 
       <Section spacing="md" tone="default">

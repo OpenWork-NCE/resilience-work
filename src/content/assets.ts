@@ -36,9 +36,9 @@ export const assets = {
     psychosocialPrevention: {
       src: "/images/expertise/psychosocial-prevention.webp",
       alt: {
-        fr: "Professionnels échangeant autour de la prévention psychosociale et du bien-être au travail.",
-        en: "Professionals discussing psychosocial prevention and workplace well-being.",
-        it: "Professionisti in discussione sulla prevenzione psicosociale e il benessere al lavoro.",
+        fr: "Professionnels échangeant dans un cadre d’écoute après une situation exigeante.",
+        en: "Professionals talking in a supportive setting after a demanding situation.",
+        it: "Professionisti in scambio in un quadro di ascolto dopo una situazione esigente.",
       },
       width: 1672,
       height: 941,
@@ -75,9 +75,9 @@ export const assets = {
     training: {
       src: "/images/expertise/training.webp",
       alt: {
-        fr: "Session de formation professionnelle consacrée à la résilience et à la santé mentale au travail.",
-        en: "Professional training session focused on resilience and workplace mental health.",
-        it: "Sessione di formazione professionale dedicata alla resilienza e alla salute mentale al lavoro.",
+        fr: "Session de webinaire ou de workshop consacrée au bien-être et à la santé mentale au travail.",
+        en: "Webinar or workshop session focused on workplace well-being and mental health.",
+        it: "Sessione di webinar o workshop dedicata al benessere e alla salute mentale al lavoro.",
       },
       width: 1672,
       height: 941,

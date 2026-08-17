@@ -136,9 +136,8 @@ export default function DesignSystemPage() {
             <div>
               <p className="text-sm text-[rgb(var(--muted-foreground))] mb-2">Body Text</p>
               <p className="text-base leading-relaxed max-w-3xl">
-                Resilience@Work provides specialized support for mental health at work, psychosocial risk prevention, 
-                international mobility support, and crisis management. Our approach combines institutional rigor with 
-                genuine human care.
+                Resilience@Work provides psychological support after a critical incident, crisis support in
+                international mobility, and webinars and workshops on well-being and mental health.
               </p>
             </div>
 

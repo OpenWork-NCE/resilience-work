@@ -3,7 +3,6 @@ import { Section } from "@/components/shared/section";
 import { ExpertiseFinalCta } from "@/components/expertise/expertise-final-cta";
 import { ExpertisePageHero } from "@/components/expertise/expertise-page-hero";
 import { ExpertiseEditorialIntro } from "@/components/expertise/expertise-editorial-intro";
-import { TrainingDeliverySection } from "./training-delivery-section";
 import { TrainingTopicsGrid } from "./training-topics-grid";
 import { trainingPageContent } from "@/content/pages/expertise";
 import { trainingTopics, trainingUiCopy } from "@/content/pages/training";
@@ -90,9 +89,6 @@ export function TrainingPageTemplate({ locale }: TrainingPageTemplateProps) {
           topics={trainingTopics}
           contactHref={getLocalizedHref(locale, "contact")}
         />
-      </Section>
-      <Section spacing="md" tone="muted">
-        <TrainingDeliverySection locale={locale} blocks={trainingPageContent.deliveryBlocks} />
       </Section>
       <Section spacing="md">
         <ExpertiseFinalCta
