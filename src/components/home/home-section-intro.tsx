@@ -1,8 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/** Shared horizontal measure with the cinematic hero. */
-export const HOME_MEASURE =
-  "mx-auto w-[min(94vw,88rem)] px-5 sm:px-8 lg:w-[min(94vw,92rem)] lg:px-10";
+export { HOME_MEASURE } from "@/components/shared/container";
 
 interface HomeSectionIntroProps {
   eyebrow: string;

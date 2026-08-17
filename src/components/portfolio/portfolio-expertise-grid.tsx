@@ -1,23 +1,16 @@
 import Link from "next/link";
-import { ArrowRight, Globe2, GraduationCap, HeartPulse, ShieldAlert } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/motion/animated";
-import { Card, CardDescription, CardTitle } from "@/components/shared/card";
 import { Section } from "@/components/shared/section";
-import { SectionHeader } from "@/components/shared/section-header";
-import { ImageFrame } from "@/components/ui/image-frame";
+import { HomeSectionIntro } from "@/components/home/home-section-intro";
+import { HomeStill } from "@/components/home/home-still";
 import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
+import { activityIdentity } from "@/lib/activity-identity";
 import {
   jocelynePortfolioExpertiseItems,
   portfolioUiCopy,
 } from "@/content/pages/jocelyne-katshinda";
 import type { Locale } from "@/types/content";
-
-const iconMap = {
-  psychosocialPrevention: HeartPulse,
-  internationalMobility: Globe2,
-  crisisManagement: ShieldAlert,
-  training: GraduationCap,
-} as const;
 
 interface PortfolioExpertiseGridProps {
   locale: Locale;
@@ -27,71 +20,48 @@ export function PortfolioExpertiseGrid({ locale }: PortfolioExpertiseGridProps) 
   const copy = portfolioUiCopy.expertise;
 
   return (
-    <Section spacing="lg">
+    <Section spacing="sm" tone="default" containerSize="home">
       <AnimatedSection>
-        <SectionHeader
+        <HomeSectionIntro
           eyebrow={copy.eyebrow[locale]}
           title={copy.title[locale]}
           description={copy.description[locale]}
-          align="left"
-          maxWidth="wide"
+          className="mb-10 lg:mb-12"
         />
       </AnimatedSection>
 
-      <StaggerContainer className="grid gap-5 lg:grid-cols-2">
-        {jocelynePortfolioExpertiseItems.map((item, index) => {
-          const Icon = iconMap[item.id];
-
-          return (
-            <StaggerItem key={item.id}>
-              <Card variant="editorial" hover className="h-full overflow-hidden p-0">
-                <ImageFrame
-                  src={item.image.src}
-                  alt={item.image.alt[locale]}
-                  width={item.image.width}
-                  height={item.image.height}
-                  aspectRatio="16/9"
-                  objectPosition={item.image.objectPosition}
-                  className="rounded-none"
-                />
-                <div className="p-6">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[rgb(var(--accent-soft))] text-[rgb(var(--accent-foreground))]">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <p className="font-[family:var(--font-accent)] text-xs font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
-                      {String(index + 1).padStart(2, "0")}
-                    </p>
-                  </div>
-
-                  <CardTitle className="mt-5 font-display text-2xl font-medium leading-tight">
-                    {item.title[locale]}
-                  </CardTitle>
-                  <CardDescription className="mt-3 text-base">
-                    {item.summary[locale]}
-                  </CardDescription>
-
-                  <ul className="mt-5 space-y-2 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
-                    {item.services[locale].slice(0, 3).map((service) => (
-                      <li key={service} className="flex gap-3">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent))]" />
-                        <span>{service}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Link
-                    href={getLocalizedHref(locale, item.route)}
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[rgb(var(--primary))] transition-colors hover:text-[rgb(var(--primary-hover))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--surface))]"
-                  >
-                    <span>{copy.learnMore[locale]}</span>
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </Card>
-            </StaggerItem>
-          );
-        })}
+      <StaggerContainer className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        {jocelynePortfolioExpertiseItems.map((item, index) => (
+          <StaggerItem key={item.id}>
+            <article className="flex h-full flex-col">
+              <HomeStill
+                src={item.image.src}
+                alt={item.image.alt[locale]}
+                objectPosition={
+                  item.image.objectPosition ?? activityIdentity[item.id].objectPosition
+                }
+                sizes="(max-width: 640px) 94vw, (max-width: 1280px) 46vw, 30vw"
+                className="aspect-[16/10]"
+              />
+              <p className="mt-5 font-[family:var(--font-accent)] text-[0.68rem] font-semibold tabular-nums tracking-[0.2em] text-[rgb(var(--accent))]">
+                {String(index + 1).padStart(2, "0")}
+              </p>
+              <h3 className="mt-3 font-display text-[clamp(1.35rem,2vw,1.65rem)] font-medium leading-snug tracking-[-0.03em] text-balance">
+                {item.shortTitle[locale]}
+              </h3>
+              <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
+                {item.summary[locale]}
+              </p>
+              <Link
+                href={getLocalizedHref(locale, item.route)}
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[rgb(var(--primary))] transition-colors hover:text-[rgb(var(--primary-hover))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2"
+              >
+                <span>{copy.learnMore[locale]}</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </article>
+          </StaggerItem>
+        ))}
       </StaggerContainer>
     </Section>
   );

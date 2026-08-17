@@ -5,7 +5,6 @@ import { PortfolioExpertiseGrid } from "@/components/portfolio/portfolio-experti
 import { PortfolioHero } from "@/components/portfolio/portfolio-hero";
 import { PortfolioIntroduction } from "@/components/portfolio/portfolio-introduction";
 import { PortfolioMobileActionBar } from "@/components/portfolio/portfolio-mobile-action-bar";
-import { PortfolioQuickActions } from "@/components/portfolio/portfolio-quick-actions";
 import { getPageMetadata } from "@/lib/seo/metadata";
 import type { Locale } from "@/types/content";
 
@@ -29,7 +28,6 @@ export default async function JocelyneKatshindaPage({
   return (
     <div className="pb-28 lg:pb-0">
       <PortfolioHero locale={currentLocale} />
-      <PortfolioQuickActions locale={currentLocale} />
       <PortfolioIntroduction locale={currentLocale} />
       <PortfolioExpertiseGrid locale={currentLocale} />
       <PortfolioBrandSection locale={currentLocale} />

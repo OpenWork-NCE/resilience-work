@@ -1,7 +1,7 @@
 import { ContactRound, Globe2, Mail, MessageCircle, Phone } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/motion/animated";
 import { Section } from "@/components/shared/section";
-import { SectionHeader } from "@/components/shared/section-header";
+import { HomeSectionIntro } from "@/components/home/home-section-intro";
 import { getJocelyneContactActions, jocelyneKatshindaPage } from "@/content/pages/jocelyne-katshinda";
 import type { Locale } from "@/types/content";
 import { PortfolioActionLink } from "./portfolio-action-link";
@@ -23,14 +23,13 @@ export function PortfolioQuickActions({ locale }: PortfolioQuickActionsProps) {
   const actions = getJocelyneContactActions(locale);
 
   return (
-    <Section spacing="md">
+    <Section spacing="md" tone="default" containerSize="home">
       <AnimatedSection>
-        <SectionHeader
+        <HomeSectionIntro
           eyebrow={section.eyebrow[locale]}
           title={section.title[locale]}
           description={section.description[locale]}
-          align="left"
-          maxWidth="wide"
+          className="mb-10 lg:mb-12"
         />
       </AnimatedSection>
 
