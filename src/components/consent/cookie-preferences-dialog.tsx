@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { Button } from "@/components/shared/button";
+import { HomeSectionIntro } from "@/components/home/home-section-intro";
 import { consentContent } from "@/content/legal/cookie-policy";
 import { CookieCategoryToggle } from "@/components/consent/cookie-category-toggle";
 import type { ConsentPreferences } from "@/lib/consent/consent-types";
@@ -67,7 +68,7 @@ export function CookiePreferencesDialog({
       }
 
       const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
+      const lastElement = focusableElements[lastElementIndex(focusableElements)];
       const activeElement = document.activeElement as HTMLElement | null;
 
       if (event.shiftKey && activeElement === firstElement) {
@@ -95,9 +96,9 @@ export function CookiePreferencesDialog({
   const copy = consentContent.dialog;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-[color-mix(in_srgb,rgb(var(--surface-inverse))_56%,transparent)] px-4 pb-4 pt-10 sm:items-center sm:p-6">
+    <div className="fixed inset-0 z-50 flex items-end justify-center px-4 pb-4 pt-10 sm:items-center sm:p-6">
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 bg-[rgb(var(--hero-void))]/72 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -106,51 +107,49 @@ export function CookiePreferencesDialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby="cookie-preferences-title"
-        className="relative w-full max-w-3xl rounded-[var(--radius-2xl)] border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface-elevated))] p-6 shadow-[var(--shadow-floating)] sm:p-8"
+        className="relative w-full max-w-[40rem] border border-[rgb(var(--border-muted))] bg-[rgb(var(--background))] px-6 py-7 shadow-[var(--shadow-floating)] sm:px-8 sm:py-8"
       >
         <div className="flex items-start justify-between gap-4">
-          <div>
-            <p className="font-[family:var(--font-accent)] text-xs font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent))]">
-              {copy.manage[locale]}
-            </p>
-            <h2 id="cookie-preferences-title" className="mt-3 font-display text-[clamp(2rem,4vw,3rem)] font-medium leading-[1.04] text-balance">
-              {copy.title[locale]}
-            </h2>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-[rgb(var(--muted-foreground))]">
-              {copy.description[locale]}
-            </p>
-          </div>
-
+          <HomeSectionIntro
+            eyebrow={copy.manage[locale]}
+            title={copy.title[locale]}
+            titleId="cookie-preferences-title"
+            description={copy.description[locale]}
+          />
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] transition-colors hover:bg-[rgb(var(--surface-muted))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))]"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-[rgb(var(--border-muted))] text-[rgb(var(--foreground))] transition-colors hover:bg-[rgb(var(--surface-muted))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))]"
             aria-label={copy.close[locale]}
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
-        <div className="mt-8 space-y-4">
+        <div className="mt-8 border-t border-[rgb(var(--border-muted))]">
           <CookieCategoryToggle
+            index={1}
             checked
             disabled
             label={copy.categories.necessary.title[locale]}
             description={copy.categories.necessary.description[locale]}
           />
           <CookieCategoryToggle
+            index={2}
             checked={draft.preferences}
             onChange={(checked) => onChange({ ...draft, preferences: checked })}
             label={copy.categories.preferences.title[locale]}
             description={copy.categories.preferences.description[locale]}
           />
           <CookieCategoryToggle
+            index={3}
             checked={draft.analytics}
             onChange={(checked) => onChange({ ...draft, analytics: checked })}
             label={copy.categories.analytics.title[locale]}
             description={copy.categories.analytics.description[locale]}
           />
           <CookieCategoryToggle
+            index={4}
             checked={draft.marketing}
             onChange={(checked) => onChange({ ...draft, marketing: checked })}
             label={copy.categories.marketing.title[locale]}
@@ -170,4 +169,8 @@ export function CookiePreferencesDialog({
       </div>
     </div>
   );
+}
+
+function lastElementIndex(items: HTMLElement[]) {
+  return items.length - 1;
 }

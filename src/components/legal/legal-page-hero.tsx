@@ -23,7 +23,7 @@ export function LegalPageHero({
 }: LegalPageHeroProps) {
   return (
     <section className="bg-[rgb(var(--surface-subtle))] py-[var(--section-space-md)]">
-      <Container size="content">
+      <Container size="home">
         <AnimatedSection>
           <Breadcrumbs
             items={breadcrumbs}

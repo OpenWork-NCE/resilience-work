@@ -93,7 +93,7 @@ export function SiteHeader() {
           />
         ) : null}
 
-        <Container size="wide" className="relative">
+        <Container size="home" className="relative">
           <div className="flex min-h-20 min-w-0 items-center gap-2 xl:gap-3">
             <Link
               href={getLocalizedHref(locale, "home")}

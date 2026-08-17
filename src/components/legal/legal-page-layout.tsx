@@ -37,7 +37,7 @@ export function LegalPageLayout({ locale, document }: LegalPageLayoutProps) {
         lastUpdated={document.lastUpdated}
       />
 
-      <Section spacing="md">
+      <Section spacing="sm" containerSize="home">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-start">
           <div className="lg:sticky lg:top-28">
             <LegalToc locale={locale} items={tocItems} />
