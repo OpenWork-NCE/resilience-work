@@ -10,9 +10,9 @@ export const pageSeo: Record<RouteKey, PageSeo> = {
       it: "Resilience@Work | Sostegno post-incidente, crisi internazionale, salute mentale",
     },
     description: {
-      fr: "Soutien psychologique après un incident critique, management de crise en mobilité internationale, webinaires et workshops sur le bien-être et la santé mentale.",
-      en: "Psychological support after a critical incident, crisis management in international mobility, webinars and workshops on well-being and mental health.",
-      it: "Sostegno psicologico dopo un incidente critico, gestione delle crisi nella mobilità internazionale, webinar e workshop su benessere e salute mentale.",
+      fr: "Soutien psychologique après un incident critique, management de crise en mobilité internationale, formations et workshops sur le bien-être et la santé mentale.",
+      en: "Psychological support after a critical incident, crisis management in international mobility, training and workshops on well-being and mental health.",
+      it: "Sostegno psicologico dopo un incidente critico, gestione delle crisi nella mobilità internazionale, formazioni e workshop su benessere e salute mentale.",
     },
     keywords: {
       fr: [
@@ -90,9 +90,9 @@ export const pageSeo: Record<RouteKey, PageSeo> = {
       it: "Attività | Resilience@Work",
     },
     description: {
-      fr: "Support psychologique post-incident, crise en mobilité internationale, webinaires et workshops sur le bien-être et la santé mentale.",
-      en: "Post-incident psychological support, crisis in international mobility, webinars and workshops on well-being and mental health.",
-      it: "Supporto psicologico post-incidente, crisi in mobilità internazionale, webinar e workshop su benessere e salute mentale.",
+      fr: "Support psychologique post-incident, crise en mobilité internationale, formations et workshops sur le bien-être et la santé mentale.",
+      en: "Post-incident psychological support, crisis in international mobility, training and workshops on well-being and mental health.",
+      it: "Supporto psicologico post-incidente, crisi in mobilità internazionale, formazioni e workshop su benessere e salute mentale.",
     },
     canonicalRoute: "expertise",
     ogImage: "/images/hero/resilience-at-work-hero.webp",
@@ -146,14 +146,14 @@ export const pageSeo: Record<RouteKey, PageSeo> = {
 
   training: {
     title: {
-      fr: "Webinaires et workshops | Resilience@Work",
-      en: "Webinars and workshops | Resilience@Work",
-      it: "Webinar e workshop | Resilience@Work",
+      fr: "Formations et workshops | Resilience@Work",
+      en: "Training and workshops | Resilience@Work",
+      it: "Formazioni e workshop | Resilience@Work",
     },
     description: {
-      fr: "Webinaires et workshops Resilience@Work sur le bien-être et la santé mentale au travail.",
-      en: "Resilience@Work webinars and workshops on workplace well-being and mental health.",
-      it: "Webinar e workshop Resilience@Work su benessere e salute mentale al lavoro.",
+      fr: "Formations et workshops Resilience@Work sur le bien-être et la santé mentale au travail.",
+      en: "Resilience@Work training and workshops on workplace well-being and mental health.",
+      it: "Formazioni e workshop Resilience@Work su benessere e salute mentale al lavoro.",
     },
     canonicalRoute: "training",
     ogImage: "/images/expertise/training.webp",

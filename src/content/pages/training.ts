@@ -124,9 +124,9 @@ export const trainingUiCopy = {
     it: "Attività",
   } satisfies Record<Locale, string>,
   breadcrumbTraining: {
-    fr: "Webinaires et workshops",
-    en: "Webinars and workshops",
-    it: "Webinar e workshop",
+    fr: "Formations et workshops",
+    en: "Training and workshops",
+    it: "Formazioni e workshop",
   } satisfies Record<Locale, string>,
   introduction: {
     fr: "En pratique",
@@ -149,9 +149,9 @@ export const trainingUiCopy = {
     it: "Formati",
   } satisfies Record<Locale, string>,
   deliveryTitle: {
-    fr: "Webinaire ou workshop, en présentiel ou à distance",
-    en: "Webinar or workshop, on-site or remote",
-    it: "Webinar o workshop, in presenza o a distanza",
+    fr: "Formation ou workshop, en présentiel ou à distance",
+    en: "Training or workshop, on-site or remote",
+    it: "Formazione o workshop, in presenza o a distanza",
   } satisfies Record<Locale, string>,
   relevantAudiences: {
     fr: "Publics concernés",

@@ -67,9 +67,9 @@ export const expertiseLandingPage = {
       it: "Tre interventi, chiaramente identificabili.",
     } satisfies Record<Locale, string>,
     description: {
-      fr: "Resilience@Work intervient après un incident critique ou un événement traumatisant, dans les situations de crise liées à la mobilité internationale, et à travers des webinaires et workshops sur le bien-être et la santé mentale.",
-      en: "Resilience@Work intervenes after a critical incident or traumatic event, in crisis situations linked to international mobility, and through webinars and workshops on well-being and mental health.",
-      it: "Resilience@Work interviene dopo un incidente critico o un evento traumatico, nelle situazioni di crisi legate alla mobilità internazionale, e attraverso webinar e workshop sul benessere e la salute mentale.",
+      fr: "Resilience@Work intervient après un incident critique ou un événement traumatisant, dans les situations de crise liées à la mobilité internationale, et à travers des formations et workshops sur le bien-être et la santé mentale.",
+      en: "Resilience@Work intervenes after a critical incident or traumatic event, in crisis situations linked to international mobility, and through training and workshops on well-being and mental health.",
+      it: "Resilience@Work interviene dopo un incidente critico o un evento traumatico, nelle situazioni di crisi legate alla mobilità internazionale, e attraverso formazioni e workshop sul benessere e la salute mentale.",
     } satisfies Record<Locale, string>,
     supportingText: {
       fr: "Si une question plus précise se pose, nous l’abordons ensemble.",
@@ -149,9 +149,9 @@ export const expertiseLandingPage = {
       it: "Parliamo della vostra esigenza",
     } satisfies Record<Locale, string>,
     description: {
-      fr: "Incident critique, crise en mobilité internationale, webinaire ou workshop : décrivez-nous simplement le contexte.",
-      en: "Critical incident, crisis in international mobility, webinar or workshop: simply describe the context.",
-      it: "Incidente critico, crisi in mobilità internazionale, webinar o workshop: descriveteci semplicemente il contesto.",
+      fr: "Incident critique, crise en mobilité internationale, formation ou workshop : décrivez-nous simplement le contexte.",
+      en: "Critical incident, crisis in international mobility, training or workshop: simply describe the context.",
+      it: "Incidente critico, crisi in mobilità internazionale, formazione o workshop: descriveteci semplicemente il contesto.",
     } satisfies Record<Locale, string>,
     note: {
       fr: "Nous précisons ensemble la forme d’intervention la plus adaptée.",
@@ -310,14 +310,14 @@ export const expertiseItems: readonly ExpertiseItem[] = [
     icon: "Presentation",
     route: "training",
     shortTitle: {
-      fr: "Webinaires et workshops",
-      en: "Webinars and workshops",
-      it: "Webinar e workshop",
+      fr: "Formations et workshops",
+      en: "Training and workshops",
+      it: "Formazioni e workshop",
     },
     title: {
-      fr: "Webinaires et workshops sur le bien-être et la santé mentale",
-      en: "Webinars and workshops on well-being and mental health",
-      it: "Webinar e workshop su benessere e salute mentale",
+      fr: "Formations et workshops sur le bien-être et la santé mentale",
+      en: "Training and workshops on well-being and mental health",
+      it: "Formazioni e workshop su benessere e salute mentale",
     },
     summary: {
       fr: "Des sessions courtes et concrètes pour sensibiliser aux enjeux de bien-être et de santé mentale au travail.",
@@ -326,15 +326,15 @@ export const expertiseItems: readonly ExpertiseItem[] = [
     },
     description: {
       fr: [
-        "Resilience@Work propose des webinaires et des workshops — pas des formations longues — sur les questions de bien-être et de santé mentale.",
+        "Resilience@Work propose des formations et des workshops sur les questions de bien-être et de santé mentale.",
         "Les contenus restent pratiques, ajustés au public et au contexte de l’organisation.",
       ],
       en: [
-        "Resilience@Work offers webinars and workshops — not long training programmes — on well-being and mental health.",
+        "Resilience@Work offers training and workshops on well-being and mental health.",
         "The content stays practical and is adapted to the audience and the organisation’s context.",
       ],
       it: [
-        "Resilience@Work propone webinar e workshop — non percorsi formativi lunghi — su benessere e salute mentale.",
+        "Resilience@Work propone formazioni e workshop su benessere e salute mentale.",
         "I contenuti restano pratici, adattati al pubblico e al contesto dell’organizzazione.",
       ],
     },
@@ -360,17 +360,17 @@ export const expertiseItems: readonly ExpertiseItem[] = [
     },
     outcomes: {
       fr: [
-        "Sensibiliser sans alourdir",
+        "Sensibiliser les équipes",
         "Transmettre des repères concrets",
         "Ouvrir un échange utile au sein des équipes",
       ],
       en: [
-        "Raise awareness without overloading",
+        "Raise awareness among teams",
         "Share practical reference points",
         "Open a useful conversation within teams",
       ],
       it: [
-        "Sensibilizzare senza appesantire",
+        "Sensibilizzare i team",
         "Trasmettere riferimenti concreti",
         "Aprire un confronto utile nei team",
       ],
@@ -687,32 +687,32 @@ export const expertiseDetailPages: readonly ExpertiseDetailPage[] = [
 
 export const trainingPageContent = {
   eyebrow: {
-    fr: "Webinaires et workshops",
-    en: "Webinars and workshops",
-    it: "Webinar e workshop",
+    fr: "Formations et workshops",
+    en: "Training and workshops",
+    it: "Formazioni e workshop",
   } satisfies Record<Locale, string>,
   title: {
-    fr: "Sensibiliser au bien-être et à la santé mentale, sans alourdir.",
-    en: "Raising awareness of well-being and mental health, without overloading.",
-    it: "Sensibilizzare su benessere e salute mentale, senza appesantire.",
+    fr: "Former au bien-être et à la santé mentale au travail.",
+    en: "Training on workplace well-being and mental health.",
+    it: "Formare su benessere e salute mentale al lavoro.",
   } satisfies Record<Locale, string>,
   summary: {
-    fr: "Des webinaires et workshops — pas des formations — sur les questions de bien-être et de santé mentale au travail.",
-    en: "Webinars and workshops — not training programmes — on workplace well-being and mental health.",
-    it: "Webinar e workshop — non percorsi formativi — su benessere e salute mentale al lavoro.",
+    fr: "Des formations et workshops sur les questions de bien-être et de santé mentale au travail.",
+    en: "Training and workshops on workplace well-being and mental health.",
+    it: "Formazioni e workshop su benessere e salute mentale al lavoro.",
   } satisfies Record<Locale, string>,
   introduction: {
     fr: [
-      "Les sessions sont courtes, concrètes et adaptées au public : managers, équipes ou responsables RH.",
-      "Les thèmes portent uniquement sur le bien-être et la santé mentale. Le format précis se discute selon votre contexte.",
+      "Les formations et workshops sont concrets, adaptés au public : managers, équipes ou responsables RH.",
+      "Les thèmes portent sur le bien-être et la santé mentale. Le format précis se discute selon votre contexte.",
     ],
     en: [
-      "Sessions are short, practical and adapted to the audience: managers, teams or HR leaders.",
-      "Themes focus solely on well-being and mental health. The exact format can be discussed according to your context.",
+      "Training and workshops are practical and adapted to the audience: managers, teams or HR leaders.",
+      "Themes cover well-being and mental health. The exact format can be discussed according to your context.",
     ],
     it: [
-      "Le sessioni sono brevi, concrete e adattate al pubblico: manager, team o responsabili HR.",
-      "I temi riguardano unicamente il benessere e la salute mentale. Il formato preciso si discute in base al vostro contesto.",
+      "Le formazioni e i workshop sono concreti, adattati al pubblico: manager, team o responsabili HR.",
+      "I temi riguardano il benessere e la salute mentale. Il formato preciso si discute in base al vostro contesto.",
     ],
   } satisfies Record<Locale, readonly string[]>,
   deliveryBlocks: [
@@ -724,9 +724,9 @@ export const trainingPageContent = {
         it: "Formati",
       },
       description: {
-        fr: "Webinaire · Workshop · Présentiel ou distanciel",
-        en: "Webinar · Workshop · On-site or remote",
-        it: "Webinar · Workshop · In presenza o a distanza",
+        fr: "Formation · Workshop · Présentiel ou distanciel",
+        en: "Training · Workshop · On-site or remote",
+        it: "Formazione · Workshop · In presenza o a distanza",
       },
     },
     {
@@ -751,14 +751,14 @@ export const trainingPageContent = {
   },
   seo: {
     title: {
-      fr: "Webinaires et workshops | Resilience@Work",
-      en: "Webinars and workshops | Resilience@Work",
-      it: "Webinar e workshop | Resilience@Work",
+      fr: "Formations et workshops | Resilience@Work",
+      en: "Training and workshops | Resilience@Work",
+      it: "Formazioni e workshop | Resilience@Work",
     },
     description: {
-      fr: "Webinaires et workshops Resilience@Work sur le bien-être et la santé mentale au travail.",
-      en: "Resilience@Work webinars and workshops on workplace well-being and mental health.",
-      it: "Webinar e workshop Resilience@Work su benessere e salute mentale al lavoro.",
+      fr: "Formations et workshops Resilience@Work sur le bien-être et la santé mentale au travail.",
+      en: "Resilience@Work training and workshops on workplace well-being and mental health.",
+      it: "Formazioni e workshop Resilience@Work su benessere e salute mentale al lavoro.",
     },
     canonicalRoute: "training",
     ogImage: assets.expertise.training.src,

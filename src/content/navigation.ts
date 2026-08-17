@@ -79,9 +79,9 @@ export const navigation: readonly NavigationItem[] = [
         id: "training",
         route: "training",
         label: {
-          fr: "Webinaires et workshops",
-          en: "Webinars and workshops",
-          it: "Webinar e workshop",
+          fr: "Formations et workshops",
+          en: "Training and workshops",
+          it: "Formazioni e workshop",
         } satisfies Record<Locale, string>,
       },
     ],

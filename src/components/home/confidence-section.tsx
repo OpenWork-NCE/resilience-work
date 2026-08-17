@@ -34,7 +34,7 @@ export function ConfidenceSection({ locale }: ConfidenceSectionProps) {
       containerSize="wide"
       className="relative overflow-hidden"
     >
-      {/* Soft brand atmosphere — decorative only */}
+      {/* Soft brand atmosphere: decorative only */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"

@@ -146,9 +146,9 @@ export const portfolioUiCopy = {
       it: "Tre attività, presentate in modo semplice",
     } satisfies Record<Locale, string>,
     description: {
-      fr: "Support psychologique post-incident, crise en mobilité internationale, webinaires et workshops.",
-      en: "Post-incident psychological support, crisis in international mobility, webinars and workshops.",
-      it: "Supporto psicologico post-incidente, crisi in mobilità internazionale, webinar e workshop.",
+      fr: "Support psychologique post-incident, crise en mobilité internationale, formations et workshops.",
+      en: "Post-incident psychological support, crisis in international mobility, training and workshops.",
+      it: "Supporto psicologico post-incidente, crisi in mobilità internazionale, formazioni e workshop.",
     } satisfies Record<Locale, string>,
     learnMore: {
       fr: "En savoir plus",
@@ -250,17 +250,17 @@ export const jocelyneKatshindaPage = {
     paragraphs: {
       fr: [
         "Jocelyne Katshinda est la fondatrice et Administratrice générale de Resilience@Work.",
-        "La structure propose un soutien psychologique après un incident critique, un appui en situation de crise liée à la mobilité internationale, ainsi que des webinaires et workshops sur le bien-être et la santé mentale.",
+        "La structure propose un soutien psychologique après un incident critique, un appui en situation de crise liée à la mobilité internationale, ainsi que des formations et workshops sur le bien-être et la santé mentale.",
         "Son approche privilégie l’écoute, la confidentialité et le pragmatisme.",
       ],
       en: [
         "Jocelyne Katshinda is the Founder and Managing Director of Resilience@Work.",
-        "The organisation provides psychological support after a critical incident, crisis support in international mobility, and webinars and workshops on well-being and mental health.",
+        "The organisation provides psychological support after a critical incident, crisis support in international mobility, and training and workshops on well-being and mental health.",
         "Her approach focuses on listening, confidentiality and pragmatism.",
       ],
       it: [
         "Jocelyne Katshinda è la fondatrice e Amministratrice generale di Resilience@Work.",
-        "La struttura offre un sostegno psicologico dopo un incidente critico, un appoggio in situazioni di crisi legate alla mobilità internazionale, nonché webinar e workshop su benessere e salute mentale.",
+        "La struttura offre un sostegno psicologico dopo un incidente critico, un appoggio in situazioni di crisi legate alla mobilità internazionale, nonché formazioni e workshop su benessere e salute mentale.",
         "Il suo approccio privilegia l’ascolto, la riservatezza e il pragmatismo.",
       ],
     } satisfies Record<Locale, readonly string[]>,
@@ -409,15 +409,15 @@ export const jocelyneKatshindaPage = {
     } satisfies Record<Locale, string>,
     paragraphs: {
       fr: [
-        "Resilience@Work intervient après un incident critique, dans les situations de crise liées à la mobilité internationale, et à travers des webinaires et workshops.",
+        "Resilience@Work intervient après un incident critique, dans les situations de crise liées à la mobilité internationale, et à travers des formations et workshops.",
         "Les trois activités restent distinctes, afin que chaque organisation identifie clairement ce dont elle a besoin.",
       ],
       en: [
-        "Resilience@Work intervenes after a critical incident, in crisis situations linked to international mobility, and through webinars and workshops.",
+        "Resilience@Work intervenes after a critical incident, in crisis situations linked to international mobility, and through training and workshops.",
         "The three activities remain distinct, so each organisation can clearly identify what it needs.",
       ],
       it: [
-        "Resilience@Work interviene dopo un incidente critico, nelle situazioni di crisi legate alla mobilità internazionale, e attraverso webinar e workshop.",
+        "Resilience@Work interviene dopo un incidente critico, nelle situazioni di crisi legate alla mobilità internazionale, e attraverso formazioni e workshop.",
         "Le tre attività restano distinte, affinché ogni organizzazione identifichi con chiarezza di cosa ha bisogno.",
       ],
     } satisfies Record<Locale, readonly string[]>,

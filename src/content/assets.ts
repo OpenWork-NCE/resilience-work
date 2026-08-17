@@ -75,9 +75,9 @@ export const assets = {
     training: {
       src: "/images/expertise/training.webp",
       alt: {
-        fr: "Session de webinaire ou de workshop consacrée au bien-être et à la santé mentale au travail.",
-        en: "Webinar or workshop session focused on workplace well-being and mental health.",
-        it: "Sessione di webinar o workshop dedicata al benessere e alla salute mentale al lavoro.",
+        fr: "Session de formation ou de workshop consacrée au bien-être et à la santé mentale au travail.",
+        en: "Training or workshop session focused on workplace well-being and mental health.",
+        it: "Sessione di formazione o workshop dedicata al benessere e alla salute mentale al lavoro.",
       },
       width: 1672,
       height: 941,

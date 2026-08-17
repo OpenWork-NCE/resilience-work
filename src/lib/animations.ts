@@ -139,7 +139,7 @@ export const mobileMenuReveal: Variants = {
   },
 };
 
-/** Hero load choreography — longer, more cinematic than section reveals */
+/** Hero load choreography: longer, more cinematic than section reveals */
 export const heroStaggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {

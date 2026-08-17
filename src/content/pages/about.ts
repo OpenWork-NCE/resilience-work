@@ -15,9 +15,9 @@ export const aboutPage = {
       it: "Rafforzare le organizzazioni mettendo le persone al centro della loro resilienza.",
     } satisfies Record<Locale, string>,
     description: {
-      fr: "Resilience@Work intervient après un incident critique, dans les crises liées à la mobilité internationale, et à travers des webinaires et workshops sur le bien-être et la santé mentale.",
-      en: "Resilience@Work intervenes after a critical incident, in crises linked to international mobility, and through webinars and workshops on well-being and mental health.",
-      it: "Resilience@Work interviene dopo un incidente critico, nelle crisi legate alla mobilità internazionale, e attraverso webinar e workshop su benessere e salute mentale.",
+      fr: "Resilience@Work intervient après un incident critique, dans les crises liées à la mobilité internationale, et à travers des formations et workshops sur le bien-être et la santé mentale.",
+      en: "Resilience@Work intervenes after a critical incident, in crises linked to international mobility, and through training and workshops on well-being and mental health.",
+      it: "Resilience@Work interviene dopo un incidente critico, nelle crisi legate alla mobilità internazionale, e attraverso formazioni e workshop su benessere e salute mentale.",
     } satisfies Record<Locale, string>,
   },
 

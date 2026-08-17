@@ -4,9 +4,9 @@ export const brand = {
   name: "Resilience@Work",
 
   summary: {
-    fr: "Resilience@Work propose un soutien psychologique après un incident critique, un appui en situation de crise liée à la mobilité internationale, ainsi que des webinaires et workshops sur le bien-être et la santé mentale.",
-    en: "Resilience@Work provides psychological support after a critical incident, crisis support in international mobility, and webinars and workshops on well-being and mental health.",
-    it: "Resilience@Work offre un sostegno psicologico dopo un incidente critico, un appoggio in situazioni di crisi legate alla mobilità internazionale, nonché webinar e workshop su benessere e salute mentale.",
+    fr: "Resilience@Work propose un soutien psychologique après un incident critique, un appui en situation de crise liée à la mobilité internationale, ainsi que des formations et workshops sur le bien-être et la santé mentale.",
+    en: "Resilience@Work provides psychological support after a critical incident, crisis support in international mobility, and training and workshops on well-being and mental health.",
+    it: "Resilience@Work offre un sostegno psicologico dopo un incidente critico, un appoggio in situazioni di crisi legate alla mobilità internazionale, nonché formazioni e workshop su benessere e salute mentale.",
   } satisfies Record<Locale, string>,
   
   person: {

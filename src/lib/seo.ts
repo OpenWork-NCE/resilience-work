@@ -33,7 +33,7 @@ export const defaultSEO = {
   en: {
     title: 'Resilience@Work',
     description:
-      'Psychological support after a critical incident, crisis management in international mobility, webinars and workshops on well-being and mental health.',
+      'Psychological support after a critical incident, crisis management in international mobility, training and workshops on well-being and mental health.',
     keywords: [
       'resilience',
       'psychological support',
@@ -49,7 +49,7 @@ export const defaultSEO = {
   fr: {
     title: 'Resilience@Work',
     description:
-      'Soutien psychologique après un incident critique, management de crise en mobilité internationale, webinaires et workshops sur le bien-être et la santé mentale.',
+      'Soutien psychologique après un incident critique, management de crise en mobilité internationale, formations et workshops sur le bien-être et la santé mentale.',
     keywords: [
       'résilience',
       'soutien psychologique',
@@ -65,7 +65,7 @@ export const defaultSEO = {
   it: {
     title: 'Resilience@Work',
     description:
-      'Sostegno psicologico dopo un incidente critico, gestione delle crisi nella mobilità internazionale, webinar e workshop su benessere e salute mentale.',
+      'Sostegno psicologico dopo un incidente critico, gestione delle crisi nella mobilità internazionale, formazioni e workshop su benessere e salute mentale.',
     keywords: [
       'resilienza',
       'sostegno psicologico',

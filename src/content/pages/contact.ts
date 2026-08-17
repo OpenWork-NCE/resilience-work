@@ -158,9 +158,9 @@ export const contactPage = {
       it: "Presentateci il vostro contesto affinché possiamo individuare la forma di accompagnamento più adatta.",
     } satisfies LocalizedText,
     supportingText: {
-      fr: "Support post-incident, crise en mobilité internationale, webinaire ou workshop : transmettez-nous l’essentiel de votre demande.",
-      en: "Post-incident support, crisis in international mobility, webinar or workshop: share the essentials of your enquiry.",
-      it: "Supporto post-incidente, crisi in mobilità internazionale, webinar o workshop: trasmetteteci l’essenziale della vostra richiesta.",
+      fr: "Support post-incident, crise en mobilité internationale, formation ou workshop : transmettez-nous l’essentiel de votre demande.",
+      en: "Post-incident support, crisis in international mobility, training or workshop: share the essentials of your enquiry.",
+      it: "Supporto post-incidente, crisi in mobilità internazionale, formazione o workshop: trasmetteteci l’essenziale della vostra richiesta.",
     } satisfies LocalizedText,
     trustSignals: [
       {
@@ -404,9 +404,9 @@ export const contactPage = {
           {
             value: "training",
             label: {
-              fr: "Webinaire ou workshop",
-              en: "Webinar or workshop",
-              it: "Webinar o workshop",
+              fr: "Formation ou workshop",
+              en: "Training or workshop",
+              it: "Formazione o workshop",
             } satisfies LocalizedText,
           },
           {
@@ -993,9 +993,9 @@ export const contactPage = {
           it: "Quali tipi di richieste posso inviare?",
         } satisfies LocalizedText,
         answer: {
-          fr: "Vous pouvez nous contacter pour un soutien post-incident, une crise en mobilité internationale, un webinaire, un workshop ou tout autre besoin de votre organisation.",
-          en: "You can contact us for post-incident support, a crisis in international mobility, a webinar, a workshop or any other organisational need.",
-          it: "Potete contattarci per un sostegno post-incidente, una crisi in mobilità internazionale, un webinar, un workshop o qualsiasi altra esigenza della vostra organizzazione.",
+          fr: "Vous pouvez nous contacter pour un soutien post-incident, une crise en mobilité internationale, une formation, un workshop ou tout autre besoin de votre organisation.",
+          en: "You can contact us for post-incident support, a crisis in international mobility, training, a workshop or any other organisational need.",
+          it: "Potete contattarci per un sostegno post-incidente, una crisi in mobilità internazionale, una formazione, un workshop o qualsiasi altra esigenza della vostra organizzazione.",
         } satisfies LocalizedText,
       },
       {
@@ -1072,9 +1072,9 @@ export const contactPage = {
       it: "Contatto | Resilience@Work",
     } satisfies LocalizedText,
     description: {
-      fr: "Contactez Resilience@Work pour un soutien post-incident, une crise en mobilité internationale, un webinaire ou un workshop.",
-      en: "Contact Resilience@Work for post-incident support, a crisis in international mobility, a webinar or a workshop.",
-      it: "Contattate Resilience@Work per un sostegno post-incidente, una crisi in mobilità internazionale, un webinar o un workshop.",
+      fr: "Contactez Resilience@Work pour un soutien post-incident, une crise en mobilité internationale, une formation ou un workshop.",
+      en: "Contact Resilience@Work for post-incident support, a crisis in international mobility, training or a workshop.",
+      it: "Contattate Resilience@Work per un sostegno post-incidente, una crisi in mobilità internazionale, una formazione o un workshop.",
     } satisfies LocalizedText,
     ogImage: "/images/hero/resilience-at-work-hero.webp",
   },

@@ -29,9 +29,9 @@ export const homePage = {
     } satisfies Record<Locale, string>,
 
     supportingText: {
-      fr: "Entretiens individuels, débriefing collectif, appui en crise internationale, webinaires et workshops.",
-      en: "Individual interviews, collective debriefing, international crisis support, webinars and workshops.",
-      it: "Colloqui individuali, debriefing collettivo, sostegno in crisi internazionale, webinar e workshop.",
+      fr: "Entretiens individuels, débriefing collectif, appui en crise internationale, formations et workshops.",
+      en: "Individual interviews, collective debriefing, international crisis support, training and workshops.",
+      it: "Colloqui individuali, debriefing collettivo, sostegno in crisi internazionale, formazioni e workshop.",
     } satisfies Record<Locale, string>,
 
     scrollHint: {
@@ -88,9 +88,9 @@ export const homePage = {
     } satisfies Record<Locale, string>,
 
     description: {
-      fr: "Support psychologique post-incident, management de crise en mobilité internationale, webinaires et workshops sur le bien-être et la santé mentale.",
-      en: "Post-incident psychological support, crisis management in international mobility, webinars and workshops on well-being and mental health.",
-      it: "Supporto psicologico post-incidente, gestione delle crisi nella mobilità internazionale, webinar e workshop su benessere e salute mentale.",
+      fr: "Support psychologique post-incident, management de crise en mobilité internationale, formations et workshops sur le bien-être et la santé mentale.",
+      en: "Post-incident psychological support, crisis management in international mobility, training and workshops on well-being and mental health.",
+      it: "Supporto psicologico post-incidente, gestione delle crisi nella mobilità internazionale, formazioni e workshop su benessere e salute mentale.",
     } satisfies Record<Locale, string>,
 
     cta: {
@@ -256,9 +256,9 @@ export const homePage = {
           it: "Tre attività complementari",
         } satisfies Record<Locale, string>,
         detail: {
-          fr: "Support post-incident, crise en mobilité internationale, webinaires et workshops.",
-          en: "Post-incident support, crisis in international mobility, webinars and workshops.",
-          it: "Supporto post-incidente, crisi in mobilità internazionale, webinar e workshop.",
+          fr: "Support post-incident, crise en mobilité internationale, formations et workshops.",
+          en: "Post-incident support, crisis in international mobility, training and workshops.",
+          it: "Supporto post-incidente, crisi in mobilità internazionale, formazioni e workshop.",
         } satisfies Record<Locale, string>,
       },
     ] as const,
@@ -419,9 +419,9 @@ export const homePage = {
     } satisfies Record<Locale, string>,
 
     description: {
-      fr: "Jocelyne Katshinda dirige Resilience@Work. La structure propose un soutien psychologique après un incident critique, un appui en situation de crise liée à la mobilité internationale, ainsi que des webinaires et workshops sur le bien-être et la santé mentale.",
-      en: "Jocelyne Katshinda leads Resilience@Work. The organisation provides psychological support after a critical incident, crisis support in international mobility, and webinars and workshops on well-being and mental health.",
-      it: "Jocelyne Katshinda dirige Resilience@Work. La struttura offre un sostegno psicologico dopo un incidente critico, un appoggio in situazioni di crisi legate alla mobilità internazionale, nonché webinar e workshop su benessere e salute mentale.",
+      fr: "Jocelyne Katshinda dirige Resilience@Work. La structure propose un soutien psychologique après un incident critique, un appui en situation de crise liée à la mobilité internationale, ainsi que des formations et workshops sur le bien-être et la santé mentale.",
+      en: "Jocelyne Katshinda leads Resilience@Work. The organisation provides psychological support after a critical incident, crisis support in international mobility, and training and workshops on well-being and mental health.",
+      it: "Jocelyne Katshinda dirige Resilience@Work. La struttura offre un sostegno psicologico dopo un incidente critico, un appoggio in situazioni di crisi legate alla mobilità internazionale, nonché formazioni e workshop su benessere e salute mentale.",
     } satisfies Record<Locale, string>,
 
     highlights: [
@@ -478,9 +478,9 @@ export const homePage = {
     } satisfies Record<Locale, string>,
 
     description: {
-      fr: "Un incident critique, une crise en mobilité internationale, un webinaire ou un workshop : décrivez-nous simplement le contexte.",
-      en: "A critical incident, a crisis in international mobility, a webinar or a workshop: simply describe the context.",
-      it: "Un incidente critico, una crisi in mobilità internazionale, un webinar o un workshop: descriveteci semplicemente il contesto.",
+      fr: "Un incident critique, une crise en mobilité internationale, une formation ou un workshop : décrivez-nous simplement le contexte.",
+      en: "A critical incident, a crisis in international mobility, training or a workshop: simply describe the context.",
+      it: "Un incidente critico, una crisi in mobilità internazionale, una formazione o un workshop: descriveteci semplicemente il contesto.",
     } satisfies Record<Locale, string>,
 
     primaryCta: globalCtas.contactUs,

@@ -41,8 +41,8 @@ export const pendingConfirmations = [
     id: "training-details",
     priority: "high" as const,
     label: {
-      fr: "Préciser si besoin, pour chaque webinaire ou workshop : durée, format, public et langue.",
-      en: "If needed, define for each webinar or workshop: duration, format, audience and language.",
+      fr: "Préciser si besoin, pour chaque formation ou workshop : durée, format, public et langue.",
+      en: "If needed, define for each training or workshop: duration, format, audience and language.",
       it: "Se necessario, precisare per ogni webinar o workshop: durata, formato, pubblico e lingua.",
     } satisfies Record<Locale, string>,
   },

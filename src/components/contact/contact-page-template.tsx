@@ -119,7 +119,7 @@ export function ContactPageTemplate({ locale }: ContactPageTemplateProps) {
               className="mb-6"
             />
             <p className="mb-8 max-w-[36rem] border-l border-[rgb(var(--border-strong))] pl-4 text-sm leading-relaxed text-[rgb(var(--muted-foreground))]">
-              {copy.reassurance.title[locale]} — {copy.reassurance.description[locale]}
+              {copy.reassurance.title[locale]}. {copy.reassurance.description[locale]}
             </p>
             <ContactForm locale={locale} />
           </div>
