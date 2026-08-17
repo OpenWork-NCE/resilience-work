@@ -474,21 +474,74 @@ export function ContactForm({ locale }: ContactFormProps) {
             required
             error={errors.subject}
           >
-            <Select
+            <div
               id="subject"
-              name="subject"
-              value={formData.subject}
-              onChange={(event) => updateField("subject", event.target.value as ContactSubject)}
-              error={Boolean(errors.subject)}
+              role="radiogroup"
+              aria-required="true"
               aria-invalid={Boolean(errors.subject)}
+              tabIndex={-1}
+              className="grid gap-3 sm:grid-cols-3"
             >
-              <option value="">{copy.fields.subject.placeholder[locale]}</option>
-              {copy.fields.subject.options.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label[locale]}
-                </option>
-              ))}
-            </Select>
+              {copy.fields.subject.options
+                .filter((option) =>
+                  ["psychosocial-prevention", "crisis-management", "training"].includes(
+                    option.value
+                  )
+                )
+                .map((option) => {
+                  const selected = formData.subject === option.value;
+                  return (
+                    <button
+                      key={option.value}
+                      type="button"
+                      role="radio"
+                      aria-checked={selected}
+                      onClick={() =>
+                        updateField("subject", option.value as ContactSubject)
+                      }
+                      className={cn(
+                        "rounded-[var(--radius-lg)] border px-4 py-4 text-left transition-colors",
+                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
+                        selected
+                          ? "border-[rgb(var(--primary))] bg-[rgb(var(--accent-soft))] text-[rgb(var(--foreground))]"
+                          : "border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] hover:border-[rgb(var(--border-strong))]"
+                      )}
+                    >
+                      <span className="block text-sm font-semibold leading-snug">
+                        {option.label[locale]}
+                      </span>
+                    </button>
+                  );
+                })}
+            </div>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {copy.fields.subject.options
+                .filter((option) =>
+                  ["institutional", "other"].includes(option.value)
+                )
+                .map((option) => {
+                  const selected = formData.subject === option.value;
+                  return (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() =>
+                        updateField("subject", option.value as ContactSubject)
+                      }
+                      className={cn(
+                        "rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
+                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
+                        selected
+                          ? "border-[rgb(var(--primary))] bg-[rgb(var(--accent-soft))]"
+                          : "border-[rgb(var(--border-muted))] text-[rgb(var(--muted-foreground))] hover:text-[rgb(var(--foreground))]"
+                      )}
+                    >
+                      {option.label[locale]}
+                    </button>
+                  );
+                })}
+            </div>
+            <input type="hidden" name="subject" value={formData.subject} />
           </FormField>
 
           <FormField

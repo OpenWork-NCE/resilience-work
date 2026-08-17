@@ -22,7 +22,7 @@ export function ExpertiseRelatedServices({ locale, ids }: ExpertiseRelatedServic
         align="left"
         maxWidth="wide"
       />
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2">
         {items.map((item) => (
           <Link
             key={item.id}

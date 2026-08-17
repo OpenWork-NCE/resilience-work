@@ -1,12 +1,10 @@
 import Script from "next/script";
 import { Section } from "@/components/shared/section";
 import { ExpertiseFinalCta } from "@/components/expertise/expertise-final-cta";
-import { ExpertisePageHero } from "@/components/expertise/expertise-page-hero";
-import { ExpertiseEditorialIntro } from "@/components/expertise/expertise-editorial-intro";
+import { TrainingPageHero } from "./training-page-hero";
 import { TrainingTopicsGrid } from "./training-topics-grid";
 import { trainingPageContent } from "@/content/pages/expertise";
 import { trainingTopics, trainingUiCopy } from "@/content/pages/training";
-import { assets } from "@/content/assets";
 import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
 import type { Locale } from "@/types/content";
 
@@ -43,46 +41,11 @@ export function TrainingPageTemplate({ locale }: TrainingPageTemplateProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ExpertisePageHero
+      <TrainingPageHero
         locale={locale}
-        page={{
-          id: "training",
-          slug: "training",
-          route: "training",
-          icon: "Presentation",
-          eyebrow: trainingPageContent.eyebrow,
-          title: trainingPageContent.title,
-          summary: trainingPageContent.summary,
-          introduction: trainingPageContent.introduction,
-          challengesTitle: trainingPageContent.eyebrow,
-          challenges: [],
-          servicesTitle: trainingPageContent.eyebrow,
-          services: [],
-          outcomesTitle: trainingPageContent.eyebrow,
-          outcomes: [],
-          process: [],
-          audiences: [],
-          delivery: {
-            formats: { fr: [], en: [], it: [] },
-            languages: { fr: [], en: [], it: [] },
-            regions: { fr: [], en: [], it: [] },
-          },
-          image: assets.expertise.training,
-          relatedExpertiseIds: [],
-          finalCta: trainingPageContent.finalCta,
-          seo: trainingPageContent.seo,
-        }}
         breadcrumbs={breadcrumbs}
         contactHref={getLocalizedHref(locale, "contact")}
       />
-      <Section spacing="md">
-        <ExpertiseEditorialIntro
-          locale={locale}
-          eyebrow={ui.introduction[locale]}
-          title={trainingPageContent.title[locale]}
-          paragraphs={trainingPageContent.introduction[locale]}
-        />
-      </Section>
       <Section spacing="md">
         <TrainingTopicsGrid
           locale={locale}

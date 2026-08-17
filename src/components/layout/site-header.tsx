@@ -129,14 +129,14 @@ export function SiteHeader() {
                 href={getLocalizedHref(locale, "contact")}
                 aria-label={primaryCta.label}
                 className={cn(
-                  "inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius-md)] border transition-colors",
+                  "inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] border px-3 text-sm font-medium transition-colors",
                   "border-[rgb(var(--border))] bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--surface-muted))]",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--background))]"
                 )}
               >
-                <MessageCircle className="h-5 w-5" aria-hidden="true" />
+                <MessageCircle className="mr-2 h-4 w-4" aria-hidden="true" />
+                <span className="max-w-[9rem] truncate">{primaryCta.label}</span>
               </Link>
-              <ThemeToggle />
               <MobileNavigationTrigger
                 isOpen={isMobileMenuOpen}
                 controls={navigationId}

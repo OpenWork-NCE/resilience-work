@@ -1,11 +1,10 @@
 import Script from "next/script";
 import { Section } from "@/components/shared/section";
 import { buildBreadcrumbsFromPath } from "@/components/navigation/breadcrumbs";
-import { ExpertiseEditorialIntro } from "./expertise-editorial-intro";
 import { ExpertiseFinalCta } from "./expertise-final-cta";
+import { ExpertiseInterventionDuo } from "./expertise-intervention-duo";
 import { ExpertisePageHero } from "./expertise-page-hero";
 import { ExpertiseRelatedServices } from "./expertise-related-services";
-import { ExpertiseServicesGrid } from "./expertise-services-grid";
 import { navigation } from "@/content/navigation";
 import { expertiseUiCopy } from "@/content/pages/expertise";
 import { trainingUiCopy } from "@/content/pages/training";
@@ -71,19 +70,13 @@ export function ExpertisePageTemplate({ locale, page }: ExpertisePageTemplatePro
       />
 
       <Section spacing="md" tone="default">
-        <ExpertiseEditorialIntro
+        <ExpertiseInterventionDuo
           locale={locale}
           eyebrow={expertiseUiCopy.introductionEyebrow[locale]}
-          title={page.title[locale]}
-          paragraphs={page.introduction[locale]}
-        />
-      </Section>
-
-      <Section spacing="md" tone="muted">
-        <ExpertiseServicesGrid
-          locale={locale}
           title={page.servicesTitle[locale]}
-          items={page.services}
+          paragraphs={page.introduction[locale]}
+          servicesTitle={expertiseUiCopy.servicesEyebrow[locale]}
+          services={page.services}
         />
       </Section>
 

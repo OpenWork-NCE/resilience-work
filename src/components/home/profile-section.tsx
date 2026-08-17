@@ -22,15 +22,7 @@ export function ProfileSection({ locale }: ProfileSectionProps) {
   const contactHref = getLocalizedHref(locale, "contact");
 
   return (
-    <Section spacing="lg" tone="default" containerSize="wide" className="relative">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
-      >
-        <div className="absolute -left-24 top-16 h-72 w-72 rounded-full bg-[rgb(var(--accent))] opacity-[0.05] blur-3xl" />
-        <div className="absolute -right-20 bottom-8 h-80 w-80 rounded-full bg-[rgb(var(--primary))] opacity-[0.04] blur-3xl" />
-      </div>
-
+    <Section spacing="lg" tone="default" containerSize="wide">
       <div
         className={cn(
           "relative overflow-hidden rounded-[var(--radius-2xl)]",

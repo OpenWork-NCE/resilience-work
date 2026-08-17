@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import { ActivityCards } from "@/components/expertise/activity-cards";
 import { ExpertiseFinalCta } from "@/components/expertise/expertise-final-cta";
-import { ExpertiseOverviewGrid } from "@/components/expertise/expertise-overview-grid";
 import { AnimatedSection } from "@/components/motion/animated";
 import { Breadcrumbs } from "@/components/navigation/breadcrumbs";
 import { Section } from "@/components/shared/section";
@@ -68,7 +68,7 @@ export default async function ExpertiseLandingPage({
       </section>
 
       <Section spacing="lg">
-        <ExpertiseOverviewGrid locale={currentLocale} items={expertiseItems} />
+        <ActivityCards locale={currentLocale} items={expertiseItems} />
       </Section>
 
       <Section spacing="md">
