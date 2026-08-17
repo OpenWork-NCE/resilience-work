@@ -1,9 +1,9 @@
 # Resilience@Work Design System
 
-**Version:** 1.0.0  
 **Framework:** Next.js 16.2.7  
 **Styling:** Tailwind CSS v4  
-**Date:** 2024
+**Polices:** Space Grotesk (display / accent), Inter (texte)  
+**Locales:** fr, en, it
 
 ---
 
@@ -128,11 +128,11 @@ Tous les contrastes respectent les normes d'accessibilité :
 ### Familles de Polices
 
 ```typescript
---font-display: "Lora", Georgia, serif;  // Titres éditoriaux
+--font-display: "Space Grotesk", Inter, sans-serif;  // Titres éditoriaux
 --font-sans: "Inter", Arial, sans-serif; // Interface & corps
 ```
 
-#### Lora (Display)
+#### Space Grotesk (Display)
 Utilisée pour :
 - Grands titres institutionnels
 - Citations
@@ -165,20 +165,20 @@ Utilisée pour :
 
 ```typescript
 // Display Hero
-font-family: Lora
+font-family: Space Grotesk
 font-size: var(--text-6xl)
 font-weight: 500
 line-height: 1.05
 letter-spacing: -0.02em
 
 // Page Title
-font-family: Lora
+font-family: Space Grotesk
 font-size: var(--text-5xl)
 font-weight: 500
 line-height: 1.1
 
 // Section Title
-font-family: Lora
+font-family: Space Grotesk
 font-size: 2.25rem (36px)
 font-weight: 500
 
@@ -571,7 +571,7 @@ xl: 1280px  // Desktop standard
 
 - **Framework:** Next.js 16.2.7
 - **Styling:** Tailwind CSS v4 (avec @theme inline)
-- **Fonts:** next/font (Inter, Lora)
+- **Fonts:** next/font (Inter, Space Grotesk)
 - **Icons:** lucide-react
 - **Animations:** framer-motion
 - **Theme:** next-themes

@@ -1,12 +1,16 @@
 # Privacy Audit
 
-Date: 2026-06-04
-Project: Resilience@Work
+Date: 2026-06-04 (snapshot historique, mis à jour pour les routes actuelles)  
+Project: Resilience@Work  
 Scope: public website, contact form, legal readiness, consent readiness
+
+## État actuel
+
+Consentement et pages légales sont en place. Analytics et marketing restent gated, sans fournisseur branché. Locales publiques : `fr`, `en`, `it`.
 
 ## Audit Summary
 
-This audit reflects the codebase state observed before the legal and consent integration work of step 9.
+This audit reflects the codebase state observed before the legal and consent integration work of step 9. The lists below remain useful as a route inventory.
 
 - Public routes currently present:
   - `/{locale}`

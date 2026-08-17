@@ -37,7 +37,7 @@
 - [ ] `npx tsc --noEmit`
 - [ ] `npm run validate:content`
 - [ ] `npm run build`
-- [ ] legal routes tested in FR and EN
+- [ ] legal routes tested in FR, EN and IT
 - [ ] footer links tested
 - [ ] cookie preferences flow tested
 - [ ] no unexpected third-party requests before consent

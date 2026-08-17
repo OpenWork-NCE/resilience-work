@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Resilience@Work
 
-## Getting Started
+Site public de Resilience@Work : soutien psychologique après un incident critique, appui en crise de mobilité internationale, formations et workshops sur le bien-être et la santé mentale.
 
-First, run the development server:
+Locales : **fr** (défaut), **en**, **it**.
+
+## Stack
+
+- Next.js 16 (App Router) + React 19
+- TypeScript strict
+- Tailwind CSS v4
+- next-intl
+- next-themes (clair / sombre)
+- Framer Motion
+
+## Démarrage
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrir [http://localhost:3000](http://localhost:3000). La locale par défaut est `/fr`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Commande | Rôle |
+|---|---|
+| `npm run dev` | Serveur de développement |
+| `npm run build` | Build de production |
+| `npm run start` | Servir le build |
+| `npm run lint` | ESLint |
+| `npm run validate:content` | Vérifie le contenu FR / EN / IT |
 
-## Learn More
+## Contenu
 
-To learn more about Next.js, take a look at the following resources:
+Le site est **piloté par le contenu**, pas par du texte en dur dans l’UI.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Éditorial : `src/content/**` (`Record<Locale, T>`)
+- Chrome UI (header, footer, erreurs) : `messages/{fr,en,it}.json`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Trois activités, slugs stables :
 
-## Deploy on Vercel
+- `/expertise/critical-incident-support`
+- `/expertise/crisis-management`
+- `/training`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Anciennes URLs redirigées :
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/expertise/psychosocial-prevention` → support post-incident
+- `/expertise/international-mobility` → crise et mobilité
+
+## Pages principales
+
+| Route | Page |
+|---|---|
+| `/[locale]` | Accueil |
+| `/[locale]/expertise` | Liste des activités |
+| `/[locale]/expertise/[slug]` | Fiche activité |
+| `/[locale]/training` | Formations et workshops |
+| `/[locale]/jocelyne-katshinda` | Portfolio Jocelyne |
+| `/[locale]/consultants/[slug]` | Consultantes affiliées |
+| `/[locale]/contact` | Contact |
+| `/[locale]/legal-notice` | Mentions légales |
+| `/[locale]/privacy` | Confidentialité |
+| `/[locale]/cookies` | Cookies |
+| `/[locale]/accessibility` | Accessibilité |
+
+`/about` redirige vers le portfolio de Jocelyne.
+
+## Architecture visuelle
+
+- Une seule bande `--hero-void` (`#071018`) par page interne : la hero. Elle ne change pas avec le thème.
+- L’accueil a le void plein écran en hero. Le header s’y superpose, puis devient solide au scroll.
+- Header, footer et sections partagent le gabarit `HOME_MEASURE` (`containerSize="home"`).
+- Les images Next.js sont servies **sans optimisation** (`images.unoptimized: true`).
+
+## Documentation
+
+- [ARCHITECTURE.md](./ARCHITECTURE.md)
+- [docs/content-model.md](./docs/content-model.md)
+- [docs/design-system.md](./docs/design-system.md)
+- [docs/home-page.md](./docs/home-page.md)
+- [docs/navigation-and-shell.md](./docs/navigation-and-shell.md)
+- [docs/cookie-consent.md](./docs/cookie-consent.md)
+- [docs/legal-pages.md](./docs/legal-pages.md)
+- [docs/production-readiness.md](./docs/production-readiness.md)

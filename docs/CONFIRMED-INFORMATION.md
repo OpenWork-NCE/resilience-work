@@ -28,12 +28,11 @@
 - Anglais
 - Italien
 
-### Domaines d'expertise
+### Activités
 
-1. Prévention psychosociale & bien-être au travail
-2. Mobilité internationale
-3. Management des situations de crise
-4. Formations & webinaires professionnels
+1. Support psychologique post-incident
+2. Crise et mobilité internationale
+3. Formations et workshops (bien-être et santé mentale)
 
 ---
 
