@@ -1,10 +1,10 @@
-import Link from "next/link";
-import { ArrowRight, MessageCircle } from "lucide-react";
 import { homePage } from "@/content/pages/home";
-import { Section } from "@/components/shared/section";
-import { Button } from "@/components/shared/button";
-import { Eyebrow } from "@/components/ui/content";
 import { AnimatedSection } from "@/components/motion/animated";
+import {
+  HOME_MEASURE,
+  HomeSectionIntro,
+} from "@/components/home/home-section-intro";
+import { HomeTextLink } from "@/components/home/home-text-link";
 import { getLocalizedCta } from "@/lib/navigation/get-navigation";
 import type { Locale } from "@/types/content";
 
@@ -18,53 +18,34 @@ export function FinalCtaSection({ locale }: FinalCtaSectionProps) {
   const whatsappCta = getLocalizedCta(locale, "whatsapp");
 
   return (
-    <Section spacing="lg" tone="default" containerSize="wide">
-      <AnimatedSection>
-        <div className="relative overflow-hidden rounded-[var(--radius-2xl)] border border-[color-mix(in_srgb,rgb(var(--inverse-foreground))_10%,transparent)] bg-[linear-gradient(135deg,rgb(var(--surface-inverse))_0%,rgb(var(--primary-active))_100%)] px-6 py-10 text-[rgb(var(--inverse-foreground))] shadow-[var(--shadow-elevated)] sm:px-8 sm:py-12 lg:px-12 lg:py-14">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-16 top-0 h-56 w-56 rounded-full bg-[rgb(var(--accent))] opacity-20 blur-3xl"
-          />
-          <div className="relative max-w-4xl">
-            <Eyebrow className="text-[color-mix(in_srgb,rgb(var(--inverse-foreground))_64%,transparent)]">
-              {finalCta.eyebrow[locale]}
-            </Eyebrow>
-            <h2 className="mt-4 max-w-[16ch] font-display text-[clamp(2.3rem,5vw,3.8rem)] font-medium leading-[1.02] text-balance">
-              {finalCta.title[locale]}
-            </h2>
-            <p className="mt-5 max-w-3xl text-base leading-relaxed text-[color-mix(in_srgb,rgb(var(--inverse-foreground))_78%,transparent)] sm:text-lg">
-              {finalCta.description[locale]}
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link href={contactCta.href} className="w-full sm:w-auto">
-                <Button
-                  variant="inverse"
-                  size="lg"
-                  className="w-full min-h-12 sm:w-auto"
-                  rightIcon={<ArrowRight className="h-4 w-4" aria-hidden="true" />}
-                >
-                  {contactCta.label}
-                </Button>
-              </Link>
-              <Link
-                href={whatsappCta.href}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full sm:w-auto"
-              >
-                <Button
-                  variant="outlineInverse"
-                  size="lg"
-                  className="w-full min-h-12 sm:w-auto"
-                  leftIcon={<MessageCircle className="h-4 w-4" aria-hidden="true" />}
-                >
-                  {whatsappCta.label}
-                </Button>
-              </Link>
-            </div>
+    <section
+      aria-labelledby="home-final-cta-title"
+      className="relative isolate bg-[rgb(var(--hero-void))] text-white"
+    >
+      <div
+        className={`${HOME_MEASURE} flex min-h-[68svh] flex-col justify-end pb-16 pt-24 lg:min-h-[74svh] lg:pb-24 lg:pt-32`}
+      >
+        <AnimatedSection>
+          <HomeSectionIntro invert eyebrow={finalCta.eyebrow[locale]} />
+          <h2
+            id="home-final-cta-title"
+            className="mt-7 max-w-[14ch] font-display text-[clamp(2.6rem,7vw,6.2rem)] font-medium leading-[0.9] tracking-[-0.04em] text-balance"
+          >
+            {finalCta.title[locale]}
+          </h2>
+          <p className="mt-7 max-w-[34rem] text-base leading-relaxed text-white/70 sm:text-lg">
+            {finalCta.description[locale]}
+          </p>
+          <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-8">
+            <HomeTextLink href={contactCta.href} invert>
+              {contactCta.label}
+            </HomeTextLink>
+            <HomeTextLink href={whatsappCta.href} invert external={whatsappCta.external}>
+              {whatsappCta.label}
+            </HomeTextLink>
           </div>
-        </div>
-      </AnimatedSection>
-    </Section>
+        </AnimatedSection>
+      </div>
+    </section>
   );
 }

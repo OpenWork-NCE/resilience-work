@@ -1,20 +1,17 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Globe2, ShieldCheck, Sparkles } from "lucide-react";
 import { homePage } from "@/content/pages/home";
-import { Section } from "@/components/shared/section";
-import { Button } from "@/components/shared/button";
-import { Eyebrow } from "@/components/ui/content";
 import { AnimatedSection } from "@/components/motion/animated";
+import {
+  HOME_MEASURE,
+  HomeSectionIntro,
+} from "@/components/home/home-section-intro";
+import { HomeStill } from "@/components/home/home-still";
+import { HomeTextLink } from "@/components/home/home-text-link";
 import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
-import { cn } from "@/lib/utils";
 import type { Locale } from "@/types/content";
 
 interface ProfileSectionProps {
   locale: Locale;
 }
-
-const highlightIcons = [Globe2, Sparkles, ShieldCheck] as const;
 
 export function ProfileSection({ locale }: ProfileSectionProps) {
   const profile = homePage.profile;
@@ -22,106 +19,66 @@ export function ProfileSection({ locale }: ProfileSectionProps) {
   const contactHref = getLocalizedHref(locale, "contact");
 
   return (
-    <Section spacing="lg" tone="default" containerSize="wide">
+    <section
+      aria-labelledby="home-profile-title"
+      className="relative isolate overflow-hidden bg-[rgb(var(--hero-void))] text-white"
+    >
       <div
-        className={cn(
-          "relative overflow-hidden rounded-[var(--radius-2xl)]",
-          "border border-[rgb(var(--border-muted))] bg-[rgb(var(--surface))] shadow-[var(--shadow-card)]",
-          "lg:grid lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]"
-        )}
+        className={`${HOME_MEASURE} grid items-center gap-12 py-16 lg:grid-cols-2 lg:gap-20 lg:py-24`}
       >
-        {/* Portrait column */}
-        <AnimatedSection className="relative min-h-[22rem] lg:min-h-full">
-          <div className="relative h-full min-h-[22rem] overflow-hidden bg-[rgb(var(--surface-subtle))] lg:absolute lg:inset-0 lg:min-h-0">
-            <Image
-              src={profile.image.src}
-              alt={profile.image.alt[locale]}
-              fill
-              sizes="(max-width: 1024px) 100vw, 46vw"
-              className="object-cover"
-              style={{ objectPosition: profile.image.objectPosition ?? "center" }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[rgb(var(--surface))]/40" />
+        <HomeStill
+          src={profile.image.src}
+          alt={profile.image.alt[locale]}
+          objectPosition={profile.image.objectPosition}
+          sizes="(max-width: 1024px) 94vw, 46vw"
+          grain
+          className="aspect-[4/5] lg:order-2 lg:aspect-auto lg:h-[min(78svh,46rem)]"
+        >
+          <figcaption className="absolute inset-x-0 bottom-0 p-6">
+            <p className="font-[family:var(--font-accent)] text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/55">
+              {profile.role[locale]}
+            </p>
+            <p className="mt-2 font-display text-2xl font-medium tracking-[-0.02em] text-white">
+              {profile.name}
+            </p>
+          </figcaption>
+        </HomeStill>
 
-            {/* Mobile name overlay on image */}
-            <div className="absolute inset-x-0 bottom-0 p-6 lg:hidden">
-              <p className="font-[family:var(--font-accent)] text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-white/75">
-                {profile.eyebrow[locale]}
-              </p>
-              <p className="mt-2 text-2xl font-semibold text-white">{profile.name}</p>
-              <p className="mt-1 text-sm text-white/80">{profile.role[locale]}</p>
-            </div>
-          </div>
-        </AnimatedSection>
+        <AnimatedSection className="lg:order-1">
+          <HomeSectionIntro
+            invert
+            eyebrow={profile.eyebrow[locale]}
+            title={profile.title[locale]}
+            titleId="home-profile-title"
+            description={profile.description[locale]}
+          />
 
-        {/* Content column */}
-        <AnimatedSection delay={0.08} className="relative flex flex-col justify-center p-6 sm:p-8 lg:p-10 xl:p-12">
-          <Eyebrow className="hidden lg:inline-flex">{profile.eyebrow[locale]}</Eyebrow>
-
-          <h2 className="mt-0 max-w-[18ch] font-display text-[clamp(2rem,4.2vw,3.15rem)] font-medium leading-[1.02] text-balance lg:mt-4">
-            {profile.title[locale]}
-          </h2>
-
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-[rgb(var(--muted-foreground))] sm:text-lg">
-            {profile.description[locale]}
-          </p>
-
-          <ul className="mt-7 flex flex-wrap gap-2.5">
-            {profile.highlights.map((item, index) => {
-              const Icon = highlightIcons[index] ?? Sparkles;
-              return (
-                <li
-                  key={item.id}
-                  className={cn(
-                    "inline-flex items-center gap-2 rounded-full border border-[rgb(var(--border-muted))]",
-                    "bg-[rgb(var(--surface-muted))] px-3.5 py-2 text-sm font-medium text-[rgb(var(--foreground))]"
-                  )}
-                >
-                  <Icon
-                    className="h-3.5 w-3.5 shrink-0 text-[rgb(var(--accent))]"
-                    aria-hidden="true"
-                  />
-                  {item.label[locale]}
-                </li>
-              );
-            })}
-          </ul>
-
-          <div className="mt-8 hidden border-t border-[rgb(var(--border-muted))] pt-6 lg:block">
-            <div className="flex items-start gap-4">
-              <span
-                aria-hidden="true"
-                className="mt-1 h-12 w-1 shrink-0 rounded-full bg-[rgb(var(--accent))]"
-              />
-              <div>
-                <p className="text-2xl font-semibold tracking-tight text-[rgb(var(--foreground))]">
-                  {profile.name}
-                </p>
-                <p className="mt-1.5 text-base text-[rgb(var(--muted-foreground))]">
-                  {profile.role[locale]}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Link href={portfolioHref} className="block w-full sm:w-auto">
-              <Button
-                variant="primary"
-                className="w-full sm:w-auto"
-                rightIcon={<ArrowRight className="h-4 w-4" />}
+          <ol className="mt-10 max-w-[34rem] space-y-0 border-t border-white/15">
+            {profile.highlights.map((item, index) => (
+              <li
+                key={item.id}
+                className="flex items-baseline gap-4 border-b border-white/15 py-3.5"
               >
-                {profile.portfolioCta.label[locale]}
-              </Button>
-            </Link>
-            <Link href={contactHref} className="block w-full sm:w-auto">
-              <Button variant="secondary" className="w-full sm:w-auto">
-                {profile.cta.label[locale]}
-              </Button>
-            </Link>
+                <span className="font-[family:var(--font-accent)] text-[0.62rem] font-semibold tabular-nums tracking-[0.2em] text-white/40">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="text-[1.02rem] font-medium tracking-[-0.02em] text-white/90">
+                  {item.label[locale]}
+                </span>
+              </li>
+            ))}
+          </ol>
+
+          <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-8">
+            <HomeTextLink href={portfolioHref} invert>
+              {profile.portfolioCta.label[locale]}
+            </HomeTextLink>
+            <HomeTextLink href={contactHref} invert>
+              {profile.cta.label[locale]}
+            </HomeTextLink>
           </div>
         </AnimatedSection>
       </div>
-    </Section>
+    </section>
   );
 }
