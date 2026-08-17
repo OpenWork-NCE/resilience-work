@@ -47,7 +47,7 @@ export const assets = {
     } satisfies ImageAsset,
 
     internationalMobility: {
-      src: "/images/expertise/international-mobility.webp",
+      src: "/images/expertise/crisis-management.webp",
       alt: {
         fr: "Professionnels évoluant dans un contexte de mobilité internationale et de collaboration interculturelle.",
         en: "Professionals working in an international mobility and cross-cultural collaboration context.",

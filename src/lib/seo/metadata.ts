@@ -125,7 +125,7 @@ export const pageSeo: Record<RouteKey, PageSeo> = {
       it: "Gestione di situazioni di crisi nel contesto della mobilità internazionale e degli ambienti multiculturali.",
     },
     canonicalRoute: "internationalMobility",
-    ogImage: "/images/expertise/international-mobility.webp",
+    ogImage: "/images/expertise/crisis-management.webp",
     noIndex: true,
   },
 
