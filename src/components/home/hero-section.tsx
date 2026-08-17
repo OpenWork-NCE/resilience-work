@@ -6,10 +6,7 @@ import { motion } from "framer-motion";
 import { homePage } from "@/content/pages/home";
 import { expertiseItems } from "@/content/pages/expertise";
 import { brand } from "@/content/brand";
-import {
-  HeroCinematicStill,
-  useHeroDepthPointer,
-} from "@/components/home/hero-depth-background";
+import { HeroCinematicStill } from "@/components/home/hero-depth-background";
 import { getLocalizedCta } from "@/lib/navigation/get-navigation";
 import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
 import { useReducedMotion } from "@/lib/hooks/use-reduced-motion";
@@ -27,17 +24,14 @@ export function HeroSection({ locale }: HeroSectionProps) {
   const hero = homePage.hero;
   const primaryCta = getLocalizedCta(locale, "scheduleConversation");
   const prefersReducedMotion = useReducedMotion();
-  const { springX, springY, onPointerMove, onPointerLeave } =
-    useHeroDepthPointer(!prefersReducedMotion);
   const [titleLead, titleMain] = hero.titleLines[locale];
   const caption = homePage.highlights[0]?.value[locale];
 
   return (
     <section
+      id="home-hero"
       aria-labelledby="home-hero-title"
       className="relative isolate min-h-[100svh] overflow-hidden bg-[rgb(var(--hero-void))] text-white"
-      onPointerMove={onPointerMove}
-      onPointerLeave={onPointerLeave}
     >
       <div className="lg:hidden">
         <HeroCinematicStill
@@ -45,8 +39,6 @@ export function HeroSection({ locale }: HeroSectionProps) {
           alt={hero.image.alt[locale]}
           objectPosition={hero.image.objectPosition}
           prefersReducedMotion={prefersReducedMotion}
-          springX={springX}
-          springY={springY}
           variant="bleed"
         />
       </div>
@@ -57,8 +49,6 @@ export function HeroSection({ locale }: HeroSectionProps) {
           alt={hero.image.alt[locale]}
           objectPosition={hero.image.objectPosition}
           prefersReducedMotion={prefersReducedMotion}
-          springX={springX}
-          springY={springY}
           caption={caption}
           variant="plate"
         >
@@ -85,7 +75,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
         </HeroCinematicStill>
       </div>
 
-      <div className="relative z-[2] mx-auto flex min-h-[100svh] w-[min(94vw,88rem)] flex-col justify-end px-5 pb-10 pt-20 sm:px-8 lg:w-[min(94vw,92rem)] lg:justify-center lg:px-10 lg:pb-0 lg:pt-0">
+      <div className="relative z-[2] mx-auto flex min-h-[100svh] w-[min(94vw,88rem)] flex-col justify-end px-5 pb-10 pt-24 sm:px-8 lg:w-[min(94vw,92rem)] lg:justify-center lg:px-10 lg:pb-0 lg:pt-0">
         <div className="max-w-[40rem] lg:max-w-[46rem] xl:max-w-[50rem]">
           <motion.p
             initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}

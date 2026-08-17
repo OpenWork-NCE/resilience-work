@@ -21,7 +21,7 @@ import {
   getLocalizedExpertiseItems,
   getLocalizedNavigation,
 } from "@/lib/navigation/get-navigation";
-import { getLocalizedHref } from "@/lib/navigation/get-localized-href";
+import { getLocalizedHref, stripLocalePrefix } from "@/lib/navigation/get-localized-href";
 import { headerReveal } from "@/lib/animations";
 import { useReducedMotion } from "@/lib/hooks/use-reduced-motion";
 import { cn } from "@/lib/utils";
@@ -42,6 +42,8 @@ export function SiteHeader() {
   const navigationItems = getLocalizedNavigation(locale);
   const expertiseItems = getLocalizedExpertiseItems(locale);
   const primaryCta = getLocalizedCta(locale, "scheduleConversation");
+  const isHome = stripLocalePrefix(pathname) === "/";
+  const isOverlay = isHome && !isScrolled && !isMobileMenuOpen;
   const isDarkTheme = themeReady && resolvedTheme === "dark";
 
   useEffect(() => {
@@ -50,7 +52,7 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 12);
+    const onScroll = () => setIsScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -72,23 +74,39 @@ export function SiteHeader() {
         animate="visible"
         variants={prefersReducedMotion ? undefined : headerReveal}
         className={cn(
-          "sticky top-0 z-30 border-b text-[rgb(var(--foreground))]",
-          "supports-[backdrop-filter]:backdrop-blur-xl",
-          "transition-[background-color,border-color,box-shadow] duration-[var(--duration-normal)] ease-[var(--ease-standard)]",
-          isScrolled
-            ? "border-[rgb(var(--border-muted))] bg-[rgb(var(--background))]/96 shadow-[var(--shadow-card)] supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--background))_92%,transparent)]"
-            : "border-[rgb(var(--border-muted))] bg-[rgb(var(--background))]/96 shadow-[var(--shadow-soft)] supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--background))_92%,transparent)]"
+          "fixed inset-x-0 top-0 z-40",
+          "transition-[background-color,border-color,box-shadow,color] duration-[var(--duration-normal)] ease-[var(--ease-standard)]",
+          isOverlay
+            ? "border-b border-transparent bg-transparent text-white"
+            : cn(
+                "border-b border-[rgb(var(--border-muted))] text-[rgb(var(--foreground))]",
+                "bg-[rgb(var(--background))]/96 shadow-[var(--shadow-card)]",
+                "supports-[backdrop-filter]:bg-[color-mix(in_srgb,rgb(var(--background))_92%,transparent)]",
+                "supports-[backdrop-filter]:backdrop-blur-xl"
+              )
         )}
       >
-        <Container size="wide">
+        {isOverlay ? (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[rgb(var(--hero-void))]/80 via-[rgb(var(--hero-void))]/35 to-transparent"
+          />
+        ) : null}
+
+        <Container size="wide" className="relative">
           <div className="flex min-h-20 min-w-0 items-center gap-2 xl:gap-3">
             <Link
               href={getLocalizedHref(locale, "home")}
               aria-label={brand.name}
-              className="min-w-0 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--background))]"
+              className={cn(
+                "min-w-0 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2",
+                isOverlay
+                  ? "focus-visible:ring-offset-transparent"
+                  : "focus-visible:ring-offset-[rgb(var(--background))]"
+              )}
             >
               <Logo
-                variant={isDarkTheme ? "onDark" : "default"}
+                variant={isOverlay || isDarkTheme ? "onDark" : "default"}
                 size="md"
                 className="max-w-[clamp(9.5rem,40vw,12.5rem)] xl:max-w-[12.5rem]"
               />
@@ -98,15 +116,20 @@ export function SiteHeader() {
               <DesktopNavigation
                 items={navigationItems}
                 expertiseItems={expertiseItems}
-                highContrast={isDarkTheme}
+                inverse={isOverlay}
+                highContrast={isDarkTheme && !isOverlay}
               />
             </div>
 
             <div className="ml-auto hidden shrink-0 items-center gap-2 lg:flex lg:translate-y-[2px] xl:gap-3">
-              <LocaleSwitcher />
-              <ThemeToggle />
+              <LocaleSwitcher inverse={isOverlay} />
+              <ThemeToggle inverse={isOverlay} />
               <Link href={primaryCta.href}>
-                <Button variant="primary" size="md" className="whitespace-nowrap">
+                <Button
+                  variant={isOverlay ? "onInverse" : "primary"}
+                  size="md"
+                  className="whitespace-nowrap"
+                >
                   {primaryCta.label}
                 </Button>
               </Link>
@@ -118,8 +141,10 @@ export function SiteHeader() {
                 aria-label={primaryCta.label}
                 className={cn(
                   "inline-flex h-11 items-center justify-center rounded-[var(--radius-md)] border px-3 text-sm font-medium transition-colors",
-                  "border-[rgb(var(--border))] bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--surface-muted))]",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--background))]"
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent))]",
+                  isOverlay
+                    ? "border-white/25 bg-white/10 text-white hover:bg-white/16 focus-visible:ring-offset-transparent"
+                    : "border-[rgb(var(--border))] bg-[rgb(var(--surface))] text-[rgb(var(--foreground))] hover:bg-[rgb(var(--surface-muted))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--background))]"
                 )}
               >
                 <MessageCircle className="mr-2 h-4 w-4" aria-hidden="true" />
@@ -131,11 +156,14 @@ export function SiteHeader() {
                 label={isMobileMenuOpen ? t("closeMenu") : t("openMenu")}
                 onClick={() => setIsMobileMenuOpen((value) => !value)}
                 triggerRef={triggerRef}
+                inverse={isOverlay}
               />
             </div>
           </div>
         </Container>
       </motion.header>
+
+      {!isHome ? <div aria-hidden="true" className="h-20 shrink-0" /> : null}
 
       <MobileNavigation
         isOpen={isMobileMenuOpen}
