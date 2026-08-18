@@ -8,8 +8,9 @@ import { SiteShell } from "@/components/layout/site-shell";
 import { SkipLink } from "@/components/layout/skip-link";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { brand } from "@/content/brand";
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 
@@ -31,6 +32,7 @@ const spaceGroteskAccent = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(`https://${brand.domain}`),
   title: "Resilience@Work",
   description: "Psychological support after a critical incident, crisis support in international mobility, training and workshops on well-being and mental health.",
   icons: {
@@ -53,7 +55,9 @@ export default async function RootLayout({
   if (!routing.locales.includes(locale as 'fr' | 'en' | 'it')) {
     notFound();
   }
- 
+
+  setRequestLocale(locale);
+
   // Providing all messages to the client
   const messages = await getMessages();
 

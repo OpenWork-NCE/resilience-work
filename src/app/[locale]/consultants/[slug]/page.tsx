@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ConsultantPortfolioPage } from "@/components/consultants/consultant-portfolio-page";
-import {
-  consultantSlugParams,
-  getConsultantBySlug,
-} from "@/content/consultants";
+import { getConsultantBySlug } from "@/content/consultants";
 import type { Locale } from "@/types/content";
-
-export function generateStaticParams() {
-  return consultantSlugParams;
-}
 
 export async function generateMetadata({
   params,

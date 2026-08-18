@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ExpertisePageTemplate } from "@/components/expertise/expertise-page-template";
-import { expertiseSlugParams, getExpertiseDetailPageBySlug } from "@/content/pages/expertise";
+import { getExpertiseDetailPageBySlug } from "@/content/pages/expertise";
 import type { Locale } from "@/types/content";
-
-export function generateStaticParams() {
-  return expertiseSlugParams;
-}
 
 export async function generateMetadata({
   params,
